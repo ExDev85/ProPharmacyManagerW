@@ -2,7 +2,7 @@
 An Arabic Professional Pharmacy Manager http://shababco.blogspot.com/
 
 The ProPharmacyManager Application has two version so far Normal one (not
-suporrted anymore) and the W one (W stand for WPF)
+supported anymore) and the W one (W stand for WPF)
 For more information about the ProPharmacyManager Application, please see 
 http://shababco.blogspot.com/ 
 
