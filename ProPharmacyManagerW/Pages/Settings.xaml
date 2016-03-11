@@ -1,0 +1,101 @@
+﻿<Page x:Class="ProPharmacyManager.Pages.Settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProPharmacyManager.Pages"
+      xmlns:PHB="clr-namespace:ExtendedButton;assembly=ExtendedButton" 
+      mc:Ignorable="d" 
+      d:DesignHeight="599" d:DesignWidth="799"
+      Title="اعدادت" FlowDirection="RightToLeft" Loaded="Page_Loaded">
+
+    <Grid>
+        <TabControl x:Name="tabControl" ItemsSource="{Binding tabs}" TabStripPlacement="Left" Background="#FF2B80D4" BorderThickness="0" BorderBrush="{x:Null}" FontSize="14" FontWeight="Bold" Foreground="White">
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TabItem}">
+                                <Grid>
+                                    <Border Background="#FF051B30" Margin="0,-2,2,1" BorderBrush="#FF051B30" BorderThickness="2" >
+                                        <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True"/>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type TabItem}">
+                                        <Grid>
+                                            <Border Background="#FF2B80D4" Margin="2,-2,-4,1" BorderBrush="#FF2B80D4" BorderThickness="0" >
+                                                <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.ItemContainerStyle>
+            <TabItem Header="قاعده البيانات" BorderThickness="0">
+                <Grid Background="#FF2B80D4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="541*"/>
+                        <ColumnDefinition Width="151*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="38*"/>
+                        <RowDefinition Height="54*"/>
+                        <RowDefinition Height="55*"/>
+                        <RowDefinition Height="63*"/>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="56*"/>
+                        <RowDefinition Height="68*"/>
+                        <RowDefinition Height="66*"/>
+                        <RowDefinition Height="63*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="label1" Content="المضيف" Margin="10,10,10,8" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label2" Content="اسم قاعده البيانات" Margin="10,10,16,17" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold" Grid.Row="3" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label3" Content="اسم المستخدم" Margin="10,10,16,14" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold" Grid.Row="5" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label4" Content="كلمه مرور المستخدم" Margin="10,10,13,22" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold" Grid.Row="7" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="DBHost" Margin="10,10,16,14" TextWrapping="Wrap" Text="localhost" FlowDirection="LeftToRight" MaxLines="1" TabIndex="1" Foreground="#FF3399FF" FontSize="16" FontWeight="Bold" Grid.Row="2" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="DBName" Margin="10,10,13,19" TextWrapping="Wrap" Text="phdb" FlowDirection="LeftToRight" MaxLines="1" TabIndex="2" Foreground="#FF3399FF" FontSize="16" FontWeight="Bold" Grid.Row="4" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="DBUser" Margin="10,10,14,15" TextWrapping="Wrap" Text="root" FlowDirection="LeftToRight" MaxLines="1" TabIndex="3" Foreground="#FF3399FF" FontSize="16" FontWeight="Bold" Grid.Row="6" Grid.ColumnSpan="2"/>
+                    <PasswordBox x:Name="DBPass" Margin="10,10,10,25" FlowDirection="LeftToRight" TabIndex="4" Foreground="#FF3399FF" FontSize="16" FontWeight="Bold" Grid.Row="8" Grid.ColumnSpan="2"/>
+                    <PHB:ImageButton x:Name="SetB1" Content="" Margin="0,16,15,0" TabIndex="5" Background="#FF6E6E6E" BorderBrush="#FF2B41A4" Foreground="White" FontSize="18.667" FontWeight="Bold" IsDefault="True" Image="/ProPharmacyManager;component/Images/Set1.png" ImageDisabled="/ProPharmacyManager;component/Images/Set3.png" ImageHover="/ProPharmacyManager;component/Images/Set2.png" ImagePressed="/ProPharmacyManager;component/Images/Set3.png" Grid.Row="9" Width="108" Grid.Column="1" Height="38" VerticalAlignment="Top" HorizontalAlignment="Right" Click="SetB1_Click" />
+                    <PHB:ImageButton x:Name="BackToMain1" Content="" HorizontalAlignment="Left" Height="38" Margin="10,16,0,0" VerticalAlignment="Top" Width="99" Grid.Row="9" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManager;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManager;component/Images/Bhome3.png" ImageHover="/ProPharmacyManager;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManager;component/Images/Bhome3.png" TabIndex="35" IsTabStop="False"/>
+                    <Label x:Name="Vers" Content="Upgrade Version" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="10,4,0,0" VerticalAlignment="Top" Width="131" FlowDirection="LeftToRight" Foreground="#FFCFE5F7"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="السجلات" BorderThickness="0">
+                <Grid Background="#FF2B80D4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="569*"/>
+                        <ColumnDefinition Width="143*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="44*"/>
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="343*"/>
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="67*"/>
+                    </Grid.RowDefinitions>
+                    <PHB:ImageButton x:Name="SetB2" Content="" Margin="0,20,15,0" TabIndex="5" Background="#FF6E6E6E" BorderBrush="#FF2B41A4" Foreground="White" FontSize="18.667" FontWeight="Bold" IsDefault="True" Image="/ProPharmacyManager;component/Images/Set1.png" ImageDisabled="/ProPharmacyManager;component/Images/Set3.png" ImageHover="/ProPharmacyManager;component/Images/Set2.png" ImagePressed="/ProPharmacyManager;component/Images/Set3.png" Grid.Row="5" Width="108" Height="38" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Click="SetB2_Click" />
+                    <PHB:ImageButton x:Name="BackToMain2" Content="" HorizontalAlignment="Left" Height="38" Margin="10,20,0,0" VerticalAlignment="Top" Width="99" Grid.Row="5" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManager;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManager;component/Images/Bhome3.png" ImageHover="/ProPharmacyManager;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManager;component/Images/Bhome3.png" TabIndex="35" IsTabStop="False"/>
+                    <Label x:Name="titlel1" Grid.ColumnSpan="2" Content="اختار اى من السجلات التى تريد من البرنامج متابعتها." HorizontalAlignment="Left" Height="37" Margin="10,0,0,0" VerticalAlignment="Top" Width="692" Foreground="White" FontSize="14" FontWeight="Bold"/>
+                    <Label x:Name="titlel2" Grid.ColumnSpan="2" Content="*يمكنك توفير المساحه على قرصك الصلب بعدم متابعه اى من السجلات." HorizontalAlignment="Left" Height="37" Margin="10,0,0,0" VerticalAlignment="Top" Width="692" Foreground="Red" FontWeight="Bold" Grid.Row="4"/>
+                    <CheckBox x:Name="AccLogs" Grid.ColumnSpan="2" Content="سجل تسجيل الدخول و الخروج." HorizontalAlignment="Left" Height="34" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="692" IsChecked="True" Foreground="White" FontWeight="Bold"/>
+                    <CheckBox x:Name="MedLogs" Grid.ColumnSpan="2" Content="سجل بيع الأدوية (ليست الفواتير)." HorizontalAlignment="Left" Height="34" Margin="10,1,0,0" Grid.Row="2" VerticalAlignment="Top" Width="692" IsChecked="True" Foreground="White" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Page>

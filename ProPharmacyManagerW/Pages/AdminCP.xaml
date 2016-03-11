@@ -1,0 +1,142 @@
+﻿<Page x:Class="ProPharmacyManager.Pages.AdminCP"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:PHB="clr-namespace:ExtendedButton;assembly=ExtendedButton"
+      xmlns:local="clr-namespace:ProPharmacyManager.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="599" d:DesignWidth="799"
+      Title="لوحة المدراء" Loaded="Page_Loaded" KeyDown="Page_KeyDown" TextInput="Page_TextInput">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="508*" />
+            <ColumnDefinition Width="270*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="43*" />
+            <RowDefinition Height="429*" />
+            <RowDefinition Height="94*" />
+        </Grid.RowDefinitions>
+        <Image Grid.Column="1" Name="image1" Stretch="Fill" HorizontalAlignment="Right" Width="54" Source="/ProPharmacyManager;component/Images/CPLogo.png" Height="43" VerticalAlignment="Top" />
+
+        <Menu Height="31" Name="menu1" Background="#050B87B3" Foreground="White" IsMainMenu="True" VerticalAlignment="Top" FlowDirection="RightToLeft" Grid.ColumnSpan="2" Margin="0,0,54,0" MaxWidth="350" HorizontalAlignment="Right" Width="305">
+            <MenuItem x:Name="MeEmp" FontSize="15" FontWeight="Bold" Header="موظفين" TabIndex="1">
+                <MenuItem Header="اضافه" Background="White" Foreground="Blue" Click="MIAddEMP_Click" />
+                <MenuItem Header="لوحه التحكم" Background="White" Foreground="Blue" Click="MIPASEMP_Click" />
+                <MenuItem Header="لوحه الحالة" Background="White" Foreground="Blue" Click="MISTAEMP_Click" />
+                <MenuItem Header="سجل الدخول" Background="White" Foreground="Blue" Click="MILOGLOG_Click" />
+            </MenuItem>
+            <MenuItem x:Name="MECul" FontSize="15" FontWeight="Bold" Header="حسابات" TabIndex="2">
+                <MenuItem x:Name="MIBills" Header="فواتير" Background="White" Foreground="Blue" Click="MIBills_Click" />
+                <Separator Background="White" Foreground="#FFA0A0A0" />
+                <MenuItem x:Name="MISM" Header="سجل المباع" Background="White" Foreground="Blue" Click="MISM_Click" />
+            </MenuItem>
+            <MenuItem x:Name="MeSto" FontSize="15" FontWeight="Bold" Header="جرد" TabIndex="3">
+                <MenuItem x:Name="MIAddDrug" Background="White" Foreground="Blue" Header="اضافة دواء" Click="MIAddDrug_Click" />
+                <MenuItem x:Name="MIAllMeds" Header="الكل" Background="White" Foreground="Blue" Click="MIAllMeds_Click" />
+                <Separator Background="White" Foreground="#FFA0A0A0" />
+                <MenuItem x:Name="MISO" Header="غير موجود" Background="White" Foreground="Blue" Click="MISO_Click" />
+                <MenuItem x:Name="MIExy" Header="منتهى الصلاحية" Background="White" Foreground="Blue" Click="MIExy_Click" />
+            </MenuItem>
+            <MenuItem x:Name="MeSe" FontSize="15" FontWeight="Bold" Header="اعدادات" TabIndex="4">
+                <MenuItem Header="التفضيلات" Background="White" Foreground="Blue" Click="MISet1_Click" />
+                <MenuItem Header="قاعدة البيانات" Background="White" Foreground="Blue" Click="MISet2_Click" />
+                <Separator Background="White" Foreground="#FFA0A0A0" />
+                <MenuItem x:Name="BAR" Header="النسخ الاحتياطى" Background="White" Foreground="Blue" Click="BAR_Click" />
+            </MenuItem>
+            <MenuItem x:Name="MeHe" FontSize="15" FontWeight="Bold" Header="مساعدة" TabIndex="5">
+                <MenuItem Header="عن البرنامج" Background="White" Foreground="Blue" Name="about" Click="about_Click" />
+            </MenuItem>
+        </Menu>
+        <GroupBox Grid.Column="1" Grid.Row="1" Header="البحث" Height="248" Margin="11,120,8,0" Name="groupBox1" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="36*" />
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="43*" />
+                </Grid.RowDefinitions>
+                <ComboBox Name="SearchBox" Margin="6,17,6,6" VerticalAlignment="Stretch" Foreground="Blue" Background="White" IsEditable="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" TabIndex="6" GotFocus="SearchBox_GotFocus" KeyDown="SearchBox_KeyDown" />
+                <PHB:ImageButton Name="SearchButton" Grid.Row="2" Height="60" Margin="44,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Image="/ProPharmacyManager;component/Images/Search1.png" ImageDisabled="/ProPharmacyManager;component/Images/Search3.png" ImageHover="/ProPharmacyManager;component/Images/Search2.png" ImagePressed="/ProPharmacyManager;component/Images/Search3.png" TabIndex="8" Click="SearchButton_Click" IsDefault="True" />
+                <CheckBox x:Name="ByBarCode" Content="بواسطه الباركود" HorizontalAlignment="Left" Height="40" Margin="6,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Foreground="White" TabIndex="7"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox FlowDirection="RightToLeft" FontSize="18" FontWeight="Bold" Foreground="White" Header="النتيجة" Margin="12,7,10,13" Name="groupBox2" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="238*" />
+                    <ColumnDefinition Width="236*" />
+                </Grid.ColumnDefinitions>
+                <Label Content="اسم الدواء" Height="34" HorizontalAlignment="Left" Margin="6,0,0,0" Name="label1" VerticalAlignment="Top" Width="236" Foreground="White" />
+                <TextBox Height="30" Margin="6,33,3,0" Name="MName" VerticalAlignment="Top" Foreground="Blue" TabIndex="9" MaxLines="1" MaxLength="50" />
+                <Label Content="مدة الصلاحية" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="6,134,0,0" Name="label2" VerticalAlignment="Top" Width="223" />
+                <DatePicker Height="30" Margin="6,167,0,0" Name="MEX" VerticalAlignment="Top" Foreground="Blue" TabIndex="11" FirstDayOfWeek="Saturday" DisplayDateStart="2016-01-01" Text="" />
+                <Label Content="السعر" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="12,201,0,0" Name="label3" VerticalAlignment="Top" Width="223" />
+                <TextBox Height="30" Margin="6,234,3,0" Name="MPrice" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" MaxLines="1" MaxLength="15" PreviewTextInput="MPrice_PreviewTextInput"/>
+                <Label Content="الكمية (الموجود/المراد بيعه)" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="6,270,0,0" Name="label4" VerticalAlignment="Top" Width="230" />
+                <TextBox Height="30" Margin="6,302,0,0" Name="MExist" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="123" TabIndex="13" MaxLines="1" MaxLength="15" PreviewTextInput="MExist_PreviewTextInput" />
+                <TextBox Height="30" Margin="140,302,0,0" Name="MWSell" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="102" TabIndex="14" Text="1" MaxLines="1" MaxLength="15" PreviewTextInput="MWSell_PreviewTextInput" />
+                <Label Content="ملاحظات الدواء" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="7,191,0,0" Name="label5" VerticalAlignment="Top" Width="226" Grid.Column="1" />
+                <TextBox Margin="7,224,6,8" Name="MNotes" Grid.Column="1" TextWrapping="Wrap" Foreground="Red" TabIndex="19" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
+                <CheckBox Content="   فاتورة جديدة" Grid.Column="1" Height="30" Margin="7,4,0,0" Name="NewBill" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="226" TabIndex="16" />
+                <Label Content="رقم الفاتورة" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="7,60,0,0" Name="label6" VerticalAlignment="Top" Width="226" Grid.Column="1" />
+                <TextBox Height="30" Margin="7,99,3,0" Name="BillNo" VerticalAlignment="Top" Grid.Column="1" Foreground="Blue" TabIndex="17" MaxLines="1" MaxLength="20" IsReadOnlyCaretVisible="True" />
+                <Label Content="اسم العميل" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="7,134,0,0" Name="label7" VerticalAlignment="Top" Width="226" Grid.Column="1" />
+                <TextBox Height="30" Margin="7,167,6,0" Name="Client" VerticalAlignment="Top" Grid.Column="1" Foreground="Green" TabIndex="18" MaxLines="1" MaxLength="50" />
+                <Label Content="النوع" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="6,337,0,0" Name="label8" VerticalAlignment="Top" Width="223" />
+                <ComboBox Background="White" Foreground="Blue" HorizontalContentAlignment="Stretch" IsEditable="False" Margin="6,369,3,0" Name="MType" TabIndex="15" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="30" IsReadOnly="True" >
+                    <ListBoxItem Content="اقراص"/>
+                    <ListBoxItem Content="حقن"/>
+                    <ListBoxItem Content="شرب"/>
+                    <ListBoxItem Content="كريم/مرهم"/>
+                    <ListBoxItem Content="اخرى"/>
+                </ComboBox>
+                <Label Content="الماده الفعاله" Height="34" HorizontalAlignment="Left" Margin="6,66,0,0" x:Name="label1_Copy" VerticalAlignment="Top" Width="236" Foreground="White" />
+                <TextBox Height="30" Margin="6,99,3,0" x:Name="MSS" VerticalAlignment="Top" Foreground="Blue" TabIndex="10" MaxLines="1" MaxLength="50" />
+            </Grid>
+        </GroupBox>
+        <PHB:ImageButton Grid.Column="1" Grid.Row="2" Height="60" HorizontalAlignment="Right" Margin="0,11,58,0" Name="LogOut" VerticalAlignment="Top" Width="140" Image="/ProPharmacyManager;component/Images/Logout1.png" ImageDisabled="/ProPharmacyManager;component/Images/Logout3.png" ImageHover="/ProPharmacyManager;component/Images/Logout2.png" ImagePressed="/ProPharmacyManager;component/Images/Logout3.png" TabIndex="23" Click="LogOut_Click" IsCancel="True" />
+        <PHB:ImageButton Height="60" Margin="392,11,236,0" Name="DeleteM" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="2" Image="/ProPharmacyManager;component/Images/MDelete1.png" ImageDisabled="/ProPharmacyManager;component/Images/MDelete3.png" ImageHover="/ProPharmacyManager;component/Images/MDelete2.png" ImagePressed="/ProPharmacyManager;component/Images/MDelete3.png" TabIndex="22" Click="DeleteM_Click" Width="140" />
+        <PHB:ImageButton Height="60" Margin="206,11,152,0" Name="UpdateM" VerticalAlignment="Top" Grid.Row="2" Image="/ProPharmacyManager;component/Images/Update1.png" ImageDisabled="/ProPharmacyManager;component/Images/Update3.png" ImageHover="/ProPharmacyManager;component/Images/Update2.png" ImagePressed="/ProPharmacyManager;component/Images/Update3.png" TabIndex="21" Click="UpdateM_Click" Width="140" />
+        <PHB:ImageButton Height="60" HorizontalAlignment="Left" Margin="24,11,0,0" Name="SellM" VerticalAlignment="Top" Width="140" Grid.Row="2" Image="/ProPharmacyManager;component/Images/Sell1.png" ImageDisabled="/ProPharmacyManager;component/Images/Sell3.png" ImageHover="/ProPharmacyManager;component/Images/Sell2.png" ImagePressed="/ProPharmacyManager;component/Images/Sell3.png" TabIndex="20" Click="SellM_Click" />
+        <Label Content="اهلا بك يا مدير" Grid.Column="1" Grid.Row="1" Height="48" Margin="52,25,12,0" Name="WelMsg" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold" />
+        <Border x:Name="AddNewDrugBoard" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Right" Width="277" FlowDirection="RightToLeft" Grid.RowSpan="3" Margin="0,0,0,10" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Hidden">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF0F07CB" Offset="1"/>
+                    <GradientStop Color="#FF342FA0" Offset="0.833"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="60*"/>
+                    <RowDefinition Height="60*"/>
+                </Grid.RowDefinitions>
+                <PHB:ImageButton x:Name="AddDrug" Content="" HorizontalAlignment="Right" Height="40" Margin="0,23,10,0" VerticalAlignment="Top" Width="110" Grid.Row="8" Click="AddDrug_Click" Foreground="White" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManager;component/Images/MAdd1.png" ImageDisabled="/ProPharmacyManager;component/Images/MAdd3.png" ImageHover="/ProPharmacyManager;component/Images/MAdd2.png" ImagePressed="/ProPharmacyManager;component/Images/MAdd3.png" TabIndex="34" IsTabStop="False"/>
+                <PHB:ImageButton x:Name="BackToMain" Content="" HorizontalAlignment="Left" Height="40" Margin="10,23,0,0" VerticalAlignment="Top" Width="112" Grid.Row="8" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManager;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManager;component/Images/Bhome3.png" ImageHover="/ProPharmacyManager;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManager;component/Images/Bhome3.png" TabIndex="35" IsTabStop="False"/>
+                <TextBox x:Name="ADName" Margin="10" TextWrapping="Wrap" Text="أسم الدواء*" Foreground="Blue" FontWeight="Bold" FontSize="14" GotFocus="ADName_GotFocus" LostFocus="ADName_LostFocus" TabIndex="25" IsTabStop="False"/>
+                <TextBox x:Name="ADBarCode" Margin="10" TextWrapping="Wrap" Text="الباركود" Grid.Row="1" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADBarCode_GotFocus" LostFocus="ADBarCode_LostFocus" TabIndex="26" IsTabStop="False"/>
+                <TextBox x:Name="ADSS" Margin="10" TextWrapping="Wrap" Text="المادة الفعاله" Grid.Row="2" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADSS_GotFocus" LostFocus="ADSS_LostFocus" TabIndex="27" IsTabStop="False" />
+                <DatePicker x:Name="ADEXP" Margin="10" Grid.Row="3" FirstDayOfWeek="Saturday" Text="تاريخ انتهاء الصلاحيه*" SelectedDateFormat="Short" DisplayDateStart="2016-01-01" FontSize="14" FontWeight="Bold" Foreground="Blue" GotFocus="ADEXP_GotFocus" LostFocus="ADEXP_LostFocus" TabIndex="28"/>
+                <TextBox x:Name="ADPrice" Margin="10" TextWrapping="Wrap" Text="سعر الدواء*" Grid.Row="4" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADPrice_GotFocus" LostFocus="ADPrice_LostFocus" TabIndex="30" IsTabStop="False" PreviewTextInput="ADPrice_PreviewTextInput"/>
+                <TextBox x:Name="ADTotal" Margin="10" TextWrapping="Wrap" Text="الكميه*" Grid.Row="5" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADTotal_GotFocus" LostFocus="ADTotal_LostFocus" TabIndex="31" IsTabStop="False" PreviewTextInput="ADTotal_PreviewTextInput"/>
+                <ComboBox x:Name="ADType" Margin="10" Text="النوع*" Grid.Row="6" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADType_GotFocus" LostFocus="ADType_LostFocus" Background="White" IsReadOnly="True" TabIndex="32" IsTabStop="False" IsTextSearchEnabled="False">
+                    <ListBoxItem Content="اقراص" Foreground="Blue"/>
+                    <ListBoxItem Content="حقن" Foreground="Blue"/>
+                    <ListBoxItem Content="شرب" Foreground="Blue"/>
+                    <ListBoxItem Content="كريم/مرهم" Foreground="Blue"/>
+                    <ListBoxItem Content="اخرى" Foreground="Blue"/>
+                </ComboBox>
+                <TextBox x:Name="ADNote" Margin="10,10,10,0" TextWrapping="Wrap" Text="ملاحظات" Grid.Row="7" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADNote_GotFocus" LostFocus="ADNote_LostFocus" TabIndex="33" AcceptsReturn="True" IsTabStop="False"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
