@@ -12,11 +12,15 @@ MySqlBackup.NET is licensed under the terms of the publicdomain. (http://creativ
 For more information about MySqlBackup.NET,
 please see http://mysqlbackupnet.codeplex.com
 
-NOTE:1- You must setup a localhost (XAMPP Recommended) with/or MySQl service
+NOTE:
+     1- You must setup a localhost (XAMPP Recommended) with/or MySQl service
         (InnoDB enabled for AppServ) or MySQL program and Netframework 4.0 full or client.
+        
      2- The database will be created automatically when the user run the program for
         the first time and it will ask you to add a new user as admin.
-	 3- You must run the App as administrator from 
-	    ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.exe
+        
+     3- You must run the App as administrator from 
+    	ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.
+    	
      4- Make sure that this files exist with the program exe file 
         ExtendedButton.dll, MySql.Data.dll, MySqlBackup.dll.
