@@ -8,10 +8,10 @@ using System;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
-using ProPharmacyManager.Kernel;
+using ProPharmacyManagerW.Kernel;
 using System.Windows;
 
-namespace ProPharmacyManager.Database
+namespace ProPharmacyManagerW.Database
 {
     public class MySqlReader
     {

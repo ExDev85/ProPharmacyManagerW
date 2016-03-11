@@ -4,14 +4,14 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
+using ProPharmacyManagerW.Database;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace ProPharmacyManager.Pages
+namespace ProPharmacyManagerW.Pages
 {
     /// <summary>
     /// Interaction logic for Employees Control Panel
@@ -27,6 +27,7 @@ namespace ProPharmacyManager.Pages
         {
             WelMsg.Content = "اهلا بك يا " + AccountsTable.UserName;
         }
+
         #region Menuitems
         /// <summary>
         /// Open about window
@@ -222,12 +223,14 @@ namespace ProPharmacyManager.Pages
                 Kernel.Core.SaveException(ex);
             }
         }
-
+        /// <summary>
+        /// to save selling time
+        /// </summary>
         private void SaveSold()
         {
             if (Kernel.Core.bb == "1")
             {
-                //calculate the total selling price
+                //calculate the total selling SPrice
                 decimal totalpr = Convert.ToDecimal(MPrice.Text) * Convert.ToDecimal(MWSell.Text);
                 try
                 {
@@ -269,10 +272,10 @@ namespace ProPharmacyManager.Pages
                     if (r.Read())
                     {
                         MName.Text = r.ReadString("Name");
-                        MSS.Text = r.ReadString("ActivePrinciple");
+                        MSS.Text = r.ReadString("ScientificName");
                         Ptype = r.ReadByte("Type");
                         MExist.Text = r.ReadDecimal("Total").ToString();
-                        MPrice.Text = r.ReadDecimal("Price").ToString();
+                        MPrice.Text = r.ReadDecimal("SPrice").ToString();
                         MEX.Text = r.ReadString("ExpirationDate");
                         MNotes.Text = r.ReadString("Notes");
                         SearchBox.Foreground = Brushes.Green;
@@ -304,10 +307,10 @@ namespace ProPharmacyManager.Pages
                     if (r.Read())
                     {
                         MName.Text = r.ReadString("Name");
-                        MSS.Text = r.ReadString("ActivePrinciple");
+                        MSS.Text = r.ReadString("ScientificName");
                         Ptype = r.ReadByte("Type");
                         MExist.Text = r.ReadUInt32("Total").ToString();
-                        MPrice.Text = r.ReadString("Price");
+                        MPrice.Text = r.ReadString("SPrice");
                         MEX.Text = r.ReadString("ExpirationDate");
                         MNotes.Text = r.ReadString("Notes");
                         SearchBox.Foreground = Brushes.Green;
@@ -345,6 +348,7 @@ namespace ProPharmacyManager.Pages
             if (SearchBox.IsDropDownOpen == false && SearchBox.Text.Length > 0)
             {
                 SearchBox.Foreground = Brushes.Blue;
+                SearchBox.Items.Clear();
                 SearchBox.IsDropDownOpen = true;
             }
         }
@@ -359,8 +363,10 @@ namespace ProPharmacyManager.Pages
                 MySqlReader r = new MySqlReader(cmd);
                 while (r.Read())
                 {
-                    SearchBox.Items.Add(r.ReadString("Name"));
-                    SearchBox.Items.Refresh();
+                    if (!SearchBox.Items.Contains(r.ReadString("Name")))
+                    {
+                        SearchBox.Items.Add(r.ReadString("Name"));
+                    }
                 }
             }
             catch (Exception ex)
@@ -493,10 +499,28 @@ namespace ProPharmacyManager.Pages
             ADNote.IsTabStop = false;
             SearchBox.Focus();
         }
+        //Background colors back
+        void BGGB()
+        {
+            LinearGradientBrush ng = new LinearGradientBrush();
+            ng.StartPoint = new Point(0.5, 0);
+            ng.EndPoint = new Point(0.5, 1);
+            ng.MappingMode = BrushMappingMode.RelativeToBoundingBox;
+            GradientStop gs1 = new GradientStop();
+            //#FF3630B4
+            gs1.Color = Color.FromRgb(54, 48, 180);
+            gs1.Offset = 0.833;
+            ng.GradientStops.Add(gs1);
+            GradientStop gs2 = new GradientStop();
+            //#FF151083
+            gs2.Color = Color.FromRgb(21, 16, 131);
+            gs2.Offset = 1;
+            ng.GradientStops.Add(gs2);
+            AddNewDrugBoard.Background = ng;
+        }
         // add drug panel
         private void MIAddDrug_Click(object sender, RoutedEventArgs e)
         {
-            AddNewDrugBoard.Background = Brushes.Blue;
             AddNewDrugBoard.Visibility = Visibility.Visible;
             ADName.Focus();
             menu1.IsTabStop = false;
@@ -536,19 +560,43 @@ namespace ProPharmacyManager.Pages
             ADType.IsTabStop = true;
             ADType.SelectedIndex = 0;
             ADNote.IsTabStop = true;
+            BGGB();
+        }
+
+        private void ADName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (ADName.Text == "أسم الدواء*")
+            {
+                ADName.Text = "";
+            }
+            ADName.IsDropDownOpen = true;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
+                cmd.Select("medics").WhereLike("Name", SearchBox.Text);
+                MySqlReader r = new MySqlReader(cmd);
+                while (r.Read())
+                {
+                    if (!ADName.Items.Contains(r.ReadString("Name")))
+                    {
+                        ADName.Items.Add(r.ReadString("Name"));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Kernel.Core.SaveException(ex);
+            }
         }
 
         private void ADName_GotFocus(object sender, RoutedEventArgs e)
         {
             ADName.Foreground = Brushes.Blue;
             ADName.Background = Brushes.White;
-            if (ADName.Text == "أسم الدواء*")
-            {
-                ADName.Text = "";
-            }
-            AddNewDrugBoard.Background = Brushes.Blue;
+            ADName.Items.Clear();
+            BGGB();
         }
-
+        
         private void ADName_LostFocus(object sender, RoutedEventArgs e)
         {
             if (ADName.Text == "")
@@ -565,7 +613,7 @@ namespace ProPharmacyManager.Pages
             {
                 ADBarCode.Text = "";
             }
-            AddNewDrugBoard.Background = Brushes.Blue;
+            BGGB();
         }
 
         private void ADBarCode_LostFocus(object sender, RoutedEventArgs e)
@@ -584,7 +632,7 @@ namespace ProPharmacyManager.Pages
             {
                 ADSS.Text = "";
             }
-            AddNewDrugBoard.Background = Brushes.Blue;
+            BGGB();
         }
 
         private void ADSS_LostFocus(object sender, RoutedEventArgs e)
@@ -603,7 +651,7 @@ namespace ProPharmacyManager.Pages
             {
                 ADEXP.Text = "";
             }
-            AddNewDrugBoard.Background = Brushes.Blue;
+            BGGB();
         }
 
         private void ADEXP_LostFocus(object sender, RoutedEventArgs e)
@@ -622,7 +670,7 @@ namespace ProPharmacyManager.Pages
             {
                 ADPrice.Text = "";
             }
-            AddNewDrugBoard.Background = Brushes.Blue;
+            BGGB();
         }
 
         private void ADPrice_LostFocus(object sender, RoutedEventArgs e)
@@ -641,7 +689,7 @@ namespace ProPharmacyManager.Pages
             {
                 ADTotal.Text = "";
             }
-            AddNewDrugBoard.Background = Brushes.Blue;
+            BGGB();
         }
 
         private void ADTotal_LostFocus(object sender, RoutedEventArgs e)
@@ -660,7 +708,7 @@ namespace ProPharmacyManager.Pages
             {
                 ADType.Text = "";
             }
-            AddNewDrugBoard.Background = Brushes.Blue;
+            BGGB();
         }
 
         private void ADType_LostFocus(object sender, RoutedEventArgs e)
@@ -679,7 +727,7 @@ namespace ProPharmacyManager.Pages
             {
                 ADNote.Text = "";
             }
-            AddNewDrugBoard.Background = Brushes.Blue;
+            BGGB();
         }
 
         private void ADNote_LostFocus(object sender, RoutedEventArgs e)
@@ -814,14 +862,25 @@ namespace ProPharmacyManager.Pages
                 cmd.Insert("medics")
                     .Insert("Name", ADName.Text)
                     .Insert("Barcode", ADBarCode.Text)
-                    .Insert("ActivePrinciple", ADSS.Text)
+                    .Insert("ScientificName", ADSS.Text)
                     .Insert("ExpirationDate", ADEXP.Text)
                     .Insert("Type", PType)
                     .Insert("Total", Convert.ToDecimal(ADTotal.Text))
-                    .Insert("Price", Convert.ToDecimal(ADPrice.Text))
+                    .Insert("SPrice", Convert.ToDecimal(ADPrice.Text))
                     .Insert("Notes", ADNote.Text).Execute();
-                AddNewDrugBoard.Background = Brushes.Green;
-
+                LinearGradientBrush ng = new LinearGradientBrush();
+                ng.StartPoint = new Point(0.5, 0);
+                ng.EndPoint = new Point(0.5, 1);
+                ng.MappingMode = BrushMappingMode.RelativeToBoundingBox;
+                GradientStop gs1 = new GradientStop();
+                gs1.Color = Color.FromRgb(5, 124, 48);
+                gs1.Offset = 0.833;
+                ng.GradientStops.Add(gs1);
+                GradientStop gs2 = new GradientStop();
+                gs2.Color = Color.FromRgb(0, 64, 24);
+                gs2.Offset = 1;
+                ng.GradientStops.Add(gs2);
+                AddNewDrugBoard.Background = ng;
                 Console.WriteLine(AccountsTable.UserName + " add " + ADTotal.Text + " " + ADName.Text + " which each cost " + ADPrice.Text);
                 var later = DateTime.Now.Second;
             }

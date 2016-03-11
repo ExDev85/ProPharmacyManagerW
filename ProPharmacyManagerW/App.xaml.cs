@@ -8,7 +8,7 @@ using System;
 using System.Security.Principal;
 using System.Windows;
 
-namespace ProPharmacyManager
+namespace ProPharmacyManagerW
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -24,6 +24,10 @@ namespace ProPharmacyManager
             {
                 MessageBox.Show("يجب تشغيل البرنامج كمدير\nThis application requires Administrator privileges.","خطأ",MessageBoxButton.OK,MessageBoxImage.Warning);
                 Environment.Exit(0);
+            }
+            else
+            {
+                Kernel.WpfSingleInstance.Make();
             }
         }
 

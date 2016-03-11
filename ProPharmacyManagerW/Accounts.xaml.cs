@@ -4,12 +4,11 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
 using System;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace ProPharmacyManager
+namespace ProPharmacyManagerW
 {
     /// <summary>
     /// Interaction logic for Accounts.xaml
@@ -31,7 +30,7 @@ namespace ProPharmacyManager
                 checkRegister.Tick += CheckRegiserState;
                 checkRegister.Start();
             }
-            else if (Pages.AdminCP.edtFromAdm == true)
+            if (Pages.AdminCP.edtFromAdm == true)
             {
                 Pages.AccCP cu = new Pages.AccCP();
                 FAhost.Navigate(cu);
@@ -56,9 +55,8 @@ namespace ProPharmacyManager
 
         private void CheckRegiserState(object sender, EventArgs e)
         {
-            if (Pages.Register.IsRegister == true && Kernel.Core.IsSetup == true)
+            if (Pages.Register.IsRegisterFromSetup == true)
             {
-                checkRegister.Stop();
                 this.Close();
             }
         }

@@ -4,12 +4,13 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
-using ProPharmacyManager.Kernel;
+using ProPharmacyManagerW.Database;
+using ProPharmacyManagerW.Kernel;
 using System;
 using System.IO;
+using System.Threading;
 
-namespace ProPharmacyManager
+namespace ProPharmacyManagerW
 {
     public class Console
     {
@@ -26,9 +27,9 @@ namespace ProPharmacyManager
         /// </summary>
         public static bool NewEntry;
         /// <summary>
-/// entry time
-/// </summary>
-/// <returns></returns>
+        /// entry time
+        /// </summary>
+        /// <returns>now full time</returns>
         public static string TimeStamp()
         {
             DateTime NOW = DateTime.Now;
@@ -47,7 +48,19 @@ namespace ProPharmacyManager
             return GS;
         }
         /// <summary>
-        /// write string to new line
+        /// write string in the same line without time stamp
+        /// </summary>
+        /// <param name="value">the new text to add</param>
+        /// <returns></returns>
+        public static string WriteT(string value)
+        {
+            NewEntry = true;
+            GS = value;
+            GSLog += value;
+            return GS;
+        }
+        /// <summary>
+        /// write string then new line
         /// </summary>
         /// <param name="value">the new text to add</param>
         /// <returns></returns>
@@ -56,6 +69,17 @@ namespace ProPharmacyManager
             NewEntry = true;
             GS = TimeStamp() + value + "\n";
             GSLog += TimeStamp() + value + "\n";
+            return GS;
+        }
+        /// <summary>
+        /// new line then write string
+        /// </summary>
+        /// <param name="value">the new text to add</param>
+        /// <returns></returns>
+        public static string WriteLineF(string value)
+        {
+            NewEntry = true;
+            GS = "\n" + TimeStamp() + value + "\n";
             return GS;
         }
         /// <summary>
@@ -76,6 +100,7 @@ namespace ProPharmacyManager
                     switch (data[0])
                     {
                         //TODO add more and more and more commands
+                        #region Add new account
                         case "#addacc":
                             {
                                 try
@@ -87,10 +112,12 @@ namespace ProPharmacyManager
                                 catch (Exception e)
                                 {
                                     WriteLine("There is something wrong maybe the username is already used.");
-                                    Kernel.Core.SaveException(e);
+                                    Core.SaveException(e);
                                 }
                                 break;
                             }
+                        #endregion
+                        #region Add new drug
                         case "#adddrug":
                             {
                                 try
@@ -100,21 +127,23 @@ namespace ProPharmacyManager
                                     cmd.Insert("medics")
                                         .Insert("Name", data[1])
                                         .Insert("Barcode", data[2])
-                                        .Insert("ActivePrinciple", data[3])
+                                        .Insert("ScientificName", data[3])
                                         .Insert("ExpirationDate", data[4])
                                         .Insert("Type", data[5])
                                         .Insert("Total", Convert.ToDecimal(data[6]))
-                                        .Insert("Price", Convert.ToDecimal(data[7]))
+                                        .Insert("SPrice", Convert.ToDecimal(data[7]))
                                         .Insert("Notes", data[8]).Execute();
                                     WriteLine(AccountsTable.UserName + " add " + data[6] + " " + data[1] + " which each cost " + data[7]);
                                 }
                                 catch (Exception e)
                                 {
                                     WriteLine("There is something wrong maybe the drug is already exist.");
-                                    Kernel.Core.SaveException(e);
+                                    Core.SaveException(e);
                                 }
                                 break;
                             }
+                        #endregion
+                        #region Delete table or database
                         case "#Drop":
                             {
                                 if (data[1] == "db")
@@ -159,9 +188,61 @@ namespace ProPharmacyManager
                                 }
                                 break;
                             }
+                        #endregion
+                        #region Insert medics to the table
+                        case "#import":
+                            {
+                                try
+                                {
+                                    Thread th = new Thread(() => {
+                                        string[] MN = File.ReadAllLines(data[1]);
+                                        foreach (string line in MN)
+                                        {
+                                            if (line.Length == 0)
+                                            {
+                                                continue;
+                                            }
+                                            if (line.StartsWith("INSERT INTO `medics`") && line.EndsWith(";"))
+                                            {
+                                                try
+                                                {
+                                                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT)
+                                                    {
+                                                        Command = line
+                                                    };
+                                                    cmd.Execute();
+                                                }
+                                                catch
+                                                {
+                                                    string CTR = line.Replace("INSERT INTO `medics`", "REPLACE INTO `medics`");
+                                                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT)
+                                                    {
+                                                        Command = CTR
+                                                    };
+                                                    cmd.Execute();
+                                                }
+                                                WriteT(".");
+                                            }
+                                        }
+                                        WriteLineF("The file is well imported");
+                                    });
+                                    th.Start();
+                                }
+                                catch (Exception e)
+                                {
+                                    WriteLine("Are you 100% sure that is a MySQL file/n" + e);
+                                }
+                                break;
+                            }
+                        #endregion
                         case "#help":
                             {
-                                WriteLine("#addacc Username Password State(type 2 for admin - 1 for employee) PhoneNumber(could be empty -type null-)\n#adddrug Name Barcode(Could be empty -type null-) ActivePrinciple(Could be empty -type null-) ExpirationDate(should be yyyy/mm/dd) Type(type 1 for syrup - 2 for tab - 3 Injection - 4 for Cream/Ointments - 0 for other) Total(must be numbers) Price(must be numbers) Notes(Could be empty -type null-)");
+                                WriteLine(@"
+        #addacc Username Password State(type 2 for admin - 1 for employee) PhoneNumber(could be empty -type null-)
+        #adddrug Name Barcode(Could be empty -type null-) ScientificName(Could be empty -type null-) ExpirationDate(should be yyyy/mm/dd) Type(type 1 for syrup - 2 for tab - 3 Injection - 4 for Cream/Ointments - 0 for other) Total(must be numbers) SPrice(must be numbers) Notes(Could be empty -type null-)
+        #Drop db (to delete your database good luck with that)
+        #Drop table tablename (delete a spacific table to ruin the database)
+        #import path (type the full path for the sql file to import it like c:\meds.sql)");
                                 break;
                             }
                         default:

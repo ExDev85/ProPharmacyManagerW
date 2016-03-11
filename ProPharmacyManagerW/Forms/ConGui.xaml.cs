@@ -8,7 +8,7 @@ using System;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace ProPharmacyManager.Forms
+namespace ProPharmacyManagerW.Forms
 {
     /// <summary>
     /// Interaction logic for ConGui.xaml
@@ -59,6 +59,14 @@ namespace ProPharmacyManager.Forms
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Kernel.Core.IsCMode = false;
+        }
+
+        private void IOBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+           if (IOBox.GetLineLength(IOBox.GetLastVisibleLineIndex()) > 100)
+            {
+                IOBox.Text += "\n";
+            }
         }
     }
 }

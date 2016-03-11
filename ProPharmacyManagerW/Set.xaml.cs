@@ -4,12 +4,13 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Kernel;
+using ProPharmacyManagerW.Kernel;
 using System;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace ProPharmacyManager
+namespace ProPharmacyManagerW
 {
     /// <summary>
     /// Interaction logic for Set.xaml
@@ -27,11 +28,11 @@ namespace ProPharmacyManager
 
         private void checkSetUpState(object sender, EventArgs e)
         {
-            if (Pages.Register.IsRegister == true && Core.IsSetup == true)
+            if (Pages.Register.IsRegisterFromSetup == true && Core.IsSetup == true)
             {
                 this.Close();
                 Core.IsSetup = false;
-                Pages.Register.IsRegister = false;
+                Pages.Register.IsRegisterFromSetup = false;
                 checkSetUp.Stop();
             }
         }
@@ -42,6 +43,10 @@ namespace ProPharmacyManager
         {
             if (Core.IsSetup == true)
             {
+                //#FF2B41A4
+                SolidColorBrush NC = new SolidColorBrush();
+                NC.Color = Color.FromRgb(43, 65, 164);
+                this.Background = NC;
                 checkSetUp.Interval = TimeSpan.FromMilliseconds(500);
                 checkSetUp.Tick += checkSetUpState;
                 checkSetUp.Start();

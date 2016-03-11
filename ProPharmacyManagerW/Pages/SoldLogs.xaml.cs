@@ -4,13 +4,14 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
+using ProPharmacyManagerW.Database;
+using System;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace ProPharmacyManager.Pages
+namespace ProPharmacyManagerW.Pages
 {
     /// <summary>
     /// Interaction logic for SoldLog.xaml
@@ -29,6 +30,10 @@ namespace ProPharmacyManager.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            if (Environment.OSVersion.Version.Build <= 2600)
+            {
+                Pb.Height = 10;
+            }
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
                 Pb.Visibility = Visibility.Visible;
@@ -56,10 +61,10 @@ namespace ProPharmacyManager.Pages
                     mT.Columns["TotalAmount"].ReadOnly = true;
                     mT.Columns["TotalAmount"].ColumnName = "الكمية المباعة";
                 }
-                if (mT.Columns.Contains("TotalPrice"))
+                if (mT.Columns.Contains("TotalSPrice"))
                 {
-                    mT.Columns["TotalPrice"].ReadOnly = true;
-                    mT.Columns["TotalPrice"].ColumnName = "اجمالى السعر";
+                    mT.Columns["TotalSPrice"].ReadOnly = true;
+                    mT.Columns["TotalSPrice"].ColumnName = "اجمالى السعر";
                 }
                 if (mT.Columns.Contains("Cashier"))
                 {

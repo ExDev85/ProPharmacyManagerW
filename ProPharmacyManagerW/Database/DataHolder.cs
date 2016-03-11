@@ -6,7 +6,7 @@
 // </copyright>
 using MySql.Data.MySqlClient;
 
-namespace ProPharmacyManager.Database
+namespace ProPharmacyManagerW.Database
 {
     public static class DataHolder
     {

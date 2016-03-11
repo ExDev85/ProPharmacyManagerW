@@ -7,7 +7,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProPharmacyManager.Database
+namespace ProPharmacyManagerW.Database
 {
     public class MySqlCommand
     {

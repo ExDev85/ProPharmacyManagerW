@@ -4,20 +4,18 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
+using ProPharmacyManagerW.Database;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading;
 using System.Windows;
 
-namespace ProPharmacyManager.Kernel
+namespace ProPharmacyManagerW.Kernel
 {
     public class Core
     {
-
         /// <summary>
         /// To check if the user setup the program for the first time or going to upgrade
         /// </summary>
@@ -34,7 +32,7 @@ namespace ProPharmacyManager.Kernel
         static readonly string SaltKey = "P@FAMK!TRP";
         static readonly string VIKey = "@Gjg9!b8tf&T6jl4k1b";
         /// <summary>
-        /// logs settings reset
+        /// logs settings
         /// </summary>
         public static string aa;
         public static string bb;

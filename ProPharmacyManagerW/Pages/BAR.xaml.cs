@@ -4,15 +4,15 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
-using ProPharmacyManager.Kernel;
+using ProPharmacyManagerW.Database;
+using ProPharmacyManagerW.Kernel;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ProPharmacyManager.Pages
+namespace ProPharmacyManagerW.Pages
 {
     /// <summary>
     /// Interaction logic for BAR.xaml
@@ -34,6 +34,8 @@ namespace ProPharmacyManager.Pages
                 BackUpList.Items.Add(file.Name);
             }
         }
+        
+        short CountBacks = 0;
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -55,7 +57,6 @@ namespace ProPharmacyManager.Pages
             }
             DirectoryInfo dinfo = new DirectoryInfo(PathT.Text);
             FileInfo[] Files = dinfo.GetFiles("*.sql");
-            short CountBacks = 0;
             foreach (FileInfo file1 in Files)
             {
                 BackUpList.Items.Add(file1.Name);
@@ -69,10 +70,14 @@ namespace ProPharmacyManager.Pages
             if (ENKT.Text != "")
             {
                 BackUp.Backup(ENKT.Text);
+                CountBacks++;
+                Count.Content = "عدد النسخ الاحتياطية : " + CountBacks;
             }
             else
             {
-                MessageBox.Show("اختر مفتاح تشفير بالانجلزيه و احفظه جيدا، ستحتاجه فى كل مرة تسترجع النسخة الإحتياطيه");
+                BackUp.Backup("PROPHMW");
+                CountBacks++;
+                Count.Content = "عدد النسخ الاحتياطية : " + CountBacks;
             }
             Reload();
         }
@@ -92,7 +97,14 @@ namespace ProPharmacyManager.Pages
             }
             else
             {
-                MessageBox.Show("ادخل مفتاح التشفير الذى اخترته للملف من قبل اولا");
+                if (BackUpList.SelectedIndex != -1)
+                {
+                    BackUp.Restore(PathT.Text + BackUpList.SelectedItem, "PROPHMW");
+                }
+                else
+                {
+                    MessageBox.Show("اختر نسخه اولا ليتم استعادتها ");
+                }
             }
         }
 
@@ -102,6 +114,8 @@ namespace ProPharmacyManager.Pages
             {
                 File.Delete(PathT.Text + BackUpList.SelectedItem);
                 Reload();
+                CountBacks--;
+                Count.Content = "عدد النسخ الاحتياطية : " + CountBacks;
             }
             catch (Exception ex)
             {

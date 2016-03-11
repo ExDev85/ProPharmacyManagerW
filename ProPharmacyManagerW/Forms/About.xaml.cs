@@ -7,7 +7,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace ProPharmacyManager.Forms
+namespace ProPharmacyManagerW.Forms
 {
     /// <summary>
     /// Interaction logic for About.xaml
@@ -27,6 +27,11 @@ namespace ProPharmacyManager.Forms
         private void label3_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start("http://shababco.blogspot.com");
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            verl.Content = "الاصدار: W " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
     }
 }

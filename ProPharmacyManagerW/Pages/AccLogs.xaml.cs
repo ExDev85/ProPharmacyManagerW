@@ -4,13 +4,14 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
+using ProPharmacyManagerW.Database;
+using System;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace ProPharmacyManager.Pages
+namespace ProPharmacyManagerW.Pages
 {
     /// <summary>
     /// Interaction logic for AccLogs.xaml
@@ -25,6 +26,10 @@ namespace ProPharmacyManager.Pages
         System.Data.DataTable mTable;
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            if (Environment.OSVersion.Version.Build <= 2600)
+            {
+                Pb.Height = 10;
+            }
             Pb.Visibility = Visibility.Visible;
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {

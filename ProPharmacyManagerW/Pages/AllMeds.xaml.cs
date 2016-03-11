@@ -4,7 +4,7 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
+using ProPharmacyManagerW.Database;
 using System;
 using System.Threading;
 using System.Windows;
@@ -12,7 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace ProPharmacyManager.Pages
+namespace ProPharmacyManagerW.Pages
 {
     /// <summary>
     /// Interaction logic for AllMeds.xaml
@@ -29,6 +29,10 @@ namespace ProPharmacyManager.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            if (Environment.OSVersion.Version.Build <= 2600)
+            {
+                Pb.Height = 10;
+            }
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
                 Pb.Visibility = Visibility.Visible;
@@ -43,42 +47,34 @@ namespace ProPharmacyManager.Pages
                 }
                 if (mT.Columns.Contains("Name"))
                 {
-                    mT.Columns["Name"].ReadOnly = true;
                     mT.Columns["Name"].ColumnName = "اسم الدواء";
                 }
                 if (mT.Columns.Contains("Barcode"))
                 {
-                    mT.Columns["Barcode"].ReadOnly = true;
                     mT.Columns["Barcode"].ColumnName = "الباركود";
                 }
-                if (mT.Columns.Contains("ActivePrinciple"))
+                if (mT.Columns.Contains("ScientificName"))
                 {
-                    mT.Columns["ActivePrinciple"].ReadOnly = true;
-                    mT.Columns["ActivePrinciple"].ColumnName = "المادة الفعالة";
+                    mT.Columns["ScientificName"].ColumnName = "المادة الفعالة";
                 }
                 if (mT.Columns.Contains("ExpirationDate"))
                 {
-                    mT.Columns["ExpirationDate"].ReadOnly = true;
                     mT.Columns["ExpirationDate"].ColumnName = "تاريخ انتهاء الصلاحية";
                 }
                 if (mT.Columns.Contains("Type"))
                 {
-                    mT.Columns["Type"].ReadOnly = true;
                     mT.Columns["Type"].ColumnName = "النوع";
                 }
                 if (mT.Columns.Contains("Total"))
                 {
-                    mT.Columns["Total"].ReadOnly = true;
                     mT.Columns["Total"].ColumnName = "الكمية";
                 }
-                if (mT.Columns.Contains("Price"))
+                if (mT.Columns.Contains("SPrice"))
                 {
-                    mT.Columns["Price"].ReadOnly = true;
-                    mT.Columns["Price"].ColumnName = "السعر";
+                    mT.Columns["SPrice"].ColumnName = "سعر البيع";
                 }
                 if (mT.Columns.Contains("Notes"))
                 {
-                    mT.Columns["Notes"].ReadOnly = true;
                     mT.Columns["Notes"].ColumnName = "ملاحظات";
                 }
                 dataGrid.ItemsSource = mT.DefaultView;
@@ -123,6 +119,8 @@ namespace ProPharmacyManager.Pages
                 if (cByName.IsChecked == true)
                 {
                     Pb.Visibility = Visibility.Visible;
+                    mT.Clear();
+                    mA.Dispose();
                     mA = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM medics WHERE `Name` = '" + SearchBox.Text + "'ORDER BY Name", Database.DataHolder.MySqlConnection);
                     mT = new System.Data.DataTable();
                     mA.Fill(mT);
@@ -134,42 +132,34 @@ namespace ProPharmacyManager.Pages
                     }
                     if (mT.Columns.Contains("Name"))
                     {
-                        mT.Columns["Name"].ReadOnly = true;
                         mT.Columns["Name"].ColumnName = "اسم الدواء";
                     }
                     if (mT.Columns.Contains("Barcode"))
                     {
-                        mT.Columns["Barcode"].ReadOnly = true;
                         mT.Columns["Barcode"].ColumnName = "الباركود";
                     }
-                    if (mT.Columns.Contains("ActivePrinciple"))
+                    if (mT.Columns.Contains("ScientificName"))
                     {
-                        mT.Columns["ActivePrinciple"].ReadOnly = true;
-                        mT.Columns["ActivePrinciple"].ColumnName = "المادة الفعالة";
+                        mT.Columns["ScientificName"].ColumnName = "المادة الفعالة";
                     }
                     if (mT.Columns.Contains("ExpirationDate"))
                     {
-                        mT.Columns["ExpirationDate"].ReadOnly = true;
                         mT.Columns["ExpirationDate"].ColumnName = "تاريخ انتهاء الصلاحية";
                     }
                     if (mT.Columns.Contains("Type"))
                     {
-                        mT.Columns["Type"].ReadOnly = true;
                         mT.Columns["Type"].ColumnName = "النوع";
                     }
                     if (mT.Columns.Contains("Total"))
                     {
-                        mT.Columns["Total"].ReadOnly = true;
                         mT.Columns["Total"].ColumnName = "الكمية";
                     }
-                    if (mT.Columns.Contains("Price"))
+                    if (mT.Columns.Contains("SPrice"))
                     {
-                        mT.Columns["Price"].ReadOnly = true;
-                        mT.Columns["Price"].ColumnName = "السعر";
+                        mT.Columns["SPrice"].ColumnName = "السعر";
                     }
                     if (mT.Columns.Contains("Notes"))
                     {
-                        mT.Columns["Notes"].ReadOnly = true;
                         mT.Columns["Notes"].ColumnName = "ملاحظات";
                     }
                     dataGrid.ItemsSource = mT.DefaultView;
@@ -178,6 +168,8 @@ namespace ProPharmacyManager.Pages
                 else if (cByBar.IsChecked == true)
                 {
                     Pb.Visibility = Visibility.Visible;
+                    mT.Clear();
+                    mA.Dispose();
                     mA = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM medics WHERE `Barcode` = '" + SearchBox.Text + "'ORDER BY Name", Database.DataHolder.MySqlConnection);
                     mT = new System.Data.DataTable();
                     mA.Fill(mT);
@@ -189,42 +181,34 @@ namespace ProPharmacyManager.Pages
                     }
                     if (mT.Columns.Contains("Name"))
                     {
-                        mT.Columns["Name"].ReadOnly = true;
                         mT.Columns["Name"].ColumnName = "اسم الدواء";
                     }
                     if (mT.Columns.Contains("Barcode"))
                     {
-                        mT.Columns["Barcode"].ReadOnly = true;
                         mT.Columns["Barcode"].ColumnName = "الباركود";
                     }
-                    if (mT.Columns.Contains("ActivePrinciple"))
+                    if (mT.Columns.Contains("ScientificName"))
                     {
-                        mT.Columns["ActivePrinciple"].ReadOnly = true;
-                        mT.Columns["ActivePrinciple"].ColumnName = "المادة الفعالة";
+                        mT.Columns["ScientificName"].ColumnName = "المادة الفعالة";
                     }
                     if (mT.Columns.Contains("ExpirationDate"))
                     {
-                        mT.Columns["ExpirationDate"].ReadOnly = true;
                         mT.Columns["ExpirationDate"].ColumnName = "تاريخ انتهاء الصلاحية";
                     }
                     if (mT.Columns.Contains("Type"))
                     {
-                        mT.Columns["Type"].ReadOnly = true;
                         mT.Columns["Type"].ColumnName = "النوع";
                     }
                     if (mT.Columns.Contains("Total"))
                     {
-                        mT.Columns["Total"].ReadOnly = true;
                         mT.Columns["Total"].ColumnName = "الكمية";
                     }
-                    if (mT.Columns.Contains("Price"))
+                    if (mT.Columns.Contains("SPrice"))
                     {
-                        mT.Columns["Price"].ReadOnly = true;
-                        mT.Columns["Price"].ColumnName = "السعر";
+                        mT.Columns["SPrice"].ColumnName = "السعر";
                     }
                     if (mT.Columns.Contains("Notes"))
                     {
-                        mT.Columns["Notes"].ReadOnly = true;
                         mT.Columns["Notes"].ColumnName = "ملاحظات";
                     }
                     dataGrid.ItemsSource = mT.DefaultView;
@@ -233,7 +217,9 @@ namespace ProPharmacyManager.Pages
                 else if (cBySub.IsChecked == true)
                 {
                     Pb.Visibility = Visibility.Visible;
-                    mA = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM medics WHERE `ActivePrinciple` = '" + SearchBox.Text + "'ORDER BY Name", Database.DataHolder.MySqlConnection);
+                    mT.Clear();
+                    mA.Dispose();
+                    mA = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM medics WHERE `ScientificName` = '" + SearchBox.Text + "'ORDER BY Name", Database.DataHolder.MySqlConnection);
                     mT = new System.Data.DataTable();
                     mA.Fill(mT);
                     if (mA == null)
@@ -244,42 +230,34 @@ namespace ProPharmacyManager.Pages
                     }
                     if (mT.Columns.Contains("Name"))
                     {
-                        mT.Columns["Name"].ReadOnly = true;
                         mT.Columns["Name"].ColumnName = "اسم الدواء";
                     }
                     if (mT.Columns.Contains("Barcode"))
                     {
-                        mT.Columns["Barcode"].ReadOnly = true;
                         mT.Columns["Barcode"].ColumnName = "الباركود";
                     }
-                    if (mT.Columns.Contains("ActivePrinciple"))
+                    if (mT.Columns.Contains("ScientificName"))
                     {
-                        mT.Columns["ActivePrinciple"].ReadOnly = true;
-                        mT.Columns["ActivePrinciple"].ColumnName = "المادة الفعالة";
+                        mT.Columns["ScientificName"].ColumnName = "المادة الفعالة";
                     }
                     if (mT.Columns.Contains("ExpirationDate"))
                     {
-                        mT.Columns["ExpirationDate"].ReadOnly = true;
                         mT.Columns["ExpirationDate"].ColumnName = "تاريخ انتهاء الصلاحية";
                     }
                     if (mT.Columns.Contains("Type"))
                     {
-                        mT.Columns["Type"].ReadOnly = true;
                         mT.Columns["Type"].ColumnName = "النوع";
                     }
                     if (mT.Columns.Contains("Total"))
                     {
-                        mT.Columns["Total"].ReadOnly = true;
                         mT.Columns["Total"].ColumnName = "الكمية";
                     }
-                    if (mT.Columns.Contains("Price"))
+                    if (mT.Columns.Contains("SPrice"))
                     {
-                        mT.Columns["Price"].ReadOnly = true;
-                        mT.Columns["Price"].ColumnName = "السعر";
+                        mT.Columns["SPrice"].ColumnName = "السعر";
                     }
                     if (mT.Columns.Contains("Notes"))
                     {
-                        mT.Columns["Notes"].ReadOnly = true;
                         mT.Columns["Notes"].ColumnName = "ملاحظات";
                     }
                     dataGrid.ItemsSource = mT.DefaultView;
@@ -304,42 +282,42 @@ namespace ProPharmacyManager.Pages
             SearchBox.IsDropDownOpen = true;
             try
             {
-                if (cByName.IsChecked == true)
+                Dispatcher.BeginInvoke(DispatcherPriority.Background, (ThreadStart)delegate ()
                 {
-                    SearchBox.Items.Clear();
-                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
-                    cmd.Select("medics").WhereLike("Name", SearchBox.Text);
-                    MySqlReader r = new MySqlReader(cmd);
-                    while (r.Read())
+                    if (cByName.IsChecked == true)
                     {
-                        SearchBox.Items.Add(r.ReadString("Name"));
-                        SearchBox.Items.Refresh();
+                        SearchBox.Items.Clear();
+                        MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
+                        cmd.Select("medics").WhereLike("Name", SearchBox.Text);
+                        MySqlReader r = new MySqlReader(cmd);
+                        while (r.Read())
+                        {
+                            if (!SearchBox.Items.Contains(r.ReadString("Name")))
+                            {
+                                SearchBox.Items.Add(r.ReadString("Name"));
+                            }
+                        }
                     }
-                }
-                else if (cByBar.IsChecked == true)
-                {
-                    SearchBox.Items.Clear();
-                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
-                    cmd.Select("medics").WhereLike("Barcode", SearchBox.Text);
-                    MySqlReader r = new MySqlReader(cmd);
-                    while (r.Read())
+                    else if (cByBar.IsChecked == true)
                     {
-                        SearchBox.Items.Add(r.ReadString("Barcode"));
-                        SearchBox.Items.Refresh();
+                        SearchBox.Items.Clear();
                     }
-                }
-                else if (cBySub.IsChecked == true)
-                {
-                    SearchBox.Items.Clear();
-                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
-                    cmd.Select("medics").WhereLike("ActivePrinciple", SearchBox.Text);
-                    MySqlReader r = new MySqlReader(cmd);
-                    while (r.Read())
+                    else if (cBySub.IsChecked == true)
                     {
-                        SearchBox.Items.Add(r.ReadString("ActivePrinciple"));
-                        SearchBox.Items.Refresh();
+                        SearchBox.Items.Clear();
+                        MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
+                        cmd.Select("medics").WhereLike("ScientificName", SearchBox.Text);
+                        MySqlReader r = new MySqlReader(cmd);
+                        while (r.Read())
+                        {
+                            if (!SearchBox.Items.Contains(r.ReadString("ScientificName")))
+                            {
+                                SearchBox.Items.Add(r.ReadString("ScientificName"));
+                            }
+                        }
                     }
-                }
+
+                });
             }
             catch (Exception ex)
             {
@@ -352,6 +330,7 @@ namespace ProPharmacyManager.Pages
             if (SearchBox.IsDropDownOpen == false && SearchBox.Text.Length > 0)
             {
                 SearchBox.Foreground = Brushes.Blue;
+                SearchBox.Items.Clear();
                 SearchBox.IsDropDownOpen = true;
             }
         }

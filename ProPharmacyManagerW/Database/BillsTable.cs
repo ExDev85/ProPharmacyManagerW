@@ -7,7 +7,7 @@
 using System;
 using System.Text;
 
-namespace ProPharmacyManager.Database
+namespace ProPharmacyManagerW.Database
 {
     public class BillsTable
     {

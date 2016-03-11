@@ -4,14 +4,14 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
+using ProPharmacyManagerW.Database;
 using System;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace ProPharmacyManager.Pages
+namespace ProPharmacyManagerW.Pages
 {
     /// <summary>
     /// Interaction logic for Expiration.xaml
@@ -25,6 +25,10 @@ namespace ProPharmacyManager.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            if (Environment.OSVersion.Version.Build <= 2600)
+            {
+                Pb.Height = 10;
+            }
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
                 Pb.Visibility = Visibility.Visible;
@@ -38,9 +42,18 @@ namespace ProPharmacyManager.Pages
                 MySqlReader r = new MySqlReader(cmd);
                 while (r.Read())
                 {
-                    if (Convert.ToDateTime(r.ReadString("ExpirationDate")) <= DateTime.Now.Date)
+                    try
                     {
-                        mT.Rows.Add(r.ReadString("Name"), r.ReadString("ExpirationDate"), r.ReadDecimal("Price"), r.ReadDecimal("Total"));
+                        if (Convert.ToDateTime(r.ReadString("ExpirationDate")) <= DateTime.Now.Date)
+                        {
+                            mT.Rows.Add(r.ReadString("Name"), r.ReadString("ExpirationDate"), r.ReadDecimal("SPrice"), r.ReadDecimal("Total"));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("غالبا هناك خطا فى التواريخ");
+                        Kernel.Core.SaveException(ex);
+                        break;
                     }
                 }
                 dataGrid.ItemsSource = mT.DefaultView;

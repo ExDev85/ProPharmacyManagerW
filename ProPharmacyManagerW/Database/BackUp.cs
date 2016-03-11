@@ -9,7 +9,7 @@ using System;
 using System.IO;
 using System.Windows;
 
-namespace ProPharmacyManager.Database
+namespace ProPharmacyManagerW.Database
 {
     public class BackUp
     {
@@ -43,13 +43,13 @@ namespace ProPharmacyManager.Database
                         conn.Dispose();
                         conn.Close();
                     }
-                    MessageBox.Show("تم اخذ نسخه احتياطيه من قاعدة البيانات بنجاح");
+                    MessageBox.Show("تم اخذ نسخه احتياطية من قاعدة البيانات بنجاح");
                 }
             }
             catch (Exception e)
             {
                 Kernel.Core.SaveException(e);
-                MessageBox.Show("حدث خطا اثناء اخذ نسخه احتياطيه من قاعده البيانات");
+                MessageBox.Show("حدث خطا اثناء اخذ نسخة احتياطية من قاعدة البيانات");
             }
         }
         /// <summary> 
@@ -69,12 +69,12 @@ namespace ProPharmacyManager.Database
                     {
                         if (!dir1.Exists)
                         {
-                            MessageBox.Show("مجلد النسخ الاحتياطيه غير موجود");
+                            MessageBox.Show("مجلد النسخ الاحتياطية غير موجود");
                             return;
                         }
                         if (!File.Exists(RBU))
                         {
-                            MessageBox.Show("النسخة الاحتياطيه غير موجودة");
+                            MessageBox.Show("النسخة الاحتياطية غير موجودة");
                             return;
                         }
                         cmd.Connection = conn;
@@ -85,7 +85,7 @@ namespace ProPharmacyManager.Database
                         conn.Dispose();
                         conn.Close();
                     }
-                    MessageBox.Show("تم استعاده النسخة الاحتياطيه بنجاح");
+                    MessageBox.Show("تم استعاده النسخة الاحتياطية بنجاح");
                 }
             }
             catch (Exception e)
@@ -131,7 +131,7 @@ namespace ProPharmacyManager.Database
             catch (Exception e)
             {
                 Kernel.Core.SaveException(e);
-                MessageBox.Show("حدث خطا اثناء اخذ نسخه احتياطيه من قاعده البيانات");
+                MessageBox.Show("حدث خطا اثناء اخذ نسخة احتياطية من قاعدة البيانات");
             }
         }
         /// <summary> 
@@ -150,11 +150,11 @@ namespace ProPharmacyManager.Database
                     {
                         if (!dir1.Exists)
                         {
-                            MessageBox.Show("مجلد النسخ الاحتياطيه غير موجود");
+                            MessageBox.Show("مجلد النسخ الاحتياطية غير موجود");
                         }
                         else if (!File.Exists(file))
                         {
-                            MessageBox.Show("النسخة الاحتياطيه غير موجودة");
+                            MessageBox.Show("النسخة الاحتياطية غير موجودة");
                         }
                         else
                         {
@@ -172,7 +172,7 @@ namespace ProPharmacyManager.Database
             catch (Exception e)
             {
                 Kernel.Core.SaveException(e);
-                MessageBox.Show("حدث خطا اثناء استعادة نسخه احتياطيه من قاعده البيانات");
+                MessageBox.Show("حدث خطا اثناء استعادة النسخة الاحتياطية من قاعدة البيانات");
             }
         }
     }

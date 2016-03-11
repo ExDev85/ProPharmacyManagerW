@@ -1,4 +1,4 @@
-﻿using ProPharmacyManager.Database;
+﻿using ProPharmacyManagerW.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace ProPharmacyManager.Pages
+namespace ProPharmacyManagerW.Pages
 {
     /// <summary>
     /// Interaction logic for Out.xaml
@@ -34,6 +34,10 @@ namespace ProPharmacyManager.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            if (Environment.OSVersion.Version.Build <= 2600)
+            {
+                Pb.Height = 10;
+            }
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
                 Pb.Visibility = Visibility.Visible;

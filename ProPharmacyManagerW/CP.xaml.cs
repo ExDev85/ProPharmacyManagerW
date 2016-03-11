@@ -4,13 +4,13 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
+using ProPharmacyManagerW.Database;
 using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace ProPharmacyManager
+namespace ProPharmacyManagerW
 {
     /// <summary>
     /// Interaction logic for CP.xaml

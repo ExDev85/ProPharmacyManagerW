@@ -4,14 +4,12 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
+using ProPharmacyManagerW.Database;
 using System;
-using System.Threading;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 
-namespace ProPharmacyManager
+namespace ProPharmacyManagerW
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -86,7 +84,7 @@ namespace ProPharmacyManager
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
+            {
             if (e.Key == Key.F1)
             {
                 Forms.About abo = new Forms.About();

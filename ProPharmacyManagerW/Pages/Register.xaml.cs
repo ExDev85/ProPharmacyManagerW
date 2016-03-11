@@ -4,12 +4,12 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
-using ProPharmacyManager.Database;
+using ProPharmacyManagerW.Database;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ProPharmacyManager.Pages
+namespace ProPharmacyManagerW.Pages
 {
     /// <summary>
     /// To add new employee
@@ -22,9 +22,12 @@ namespace ProPharmacyManager.Pages
         }
 
         /// <summary>
-        /// Check if registertion prograss compelete for setup process
+        /// Check if registertion progress compelete for setup process
         /// </summary>
-        public static bool IsRegister;
+        public static bool IsRegisterFromSetup;
+        /// <summary>
+        /// check if user insert the new user to the database without problems
+        /// </summary>
         public static bool IsRegisCom;
 
         private void InsReg_Click(object sender, RoutedEventArgs e)
@@ -77,12 +80,12 @@ namespace ProPharmacyManager.Pages
                         RUPhone.Text = "";
                     }
                     MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT);
-                    cmd.Insert("accounts").Insert("Username", RUName.Text).Insert("Password", Kernel.Core.GetSHAHashData(RUPass1.Password)).Insert("Phone", RUPhone.Text).Insert("State", state).Execute();
-                    MessageBox.Show("تم تسجيل المستخدم بنجاح");
+                    cmd.Insert("accounts").Insert("Username", RUName.Text).Insert("Password", Kernel.Core.GetSHAHashData(RUPass1.Password)).Insert("State", state).Insert("Phone", RUPhone.Text).Execute();                  
                     IsRegisCom = true;
+                    MessageBox.Show("تم تسجيل الموظف بنجاح");
                     if (Kernel.Core.IsSetup == true)
                     {
-                        IsRegister = true;
+                        IsRegisterFromSetup = true;
                     }
                     Console.WriteLine("You add " + RUName.Text + " as "  + state + " so much wow");
                 }

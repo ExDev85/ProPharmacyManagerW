@@ -7,7 +7,7 @@
 using System;
 using System.Windows;
 
-namespace ProPharmacyManager.Database
+namespace ProPharmacyManagerW.Database
 {
     public class AccountsTable
     {

@@ -8,7 +8,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace ProPharmacyManager.Kernel
+namespace ProPharmacyManagerW.Kernel
 {
     public class IniFile
     {

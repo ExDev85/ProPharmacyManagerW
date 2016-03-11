@@ -1,10 +1,10 @@
-﻿<Page x:Class="ProPharmacyManager.Pages.Bills"
+﻿<Page x:Class="ProPharmacyManagerW.Pages.Bills"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:PHB="clr-namespace:ExtendedButton;assembly=ExtendedButton"
-      xmlns:local="clr-namespace:ProPharmacyManager.Pages"
+      xmlns:local="clr-namespace:ProPharmacyManagerW.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="599" d:DesignWidth="799"
       Title="الفواتير" FlowDirection="RightToLeft" Loaded="Page_Loaded">
@@ -27,13 +27,13 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="BillContent" Grid.Column="1" Margin="5,0,0,0" TextWrapping="Wrap" Text="ستعرض الفاتورة هنا بعد اختيار رقمها الصحيح" FontSize="14" Foreground="Green" AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TabIndex="1"/>
-        <PHB:ImageButton x:Name="BackToMain" Content="" HorizontalAlignment="Left" Height="40" Margin="28,11,0,0" VerticalAlignment="Top" Width="110" Grid.Row="3" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManager;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManager;component/Images/Bhome3.png" ImageHover="/ProPharmacyManager;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManager;component/Images/Bhome3.png" TabIndex="6" IsTabStop="False" Click="BackToMain_Click"/>
+        <TextBox x:Name="BillContent" Grid.Column="1" Margin="5,0,0,0" TextWrapping="Wrap" Text="ستعرض الفاتورة هنا بعد اختيار رقمها الصحيح&#xD;&#xA;*البحث بالاسفل يكون افتراضيا برقم الفاتورة." FontSize="14" Foreground="Green" AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TabIndex="1"/>
+        <PHB:ImageButton x:Name="BackToMain" Content="" HorizontalAlignment="Left" Height="40" Margin="28,11,0,0" VerticalAlignment="Top" Width="110" Grid.Row="3" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="6" IsTabStop="False" Click="BackToMain_Click"/>
         <TextBox x:Name="SearchBox" Height="35" Margin="10,10,10,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.ColumnSpan="2" TabIndex="2"/>
         <CheckBox x:Name="ByName" Content="البحث بالإسم" Margin="10,10,0,10" Grid.Row="2" FontSize="14" FontWeight="Bold" Foreground="White"/>
-        <PHB:ImageButton Grid.Row="2" Height="30" Margin="0,10,10,0" Name="SearchButton" VerticalAlignment="Top" Image="/ProPharmacyManager;component/Images/Search1.png" ImageDisabled="/ProPharmacyManager;component/Images/Search3.png" ImageHover="/ProPharmacyManager;component/Images/Search2.png" ImagePressed="/ProPharmacyManager;component/Images/Search3.png" TabIndex="3" IsDefault="True" Grid.Column="1" HorizontalAlignment="Right" Width="60" Click="SearchButton_Click" />
-        <PHB:ImageButton Height="40" Margin="470,11,79,0" Name="UpdateButton" VerticalAlignment="Top" Grid.Row="3" Image="/ProPharmacyManager;component/Images/Update1.png" ImageDisabled="/ProPharmacyManager;component/Images/Update3.png" ImageHover="/ProPharmacyManager;component/Images/Update2.png" ImagePressed="/ProPharmacyManager;component/Images/Update3.png" TabIndex="4" Width="100" Grid.Column="1" Click="UpdateButton_Click" />
-        <PHB:ImageButton Height="40" Margin="212,11,0,0" Name="DeleteButton" VerticalAlignment="Top" Grid.Row="3" Image="/ProPharmacyManager;component/Images/MDelete1.png" ImageDisabled="/ProPharmacyManager;component/Images/MDelete3.png" ImageHover="/ProPharmacyManager;component/Images/MDelete2.png" ImagePressed="/ProPharmacyManager;component/Images/MDelete3.png" TabIndex="5" Width="100" Grid.Column="1" HorizontalAlignment="Left" Click="DeleteButton_Click" />
+        <PHB:ImageButton Grid.Row="2" Height="30" Margin="0,10,10,0" Name="SearchButton" VerticalAlignment="Top" Image="/ProPharmacyManagerW;component/Images/Search1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Search3.png" ImageHover="/ProPharmacyManagerW;component/Images/Search2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Search3.png" TabIndex="3" IsDefault="True" Grid.Column="1" HorizontalAlignment="Right" Width="60" Click="SearchButton_Click" />
+        <PHB:ImageButton Height="40" Margin="470,11,79,0" Name="UpdateButton" VerticalAlignment="Top" Grid.Row="3" Image="/ProPharmacyManagerW;component/Images/Update1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Update3.png" ImageHover="/ProPharmacyManagerW;component/Images/Update2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Update3.png" TabIndex="4" Width="100" Grid.Column="1" Click="UpdateButton_Click" />
+        <PHB:ImageButton Height="40" Margin="212,11,0,0" Name="DeleteButton" VerticalAlignment="Top" Grid.Row="3" Image="/ProPharmacyManagerW;component/Images/MDelete1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/MDelete3.png" ImageHover="/ProPharmacyManagerW;component/Images/MDelete2.png" ImagePressed="/ProPharmacyManagerW;component/Images/MDelete3.png" TabIndex="5" Width="100" Grid.Column="1" HorizontalAlignment="Left" Click="DeleteButton_Click" />
 
     </Grid>
 </Page>
