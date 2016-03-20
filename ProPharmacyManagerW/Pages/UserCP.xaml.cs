@@ -460,43 +460,14 @@ namespace ProPharmacyManagerW.Pages
         //back to main menu
         private void BackToMain_Click(object sender, RoutedEventArgs e)
         {
-            AddNewDrugBoard.Visibility = Visibility.Hidden;
-            menu1.IsTabStop = true;
-            MeEmp.IsTabStop = true;
-            MECul.IsTabStop = true;
-            MeSto.IsTabStop = true;
-            MeHe.IsTabStop = true;
-            SearchBox.IsTabStop = true;
-            SearchButton.IsTabStop = true;
-            SearchButton.IsDefault = true;
-            ByBarCode.IsTabStop = true;
-            MName.IsTabStop = true;
-            MSS.IsTabStop = true;
-            MEX.Visibility = Visibility.Visible;
-            MPrice.IsTabStop = true;
-            MExist.IsTabStop = true;
-            MWSell.IsTabStop = true;
-            MType.IsTabStop = true;
-            NewBill.IsTabStop = true;
-            BillNo.IsTabStop = true;
-            Client.IsTabStop = true;
-            MNotes.IsTabStop = true;
-            SellM.IsTabStop = true;
-            UpdateM.IsTabStop = true;
-            LogOut.IsTabStop = true;
-            LogOut.IsCancel = true;
-            AddDrug.IsDefault = false;
-            BackToMain.IsCancel = false;
-            AddDrug.IsTabStop = false;
-            BackToMain.IsTabStop = false;
-            ADName.IsTabStop = false;
-            ADBarCode.IsTabStop = false;
-            ADSS.IsTabStop = false;
-            ADEXP.IsTabStop = false;
-            ADPrice.IsTabStop = false;
-            ADTotal.IsTabStop = false;
-            ADType.IsTabStop = false;
-            ADNote.IsTabStop = false;
+            AddNewDrugBoard.Visibility = Visibility.Collapsed;
+            image1.IsEnabled = true;
+            menu1.IsEnabled = true;
+            groupBox1.IsEnabled = true;
+            groupBox2.IsEnabled = true;
+            SellM.IsEnabled = true;
+            UpdateM.IsEnabled = true;
+            LogOut.IsEnabled = true;
             SearchBox.Focus();
         }
         //Background colors back
@@ -522,44 +493,15 @@ namespace ProPharmacyManagerW.Pages
         private void MIAddDrug_Click(object sender, RoutedEventArgs e)
         {
             AddNewDrugBoard.Visibility = Visibility.Visible;
-            ADName.Focus();
-            menu1.IsTabStop = false;
-            MeEmp.IsTabStop = false;
-            MECul.IsTabStop = false;
-            MeSto.IsTabStop = false;
-            MeHe.IsTabStop = false;
-            SearchBox.IsTabStop = false;
-            SearchButton.IsTabStop = false;
-            SearchButton.IsDefault = false;
-            ByBarCode.IsTabStop = false;
-            MName.IsTabStop = false;
-            MSS.IsTabStop = false;
-            MEX.Visibility = Visibility.Hidden;
-            MPrice.IsTabStop = false;
-            MExist.IsTabStop = false;
-            MWSell.IsTabStop = false;
-            MType.IsTabStop = false;
-            NewBill.IsTabStop = false;
-            BillNo.IsTabStop = false;
-            Client.IsTabStop = false;
-            MNotes.IsTabStop = false;
-            SellM.IsTabStop = false;
-            UpdateM.IsTabStop = false;
-            LogOut.IsTabStop = false;
-            LogOut.IsCancel = false;
-            AddDrug.IsDefault = true;
-            BackToMain.IsCancel = true;
-            AddDrug.IsTabStop = true;
-            BackToMain.IsTabStop = true;
-            ADName.IsTabStop = true;
-            ADBarCode.IsTabStop = true;
-            ADSS.IsTabStop = true;
-            ADEXP.IsTabStop = true;
-            ADPrice.IsTabStop = true;
-            ADTotal.IsTabStop = true;
-            ADType.IsTabStop = true;
+            image1.IsEnabled = false;
+            menu1.IsEnabled = false;
+            groupBox1.IsEnabled = false;
+            groupBox2.IsEnabled = false;
+            SellM.IsEnabled = false;
+            UpdateM.IsEnabled = false;
+            LogOut.IsEnabled = false;
             ADType.SelectedIndex = 0;
-            ADNote.IsTabStop = true;
+            ADName.Focus();
             BGGB();
         }
 

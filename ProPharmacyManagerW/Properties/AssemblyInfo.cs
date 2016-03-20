@@ -1,4 +1,5 @@
-﻿// <copyright>
+﻿using System.Resources;
+// <copyright>
 //     Copyright (C) 2014 ShababConquer Blog.
 //     This program is free software; you can redistribute it and/or modify 
 //     it under the terms of the GNU General Public License version 2 as 
@@ -14,8 +15,6 @@
 //     51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // </copyright>
 using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -26,9 +25,9 @@ using System.Windows;
 [assembly: AssemblyDescription("This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ShababCo.blogspot.com")]
-[assembly: AssemblyProduct("ProPharmacyManagerW")]
+[assembly: AssemblyProduct("ProPharmacyManager")]
 [assembly: AssemblyCopyright("Some Copyright Reserved © ShababCo 2016")]
-[assembly: AssemblyTrademark("PPHM")]
+[assembly: AssemblyTrademark("PPHMW")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -48,11 +47,11 @@ using System.Windows;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
-    //(used if a resource is not found in the page, 
-    // or application resource dictionaries)
+                                     //(used if a resource is not found in the page, 
+                                     // or application resource dictionaries)
     ResourceDictionaryLocation.SourceAssembly //where the generic resource dictionary is located
-    //(used if a resource is not found in the page, 
-    // app, or any theme specific resource dictionaries)
+                                              //(used if a resource is not found in the page, 
+                                              // app, or any theme specific resource dictionaries)
 )]
 
 
@@ -66,5 +65,7 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.9.9.5")]
-[assembly: AssemblyFileVersion("0.9.9.5")]
+[assembly: AssemblyVersion("0.9.9.6")]
+[assembly: AssemblyFileVersion("0.9.9.6")]
+[assembly: NeutralResourcesLanguage("ar-EG")]
+

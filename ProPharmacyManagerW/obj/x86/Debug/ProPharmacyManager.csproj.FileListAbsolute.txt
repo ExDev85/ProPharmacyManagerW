@@ -1,0 +1,41 @@
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager.exe
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager.pdb
+D:\Programs\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.exe
+D:\Programs\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.pdb
+D:\Programs\ProPharmacyManager\ProPharmacyManager\bin\Debug\ExtendedButton.pdb
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\MainWindow.baml
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\MainWindow.g.cs
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\App.g.cs
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager_MarkupCompile.cache
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager.g.resources
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager.Properties.Resources.resources
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\CP.baml
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\CP.g.cs
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager_Content.g.cs
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Programs\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Programs\ProPharmacyManager\ProPharmacyManager\bin\Debug\PHDB.mdf
+D:\Programs\ProPharmacyManager\ProPharmacyManager\bin\Debug\PHDB_log.ldf
+D:\Programs\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.exe.config
+D:\Programs\ProPharmacyManager\ProPharmacyManager\bin\Debug\ExtendedButton.dll
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.exe.config
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager.exe
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager.pdb
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\bin\Debug\PHDB.mdf
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\bin\Debug\PHDB_log.ldf
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.exe
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.pdb
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\CP.baml
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\MainWindow.baml
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\CP.g.cs
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\MainWindow.g.cs
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\App.g.cs
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager_Content.g.cs
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager_MarkupCompile.cache
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager.g.resources
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager.Properties.Resources.resources
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager.csprojResolveAssemblyReference.cache
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\ProPharmacyManager.csproj.GenerateResource.Cache
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\Forms\About.baml
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\x86\Debug\Forms\About.g.cs

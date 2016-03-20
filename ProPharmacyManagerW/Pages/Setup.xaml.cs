@@ -25,13 +25,17 @@ namespace ProPharmacyManagerW.Pages
         {
             InitializeComponent();
         }
-
+        
         IniFile file = new IniFile(Constants.SetupConfigPath);
 
         private BackgroundWorker bgw;
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\"))
+            {
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\");
+            }
             if (Environment.OSVersion.Version.Build <= 2600)
             {
                 pB.Height = 10;
@@ -65,7 +69,7 @@ namespace ProPharmacyManagerW.Pages
         /// <summary>
         /// setup button
         /// </summary>
-        /// 
+        ///
         private void SetB_Click(object sender, RoutedEventArgs e)
         {
             if (Core.IsSetup == true)
@@ -131,9 +135,9 @@ namespace ProPharmacyManagerW.Pages
                 file.Write("Settings", "DrugsLog", "1");
             });
             bgw.ReportProgress(30);
-            if (!Directory.Exists("BackUp"))
+            if (!Directory.Exists(Constants.BackupsPath))
             {
-                Directory.CreateDirectory("BackUp");
+                Directory.CreateDirectory(Constants.BackupsPath);
             }
             Thread.Sleep(500);
 
@@ -143,7 +147,6 @@ namespace ProPharmacyManagerW.Pages
             Dispatcher.Invoke((Action)(() =>
             {
                 CreateDB.Createdb(DBName.Text);
-
             }));
             Thread.Sleep(500);
             bgw.ReportProgress(60);
@@ -154,7 +157,6 @@ namespace ProPharmacyManagerW.Pages
             }));
             bgw.ReportProgress(100);
             Thread.Sleep(900);
-
         }
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -171,7 +173,6 @@ namespace ProPharmacyManagerW.Pages
         {
             pB.Value = e.ProgressPercentage;
         }
-
-        
+      
     }
 }

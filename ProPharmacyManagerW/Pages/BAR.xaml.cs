@@ -42,18 +42,13 @@ namespace ProPharmacyManagerW.Pages
             IniFile file = new IniFile(Constants.BackupConfigPath);
             if (File.Exists(Constants.BackupConfigPath))
             {
-                PathT.Text = file.ReadString("BackUp", "Path");
+                PathT.Text = Core.INIDecrypt(file.ReadString("BackUp", "Path"));
             }
             else if (!File.Exists(Constants.BackupConfigPath))
             {
-                DirectoryInfo dir1 = new DirectoryInfo("BackUp\\");
-                string[] lines = { "[BackUp]", "Path=" + dir1.FullName };
-                File.WriteAllLines(Constants.BackupConfigPath, lines);
+                Directory.CreateDirectory(Constants.BackupsPath);
+                file.Write("BackUp", "Path", Constants.BackupsPath);
                 PathT.Text = file.ReadString("BackUp", "Path");
-            }
-            if (!Directory.Exists(Directory.GetCurrentDirectory() + @"BackUp\"))
-            {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\BackUp\");
             }
             DirectoryInfo dinfo = new DirectoryInfo(PathT.Text);
             FileInfo[] Files = dinfo.GetFiles("*.sql");

@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="599" d:DesignWidth="799"
       Title="لوحة المدراء" Loaded="Page_Loaded" KeyDown="Page_KeyDown" TextInput="Page_TextInput">
-
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="508*" />
@@ -101,7 +101,7 @@
         <PHB:ImageButton Height="60" Margin="206,11,152,0" Name="UpdateM" VerticalAlignment="Top" Grid.Row="2" Image="/ProPharmacyManagerW;component/Images/Update1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Update3.png" ImageHover="/ProPharmacyManagerW;component/Images/Update2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Update3.png" TabIndex="21" Click="UpdateM_Click" Width="140" />
         <PHB:ImageButton Height="60" HorizontalAlignment="Left" Margin="24,11,0,0" Name="SellM" VerticalAlignment="Top" Width="140" Grid.Row="2" Image="/ProPharmacyManagerW;component/Images/Sell1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Sell3.png" ImageHover="/ProPharmacyManagerW;component/Images/Sell2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Sell3.png" TabIndex="20" Click="SellM_Click" />
         <Label Content="اهلا بك يا مدير" Grid.Column="1" Grid.Row="1" Height="48" Margin="11,25,13,0" Name="WelMsg" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold" Width="250" MaxWidth="250"/>
-        <Border x:Name="AddNewDrugBoard" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Right" Width="277" FlowDirection="RightToLeft" Grid.RowSpan="3" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Hidden">
+        <Border x:Name="AddNewDrugBoard" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Right" Width="277" FlowDirection="RightToLeft" Grid.RowSpan="3" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Hidden" >
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF151083" Offset="1"/>
@@ -120,22 +120,23 @@
                     <RowDefinition Height="60*"/>
                     <RowDefinition Height="60*"/>
                 </Grid.RowDefinitions>
-                <PHB:ImageButton x:Name="AddDrug" Content="" HorizontalAlignment="Right" Height="40" Margin="0,23,10,0" VerticalAlignment="Top" Width="110" Grid.Row="8" Click="AddDrug_Click" Foreground="White" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/MAdd1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/MAdd3.png" ImageHover="/ProPharmacyManagerW;component/Images/MAdd2.png" ImagePressed="/ProPharmacyManagerW;component/Images/MAdd3.png" TabIndex="34" IsTabStop="False"/>
-                <PHB:ImageButton x:Name="BackToMain" Content="" HorizontalAlignment="Left" Height="40" Margin="10,23,0,0" VerticalAlignment="Top" Width="112" Grid.Row="8" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="35" IsTabStop="False"/>
-                <ComboBox x:Name="ADName" Margin="10" Text="أسم الدواء*" Foreground="Blue" FontWeight="Bold" FontSize="14" GotFocus="ADName_GotFocus" LostFocus="ADName_LostFocus" TabIndex="25" IsTabStop="False" KeyDown="ADName_KeyDown" IsEditable="True" MaxDropDownHeight="150"/>
-                <TextBox x:Name="ADBarCode" Margin="10" TextWrapping="Wrap" Text="الباركود" Grid.Row="1" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADBarCode_GotFocus" LostFocus="ADBarCode_LostFocus" TabIndex="26" IsTabStop="False"/>
-                <TextBox x:Name="ADSS" Margin="10" TextWrapping="Wrap" Text="المادة الفعاله" Grid.Row="2" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADSS_GotFocus" LostFocus="ADSS_LostFocus" TabIndex="27" IsTabStop="False" />
+                <PHB:ImageButton x:Name="AddDrug" Content="" HorizontalAlignment="Right" Height="40" Margin="0,23,10,0" VerticalAlignment="Top" Width="110" Grid.Row="8" Click="AddDrug_Click" Foreground="White" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/MAdd1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/MAdd3.png" ImageHover="/ProPharmacyManagerW;component/Images/MAdd2.png" ImagePressed="/ProPharmacyManagerW;component/Images/MAdd3.png" TabIndex="34"/>
+                <PHB:ImageButton x:Name="BackToMain" Content="" HorizontalAlignment="Left" Height="40" Margin="10,23,0,0" VerticalAlignment="Top" Width="112" Grid.Row="8" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="35"/>
+                <ComboBox x:Name="ADName" Margin="10" Text="أسم الدواء*" Foreground="Blue" FontWeight="Bold" FontSize="14" GotFocus="ADName_GotFocus" LostFocus="ADName_LostFocus" TabIndex="25" KeyDown="ADName_KeyDown" IsEditable="True" MaxDropDownHeight="150"/>
+                <TextBox x:Name="ADBarCode" Margin="10" TextWrapping="Wrap" Text="الباركود" Grid.Row="1" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADBarCode_GotFocus" LostFocus="ADBarCode_LostFocus" TabIndex="26"/>
+                <TextBox x:Name="ADSS" Margin="10" TextWrapping="Wrap" Text="المادة الفعاله" Grid.Row="2" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADSS_GotFocus" LostFocus="ADSS_LostFocus" TabIndex="27"/>
                 <DatePicker x:Name="ADEXP" Margin="10" Grid.Row="3" FirstDayOfWeek="Saturday" Text="تاريخ انتهاء الصلاحيه*" SelectedDateFormat="Short" DisplayDateStart="2016-01-01" FontSize="14" FontWeight="Bold" Foreground="Blue" GotFocus="ADEXP_GotFocus" LostFocus="ADEXP_LostFocus" TabIndex="28"/>
-                <TextBox x:Name="ADPrice" Margin="10" TextWrapping="Wrap" Text="سعر الدواء*" Grid.Row="4" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADPrice_GotFocus" LostFocus="ADPrice_LostFocus" TabIndex="30" IsTabStop="False" PreviewTextInput="ADPrice_PreviewTextInput"/>
-                <TextBox x:Name="ADTotal" Margin="10" TextWrapping="Wrap" Text="الكميه*" Grid.Row="5" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADTotal_GotFocus" LostFocus="ADTotal_LostFocus" TabIndex="31" IsTabStop="False" PreviewTextInput="ADTotal_PreviewTextInput"/>
-                <ComboBox x:Name="ADType" Margin="10" Text="النوع*" Grid.Row="6" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADType_GotFocus" LostFocus="ADType_LostFocus" Background="White" IsReadOnly="True" TabIndex="32" IsTabStop="False" IsTextSearchEnabled="False">
+                <TextBox x:Name="ADPrice" Margin="10" TextWrapping="Wrap" Text="سعر الدواء*" Grid.Row="4" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADPrice_GotFocus" LostFocus="ADPrice_LostFocus" TabIndex="30" PreviewTextInput="ADPrice_PreviewTextInput"/>
+                <TextBox x:Name="ADTotal" Margin="10" TextWrapping="Wrap" Text="الكميه*" Grid.Row="5" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADTotal_GotFocus" LostFocus="ADTotal_LostFocus" TabIndex="31" PreviewTextInput="ADTotal_PreviewTextInput"/>
+                <ComboBox x:Name="ADType" Margin="10" Text="النوع*" Grid.Row="6" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADType_GotFocus" LostFocus="ADType_LostFocus" Background="White" IsReadOnly="True" TabIndex="32" IsTextSearchEnabled="False">
+                    <ListBoxItem Content="النوع*" Foreground="Blue"/>
                     <ListBoxItem Content="اقراص" Foreground="Blue"/>
                     <ListBoxItem Content="حقن" Foreground="Blue"/>
                     <ListBoxItem Content="شرب" Foreground="Blue"/>
                     <ListBoxItem Content="كريم/مرهم" Foreground="Blue"/>
                     <ListBoxItem Content="اخرى" Foreground="Blue"/>
                 </ComboBox>
-                <TextBox x:Name="ADNote" Margin="10,10,10,0" TextWrapping="Wrap" Text="ملاحظات" Grid.Row="7" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADNote_GotFocus" LostFocus="ADNote_LostFocus" TabIndex="33" AcceptsReturn="True" IsTabStop="False"/>
+                <TextBox x:Name="ADNote" Margin="10,10,10,0" TextWrapping="Wrap" Text="ملاحظات" Grid.Row="7" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADNote_GotFocus" LostFocus="ADNote_LostFocus" TabIndex="33" AcceptsReturn="True"/>
             </Grid>
         </Border>
     </Grid>

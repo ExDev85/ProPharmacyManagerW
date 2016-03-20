@@ -19,7 +19,7 @@ namespace ProPharmacyManagerW.Kernel
         /// <param name="_FileName">file name</param>
         public IniFile(string _FileName)
         {
-            this.FileName = Environment.CurrentDirectory + "\\" + _FileName;
+            this.FileName = _FileName;
         }
 
         [DllImport("kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]

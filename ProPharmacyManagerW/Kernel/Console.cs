@@ -122,7 +122,6 @@ namespace ProPharmacyManagerW
                             {
                                 try
                                 {
-                                    //TODO this command needs more work
                                     MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT);
                                     cmd.Insert("medics")
                                         .Insert("Name", data[1])

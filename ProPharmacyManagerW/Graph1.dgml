@@ -12,16 +12,19 @@
     </Node>
     <Node Id="Bills" Category="Category10" Bounds="191.684661895512,-118.909563427205,50,25.96" Label="Bills" />
     <Node Id="CP" Category="Category1" Bounds="283.263490231331,-311.320423500321,50,25.96" UseManualLocation="True" />
-    <Node Id="Config" Category="Category2" Bounds="522.760276018638,-418.061738021119,51.0633333333334,25.96" Label="Install" UseManualLocation="True" />
+    <Node Id="Config" Category="Category2" Bounds="680.892003397169,-515.470882086294,51.0633333333335,25.96" Label="Install" UseManualLocation="True" />
+    <Node Id="Config1" Category="Category4" Bounds="505.822010323424,-426.128351202224,54.98,25.96" Label="Config" UseManualLocation="True">
+      <Category Ref="Category7" />
+    </Node>
     <Node Id="Console" Category="Comment" Bounds="176.302388400155,-432.065799617306,62.5566666666666,25.96" UseManualLocation="True" />
     <Node Id="CurrentUserProfile" Bounds="-156.256136418885,-160.934106430861,123.83,25.96" Label="Current User Profile" UseManualLocation="True" />
     <Node Id="IsFirstTime" Category="Category4" Bounds="403.004204298167,-501.470396540534,80.5466666666666,25.96" Label="Is First time" UseManualLocation="True" />
     <Node Id="Login" Category="Category1" Bounds="288.60358313098,-382.749563427206,50,25.96" UseManualLocation="True" />
-    <Node Id="Register" Category="Category2" Bounds="516.342837899912,-288.478965713943,62.6866666666667,25.96" UseManualLocation="True" />
+    <Node Id="Register" Category="Category2" Bounds="671.944457640387,-253.057458781152,62.6866666666667,25.96" UseManualLocation="True" />
     <Node Id="Settings" Bounds="679.320176808254,-74.6696633107374,62.6399999999999,25.96" UseManualLocation="True" />
-    <Node Id="Setup" Category="Category4" Bounds="419.287443847656,-435.416147429662,50.5599999999999,25.96" UseManualLocation="True" />
+    <Node Id="Setup" Category="Category4" Bounds="566.033686854933,-515.114538028442,50.5599999999999,25.96" UseManualLocation="True" />
     <Node Id="Start" Category="Comment" Bounds="291.029682481481,-556.305870357297,50,25.96" UseManualLocation="True" />
-    <Node Id="Upgrade" Category="Category7" Bounds="412.601713663737,-371.357875415039,65.9866666666667,25.96" UseManualLocation="True" />
+    <Node Id="Upgrade" Category="Category7" Bounds="623.865701441455,-358.707337224757,65.9866666666667,25.96" UseManualLocation="True" />
     <Node Id="UserCp" Category="Category6" Bounds="22.8884617331562,-303.949455588059,57.9366666666667,25.96" Label="UserCP" UseManualLocation="True" />
     <Node Id="UsersProfilesCP" Bounds="734.768858516218,-160.632438574101,108.466666666667,25.96" Label="Users Profiles CP" UseManualLocation="True" />
     <Node Id="ViewAllDrugs" Category="Category10" Bounds="298.381328562178,-62.9495634272055,96.9733333333334,25.96" Label="View All Drugs" />
@@ -34,27 +37,30 @@
     <Link Source="AdminCP" Target="About" Bounds="333.233944034643,-148.722408481831,213.129698543482,36.7257141503611" />
     <Link Source="AdminCP" Target="AddDrugs" Bounds="276.67641162049,-144.376894395911,269.703245318493,80.4875398890278" />
     <Link Source="AdminCP" Target="Bills" Bounds="250.605133128297,-150.050040334218,295.758509449828,39.5809493040613" />
-    <Link Source="AdminCP" Target="Settings" Bounds="598.976752482693,-141.686458129883,86.2290321018303,61.7753641288796" />
-    <Link Source="AdminCP" Target="UsersProfilesCP" Bounds="615.353642578125,-153.504045912816,110.42032158604,3.72094305911097" />
-    <Link Source="AsAdmin" Target="Console" Bounds="237.821581402771,-468.709559936523,55.5855281621407,32.1388677355623" />
-    <Link Source="AsAdmin" Target="IsFirstTime" Bounds="351.336567382813,-485.861214750997,42.6804286286302,2.27798156556145" />
-    <Link Source="AsAdmin" Target="Login" Bounds="314.046010652946,-468.709559936523,1.54926530294699,76.9618194875501" />
-    <Link Source="CP" Target="AdminCP" Bounds="331.930731049983,-285.86637002035,216.338907130609,114.023555573868" />
-    <Link Source="CP" Target="UserCp" Bounds="89.8214169119305,-297.621743845427,193.442071857601,5.56091590514353" />
-    <Link Source="Config" Target="Register" Bounds="547.788920563859,-392.101741333008,0.442333050808202,94.6228739549222" />
-    <Link Source="IsFirstTime" Target="Setup" Bounds="443.531014482085,-475.510386962891,0.607239242033359,31.0959550706029" />
-    <Link Source="Login" Target="CP" Bounds="309.904855765267,-356.789577026367,2.72832829712604,36.4941997479522" />
-    <Link Source="Login" Target="Console" Bounds="243.646475898807,-402.310023945717,45.3417511975815,21.090431621854" />
-    <Link Source="Login" Target="Setup" Bounds="338.602681406041,-408.914215379381,72.3403114931132,29.0913531347826" />
-    <Link Source="Register" Target="Login" Bounds="346.950724654041,-356.339892463524,170.395146440108,68.6221522797038" />
-    <Link Source="Setup" Target="Config" Bounds="469.847443847656,-418.206482613005,44.0362066843571,7.36780670692349" />
-    <Link Source="Setup" Target="Upgrade" Bounds="444.775665021738,-409.456141967773,0.466804137866063,29.0994311035817" />
-    <Link Source="Start" Target="AsAdmin" Bounds="315.918300006228,-530.345897216797,0.0749228905469295,26.6763727767656" />
-    <Link Source="Upgrade" Target="Login" Bounds="347.57024323044,-366.838038122281,65.0314704332971,5.61262863904051" />
+    <Link Source="AdminCP" Target="Settings" Bounds="598.976732607885,-141.686457603291,86.2290807712105,61.7753651240835" />
+    <Link Source="AdminCP" Target="UsersProfilesCP" Bounds="615.353612768979,-153.504045639969,110.420351392959,3.72094325129419" />
+    <Link Source="AsAdmin" Target="Console" Bounds="237.82157983796,-468.709563427206,55.5855302603978,32.1388710097359" />
+    <Link Source="AsAdmin" Target="IsFirstTime" Bounds="351.336566476629,-485.861216118472,42.6804295215285,2.27798042779216" />
+    <Link Source="AsAdmin" Target="Login" Bounds="314.046010461228,-468.709563427206,1.5492647017262,76.9618229766525" />
+    <Link Source="CP" Target="AdminCP" Bounds="331.930731282699,-285.866369115062,216.338880193691,114.023554808312" />
+    <Link Source="CP" Target="Console" Bounds="224.167753888024,-399.193543315207,73.2724454055582,87.8731198148861" />
+    <Link Source="CP" Target="UserCp" Bounds="89.8214119030588,-297.621744147241,193.442078328272,5.56091310845966" />
+    <Link Source="Config" Target="Register" Bounds="703.550436067207,-489.51089050293,2.71809678067314,227.454079441788" />
+    <Link Source="Config1" Target="Login" Bounds="347.433132694161,-407.720781166912,158.388877629262,31.271979852575" />
+    <Link Source="IsFirstTime" Target="Setup" Bounds="483.550870964834,-498.978519906421,73.5208042158763,6.77623013964006" />
+    <Link Source="Login" Target="CP" Bounds="309.904858061449,-356.789563427206,2.72833111114892,36.4941862187343" />
+    <Link Source="Login" Target="Console" Bounds="243.646260666551,-402.310015480733,45.3420107745989,21.090708958616" />
+    <Link Source="Login" Target="Setup" Bounds="338.083672723461,-486.494582074406,220.416429095341,105.05707444988" />
+    <Link Source="Register" Target="Login" Bounds="347.143063951428,-358.607175893623,324.833922153388,108.109071292456" />
+    <Link Source="Setup" Target="Config" Bounds="616.593690185547,-502.38398401681,55.2983312977198,0.171198156412288" />
+    <Link Source="Setup" Target="Config1" Bounds="546.686907683951,-489.154521484375,36.1663464335727,55.4864043571059" />
+    <Link Source="Setup" Target="Upgrade" Bounds="596.753201513068,-489.154521484375,51.1878066041804,122.146584447883" />
+    <Link Source="Start" Target="AsAdmin" Bounds="315.918300928786,-530.345870357297,0.0749250247999385,26.6763424286861" />
+    <Link Source="Upgrade" Target="Login" Bounds="347.581587699214,-367.389683547606,276.284118274093,19.3514310945776" />
     <Link Source="UserCp" Target="About" Bounds="69.1247458906566,-277.989451904297,204.437778156304,153.672150090409" />
     <Link Source="UserCp" Target="AddDrugs" Bounds="61.4531826452215,-277.989451904297,153.633029620507,207.80296229178" />
     <Link Source="UserCp" Target="Bills" Bounds="63.4189861714139,-277.989451904297,135.717158818823,152.359485260043" />
-    <Link Source="UserCp" Target="CurrentUserProfile" Bounds="-74.6386836065906,-277.989451904297,113.226633343583,110.7617964541" />
+    <Link Source="UserCp" Target="CurrentUserProfile" Bounds="-74.6386845922369,-277.989455588059,113.226630113114,110.761799944754" />
   </Links>
   <Categories>
     <Category Id="Category1" Label="Category 1" Background="#FFE51400" IsTag="True" />

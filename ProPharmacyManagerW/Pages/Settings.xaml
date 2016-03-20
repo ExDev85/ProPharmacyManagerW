@@ -86,6 +86,20 @@
                     <CheckBox x:Name="MedLogs" Grid.ColumnSpan="2" Content="سجل بيع الأدوية (ليست الفواتير)." HorizontalAlignment="Left" Height="34" Margin="10,1,0,0" Grid.Row="2" VerticalAlignment="Top" Width="692" IsChecked="True" Foreground="White" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="النسخ الاحتياطى" Foreground="White" BorderBrush="{x:Null}">
+                <Grid Background="#FF2B80D4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="522*"/>
+                        <RowDefinition Height="73*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="569*"/>
+                        <ColumnDefinition Width="143*"/>
+                    </Grid.ColumnDefinitions>
+                    <PHB:ImageButton x:Name="SetB3" Content="" Margin="0,25,10,0" TabIndex="5" Background="#FF6E6E6E" BorderBrush="#FF2B41A4" Foreground="White" FontSize="18.667" FontWeight="Bold" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/Set1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Set3.png" ImageHover="/ProPharmacyManagerW;component/Images/Set2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Set3.png" Width="108" Height="38" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Click="SetB2_Click" RenderTransformOrigin="0.219,14.315" Grid.Row="1" />
+                    <PHB:ImageButton x:Name="BackToMain3" Content="" HorizontalAlignment="Left" Height="38" Margin="15,25,0,0" VerticalAlignment="Top" Width="99" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="35" IsTabStop="False" Grid.Row="1"/>
+                </Grid>
+            </TabItem>
         </TabControl>
 
     </Grid>

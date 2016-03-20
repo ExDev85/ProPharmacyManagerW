@@ -1,0 +1,54 @@
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.exe.config
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\bin\Debug\PHDB.mdf
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\bin\Debug\PHDB_log.ldf
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.exe
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.pdb
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\CP.baml
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\Forms\About.baml
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\MainWindow.baml
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\CP.g.cs
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\Forms\About.g.cs
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\MainWindow.g.cs
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\App.g.cs
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager_Content.g.cs
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager_MarkupCompile.cache
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager.g.resources
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager.Properties.Resources.resources
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager2013.csproj.GenerateResource.Cache
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager.exe
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager.pdb
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\Pages\Setup.g.cs
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager_MarkupCompile.lref
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\Pages\Setup.baml
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\Set.g.cs
+D:\Projects\New Folder\ProPharmacyManager\ProPharmacyManager\obj\Debug\Set.baml
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.exe.config
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager.exe
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager.pdb
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\CP.baml
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Forms\About.baml
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\MainWindow.baml
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\CP.g.cs
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Forms\About.g.cs
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\MainWindow.g.cs
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Pages\Setup.g.cs
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Set.g.cs
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\App.g.cs
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager_MarkupCompile.cache
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager_MarkupCompile.lref
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.exe
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\bin\Debug\ProPharmacyManager.pdb
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\bin\Debug\MySql.Data.dll
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\bin\Debug\MySqlBackup.dll
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Pages\Setup.baml
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Set.baml
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager.g.resources
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager.Properties.Resources.resources
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager2013.csproj.GenerateResource.Cache
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Pages\AdminCP.g.cs
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Pages\UserCP.g.cs
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Pages\AdminCP.baml
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Pages\UserCP.baml
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\ProPharmacyManager2013.csprojResolveAssemblyReference.cache
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Pages\Register.g.cs
+D:\Projects\ProPharmacyManagerW\ProPharmacyManager\ProPharmacyManager\obj\Debug\Pages\Register.baml

@@ -80,38 +80,8 @@ namespace ProPharmacyManagerW.Pages
                 dataGrid.ItemsSource = mT.DefaultView;
                 Pb.Visibility = Visibility.Hidden;
             });
-            cByName.IsChecked = true;
         }
-
-        #region CheckState Group
-        private void cByName_Checked(object sender, RoutedEventArgs e)
-        {
-            if (cByName.IsChecked == true)
-            {
-                cByBar.IsChecked = false;
-                cBySub.IsChecked = false;
-            }
-        }
-
-        private void cByBar_Checked(object sender, RoutedEventArgs e)
-        {
-            if (cByBar.IsChecked == true)
-            {
-                cByName.IsChecked = false;
-                cBySub.IsChecked = false;
-            }
-        }
-
-        private void cBySub_Checked(object sender, RoutedEventArgs e)
-        {
-            if (cBySub.IsChecked == true)
-            {
-                cByName.IsChecked = false;
-                cByBar.IsChecked = false;
-            }
-        }
-        #endregion
-
+        
         private void SearchB_Click(object sender, RoutedEventArgs e)
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()

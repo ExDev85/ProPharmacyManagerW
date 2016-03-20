@@ -4,12 +4,15 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
+using System;
+
 namespace ProPharmacyManagerW.Kernel
 {
     public class Constants
     {
-        public const string UnhandledExceptionsPath = "exceptions\\";
-        public const string SetupConfigPath = "configuration.ini";
-        public const string BackupConfigPath = "backupconfig.ini";
+        public static string UnhandledExceptionsPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Exceptions\\";
+        public static string SetupConfigPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Configuration.ini";
+        public static string BackupConfigPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\BackupConfig.ini";
+        public static string BackupsPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\BackUps\\";
     }
 }

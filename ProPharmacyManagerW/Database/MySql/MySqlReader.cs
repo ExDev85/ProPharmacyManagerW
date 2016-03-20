@@ -130,124 +130,71 @@ namespace ProPharmacyManagerW.Database
         public sbyte ReadSByte(string columnName)
         {
             sbyte result = 0;
-            //    try
-            //    {
             sbyte.TryParse(_datarow[columnName].ToString(), out result);
-            //    }
-            //    catch { }
             return result;
         }
         public byte ReadByte(string columnName)
         {
             byte result = 0;
-            //   try
-            //   {
             byte.TryParse(_datarow[columnName].ToString(), out result);
-            //   }
-            //    catch { }
             return result;
         }
         public short ReadInt16(string columnName)
         {
             short result = 0;
-            //  try
-            //  {
             short.TryParse(_datarow[columnName].ToString(), out result);
-            //   }
-            //   catch { }
             return result;
         }
         public ushort ReadUInt16(string columnName)
         {
             ushort result = 0;
-            //  try
-            //  {
             ushort.TryParse(_datarow[columnName].ToString(), out result);
-            //  }
-            //   catch { }
             return result;
         }
         public int ReadInt32(string columnName)
         {
             int result = 0;
-            //  try
-            //  {
             int.TryParse(_datarow[columnName].ToString(), out result);
-            //  }
-            //  catch { }
             return result;
         }
         public uint ReadUInt32(string columnName)
         {
             uint result = 0;
-            // try
-            // {
             uint.TryParse(_datarow[columnName].ToString(), out result);
-            //  }
-            //  catch { }
             return result;
         }
         public long ReadInt64(string columnName)
         {
             long result = 0;
-            //  try
-            //  {
             long.TryParse(_datarow[columnName].ToString(), out result);
-            //  }
-            //  catch { }
             return result;
         }
         public ulong ReadUInt64(string columnName)
         {
             ulong result = 0;
-            // try
-            // {
             ulong.TryParse(_datarow[columnName].ToString(), out result);
-            // }
-            // catch { }
             return result;
         }
         public decimal ReadDecimal(string columnName)
         {
             decimal result = 0;
-            // try
-            // {
             decimal.TryParse(_datarow[columnName].ToString(), out result);
-            //  }
-            //  catch { }
             return result;
         }
         public string ReadString(string columnName)
         {
             string result = "";
-            // try
-            // {
             result = _datarow[columnName].ToString();
-            // }
-            // catch { }
             return result;
         }
         public bool ReadBoolean(string columnName)
         {
             bool result = false;
-            // try
-            // {
             string str = _datarow[columnName].ToString();
             if (str[0] == '1') return true;
             if (str[0] == '0') return false;
 
             bool.TryParse(_datarow[columnName].ToString(), out result);
-            // }
-            //  catch 
-            //  {
-            //      byte value = 0;
-            //      try
-            //      {
-            //          byte.TryParse(_datarow[columnName].ToString(), out value);
-            //      }
-            //      catch { }
-            //      result = value == 0 ? false : true; 
-            //  }
             return result;
         }
 
