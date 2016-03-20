@@ -116,11 +116,13 @@
     <Compile Include="Forms\ConGui.xaml.cs">
       <DependentUpon>ConGui.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Kernel\CommonBase.cs" />
     <Compile Include="Kernel\Console.cs" />
     <Compile Include="Kernel\Constants.cs" />
     <Compile Include="Kernel\IniFile.cs" />
     <Compile Include="Kernel\Core.cs" />
     <Compile Include="Kernel\WpfSingleInstance.cs" />
+    <Compile Include="MVVM\FAllMeds.cs" />
     <Compile Include="Pages\AccLogs.xaml.cs">
       <DependentUpon>AccLogs.xaml</DependentUpon>
     </Compile>
