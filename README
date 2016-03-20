@@ -17,7 +17,9 @@ NOTE:
         the first time and it will ask you to add a new user as admin.
         
      3- You must run the App as administrator from 
-    	ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.
+    	ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.exe
     	
      4- Make sure that this files exist with the program exe file 
         ExtendedButton.dll, MySql.Data.dll, MySqlBackup.dll.
+        
+     5- You need Visual Studio 2010 or higher to build the source code
