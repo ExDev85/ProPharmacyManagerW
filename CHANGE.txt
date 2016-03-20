@@ -1,5 +1,4 @@
 ProPharmacyManagerW 0.9.9.6:
-
 1.  You don't have to run the program as administrator anymore
 2.  Improvements to the UI.
 
