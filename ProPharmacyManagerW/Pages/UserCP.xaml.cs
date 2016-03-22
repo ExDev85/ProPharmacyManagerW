@@ -262,6 +262,7 @@ namespace ProPharmacyManagerW.Pages
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             Clear();
+            decimal total = 0;
             try
             {
                 if (ByBarCode.IsChecked == true)
@@ -279,17 +280,18 @@ namespace ProPharmacyManagerW.Pages
                         MEX.Text = r.ReadString("ExpirationDate");
                         MNotes.Text = r.ReadString("Notes");
                         SearchBox.Foreground = Brushes.Green;
+                        if (total < 1)
+                        {
+                            MExist.Background = Brushes.Red;
+                            MExist.Foreground = Brushes.White;
+                            Console.WriteLine("Searched for - " + MName.Text + " - I believe that you should get new ones");
+                        }
+                        MExist.Text = total.ToString();
                         if (Convert.ToDateTime(MEX.Text) <= DateTime.Now.Date)
                         {
                             MEX.Background = Brushes.Red;
                             MEX.Foreground = Brushes.OrangeRed;
                             Console.WriteLine("Searched for - " + MName.Text + " - I believe that you should get rid of it");
-                        }
-                        if (Convert.ToDecimal(MExist.Text) <= 0)
-                        {
-                            MExist.Background = Brushes.Red;
-                            MExist.Foreground = Brushes.White;
-                            Console.WriteLine("Searched for - " + MName.Text + " - I believe that you should get new ones");
                         }
                         Console.WriteLine("Searched for - " + MName.Text + " -");
                     }
@@ -309,22 +311,23 @@ namespace ProPharmacyManagerW.Pages
                         MName.Text = r.ReadString("Name");
                         MSS.Text = r.ReadString("ScientificName");
                         Ptype = r.ReadByte("Type");
-                        MExist.Text = r.ReadUInt32("Total").ToString();
-                        MPrice.Text = r.ReadString("SPrice");
+                        MExist.Text = r.ReadDecimal("Total").ToString();
+                        MPrice.Text = r.ReadDecimal("SPrice").ToString();
                         MEX.Text = r.ReadString("ExpirationDate");
                         MNotes.Text = r.ReadString("Notes");
                         SearchBox.Foreground = Brushes.Green;
+                        if (total < 1)
+                        {
+                            MExist.Background = Brushes.Red;
+                            MExist.Foreground = Brushes.White;
+                            Console.WriteLine("Searched for - " + MName.Text + " - I believe that you should get new ones");
+                        }
+                        MExist.Text = total.ToString();
                         if (Convert.ToDateTime(MEX.Text) <= DateTime.Now.Date)
                         {
                             MEX.Background = Brushes.Red;
                             MEX.Foreground = Brushes.OrangeRed;
                             Console.WriteLine("Searched for - " + MName.Text + " - I believe that you should get rid of it");
-                        }
-                        if (Convert.ToDecimal(MExist.Text) <= 0)
-                        {
-                            MExist.Background = Brushes.Red;
-                            MExist.Foreground = Brushes.White;
-                            Console.WriteLine("Searched for - " + MName.Text + " - I believe that you should get new ones");
                         }
                         Console.WriteLine("Searched for - " + MName.Text + " -");
                     }
@@ -345,28 +348,30 @@ namespace ProPharmacyManagerW.Pages
 
         private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (SearchBox.IsDropDownOpen == false && SearchBox.Text.Length > 0)
+            if (SearchBox.Text.Length > 0)
             {
                 SearchBox.Foreground = Brushes.Blue;
-                SearchBox.Items.Clear();
-                SearchBox.IsDropDownOpen = true;
             }
         }
 
         private void SearchBox_KeyDown(object sender, KeyEventArgs e)
         {
-            SearchBox.IsDropDownOpen = true;
+            if (!SearchBox.Items.IsEmpty)
+            {
+                SearchBox.Items.Clear();
+            }
+            if (SearchBox.IsDropDownOpen == false && SearchBox.Text.Length > 0)
+            {
+                SearchBox.IsDropDownOpen = true;
+            }
             try
             {
                 MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
                 cmd.Select("medics").WhereLike("Name", SearchBox.Text);
                 MySqlReader r = new MySqlReader(cmd);
-                while (r.Read())
+                while (r.Read() && SearchBox.Items.Count <= 10 && SearchBox.Text.Length > 0)
                 {
-                    if (!SearchBox.Items.Contains(r.ReadString("Name")))
-                    {
-                        SearchBox.Items.Add(r.ReadString("Name"));
-                    }
+                    SearchBox.Items.Add(r.ReadString("Name"));
                 }
             }
             catch (Exception ex)

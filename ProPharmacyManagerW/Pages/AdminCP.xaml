@@ -57,7 +57,7 @@
                     <RowDefinition Height="30*"/>
                     <RowDefinition Height="43*" />
                 </Grid.RowDefinitions>
-                <ComboBox Name="SearchBox" Margin="6,17,6,6" VerticalAlignment="Stretch" Foreground="Blue" Background="White" IsEditable="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" TabIndex="6" GotFocus="SearchBox_GotFocus" KeyDown="SearchBox_KeyDown" MaxDropDownHeight="100" />
+                <ComboBox Name="SearchBox" Margin="6,17,6,6" VerticalAlignment="Stretch" Foreground="Blue" Background="White" IsEditable="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" TabIndex="6" GotFocus="SearchBox_GotFocus" KeyDown="SearchBox_KeyDown" MaxDropDownHeight="100" IsTextSearchEnabled="False" />
                 <PHB:ImageButton Name="SearchButton" Grid.Row="2" Height="60" Margin="44,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Image="/ProPharmacyManagerW;component/Images/Search1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Search3.png" ImageHover="/ProPharmacyManagerW;component/Images/Search2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Search3.png" TabIndex="8" Click="SearchButton_Click" IsDefault="True" />
                 <CheckBox x:Name="ByBarCode" Content="بواسطه الباركود" HorizontalAlignment="Left" Height="40" Margin="6,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Foreground="White" TabIndex="7"/>
             </Grid>
