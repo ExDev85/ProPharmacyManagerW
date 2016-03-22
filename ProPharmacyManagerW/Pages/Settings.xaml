@@ -4,11 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProPharmacyManagerW.Pages"
+      xmlns:vm ="clr-namespace:ProPharmacyManagerW.MVVM"
       xmlns:PHB="clr-namespace:ExtendedButton;assembly=ExtendedButton" 
       mc:Ignorable="d" 
       d:DesignHeight="599" d:DesignWidth="799"
       Title="اعدادت" FlowDirection="RightToLeft" Loaded="Page_Loaded">
-
+    <Page.Resources>
+        <vm:ABackup x:Key="Checked" />
+    </Page.Resources>
     <Grid>
         <TabControl x:Name="tabControl" TabStripPlacement="Left" Background="#FF2B80D4" BorderThickness="0" BorderBrush="{x:Null}" FontSize="14" FontWeight="Bold" Foreground="White">
             <TabControl.Resources>
@@ -89,15 +92,171 @@
             <TabItem Header="النسخ الاحتياطى" Foreground="White" BorderBrush="{x:Null}">
                 <Grid Background="#FF2B80D4">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="522*"/>
+                        <RowDefinition Height="44*"/>
+                        <RowDefinition Height="415*"/>
                         <RowDefinition Height="73*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="569*"/>
                         <ColumnDefinition Width="143*"/>
                     </Grid.ColumnDefinitions>
-                    <PHB:ImageButton x:Name="SetB3" Content="" Margin="0,25,10,0" TabIndex="5" Background="#FF6E6E6E" BorderBrush="#FF2B41A4" Foreground="White" FontSize="18.667" FontWeight="Bold" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/Set1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Set3.png" ImageHover="/ProPharmacyManagerW;component/Images/Set2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Set3.png" Width="108" Height="38" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Click="SetB2_Click" RenderTransformOrigin="0.219,14.315" Grid.Row="1" />
-                    <PHB:ImageButton x:Name="BackToMain3" Content="" HorizontalAlignment="Left" Height="38" Margin="15,25,0,0" VerticalAlignment="Top" Width="99" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="35" IsTabStop="False" Grid.Row="1"/>
+                    <PHB:ImageButton x:Name="SetB4" Content="" Margin="0,25,10,0" TabIndex="5" Background="#FF6E6E6E" BorderBrush="#FF2B41A4" Foreground="White" FontSize="18.667" FontWeight="Bold" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/Set1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Set3.png" ImageHover="/ProPharmacyManagerW;component/Images/Set2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Set3.png" Width="108" Height="38" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" RenderTransformOrigin="0.219,14.315" Grid.Row="3" Click="SetB4_Click" />
+                    <PHB:ImageButton x:Name="BackToMain3" Content="" HorizontalAlignment="Left" Height="38" Margin="15,25,0,0" VerticalAlignment="Top" Width="99" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="35" IsTabStop="False" Grid.Row="3"/>
+                    <CheckBox x:Name="IsBackupActive" Content="تفعيل النسخ الاحتياطى التلقائى" Height="34" Margin="15,5,10,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold" Foreground="White"/>
+                    <GroupBox x:Name="BackupSetG" Header="اعدادات" Margin="7,4,10,10" Grid.Row="1" Grid.ColumnSpan="2" FontSize="18.667" IsEnabled="{Binding IsChecked, ElementName=IsBackupActive}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="214*"/>
+                                <ColumnDefinition Width="226*"/>
+                                <ColumnDefinition Width="211*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="57*"/>
+                                <RowDefinition Height="87*"/>
+                                <RowDefinition Height="96*"/>
+                                <RowDefinition Height="105*"/>
+                                <RowDefinition Height="155*"/>
+                            </Grid.RowDefinitions>
+                            <CheckBox x:Name="DailyC" Content="يومى" Height="27" Margin="10,10,38,0" VerticalAlignment="Top" IsChecked="{Binding IsDailyChecked, Source={StaticResource Checked}}"/>
+                            <CheckBox x:Name="WeeklyC" Content="أسبوعى" Height="27" Margin="10,10,50,0" VerticalAlignment="Top" Grid.Column="1" IsChecked="{Binding IsWeeklyChecked, Source={StaticResource Checked}}"/>
+                            <CheckBox x:Name="MonthlyC" Content="شهرى" Height="27" Margin="10,10,35,0" VerticalAlignment="Top" Grid.Column="2" IsChecked="{Binding IsMonthlyChecked, Source={StaticResource Checked}}"/>
+                            <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Height="52" Margin="31,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="145" SelectedIndex="0" IsEnabled="{Binding IsChecked, ElementName=DailyC}">
+                                <ListBoxItem Content="الدقيقة"/>
+                                <ListBoxItem Content="00"/>
+                                <ListBoxItem Content="01"/>
+                                <ListBoxItem Content="02"/>
+                                <ListBoxItem Content="03"/>
+                                <ListBoxItem Content="04"/>
+                                <ListBoxItem Content="05"/>
+                                <ListBoxItem Content="06"/>
+                                <ListBoxItem Content="07"/>
+                                <ListBoxItem Content="08"/>
+                                <ListBoxItem Content="09"/>
+                                <ListBoxItem Content="10"/>
+                                <ListBoxItem Content="11"/>
+                                <ListBoxItem Content="12"/>
+                                <ListBoxItem Content="13"/>
+                                <ListBoxItem Content="14"/>
+                                <ListBoxItem Content="15"/>
+                                <ListBoxItem Content="16"/>
+                                <ListBoxItem Content="17"/>
+                                <ListBoxItem Content="18"/>
+                                <ListBoxItem Content="19"/>
+                                <ListBoxItem Content="20"/>
+                                <ListBoxItem Content="21"/>
+                                <ListBoxItem Content="22"/>
+                                <ListBoxItem Content="23"/>
+                                <ListBoxItem Content="24"/>
+                                <ListBoxItem Content="25"/>
+                                <ListBoxItem Content="26"/>
+                                <ListBoxItem Content="27"/>
+                                <ListBoxItem Content="28"/>
+                                <ListBoxItem Content="29"/>
+                                <ListBoxItem Content="30"/>
+                                <ListBoxItem Content="31"/>
+                                <ListBoxItem Content="32"/>
+                                <ListBoxItem Content="33"/>
+                                <ListBoxItem Content="34"/>
+                                <ListBoxItem Content="35"/>
+                                <ListBoxItem Content="36"/>
+                                <ListBoxItem Content="37"/>
+                                <ListBoxItem Content="38"/>
+                                <ListBoxItem Content="39"/>
+                                <ListBoxItem Content="40"/>
+                                <ListBoxItem Content="41"/>
+                                <ListBoxItem Content="42"/>
+                                <ListBoxItem Content="43"/>
+                                <ListBoxItem Content="44"/>
+                                <ListBoxItem Content="45"/>
+                                <ListBoxItem Content="46"/>
+                                <ListBoxItem Content="47"/>
+                                <ListBoxItem Content="48"/>
+                                <ListBoxItem Content="49"/>
+                                <ListBoxItem Content="50"/>
+                                <ListBoxItem Content="51"/>
+                                <ListBoxItem Content="52"/>
+                                <ListBoxItem Content="53"/>
+                                <ListBoxItem Content="54"/>
+                                <ListBoxItem Content="55"/>
+                                <ListBoxItem Content="56"/>
+                                <ListBoxItem Content="57"/>
+                                <ListBoxItem Content="58"/>
+                                <ListBoxItem Content="59"/>
+                            </ComboBox>
+                            <ComboBox x:Name="comboBox2" HorizontalAlignment="Left" Height="52" Margin="31,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="145" Grid.Column="1" SelectedIndex="0" IsEnabled="{Binding IsChecked, ElementName=DailyC}">
+                                <ListBoxItem Content="الساعة"/>
+                                <ListBoxItem Content="00"/>
+                                <ListBoxItem Content="01"/>
+                                <ListBoxItem Content="02"/>
+                                <ListBoxItem Content="03"/>
+                                <ListBoxItem Content="04"/>
+                                <ListBoxItem Content="05"/>
+                                <ListBoxItem Content="06"/>
+                                <ListBoxItem Content="07"/>
+                                <ListBoxItem Content="08"/>
+                                <ListBoxItem Content="09"/>
+                                <ListBoxItem Content="10"/>
+                                <ListBoxItem Content="11"/>
+                                <ListBoxItem Content="12"/>
+                                <ListBoxItem Content="13"/>
+                                <ListBoxItem Content="14"/>
+                                <ListBoxItem Content="15"/>
+                                <ListBoxItem Content="16"/>
+                                <ListBoxItem Content="17"/>
+                                <ListBoxItem Content="18"/>
+                                <ListBoxItem Content="19"/>
+                                <ListBoxItem Content="20"/>
+                                <ListBoxItem Content="21"/>
+                                <ListBoxItem Content="22"/>
+                                <ListBoxItem Content="23"/>
+                                <ListBoxItem Content="24"/>
+                            </ComboBox>
+                            <ComboBox x:Name="comboBox3" HorizontalAlignment="Left" Height="52" Margin="31,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="145" SelectedIndex="0" IsEnabled="{Binding IsChecked, ElementName=WeeklyC}">
+                                <ListBoxItem Content="اليوم"/>
+                                <ListBoxItem Content="السبت"/>
+                                <ListBoxItem Content="الاحد"/>
+                                <ListBoxItem Content="الاثنين"/>
+                                <ListBoxItem Content="الثلاثاء"/>
+                                <ListBoxItem Content="الاربعاء"/>
+                                <ListBoxItem Content="الخميس"/>
+                                <ListBoxItem Content="الجمعه"/>
+                            </ComboBox>
+                            <ComboBox x:Name="comboBox4" HorizontalAlignment="Left" Height="52" Margin="31,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="145" SelectedIndex="0" IsEnabled="{Binding IsChecked, ElementName=MonthlyC}">
+                                <ListBoxItem Content="يوم الشهر"/>
+                                <ListBoxItem Content="01"/>
+                                <ListBoxItem Content="02"/>
+                                <ListBoxItem Content="03"/>
+                                <ListBoxItem Content="04"/>
+                                <ListBoxItem Content="05"/>
+                                <ListBoxItem Content="06"/>
+                                <ListBoxItem Content="07"/>
+                                <ListBoxItem Content="08"/>
+                                <ListBoxItem Content="09"/>
+                                <ListBoxItem Content="10"/>
+                                <ListBoxItem Content="11"/>
+                                <ListBoxItem Content="12"/>
+                                <ListBoxItem Content="13"/>
+                                <ListBoxItem Content="14"/>
+                                <ListBoxItem Content="15"/>
+                                <ListBoxItem Content="16"/>
+                                <ListBoxItem Content="17"/>
+                                <ListBoxItem Content="18"/>
+                                <ListBoxItem Content="19"/>
+                                <ListBoxItem Content="20"/>
+                                <ListBoxItem Content="21"/>
+                                <ListBoxItem Content="22"/>
+                                <ListBoxItem Content="23"/>
+                                <ListBoxItem Content="24"/>
+                                <ListBoxItem Content="25"/>
+                                <ListBoxItem Content="26"/>
+                                <ListBoxItem Content="27"/>
+                                <ListBoxItem Content="28"/>
+                                <ListBoxItem Content="29"/>
+                                <ListBoxItem Content="30"/>
+                                <ListBoxItem Content="31"/>
+                            </ComboBox>
+                        </Grid>
+                    </GroupBox>
                 </Grid>
             </TabItem>
         </TabControl>

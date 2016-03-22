@@ -111,12 +111,14 @@ namespace ProPharmacyManagerW.Pages
                 file.Write("MySql", "Username", DBUser.Text);
                 file.Write("MySql", "Password", DBPass.Password);
                 file.Write("MySql", "Database", DBName.Text);
-                //DataHolder.CreateConnection(Core.INIDecrypt(file.ReadString("MySql", "Username")), Core.INIDecrypt(file.ReadString("MySql", "Password")), Core.INIDecrypt(file.ReadString("MySql", "Database")), Core.INIDecrypt(file.ReadString("MySql", "Host")));
-                //BackUp.NewDbRestore();
-                //BillsTable.LBN();
                 MessageBox.Show("رجاءا اعد تشغيل البرنامج");
                 System.Environment.Exit(0);
             });
+        }
+
+        private void SetB4_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
