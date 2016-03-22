@@ -35,7 +35,7 @@ namespace ProPharmacyManagerW.Pages
             }
         }
         
-        short CountBacks = 0;
+        int CountBacks = 0;
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -48,7 +48,7 @@ namespace ProPharmacyManagerW.Pages
             {
                 Directory.CreateDirectory(Paths.BackupsPath);
                 file.Write("BackUp", "Path", Paths.BackupsPath);
-                PathT.Text = file.ReadString("BackUp", "Path");
+                PathT.Text = Core.INIDecrypt(file.ReadString("BackUp", "Path"));
             }
             DirectoryInfo dinfo = new DirectoryInfo(PathT.Text);
             FileInfo[] Files = dinfo.GetFiles("*.sql");
