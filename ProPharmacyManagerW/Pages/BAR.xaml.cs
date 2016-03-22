@@ -39,6 +39,7 @@ namespace ProPharmacyManagerW.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            CountBacks = 0;
             IniFile file = new IniFile(Paths.BackupConfigPath);
             if (File.Exists(Paths.BackupConfigPath))
             {
