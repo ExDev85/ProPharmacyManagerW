@@ -8,7 +8,7 @@ using System;
 
 namespace ProPharmacyManagerW.Kernel
 {
-    public class Constants
+    public class Paths
     {
         public static string UnhandledExceptionsPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Exceptions\\";
         public static string SetupConfigPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Configuration.ini";

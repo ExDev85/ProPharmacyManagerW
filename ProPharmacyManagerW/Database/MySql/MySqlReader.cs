@@ -100,7 +100,7 @@ namespace ProPharmacyManagerW.Database
                 catch
                 {
                     MessageBox.Show("هناك مشكله فى اتصالك بقاعده البيانات اعد تشغيل البرنامج لتتمكن من تعديل الاعدادات\n او اضغط f11");
-                    File.Delete(Constants.SetupConfigPath);
+                    File.Delete(Paths.SetupConfigPath);
                 }
             }
         }

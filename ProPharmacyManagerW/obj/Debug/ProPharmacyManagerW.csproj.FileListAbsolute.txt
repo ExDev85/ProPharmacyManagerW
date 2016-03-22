@@ -57,7 +57,6 @@ D:\Projects\ProPharmacyManagerW\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debu
 C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.exe.config
 C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.exe
 C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.pdb
-C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.csprojResolveAssemblyReference.cache
 C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\CP.baml
 C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\Forms\About.baml
 C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\MainWindow.baml
@@ -105,3 +104,9 @@ C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\Se
 C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.g.resources
 C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.Properties.Resources.resources
 C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.csproj.GenerateResource.Cache
+C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.exe
+C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.pdb
+C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\ExtendedButton.dll
+C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\MySql.Data.dll
+C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\MySqlBackup.dll
+C:\Users\Felix\Source\Repos\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.csprojResolveAssemblyReference.cache

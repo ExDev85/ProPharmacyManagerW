@@ -26,7 +26,7 @@ namespace ProPharmacyManagerW.Pages
             InitializeComponent();
         }
         
-        IniFile file = new IniFile(Constants.SetupConfigPath);
+        IniFile file = new IniFile(Paths.SetupConfigPath);
 
         private BackgroundWorker bgw;
 
@@ -43,13 +43,13 @@ namespace ProPharmacyManagerW.Pages
             bgw = ((BackgroundWorker)this.FindResource("bgw"));
             try
             {
-                if (!File.Exists(Constants.SetupConfigPath))
+                if (!File.Exists(Paths.SetupConfigPath))
                 {
                     Core.IsSetup = true;
                     Title = "تنصيب البرنامج";
                     pB.Visibility = Visibility.Visible;
                 }
-                else if (File.Exists(Constants.SetupConfigPath))
+                else if (File.Exists(Paths.SetupConfigPath))
                 {
                     Core.IsSetup = false;
                     Title = "اعدادت البرنامج";
@@ -135,9 +135,9 @@ namespace ProPharmacyManagerW.Pages
                 file.Write("Settings", "DrugsLog", "1");
             });
             bgw.ReportProgress(30);
-            if (!Directory.Exists(Constants.BackupsPath))
+            if (!Directory.Exists(Paths.BackupsPath))
             {
-                Directory.CreateDirectory(Constants.BackupsPath);
+                Directory.CreateDirectory(Paths.BackupsPath);
             }
             Thread.Sleep(500);
 

@@ -24,8 +24,8 @@ namespace ProPharmacyManagerW.Database
                 string DTime = string.Format("{0}-{1}-{2} {3}.{4}.{5}.{6}", DateTime.Now.Day,
                     DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour,
                     DateTime.Now.Minute, DateTime.Now.Second, DateTime.Now.Millisecond);
-                string file = Kernel.Constants.BackupsPath + "PHDB " + DTime + ".sql";
-                DirectoryInfo dir1 = new DirectoryInfo(Kernel.Constants.BackupsPath);
+                string file = Kernel.Paths.BackupsPath + "PHDB " + DTime + ".sql";
+                DirectoryInfo dir1 = new DirectoryInfo(Kernel.Paths.BackupsPath);
                 using (var conn = DataHolder.MySqlConnection)
                 {
                     MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
@@ -61,7 +61,7 @@ namespace ProPharmacyManagerW.Database
         {
             try
             {
-                DirectoryInfo dir1 = new DirectoryInfo(Kernel.Constants.BackupsPath);
+                DirectoryInfo dir1 = new DirectoryInfo(Kernel.Paths.BackupsPath);
                 using (var conn = DataHolder.MySqlConnection)
                 {
                     MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
@@ -101,8 +101,8 @@ namespace ProPharmacyManagerW.Database
         {
             try
             {
-                string file = Kernel.Constants.BackupsPath + "PHDBOldDBBackup.sql";
-                DirectoryInfo dir1 = new DirectoryInfo(Kernel.Constants.BackupsPath);
+                string file = Kernel.Paths.BackupsPath + "PHDBOldDBBackup.sql";
+                DirectoryInfo dir1 = new DirectoryInfo(Kernel.Paths.BackupsPath);
                 using (var conn = DataHolder.MySqlConnection)
                 {
                     MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();
@@ -141,8 +141,8 @@ namespace ProPharmacyManagerW.Database
         {
             try
             {
-                string file = Kernel.Constants.BackupsPath + "PHDBOldDBBackup.sql";
-                DirectoryInfo dir1 = new DirectoryInfo(Kernel.Constants.BackupsPath);
+                string file = Kernel.Paths.BackupsPath + "PHDBOldDBBackup.sql";
+                DirectoryInfo dir1 = new DirectoryInfo(Kernel.Paths.BackupsPath);
                 using (var conn = DataHolder.MySqlConnection)
                 {
                     MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand();

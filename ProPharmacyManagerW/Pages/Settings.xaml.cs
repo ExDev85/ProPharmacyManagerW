@@ -24,7 +24,7 @@ namespace ProPharmacyManagerW.Pages
             InitializeComponent();
         }
 
-        IniFile file = new IniFile(Constants.SetupConfigPath);
+        IniFile file = new IniFile(Paths.SetupConfigPath);
 
         public static bool IsClosingSet;
         public static bool IsRecAcc;
@@ -42,7 +42,7 @@ namespace ProPharmacyManagerW.Pages
                 tabControl.SelectedIndex = 0;
                 AdminCP.IsOSettings1 = false;
             }
-            if (File.Exists(Constants.SetupConfigPath))
+            if (File.Exists(Paths.SetupConfigPath))
             {
                 DBHost.Text = Core.INIDecrypt(file.ReadString("MySql", "Host"));
                 DBName.Text = Core.INIDecrypt(file.ReadString("MySql", "Database"));

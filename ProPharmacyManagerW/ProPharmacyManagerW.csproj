@@ -60,9 +60,7 @@
   <PropertyGroup>
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationIcon>PPHM-Green.ico</ApplicationIcon>
   </PropertyGroup>
@@ -118,7 +116,7 @@
     </Compile>
     <Compile Include="Kernel\CommonBase.cs" />
     <Compile Include="Kernel\Console.cs" />
-    <Compile Include="Kernel\Constants.cs" />
+    <Compile Include="Kernel\Paths.cs" />
     <Compile Include="Kernel\IniFile.cs" />
     <Compile Include="Kernel\Core.cs" />
     <Compile Include="Kernel\WpfSingleInstance.cs" />
@@ -279,7 +277,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.Config" />
-    <None Include="app.manifest" />
     <None Include="Graph1.dgml" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

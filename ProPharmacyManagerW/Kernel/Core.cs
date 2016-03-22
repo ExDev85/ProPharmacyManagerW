@@ -45,8 +45,8 @@ namespace ProPharmacyManagerW.Kernel
         {
             try
             {
-                IniFile file = new IniFile(Constants.SetupConfigPath);
-                if (!File.Exists(Constants.SetupConfigPath))
+                IniFile file = new IniFile(Paths.SetupConfigPath);
+                if (!File.Exists(Paths.SetupConfigPath))
                 {
                     IsSetup = true;
                     Set set = new Set { Title = "تنصيب البرنامج" };
@@ -81,7 +81,7 @@ namespace ProPharmacyManagerW.Kernel
             catch (Exception ex)
             {
                 SaveException(ex);
-                File.Delete(Constants.SetupConfigPath);
+                File.Delete(Paths.SetupConfigPath);
             }
         }
         /// <summary> 
@@ -95,19 +95,19 @@ namespace ProPharmacyManagerW.Kernel
             MessageBox.Show(e.ToString());
             DateTime now = DateTime.Now;
             string str = string.Concat(new object[] { now.Month, "-", now.Day, "//" });
-            if (!Directory.Exists(Constants.UnhandledExceptionsPath))
+            if (!Directory.Exists(Paths.UnhandledExceptionsPath))
             {
-                Directory.CreateDirectory(Constants.UnhandledExceptionsPath);
+                Directory.CreateDirectory(Paths.UnhandledExceptionsPath);
             }
-            if (!Directory.Exists(Constants.UnhandledExceptionsPath + str))
+            if (!Directory.Exists(Paths.UnhandledExceptionsPath + str))
             {
-                Directory.CreateDirectory(Constants.UnhandledExceptionsPath + str);
+                Directory.CreateDirectory(Paths.UnhandledExceptionsPath + str);
             }
-            if (!Directory.Exists(Constants.UnhandledExceptionsPath + str + e.TargetSite.Name))
+            if (!Directory.Exists(Paths.UnhandledExceptionsPath + str + e.TargetSite.Name))
             {
-                Directory.CreateDirectory(Constants.UnhandledExceptionsPath + str + e.TargetSite.Name);
+                Directory.CreateDirectory(Paths.UnhandledExceptionsPath + str + e.TargetSite.Name);
             }
-            File.WriteAllLines((Constants.UnhandledExceptionsPath + str + e.TargetSite.Name + "\\") + string.Concat(new object[] { now.Hour, "-", now.Minute, "-", now.Ticks & 10L }) + ".txt", new List<string>
+            File.WriteAllLines((Paths.UnhandledExceptionsPath + str + e.TargetSite.Name + "\\") + string.Concat(new object[] { now.Hour, "-", now.Minute, "-", now.Ticks & 10L }) + ".txt", new List<string>
                 {
                     "----Exception message----",
                     e.Message,

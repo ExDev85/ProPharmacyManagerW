@@ -91,7 +91,7 @@ namespace ProPharmacyManagerW.Database
         /// </summary> 
         public static void UpgradeTables()
         {
-            IniFile file = new IniFile(Constants.SetupConfigPath);
+            IniFile file = new IniFile(Paths.SetupConfigPath);
             //TODO add upgrade codes when needed
             if (Convert.ToInt16(Core.INIDecrypt(file.ReadString("Upgrade", "Version"))) > 0990 && Convert.ToInt16(Core.INIDecrypt(file.ReadString("Upgrade", "Version"))) < 0995)
             {

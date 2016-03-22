@@ -96,7 +96,7 @@ namespace ProPharmacyManagerW
                 if (command.StartsWith("#"))
                 {
                     string[] data = command.Split(' ');
-                    IniFile file = new IniFile(Constants.SetupConfigPath);
+                    IniFile file = new IniFile(Paths.SetupConfigPath);
                     switch (data[0])
                     {
                         //TODO add more and more and more commands
@@ -161,7 +161,7 @@ namespace ProPharmacyManagerW
                                             }
                                             conn.Dispose();
                                             conn.Close();
-                                            File.Delete(Constants.SetupConfigPath);
+                                            File.Delete(Paths.SetupConfigPath);
                                         }
                                     }
                                 }

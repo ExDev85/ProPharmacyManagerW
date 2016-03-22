@@ -39,15 +39,15 @@ namespace ProPharmacyManagerW.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            IniFile file = new IniFile(Constants.BackupConfigPath);
-            if (File.Exists(Constants.BackupConfigPath))
+            IniFile file = new IniFile(Paths.BackupConfigPath);
+            if (File.Exists(Paths.BackupConfigPath))
             {
                 PathT.Text = Core.INIDecrypt(file.ReadString("BackUp", "Path"));
             }
-            else if (!File.Exists(Constants.BackupConfigPath))
+            else if (!File.Exists(Paths.BackupConfigPath))
             {
-                Directory.CreateDirectory(Constants.BackupsPath);
-                file.Write("BackUp", "Path", Constants.BackupsPath);
+                Directory.CreateDirectory(Paths.BackupsPath);
+                file.Write("BackUp", "Path", Paths.BackupsPath);
                 PathT.Text = file.ReadString("BackUp", "Path");
             }
             DirectoryInfo dinfo = new DirectoryInfo(PathT.Text);
