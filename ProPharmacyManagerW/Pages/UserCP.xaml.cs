@@ -262,7 +262,6 @@ namespace ProPharmacyManagerW.Pages
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             Clear();
-            decimal total = 0;
             try
             {
                 if (ByBarCode.IsChecked == true)
@@ -280,18 +279,17 @@ namespace ProPharmacyManagerW.Pages
                         MEX.Text = r.ReadString("ExpirationDate");
                         MNotes.Text = r.ReadString("Notes");
                         SearchBox.Foreground = Brushes.Green;
-                        if (total < 1)
+                        if (Convert.ToDecimal(MExist.Text) < 1)
                         {
                             MExist.Background = Brushes.Red;
                             MExist.Foreground = Brushes.White;
-                            Console.WriteLine("Searched for - " + MName.Text + " - I believe that you should get new ones");
+                            Console.WriteLine("You have no - " + MName.Text + " - I believe that you should get new ones");
                         }
-                        MExist.Text = total.ToString();
                         if (Convert.ToDateTime(MEX.Text) <= DateTime.Now.Date)
                         {
                             MEX.Background = Brushes.Red;
                             MEX.Foreground = Brushes.OrangeRed;
-                            Console.WriteLine("Searched for - " + MName.Text + " - I believe that you should get rid of it");
+                            Console.WriteLine("Exy exy - " + MName.Text + " - I believe that you should get rid of that");
                         }
                         Console.WriteLine("Searched for - " + MName.Text + " -");
                     }
@@ -316,18 +314,17 @@ namespace ProPharmacyManagerW.Pages
                         MEX.Text = r.ReadString("ExpirationDate");
                         MNotes.Text = r.ReadString("Notes");
                         SearchBox.Foreground = Brushes.Green;
-                        if (total < 1)
+                        if (Convert.ToDecimal(MExist.Text) < 1)
                         {
                             MExist.Background = Brushes.Red;
                             MExist.Foreground = Brushes.White;
-                            Console.WriteLine("Searched for - " + MName.Text + " - I believe that you should get new ones");
+                            Console.WriteLine("You have no - " + MName.Text + " - I believe that you should get new ones");
                         }
-                        MExist.Text = total.ToString();
                         if (Convert.ToDateTime(MEX.Text) <= DateTime.Now.Date)
                         {
                             MEX.Background = Brushes.Red;
                             MEX.Foreground = Brushes.OrangeRed;
-                            Console.WriteLine("Searched for - " + MName.Text + " - I believe that you should get rid of it");
+                            Console.WriteLine("Exy exy - " + MName.Text + " - I believe that you should get rid of that");
                         }
                         Console.WriteLine("Searched for - " + MName.Text + " -");
                     }
@@ -516,18 +513,26 @@ namespace ProPharmacyManagerW.Pages
             {
                 ADName.Text = "";
             }
-            ADName.IsDropDownOpen = true;
+            if (!ADName.Items.IsEmpty)
+            {
+                ADName.Items.Clear();
+            }
+            if (ADName.IsDropDownOpen == false && ADName.Text.Length > 0)
+            {
+                ADName.IsDropDownOpen = true;
+            }
             try
             {
-                MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
-                cmd.Select("medics").WhereLike("Name", SearchBox.Text);
-                MySqlReader r = new MySqlReader(cmd);
-                while (r.Read())
+                if (ADName.Text.Length == 0)
                 {
-                    if (!ADName.Items.Contains(r.ReadString("Name")))
-                    {
-                        ADName.Items.Add(r.ReadString("Name"));
-                    }
+                    return;
+                }
+                MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
+                cmd.Select("medics").WhereLike("Name", ADName.Text);
+                MySqlReader r = new MySqlReader(cmd);
+                while (r.Read() && ADName.Items.Count <= 10)
+                {
+                    ADName.Items.Add(r.ReadString("Name"));
                 }
             }
             catch (Exception ex)
