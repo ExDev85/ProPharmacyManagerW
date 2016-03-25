@@ -79,7 +79,7 @@ namespace ProPharmacyManagerW
             }
             else
             {
-                MessageBox.Show("ادخل اسم المستخدم و كمه المرور", "خطا", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("ادخل اسم المستخدم او كلمه المرور", "خطا", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
