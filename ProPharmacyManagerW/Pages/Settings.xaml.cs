@@ -6,6 +6,7 @@
 // </copyright>
 using ProPharmacyManagerW.Database;
 using ProPharmacyManagerW.Kernel;
+using System;
 using System.IO;
 using System.Threading;
 using System.Windows;
@@ -24,7 +25,8 @@ namespace ProPharmacyManagerW.Pages
             InitializeComponent();
         }
 
-        IniFile file = new IniFile(Paths.SetupConfigPath);
+        IniFile file1 = new IniFile(Paths.SetupConfigPath);
+        IniFile file2 = new IniFile(Paths.BackupConfigPath);
 
         public static bool IsClosingSet;
         public static bool IsRecAcc;
@@ -32,23 +34,13 @@ namespace ProPharmacyManagerW.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (AdminCP.IsOSettings2 == true)
-            {
-                tabControl.SelectedIndex = 1;
-                AdminCP.IsOSettings2 = false;
-            }
-            else
-            {
-                tabControl.SelectedIndex = 0;
-                AdminCP.IsOSettings1 = false;
-            }
             if (File.Exists(Paths.SetupConfigPath))
             {
-                DBHost.Text = Core.INIDecrypt(file.ReadString("MySql", "Host"));
-                DBName.Text = Core.INIDecrypt(file.ReadString("MySql", "Database"));
-                DBUser.Text = Core.INIDecrypt(file.ReadString("MySql", "Username"));
-                DBPass.Password = Core.INIDecrypt(file.ReadString("MySql", "Password"));
-                Vers.Content = Core.INIDecrypt(file.ReadString("Upgrade", "Version"));
+                DBHost.Text = Core.INIDecrypt(file1.ReadString("MySql", "Host"));
+                DBName.Text = Core.INIDecrypt(file1.ReadString("MySql", "Database"));
+                DBUser.Text = Core.INIDecrypt(file1.ReadString("MySql", "Username"));
+                DBPass.Password = Core.INIDecrypt(file1.ReadString("MySql", "Password"));
+                Vers.Content = Core.INIDecrypt(file1.ReadString("Upgrade", "Version"));
                 if (Core.aa == "0")
                 {
                     AccLogs.IsChecked = false;
@@ -66,6 +58,75 @@ namespace ProPharmacyManagerW.Pages
                     MedLogs.IsChecked = true;
                 }
             }
+            if (File.Exists(Paths.BackupConfigPath))
+            {
+                Core.sb = Core.INIDecrypt(file2.ReadString("Settings", "Backup"));
+                Core.st = Core.INIDecrypt(file2.ReadString("Settings", "Type"));
+                Core.stt = Core.INIDecrypt(file2.ReadString("Settings", "Time"));
+                //TODO time value selected item
+                if (Core.sb == "0")
+                {
+                    IsBackupActive.IsChecked = false;
+                    DailyC.IsChecked = false;
+                    WeeklyC.IsChecked = false;
+                    MonthlyC.IsChecked = false;
+                }
+                if (Core.sb == "1")
+                {
+                    IsBackupActive.IsChecked = true;
+                }
+                if (Core.st == "0")
+                {
+                    DailyC.IsChecked = false;
+                    WeeklyC.IsChecked = false;
+                    MonthlyC.IsChecked = false;
+                }
+                if (Core.st == "1")
+                {
+                    DailyC.IsChecked = true;
+                    string[] time = Core.stt.Split(':');
+                    HourCB.SelectedIndex = Convert.ToByte(time[0]) + 1;
+                    MinCB.SelectedIndex = Convert.ToByte(time[1]) + 1;
+                }
+                if (Core.st == "2")
+                {
+                    WeeklyC.IsChecked = true;
+                    if (Convert.ToByte(Core.stt) == 1)
+                    {
+                        DayCB.SelectedIndex = 3;
+                    }
+                    else if (Convert.ToByte(Core.stt) == 2)
+                    {
+                        DayCB.SelectedIndex = 4;
+                    }
+                    else if (Convert.ToByte(Core.stt) == 3)
+                    {
+                        DayCB.SelectedIndex = 5;
+                    }
+                    else if (Convert.ToByte(Core.stt) == 4)
+                    {
+                        DayCB.SelectedIndex = 6;
+                    }
+                    else if (Convert.ToByte(Core.stt) == 5)
+                    {
+                        DayCB.SelectedIndex = 7;
+                    }
+                    else if (Convert.ToByte(Core.stt) == 6)
+                    {
+                        DayCB.SelectedIndex = 1;
+                    }
+                    else if (Convert.ToByte(Core.stt) == 7)
+                    {
+                        DayCB.SelectedIndex = 2;
+                    }
+                }
+                if (Core.st == "3")
+                {
+                    MonthlyC.IsChecked = true;
+                    MonthDayCB.SelectedIndex = Convert.ToByte(Core.stt);
+
+                }
+            }
         }
 
         private void BackToMain_Click(object sender, RoutedEventArgs e)
@@ -77,26 +138,27 @@ namespace ProPharmacyManagerW.Pages
         {
             if (AccLogs.IsChecked == true)
             {
-                file.Write("Settings", "AccountsLog", "1");
+                file1.Write("Settings", "AccountsLog", "1");
                 IsRecAcc = true;
             }
             else
             {
-                file.Write("Settings", "AccountsLog", "0");
+                file1.Write("Settings", "AccountsLog", "0");
                 IsRecAcc = false;
             }
             if (MedLogs.IsChecked == true)
             {
-                file.Write("Settings", "DrugsLog", "1");
+                file1.Write("Settings", "DrugsLog", "1");
                 IsRecMed = true;
             }
             else
             {
-                file.Write("Settings", "DrugsLog", "0");
+                file1.Write("Settings", "DrugsLog", "0");
                 IsRecMed = false;
             }
-            Core.aa = Core.INIDecrypt(file.ReadString("Settings", "AccountsLog"));
-            Core.bb = Core.INIDecrypt(file.ReadString("Settings", "DrugsLog"));
+            Core.aa = Core.INIDecrypt(file1.ReadString("Settings", "AccountsLog"));
+            Core.bb = Core.INIDecrypt(file1.ReadString("Settings", "DrugsLog"));
+            MessageBox.Show("تم حفظ الاعدادات بنجاح");
         }
 
         private void SetB1_Click(object sender, RoutedEventArgs e)
@@ -105,20 +167,100 @@ namespace ProPharmacyManagerW.Pages
             {
                 BackUp.NewDbBackup();
                 MessageBox.Show("تم اخذ نسخه احتياطيه من القاعده القديمه");
-                DataHolder.CreateConnection(Core.INIDecrypt(file.ReadString("MySql", "Username")), Core.INIDecrypt(file.ReadString("MySql", "Password")), Core.INIDecrypt(file.ReadString("MySql", "Host")));
-                CreateDB.Createdb(file.ReadString("MySql", "Database"), DBName.Text);
-                file.Write("MySql", "Host", DBHost.Text);
-                file.Write("MySql", "Username", DBUser.Text);
-                file.Write("MySql", "Password", DBPass.Password);
-                file.Write("MySql", "Database", DBName.Text);
-                MessageBox.Show("رجاءا اعد تشغيل البرنامج");
-                System.Environment.Exit(0);
+                DataHolder.CreateConnection(Core.INIDecrypt(file1.ReadString("MySql", "Username")), Core.INIDecrypt(file1.ReadString("MySql", "Password")), Core.INIDecrypt(file1.ReadString("MySql", "Host")));
+                CreateDB.Createdb(file1.ReadString("MySql", "Database"), DBName.Text);
+                file1.Write("MySql", "Host", DBHost.Text);
+                file1.Write("MySql", "Username", DBUser.Text);
+                file1.Write("MySql", "Password", DBPass.Password);
+                file1.Write("MySql", "Database", DBName.Text);
+                MessageBox.Show("تم الحفظ سيتم غلق البرنامج الان");
+                Environment.Exit(0);
             });
         }
 
         private void SetB4_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (IsBackupActive.IsChecked == true)
+            {
+                file2.Write("Settings", "Backup", "1");
+            }
+            else
+            {
+                file2.Write("Settings", "Backup", "0");
+            }
+            if (DailyC.IsChecked == true)
+            {
+                if (MinCB.Text == "الدقيقة" || HourCB.Text == "الساعة")
+                {
+                    MessageBox.Show("اختار توقيت صحيح");
+                    return;
+                }
+                else
+                {
+                    file2.Write("Settings", "Type", "1");
+                    file2.Write("Settings", "Time", HourCB.Text + ":" + MinCB.Text);
+                    file2.Write("Settings", "Date", DateTime.Now.ToShortDateString());
+                }
+            }
+            else if (WeeklyC.IsChecked == true)
+            {
+                if (DayCB.Text == "اليوم")
+                {
+                    MessageBox.Show("اختار يوم من ايام الاسبوع");
+                    return;
+                }
+                else
+                {
+                    byte dayn;
+                    switch (DayCB.Text)
+                    {
+                        case "الاثنين":
+                            dayn = 1;
+                            break;
+                        case "الثلاثاء":
+                            dayn = 2;
+                            break;
+                        case "الاربعاء":
+                            dayn = 3;
+                            break;
+                        case "الخميس":
+                            dayn = 4;
+                            break;
+                        case "الجمعه":
+                            dayn = 5;
+                            break;
+                        case "السبت":
+                            dayn = 6;
+                            break;
+                        case "الاحد":
+                            dayn = 7;
+                            break;
+                        default:
+                            MessageBox.Show("اختار يوم");
+                            return;
+                    }
+                    file2.Write("Settings", "Type", "2");
+                    file2.Write("Settings", "Time", dayn);
+                }
+            }
+            else if (MonthlyC.IsChecked == true)
+            {
+                if (DayCB.Text == "يوم الشهر")
+                {
+                    MessageBox.Show("اختار يوم من ايام الاسبوع");
+                    return;
+                }
+                else
+                {
+                    file2.Write("Settings", "Type", "3");
+                    file2.Write("Settings", "Time", MonthDayCB.Text);
+                }
+            }
+            else
+            {
+                file2.Write("Settings", "Type", "0");
+            }
+            MessageBox.Show("تم حفظ الاعدادات بنجاح");
         }
     }
 }

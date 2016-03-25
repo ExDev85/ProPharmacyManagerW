@@ -94,20 +94,12 @@ namespace ProPharmacyManagerW.Pages
             ac.Show();
         }
         /// <summary>
-        /// Database settings tab to open
+        /// Database settings page to open
         /// </summary>
-        public static bool IsOSettings1;       
-        private void MISet2_Click(object sender, RoutedEventArgs e)
+        public static bool IsOSettings;       
+        private void MISet_Click(object sender, RoutedEventArgs e)
         {
-            IsOSettings1 = true;
-        }
-        /// <summary>
-        /// Logs settings tab to open
-        /// </summary>
-        public static bool IsOSettings2;
-        private void MISet1_Click(object sender, RoutedEventArgs e)
-        {
-            IsOSettings2 = true;
+            IsOSettings = true;
         }
         /// <summary>
         /// open bills page

@@ -41,8 +41,7 @@
                 <MenuItem x:Name="MIExy" Header="منتهى الصلاحية" Background="White" Foreground="Blue" Click="MIExy_Click" />
             </MenuItem>
             <MenuItem x:Name="MeSe" FontSize="15" FontWeight="Bold" Header="اعدادات" TabIndex="4" Foreground="White">
-                <MenuItem Header="التفضيلات" Background="White" Foreground="Blue" Click="MISet1_Click" />
-                <MenuItem Header="قاعدة البيانات" Background="White" Foreground="Blue" Click="MISet2_Click" />
+                <MenuItem Header="التفضيلات" Background="White" Foreground="Blue" Click="MISet_Click" />
                 <Separator Background="White" Foreground="#FFA0A0A0" />
                 <MenuItem x:Name="BAR" Header="النسخ الاحتياطى" Background="White" Foreground="Blue" Click="BAR_Click" />
             </MenuItem>

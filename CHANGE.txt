@@ -2,6 +2,7 @@ ProPharmacyManagerW 0.9.9.6:
 1.  You don't have to run the program as administrator anymore
 2.  Improvements to the UI.
 3.  Improvements to search suggestions list
+4.  Add automatic (daily, weekly or monthly) backingup system
 
 ProPharmacyManagerW 0.9.9.5:
 
