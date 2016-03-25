@@ -5,7 +5,6 @@
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
 using System;
-using System.Security.Principal;
 using System.Windows;
 
 namespace ProPharmacyManagerW

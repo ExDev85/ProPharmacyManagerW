@@ -110,10 +110,11 @@ namespace ProPharmacyManagerW
 
         private void checkClosingState(object sender, EventArgs e)
         {
-            if (Pages.AdminCP.IsOSettings1 || Pages.AdminCP.IsOSettings2)
+            if (Pages.AdminCP.IsOSettings)
             {
                 Pages.Settings set = new Pages.Settings();
                 FFhost.Navigate(set);
+                Pages.AdminCP.IsOSettings = false;
             }
             if (Pages.Settings.IsClosingSet && AccountsTable.IsAdmin() == false)
             {
