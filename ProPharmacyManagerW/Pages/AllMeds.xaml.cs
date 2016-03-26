@@ -69,6 +69,10 @@ namespace ProPharmacyManagerW.Pages
                 {
                     mT.Columns["Total"].ColumnName = "الكمية";
                 }
+                if (mT.Columns.Contains("BPrice"))
+                {
+                    mT.Columns["SPrice"].ColumnName = "سعر الشراء";
+                }
                 if (mT.Columns.Contains("SPrice"))
                 {
                     mT.Columns["SPrice"].ColumnName = "سعر البيع";
@@ -249,23 +253,26 @@ namespace ProPharmacyManagerW.Pages
 
         private void SearchBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            SearchBox.IsDropDownOpen = true;
+            if (!SearchBox.Items.IsEmpty)
+            {
+                SearchBox.Items.Clear();
+            }
+            if (SearchBox.IsDropDownOpen == false && SearchBox.Text.Length > 0)
+            {
+                SearchBox.IsDropDownOpen = true;
+            }
             try
             {
                 Dispatcher.BeginInvoke(DispatcherPriority.Background, (ThreadStart)delegate ()
                 {
                     if (cByName.IsChecked == true)
                     {
-                        SearchBox.Items.Clear();
                         MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
                         cmd.Select("medics").WhereLike("Name", SearchBox.Text);
                         MySqlReader r = new MySqlReader(cmd);
-                        while (r.Read())
+                        while (r.Read() && SearchBox.Items.Count <= 10 && SearchBox.Text.Length > 0)
                         {
-                            if (!SearchBox.Items.Contains(r.ReadString("Name")))
-                            {
-                                SearchBox.Items.Add(r.ReadString("Name"));
-                            }
+                            SearchBox.Items.Add(r.ReadString("Name"));
                         }
                     }
                     else if (cByBar.IsChecked == true)
@@ -274,11 +281,10 @@ namespace ProPharmacyManagerW.Pages
                     }
                     else if (cBySub.IsChecked == true)
                     {
-                        SearchBox.Items.Clear();
                         MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
                         cmd.Select("medics").WhereLike("ScientificName", SearchBox.Text);
                         MySqlReader r = new MySqlReader(cmd);
-                        while (r.Read())
+                        while (r.Read() && SearchBox.Items.Count <= 10 && SearchBox.Text.Length > 0)
                         {
                             if (!SearchBox.Items.Contains(r.ReadString("ScientificName")))
                             {

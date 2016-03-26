@@ -61,10 +61,10 @@ namespace ProPharmacyManagerW.Pages
                     mT.Columns["TotalAmount"].ReadOnly = true;
                     mT.Columns["TotalAmount"].ColumnName = "الكمية المباعة";
                 }
-                if (mT.Columns.Contains("TotalSPrice"))
+                if (mT.Columns.Contains("TotalPrice"))
                 {
-                    mT.Columns["TotalSPrice"].ReadOnly = true;
-                    mT.Columns["TotalSPrice"].ColumnName = "اجمالى السعر";
+                    mT.Columns["TotalPrice"].ReadOnly = true;
+                    mT.Columns["TotalPrice"].ColumnName = "اجمالى السعر";
                 }
                 if (mT.Columns.Contains("Cashier"))
                 {

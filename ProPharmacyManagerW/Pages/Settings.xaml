@@ -54,10 +54,10 @@
                         <RowDefinition Height="66*"/>
                         <RowDefinition Height="63*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="label1" Content="المضيف" Margin="10,10,10,8" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold" Grid.Row="1" Grid.ColumnSpan="2"/>
-                    <Label x:Name="label2" Content="اسم قاعده البيانات" Margin="10,10,16,17" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold" Grid.Row="3" Grid.ColumnSpan="2"/>
-                    <Label x:Name="label3" Content="اسم المستخدم" Margin="10,10,16,14" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold" Grid.Row="5" Grid.ColumnSpan="2"/>
-                    <Label x:Name="label4" Content="كلمه مرور المستخدم" Margin="10,10,13,22" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold" Grid.Row="7" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label1" Content="المضيف" Margin="10,10,10,8" Foreground="White" FontSize="16" FontWeight="Bold" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label2" Content="اسم قاعده البيانات" Margin="10,10,16,17" Foreground="White" FontSize="16" FontWeight="Bold" Grid.Row="3" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label3" Content="اسم المستخدم" Margin="10,10,16,14" Foreground="White" FontSize="16" FontWeight="Bold" Grid.Row="5" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label4" Content="كلمه مرور المستخدم" Margin="10,10,13,22" Foreground="White" FontSize="16" FontWeight="Bold" Grid.Row="7" Grid.ColumnSpan="2"/>
                     <TextBox x:Name="DBHost" Margin="10,10,16,14" TextWrapping="Wrap" Text="localhost" FlowDirection="LeftToRight" MaxLines="1" TabIndex="1" Foreground="#FF3399FF" FontSize="16" FontWeight="Bold" Grid.Row="2" Grid.ColumnSpan="2"/>
                     <TextBox x:Name="DBName" Margin="10,10,13,19" TextWrapping="Wrap" Text="phdb" FlowDirection="LeftToRight" MaxLines="1" TabIndex="2" Foreground="#FF3399FF" FontSize="16" FontWeight="Bold" Grid.Row="4" Grid.ColumnSpan="2"/>
                     <TextBox x:Name="DBUser" Margin="10,10,14,15" TextWrapping="Wrap" Text="root" FlowDirection="LeftToRight" MaxLines="1" TabIndex="3" Foreground="#FF3399FF" FontSize="16" FontWeight="Bold" Grid.Row="6" Grid.ColumnSpan="2"/>
@@ -117,9 +117,9 @@
                                 <RowDefinition Height="105*"/>
                                 <RowDefinition Height="155*"/>
                             </Grid.RowDefinitions>
-                            <CheckBox x:Name="DailyC" Content="يومى" Height="27" Margin="10,10,38,0" VerticalAlignment="Top" IsChecked="{Binding IsDailyChecked, Source={StaticResource Checked}}"/>
-                            <CheckBox x:Name="WeeklyC" Content="أسبوعى" Height="27" Margin="10,10,50,0" VerticalAlignment="Top" Grid.Column="1" IsChecked="{Binding IsWeeklyChecked, Source={StaticResource Checked}}"/>
-                            <CheckBox x:Name="MonthlyC" Content="شهرى" Height="27" Margin="10,10,35,0" VerticalAlignment="Top" Grid.Column="2" IsChecked="{Binding IsMonthlyChecked, Source={StaticResource Checked}}"/>
+                            <CheckBox x:Name="DailyC" Content="يومى" Height="27" Margin="10,10,38,0" VerticalAlignment="Top" IsChecked="{Binding IsDailyChecked, Source={StaticResource Checked}}" Foreground="White"/>
+                            <CheckBox x:Name="WeeklyC" Content="أسبوعى" Height="27" Margin="10,10,50,0" VerticalAlignment="Top" Grid.Column="1" IsChecked="{Binding IsWeeklyChecked, Source={StaticResource Checked}}" Foreground="White"/>
+                            <CheckBox x:Name="MonthlyC" Content="شهرى" Height="27" Margin="10,10,35,0" VerticalAlignment="Top" Grid.Column="2" IsChecked="{Binding IsMonthlyChecked, Source={StaticResource Checked}}" Foreground="White"/>
                             <ComboBox x:Name="MinCB" HorizontalAlignment="Left" Height="52" Margin="31,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="145" SelectedIndex="0" IsEnabled="{Binding IsChecked, ElementName=DailyC}">
                                 <ListBoxItem Content="الدقيقة"/>
                                 <ListBoxItem Content="00"/>

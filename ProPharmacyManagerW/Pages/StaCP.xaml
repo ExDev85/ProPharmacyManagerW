@@ -31,7 +31,7 @@
             <ListBoxItem Content="مدير"/>
             <ListBoxItem Content="موظف"/>
         </ComboBox>
-        <TextBox x:Name="PHN" Grid.Column="1" HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="209" Grid.Row="5" TabIndex="3"/>
+        <TextBox x:Name="PHN" Grid.Column="1" HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="209" Grid.Row="5" TabIndex="3" FontSize="18.667" Foreground="#FF12459E"/>
         <Label x:Name="label" Content="كلمه المرور الحالية:" Grid.Column="1" Margin="0,0,10,1" FontSize="14" FontWeight="Bold" Foreground="White"/>
         <Label x:Name="label_Copy" Content="الصلاحيات:" Grid.Column="1" Margin="10,0,0,6" FontSize="14" FontWeight="Bold" Foreground="White" Grid.Row="2"/>
         <Label x:Name="label_Copy1" Content="رقم الهاتف:" Grid.Column="1" Margin="10,0,0,3" FontSize="14" FontWeight="Bold" Foreground="White" Grid.Row="4"/>

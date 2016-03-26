@@ -21,11 +21,11 @@
             <ColumnDefinition Width="632*"/>
         </Grid.ColumnDefinitions>
         <ListView x:Name="BillsNoList" TabIndex="0" FontSize="14" FontWeight="Bold" SelectionChanged="BillsNoList_SelectionChanged" SelectionMode="Single">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </ListView.Resources>
         </ListView>
         <TextBox x:Name="BillContent" Grid.Column="1" Margin="5,0,0,0" TextWrapping="Wrap" Text="ستعرض الفاتورة هنا بعد اختيار رقمها الصحيح&#xD;&#xA;*البحث بالاسفل يكون افتراضيا برقم الفاتورة." FontSize="14" Foreground="Green" AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True" TabIndex="1"/>
         <PHB:ImageButton x:Name="BackToMain" Content="" HorizontalAlignment="Left" Height="40" Margin="28,11,0,0" VerticalAlignment="Top" Width="110" Grid.Row="3" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="6" IsTabStop="False" Click="BackToMain_Click"/>
