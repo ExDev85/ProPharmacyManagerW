@@ -71,7 +71,7 @@ namespace ProPharmacyManagerW.Pages
                 }
                 if (mT.Columns.Contains("BPrice"))
                 {
-                    mT.Columns["SPrice"].ColumnName = "سعر الشراء";
+                    mT.Columns["BPrice"].ColumnName = "سعر الشراء";
                 }
                 if (mT.Columns.Contains("SPrice"))
                 {
