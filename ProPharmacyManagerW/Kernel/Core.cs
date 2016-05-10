@@ -198,7 +198,6 @@ namespace ProPharmacyManagerW.Kernel
             {
                 SaveException(ex);
                 File.Delete(Paths.SetupConfigPath);
-                File.Delete(Paths.SetupConfigPath);
             }
         }
         /// <summary> 
