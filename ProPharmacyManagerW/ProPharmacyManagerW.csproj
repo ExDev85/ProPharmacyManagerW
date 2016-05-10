@@ -121,6 +121,8 @@
     <Compile Include="Kernel\Core.cs" />
     <Compile Include="Kernel\WpfSingleInstance.cs" />
     <Compile Include="MVVM\ABackup.cs" />
+    <Compile Include="MVVM\AllAmount.cs" />
+    <Compile Include="MVVM\AllEX.cs" />
     <Compile Include="MVVM\FAllMeds.cs" />
     <Compile Include="Pages\AccLogs.xaml.cs">
       <DependentUpon>AccLogs.xaml</DependentUpon>
