@@ -26,7 +26,7 @@ namespace ProPharmacyManagerW
         {
             if (Kernel.Core.IsSetup == true)
             {
-                checkRegister.Interval = TimeSpan.FromMilliseconds(500);
+                checkRegister.Interval = TimeSpan.FromMilliseconds(200);
                 checkRegister.Tick += CheckRegiserState;
                 checkRegister.Start();
             }
@@ -55,9 +55,9 @@ namespace ProPharmacyManagerW
 
         private void CheckRegiserState(object sender, EventArgs e)
         {
-            if (Pages.Register.IsRegisterFromSetup == true)
+            if (Pages.Register.IsRegisCom == true && Pages.Register.IsRegisterFromSetup == true)
             {
-                this.Close();
+                Close();
             }
         }
 

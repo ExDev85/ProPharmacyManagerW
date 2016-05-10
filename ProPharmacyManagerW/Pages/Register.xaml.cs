@@ -22,7 +22,7 @@ namespace ProPharmacyManagerW.Pages
         }
 
         /// <summary>
-        /// Check if registertion progress compelete for setup process
+        /// Check if registertion is for setup process
         /// </summary>
         public static bool IsRegisterFromSetup;
         /// <summary>

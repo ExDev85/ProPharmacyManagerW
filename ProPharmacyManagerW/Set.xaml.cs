@@ -30,9 +30,13 @@ namespace ProPharmacyManagerW
         {
             if (Pages.Register.IsRegisterFromSetup == true && Core.IsSetup == true)
             {
-                Pages.Register.IsRegisterFromSetup = false;
+                if (Pages.Register.IsRegisCom)
+                {
+                    Pages.Register.IsRegisterFromSetup = false;
+                    Pages.Register.IsRegisCom = false;
+                }
                 Core.IsSetup = false;
-                this.Close();
+                Close();
                 checkSetUp.Stop();
             }
         }
