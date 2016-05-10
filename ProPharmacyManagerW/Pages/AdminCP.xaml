@@ -72,15 +72,15 @@
                 <Label Name="label2" Content="مدة الصلاحية" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="6,134,0,0" VerticalAlignment="Top" Width="223" />
                 <DatePicker Name="MEX" Height="30" Margin="6,167,0,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="11" FirstDayOfWeek="Saturday" DisplayDateStart="2016-01-01" Text="" />
                 <Label Name="label3" Content="السعر" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="12,201,0,0" VerticalAlignment="Top" Width="223" />
-                <TextBox Name="MPrice" Height="30" Margin="6,234,3,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" MaxLines="1" MaxLength="15" PreviewTextInput="NubmersOnly"/>
+                <TextBox Name="MPrice" Height="30" Margin="6,234,3,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly"/>
                 <Label Name="label4" Content="الكمية (الموجود/المراد بيعه)" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="6,270,0,0" VerticalAlignment="Top" Width="230" />
-                <TextBox Name="MExist" Height="30" Margin="6,302,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="123" TabIndex="13" MaxLines="1" MaxLength="15" PreviewTextInput="NubmersOnly" />
-                <TextBox Name="MWSell" Height="30" Margin="140,302,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="102" TabIndex="14" Text="1" MaxLines="1" MaxLength="15" PreviewTextInput="NubmersOnly" />
+                <TextBox Name="MExist" Height="30" Margin="6,302,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="123" TabIndex="13" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" />
+                <TextBox Name="MWSell" Height="30" Margin="140,302,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="102" TabIndex="14" Text="1" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" />
                 <Label Name="label5" Content="ملاحظات الدواء" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="7,191,0,0" VerticalAlignment="Top" Width="226" Grid.Column="1" />
                 <TextBox Name="MNotes" Margin="7,224,6,8" Grid.Column="1" TextWrapping="Wrap" Foreground="Red" TabIndex="19" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
                 <CheckBox Name="NewBill" Content="   فاتورة جديدة" Grid.Column="1" Height="30" Margin="7,4,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="226" TabIndex="16" />
                 <Label Name="label6" Content="رقم الفاتورة" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="7,60,0,0" VerticalAlignment="Top" Width="226" Grid.Column="1" />
-                <TextBox Name="BillNo" Height="30" Margin="7,99,3,0" VerticalAlignment="Top" Grid.Column="1" Foreground="Blue" TabIndex="17" MaxLines="1" MaxLength="20" IsReadOnlyCaretVisible="True" PreviewTextInput="NubmersOnly" />
+                <TextBox Name="BillNo" Height="30" Margin="7,99,3,0" VerticalAlignment="Top" Grid.Column="1" Foreground="Blue" TabIndex="17" MaxLines="1" MaxLength="20" IsReadOnlyCaretVisible="True" PreviewTextInput="NumbersOnly" />
                 <Label Name="label7" Content="اسم العميل" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="7,134,0,0" VerticalAlignment="Top" Width="226" Grid.Column="1" />
                 <TextBox Name="Client" Height="30" Margin="7,167,6,0" VerticalAlignment="Top" Grid.Column="1" Foreground="Green" TabIndex="18" MaxLines="1" MaxLength="50" />
                 <Label Name="label8" Content="النوع" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="6,337,0,0" VerticalAlignment="Top" Width="223" />

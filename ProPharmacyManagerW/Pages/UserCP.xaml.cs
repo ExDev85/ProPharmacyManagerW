@@ -131,9 +131,8 @@ namespace ProPharmacyManagerW.Pages
                     break;
             }
         }
-
-        #region nubmers only
-        private void MPrice_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        
+        private void NumbersOnly(object sender, TextCompositionEventArgs e)
         {
             if (!char.IsDigit(e.Text, e.Text.Length - 1) && e.Text != ".")
             {
@@ -144,31 +143,6 @@ namespace ProPharmacyManagerW.Pages
                 e.Handled = true;
             }
         }
-
-        private void MExist_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (!char.IsDigit(e.Text, e.Text.Length - 1) && e.Text != ".")
-            {
-                e.Handled = true;
-            }
-            if (e.Text == "." && (sender as TextBox).Text.IndexOf('.') > -1)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void MWSell_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (!char.IsDigit(e.Text, e.Text.Length - 1) && e.Text != ".")
-            {
-                e.Handled = true;
-            }
-            if (e.Text == "." && (sender as TextBox).Text.IndexOf('.') > -1)
-            {
-                e.Handled = true;
-            }
-        }
-        #endregion
 
         /// <summary>
         /// check if selling process is complete or not

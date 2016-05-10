@@ -392,7 +392,7 @@ namespace ProPharmacyManagerW.Pages
             //}
         }
         
-        private void NubmersOnly(object sender, TextCompositionEventArgs e)
+        private void NumbersOnly(object sender, TextCompositionEventArgs e)
         {
             if (!char.IsDigit(e.Text, e.Text.Length - 1) && e.Text != ".")
             {
