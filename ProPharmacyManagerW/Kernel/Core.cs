@@ -92,7 +92,7 @@ namespace ProPharmacyManagerW.Kernel
                     st = INIDecrypt(file2.ReadString("Settings", "Type"));
                     stt = INIDecrypt(file2.ReadString("Settings", "Time"));
                     std = INIDecrypt(file2.ReadString("Settings", "Date"));
-                    //TODO make timecount for backingup
+                    #region database logs
                     if (aa == "0")
                     {
                         Pages.Settings.IsRecAcc = false;
@@ -109,6 +109,8 @@ namespace ProPharmacyManagerW.Kernel
                     {
                         Pages.Settings.IsRecMed = true;
                     }
+                    #endregion
+                    #region automatic backup system
                     if (File.Exists(Paths.BackupConfigPath))
                     {
                         if (Convert.ToByte(sb) == 1)
@@ -192,6 +194,7 @@ namespace ProPharmacyManagerW.Kernel
                             }
                         }
                     }
+                    #endregion
                 }
             }
             catch (Exception ex)
