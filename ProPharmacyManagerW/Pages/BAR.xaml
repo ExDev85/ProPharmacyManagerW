@@ -3,13 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:PHB="clr-namespace:ExtendedButton;assembly=ExtendedButton"
       xmlns:local="clr-namespace:ProPharmacyManagerW.Pages"
+      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls" 
+      xmlns:vm="clr-namespace:ProPharmacyManagerW.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="599" d:DesignWidth="799"
       Title="النسخ الاحتياطى" FlowDirection="RightToLeft" Loaded="Page_Loaded">
     <Page.Resources>
-        <PHB:VisibilityConvertor x:Key="VisibilityConvertor"/>
+        <vm:VisibilityConvertor x:Key="VisibilityConvertor"/>
     </Page.Resources>
 
     <Grid>
@@ -46,10 +47,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <PHB:ImageButton x:Name="BackUpB" Content="" Grid.Column="3" HorizontalAlignment="Left" Height="60" Margin="49,18,0,0" Grid.Row="4" VerticalAlignment="Top" Width="140" Click="BackUpB_Click" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/Backup1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Backup3.png" ImageHover="/ProPharmacyManagerW;component/Images/Backup2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Backup3.png"/>
-        <PHB:ImageButton x:Name="RestoreB" Content="" Grid.Column="2" HorizontalAlignment="Left" Height="60" Margin="36,18,0,0" Grid.Row="4" VerticalAlignment="Top" Width="140" Click="RestoreB_Click" Image="/ProPharmacyManagerW;component/Images/Restore1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Restore3.png" ImageHover="/ProPharmacyManagerW;component/Images/Restore2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Restore3.png"/>
-        <PHB:ImageButton x:Name="DelB" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="60" Margin="33,18,0,0" Grid.Row="4" VerticalAlignment="Top" Width="140" Click="DelB_Click" Image="/ProPharmacyManagerW;component/Images/DBackup1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/DBackup3.png" ImageHover="/ProPharmacyManagerW;component/Images/DBackup2.png" ImagePressed="/ProPharmacyManagerW;component/Images/DBackup3.png"/>
-        <PHB:ImageButton x:Name="BackB" Content="" HorizontalAlignment="Left" Height="60" Margin="24,18,0,0" Grid.Row="4" VerticalAlignment="Top" Width="160" Click="BackB_Click" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" IsCancel="True"/>
+        <Controls:ImageButton x:Name="BackUpB" Content="" Grid.Column="3" HorizontalAlignment="Left" Height="60" Margin="49,18,0,0" Grid.Row="4" VerticalAlignment="Top" Width="140" Click="BackUpB_Click" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/Backup1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Backup3.png" ImageHover="/ProPharmacyManagerW;component/Images/Backup2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Backup3.png"/>
+        <Controls:ImageButton x:Name="RestoreB" Content="" Grid.Column="2" HorizontalAlignment="Left" Height="60" Margin="36,18,0,0" Grid.Row="4" VerticalAlignment="Top" Width="140" Click="RestoreB_Click" Image="/ProPharmacyManagerW;component/Images/Restore1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Restore3.png" ImageHover="/ProPharmacyManagerW;component/Images/Restore2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Restore3.png"/>
+        <Controls:ImageButton x:Name="DelB" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="60" Margin="33,18,0,0" Grid.Row="4" VerticalAlignment="Top" Width="140" Click="DelB_Click" Image="/ProPharmacyManagerW;component/Images/DBackup1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/DBackup3.png" ImageHover="/ProPharmacyManagerW;component/Images/DBackup2.png" ImagePressed="/ProPharmacyManagerW;component/Images/DBackup3.png"/>
+        <Controls:ImageButton x:Name="BackB" Content="" HorizontalAlignment="Left" Height="60" Margin="24,18,0,0" Grid.Row="4" VerticalAlignment="Top" Width="160" Click="BackB_Click" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" IsCancel="True"/>
 
     </Grid>
 </Page>

@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:PHB="clr-namespace:ExtendedButton;assembly=ExtendedButton"
+      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls" 
       xmlns:local="clr-namespace:ProPharmacyManagerW.Pages"
       mc:Ignorable="d"
       d:DesignHeight="599" d:DesignWidth="799"
@@ -21,6 +21,6 @@
         </Grid.RowDefinitions>
         <DataGrid x:Name="dataGrid" SelectionMode="Single" Foreground="Blue" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="3" EnableColumnVirtualization="True"/>
         <ProgressBar x:Name="Pb" Height="5" VerticalAlignment="Top" IsTabStop="False" IsIndeterminate="True" Grid.ColumnSpan="3" Visibility="Hidden"/>
-        <PHB:ImageButton x:Name="BackMainB" Content="" Grid.Column="0" HorizontalAlignment="Left" Height="50" Width="139" Margin="66,10,0,0" Grid.Row="1" VerticalAlignment="Top" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" Click="BackMainB_Click"/>
+        <Controls:ImageButton x:Name="BackMainB" Content="" Grid.Column="0" HorizontalAlignment="Left" Height="50" Width="139" Margin="66,10,0,0" Grid.Row="1" VerticalAlignment="Top" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" Click="BackMainB_Click"/>
     </Grid>
 </Page>

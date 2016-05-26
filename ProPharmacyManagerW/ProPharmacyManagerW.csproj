@@ -26,8 +26,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationVersion>0.9.9.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -68,9 +68,6 @@
     <StartupObject>ProPharmacyManagerW.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ExtendedButton">
-      <HintPath>.\ExtendedButton.dll</HintPath>
-    </Reference>
     <Reference Include="MySql.Data, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\MySql.Data.dll</HintPath>
@@ -100,6 +97,7 @@
     <Compile Include="Accounts.xaml.cs">
       <DependentUpon>Accounts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Database\AccountsTable.cs" />
     <Compile Include="Database\BackUp.cs" />
     <Compile Include="Database\BillsTable.cs" />
@@ -120,10 +118,11 @@
     <Compile Include="Kernel\IniFile.cs" />
     <Compile Include="Kernel\Core.cs" />
     <Compile Include="Kernel\WpfSingleInstance.cs" />
-    <Compile Include="MVVM\ABackup.cs" />
-    <Compile Include="MVVM\AllAmount.cs" />
-    <Compile Include="MVVM\AllEX.cs" />
-    <Compile Include="MVVM\FAllMeds.cs" />
+    <Compile Include="ViewModel\ABackup.cs" />
+    <Compile Include="ViewModel\AllAmount.cs" />
+    <Compile Include="ViewModel\AllEX.cs" />
+    <Compile Include="ViewModel\FAllMeds.cs" />
+    <Compile Include="ViewModel\VisibilityConvertor.cs" />
     <Compile Include="Pages\AccLogs.xaml.cs">
       <DependentUpon>AccLogs.xaml</DependentUpon>
     </Compile>
@@ -257,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Set.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -464,6 +467,7 @@
     <Resource Include="Images\Conf2.png" />
     <Resource Include="Images\Conf3.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

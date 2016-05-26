@@ -67,7 +67,7 @@ namespace ProPharmacyManagerW
             {
                 MessageBox.Show("يجب ان تسجل موظف كمدير اولا قبل الاغلاق");
                 Console.WriteLine("What?! Are you nuts?!!! Register first you %$#%");
-                e.Cancel = true;
+                return;
             }
             else if (Pages.Register.IsRegisCom == true && Kernel.Core.IsSetup == true)
             {

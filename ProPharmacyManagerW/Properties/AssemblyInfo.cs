@@ -1,19 +1,10 @@
-﻿using System.Resources;
-// <copyright>
-//     Copyright (C) 2014 ShababConquer Blog.
-//     This program is free software; you can redistribute it and/or modify 
-//     it under the terms of the GNU General Public License version 2 as 
-//     published by the Free Software Foundation.
-// 
-//     This program is distributed in the hope that it will be useful, but 
-//     WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
-//     or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License 
-//     for more details.
-// 
-//     You should have received a copy of the GNU General Public License along 
-//     with this program; if not, write to the Free Software Foundation, Inc., 
-//     51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+﻿// <copyright>
+//      This work is licensed under the
+//      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+//      To view a copy of this license, visit
+//      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
+using System.Resources;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -65,7 +56,7 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.9.9.6")]
-[assembly: AssemblyFileVersion("0.9.9.6")]
+[assembly: AssemblyVersion("0.9.9.7")]
+[assembly: AssemblyFileVersion("0.9.9.7")]
 [assembly: NeutralResourcesLanguage("ar-EG")]
 

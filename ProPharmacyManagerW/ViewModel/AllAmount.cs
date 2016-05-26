@@ -9,39 +9,21 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace ProPharmacyManagerW.MVVM
+namespace ProPharmacyManagerW.ViewModel
 {
-    /// <summary>
-    /// Checkboxs status in all drugs page
-    /// </summary>
-    public class AllEX : IValueConverter
+    public class AllAmount : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             try
             {
-                var d1 = DateTime.Now.Date;
-                var d2 = System.Convert.ToDateTime(value).Date;
-                var dt = (d1 - d2).TotalDays;
-                if (dt > -5)
+                if (System.Convert.ToByte(value) == 0)
                 {
                     return Brushes.Red;
                 }
-                else if (dt > -15 && dt < -6)
+                else if (System.Convert.ToByte(value) > 0 && System.Convert.ToByte(value) <= 5)
                 {
                     return Brushes.OrangeRed;
-                }
-                else if (dt > -30 && dt < -16)
-                {
-                    return Brushes.YellowGreen;
-                }
-                else if (dt > -50 && dt < -31)
-                {
-                    return Brushes.ForestGreen;
-                }
-                else if (dt > -60 && dt < -51)
-                {
-                    return Brushes.Green;
                 }
                 else
                 {
@@ -50,8 +32,8 @@ namespace ProPharmacyManagerW.MVVM
             }
             catch(Exception e)
             {
-                Kernel.Core.SaveException(e);
-                return Brushes.Firebrick;
+                Console.WriteLine(e.ToString());
+                return DependencyProperty.UnsetValue;
             }
         }
 
@@ -59,5 +41,6 @@ namespace ProPharmacyManagerW.MVVM
         {
             throw new NotSupportedException();
         }
+
     }
 }

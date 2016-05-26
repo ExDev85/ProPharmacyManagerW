@@ -3,9 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:PHB="clr-namespace:ExtendedButton;assembly=ExtendedButton"
-      xmlns:vm ="clr-namespace:ProPharmacyManagerW.MVVM"
+      xmlns:vm ="clr-namespace:ProPharmacyManagerW.ViewModel"
       xmlns:local="clr-namespace:ProPharmacyManagerW.Pages"
+      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls" 
       mc:Ignorable="d" 
       d:DesignHeight="599" d:DesignWidth="799"
       Title="كل الموجود" FlowDirection="RightToLeft" Loaded="Page_Loaded">
@@ -49,8 +49,8 @@
         <CheckBox x:Name="cByName" Content="بالاسم" Height="35" Margin="10,10,10,0" Grid.Row="2" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White" IsChecked="{Binding IsByNameChecked, Source={StaticResource Checked}}"  />
         <CheckBox x:Name="cByBar" Content="بالباركود" Height="35" Margin="10,10,10,0" Grid.Row="2" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White" Grid.Column="1" IsChecked="{Binding IsByBarCodeChecked, Source={StaticResource Checked}}" />
         <CheckBox x:Name="cBySub" Content="بالماده الفعاله" Height="35" Margin="10,10,10,0" Grid.Row="2" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White" Grid.Column="2" IsChecked="{Binding IsByScientificNameChecked, Source={StaticResource Checked}}" />
-        <PHB:ImageButton x:Name="SearchB" Content="" Grid.Column="2" HorizontalAlignment="Left" Height="50" Width="120" Margin="66,10,0,0" Grid.Row="3" VerticalAlignment="Top" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/Search1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Search3.png" ImageHover="/ProPharmacyManagerW;component/Images/Search2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Search3.png" Click="SearchB_Click"/>
-        <PHB:ImageButton x:Name="UpdateB" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="50" Width="120" Margin="66,10,0,0" Grid.Row="3" VerticalAlignment="Top" Image="/ProPharmacyManagerW;component/Images/Update1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Update3.png" ImageHover="/ProPharmacyManagerW;component/Images/Update2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Update3.png" Click="UpdateB_Click"/>
-        <PHB:ImageButton x:Name="BackMainB" Content="" Grid.Column="0" HorizontalAlignment="Left" Height="50" Width="120" Margin="66,10,0,0" Grid.Row="3" VerticalAlignment="Top" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" Click="BackMainB_Click"/>
+        <Controls:ImageButton x:Name="SearchB" Content="" Grid.Column="2" HorizontalAlignment="Left" Height="50" Width="120" Margin="66,10,0,0" Grid.Row="3" VerticalAlignment="Top" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/Search1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Search3.png" ImageHover="/ProPharmacyManagerW;component/Images/Search2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Search3.png" Click="SearchB_Click"/>
+        <Controls:ImageButton x:Name="UpdateB" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="50" Width="120" Margin="66,10,0,0" Grid.Row="3" VerticalAlignment="Top" Image="/ProPharmacyManagerW;component/Images/Update1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Update3.png" ImageHover="/ProPharmacyManagerW;component/Images/Update2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Update3.png" Click="UpdateB_Click"/>
+        <Controls:ImageButton x:Name="BackMainB" Content="" Grid.Column="0" HorizontalAlignment="Left" Height="50" Width="120" Margin="66,10,0,0" Grid.Row="3" VerticalAlignment="Top" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" Click="BackMainB_Click"/>
     </Grid>
 </Page>

@@ -1,10 +1,8 @@
 C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.exe.config
 C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.exe
 C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.pdb
-C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\ExtendedButton.dll
 C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\MySql.Data.dll
 C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\bin\Debug\MySqlBackup.dll
-C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.csprojResolveAssemblyReference.cache
 C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\CP.baml
 C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\Forms\About.baml
 C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\MainWindow.baml
@@ -54,3 +52,5 @@ C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\ob
 C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.csproj.GenerateResource.Cache
 C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.exe
 C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.pdb
+C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\Themes\Generic.baml
+C:\Users\Ahmed\Documents\OpenProjects\ProPharmacyManagerW\ProPharmacyManagerW\obj\Debug\ProPharmacyManagerW.csprojResolveAssemblyReference.cache

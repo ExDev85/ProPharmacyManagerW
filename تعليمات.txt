@@ -25,7 +25,6 @@ ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.exe
 
 *ملاحظة
 ليعمل البرنامج بدون مشاكل يجب التاكد من وجود هذه الملفات فى نفس مجلد ملف التشغيل
-ExtendedButton.dll
 MySql.Data.dll
 MySqlBackup.dll
 
