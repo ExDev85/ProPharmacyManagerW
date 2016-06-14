@@ -1,0 +1,36 @@
+﻿<Page x:Class="ProPharmacyManagerW.View.Pages.Register"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="تسجيل موظف جديد" FlowDirection="RightToLeft" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Content="تستطيع اضافه موظفين او مدراء جدد من هنا" HorizontalAlignment="Right" Height="35" VerticalAlignment="Top" Width="280" FontWeight="Bold" Foreground="White" Margin="0,0,10,0"/>
+        <TextBox x:Name="RUName" HorizontalAlignment="Left" Height="32" Margin="10,4,0,0" Grid.Row="1" Text="اسم المستخدم*" VerticalAlignment="Top" Width="280" MaxLines="1" TabIndex="1" HorizontalScrollBarVisibility="Auto" Foreground="#FF282EB6" FontWeight="Bold" FontSize="15" GotFocus="RUName_GotFocus" LostFocus="RUName_LostFocus" MaxLength="30" TextChanged="RUName_TextChanged"/>
+        <TextBox x:Name="RUPhone" HorizontalAlignment="Left" Height="32" Margin="10,4,0,0" Grid.Row="5" Text="رقم الهاتف" VerticalAlignment="Top" Width="280" MaxLines="1" TabIndex="5" HorizontalScrollBarVisibility="Auto" Foreground="#FF282EB6" FontWeight="Bold" FontSize="15" GotFocus="RUPhone_GotFocus" LostFocus="RUPhone_LostFocus" MaxLength="20"/>
+        <ComboBox x:Name="RUState" HorizontalAlignment="Left" Height="30" Margin="10,5,0,0" Grid.Row="4" VerticalAlignment="Top" Width="280" TabIndex="4" SelectedIndex="0" Foreground="#FF282EB6" FontSize="15" FontWeight="Bold">
+            <ListBoxItem Content="صلاحيات المستخدم*"/>
+            <ListBoxItem Content="مدير"/>
+            <ListBoxItem Content="موظف"/>
+        </ComboBox>
+        <PasswordBox x:Name="RUPass1" HorizontalAlignment="Left" Height="31" Margin="10,5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="280" TabIndex="2" Password="حشسسصخقي" Foreground="#FF282EB6" FontSize="15" GotFocus="RUPass1_GotFocus" LostFocus="RUPass1_LostFocus"/>
+        <PasswordBox x:Name="RUPass2" HorizontalAlignment="Left" Height="31" Margin="10,5,0,0" Grid.Row="3" VerticalAlignment="Top" Width="280" TabIndex="3" Password="حشسسصخقي" Foreground="#FF282EB6" FontSize="15" LostFocus="RUPass2_LostFocus" GotFocus="RUPass2_GotFocus"/>
+        <Label x:Name="label1" Content="* كل المُعلم بـ* يجب ان يتم ادخاله&#xD;&#xA;* اذا كنت تقوم بإعداد البرنامج لاول مرة يجب ان تختار&#xD;&#xA;المستخدم بصلاحيات المدير" HorizontalAlignment="Left" Height="63" Margin="10,5,0,0" Grid.Row="6" VerticalAlignment="Top" Width="280" FontWeight="Bold" Foreground="Red"/>
+        <Button x:Name="InsReg" Content="تسجيل" HorizontalAlignment="Right" Height="32" Margin="0,1,20,0" Grid.Row="7" VerticalAlignment="Top" Width="92" FontSize="15" Foreground="#FF046111" ForceCursor="True" FontWeight="Bold" Click="InsReg_Click" TabIndex="6" IsDefault="True"/>
+
+    </Grid>
+</Page>

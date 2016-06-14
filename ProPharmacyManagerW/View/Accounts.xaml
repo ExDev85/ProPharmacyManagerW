@@ -1,0 +1,12 @@
+﻿<Window x:Class="ProPharmacyManagerW.View.Accounts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProPharmacyManagerW.View"
+        mc:Ignorable="d"
+        Title="Accounts" Height="400" Width="400" FlowDirection="RightToLeft" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" Background="#FF304FB9" Loaded="Window_Loaded" Icon="/ProPharmacyManagerW;component/Images/Personal.ico" Closing="Window_Closing">
+    <Grid>
+        <Frame x:Name="FAhost" Grid.Column="1" Source="Pages\Register.xaml" BorderThickness="0" FlowDirection="RightToLeft" NavigationUIVisibility="Hidden" />
+    </Grid>
+</Window>
