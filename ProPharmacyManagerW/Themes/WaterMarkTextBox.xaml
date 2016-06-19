@@ -20,7 +20,7 @@
                     <Border BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
                         <Grid>
                             <TextBox x:Name="Textbox"
-                                   Text="{TemplateBinding Text}"
+                                   Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}"
                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                    Width="{TemplateBinding ActualWidth}"                            
                                    Height="{TemplateBinding ActualHeight}"                             

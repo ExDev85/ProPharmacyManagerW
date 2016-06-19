@@ -221,7 +221,6 @@ namespace ProPharmacyManagerW.Kernel
         {
             Console.WriteLine(e.ToString());
             if (e.TargetSite.Name == "ThrowInvalidOperationException") return;
-            MessageBox.Show(e.ToString());
             DateTime now = DateTime.Now;
             string str = string.Concat(new object[] { now.Month, "-", now.Day, "//" });
             if (!Directory.Exists(Paths.UnhandledExceptionsPath))

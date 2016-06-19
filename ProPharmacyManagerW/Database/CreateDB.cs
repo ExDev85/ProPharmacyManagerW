@@ -7,6 +7,7 @@
 using MySql.Data.MySqlClient;
 using ProPharmacyManagerW.Kernel;
 using System;
+using System.Windows;
 
 namespace ProPharmacyManagerW.Database
 {
@@ -24,7 +25,16 @@ namespace ProPharmacyManagerW.Database
                 using (MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    conn.Open();
+                    try
+                    {
+                        conn.Open();
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("هناك مشكله فى السيرفر او بيانات الاتصال به");
+                        Core.SaveException(e);
+                        return;
+                    }
                     string db = QueryExpress.ExecuteScalarStr(cmd, db1);
                     if (string.IsNullOrEmpty(db))
                     {

@@ -534,8 +534,16 @@ namespace ProPharmacyManagerW.View.Pages
             LogOut.IsEnabled = true;
             SearchBox.Focus();
         }
-        //Background colors back
-        void BGGB()
+        /// <summary>
+        /// Linear Gradient Brush Background
+        /// </summary>
+        /// <param name="fb">Frist red</param>
+        /// <param name="fb">Frist green</param>
+        /// <param name="fb">Frist blue</param>
+        /// <param name="fb">Second red</param>
+        /// <param name="fb">Second green</param>
+        /// <param name="fb">Second blue</param>
+        void LGBB(byte fr, byte fg, byte fb, byte sr, byte sg, byte sb)
         {
             LinearGradientBrush ng = new LinearGradientBrush();
             ng.StartPoint = new Point(0.5, 0);
@@ -543,12 +551,12 @@ namespace ProPharmacyManagerW.View.Pages
             ng.MappingMode = BrushMappingMode.RelativeToBoundingBox;
             GradientStop gs1 = new GradientStop();
             //#FF3630B4
-            gs1.Color = Color.FromRgb(51, 153, 255);
+            gs1.Color = Color.FromRgb(fr, fg, fb);
             gs1.Offset = 0.833;
             ng.GradientStops.Add(gs1);
             GradientStop gs2 = new GradientStop();
             //#FF151083
-            gs2.Color = Color.FromRgb(0, 102, 204);
+            gs2.Color = Color.FromRgb(sr, sg, sb);
             gs2.Offset = 1;
             ng.GradientStops.Add(gs2);
             AddNewDrugBoard.Background = ng;
@@ -567,7 +575,7 @@ namespace ProPharmacyManagerW.View.Pages
             LogOut.IsEnabled = false;
             ADType.SelectedIndex = 0;
             ADName.Focus();
-            BGGB();
+            LGBB(51, 153, 255, 0, 102, 204);
         }
 
         private void ADName_KeyDown(object sender, KeyEventArgs e)
@@ -609,7 +617,7 @@ namespace ProPharmacyManagerW.View.Pages
             ADName.Foreground = Brushes.Blue;
             ADName.Background = Brushes.White;
             ADName.Items.Clear();
-            BGGB();
+            LGBB(51, 153, 255, 0, 102, 204);
         }
 
         private void ADName_LostFocus(object sender, RoutedEventArgs e)
@@ -622,7 +630,7 @@ namespace ProPharmacyManagerW.View.Pages
 
         private void RestoreBackground(object sender, RoutedEventArgs e)
         {
-            BGGB();
+            LGBB(51, 153, 255, 0, 102, 204);
         }
 
         private void ADType_GotFocus(object sender, RoutedEventArgs e)
@@ -633,7 +641,7 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 ADType.Text = "";
             }
-            BGGB();
+            LGBB(51, 153, 255, 0, 102, 204);
         }
 
         private void ADType_LostFocus(object sender, RoutedEventArgs e)
@@ -728,25 +736,14 @@ namespace ProPharmacyManagerW.View.Pages
                     .Insert("Total", Convert.ToDecimal(ADTotal.Text))
                     .Insert("SPrice", Convert.ToDecimal(ADPrice.Text))
                     .Insert("Notes", ADNote.Text).Execute();
-                LinearGradientBrush ng = new LinearGradientBrush();
-                ng.StartPoint = new Point(0.5, 0);
-                ng.EndPoint = new Point(0.5, 1);
-                ng.MappingMode = BrushMappingMode.RelativeToBoundingBox;
-                GradientStop gs1 = new GradientStop();
-                gs1.Color = Color.FromRgb(5, 124, 48);
-                gs1.Offset = 0.833;
-                ng.GradientStops.Add(gs1);
-                GradientStop gs2 = new GradientStop();
-                gs2.Color = Color.FromRgb(0, 64, 24);
-                gs2.Offset = 1;
-                ng.GradientStops.Add(gs2);
-                AddNewDrugBoard.Background = ng;
+                LGBB(46, 204, 113, 42, 186, 102);
                 Console.WriteLine(AccountsTable.UserName + " add " + ADTotal.Text + " " + ADName.Text + " which each cost " + ADPrice.Text);
                 var later = DateTime.Now.Second;
             }
             catch (Exception ex)
             {
-                AddNewDrugBoard.Background = Brushes.Red;
+                LGBB(216, 51, 74, 191, 38, 60);
+                MessageBox.Show("غالبا تم استخدام نفس اسم الدواء من قبل");
                 Kernel.Core.SaveException(ex);
             }
         }
