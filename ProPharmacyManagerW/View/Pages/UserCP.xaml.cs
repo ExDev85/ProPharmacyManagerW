@@ -353,6 +353,11 @@ namespace ProPharmacyManagerW.View.Pages
 
         private void SellM_Click(object sender, RoutedEventArgs e)
         {
+            if (MName.Text == "" || Client.Text == "" || MPrice.Text == "" || MExist.Text == "" || MWSell.Text == "")
+            {
+                MessageBox.Show("لا يمكن اتمام عمليه البيع بسبب وجود حقل مهم فارغ");
+                return;
+            }
             BillsTable.bClient = Client.Text;
             BillsTable.bMName = MName.Text;
             BillsTable.bMCost = Convert.ToDecimal(MPrice.Text) * Convert.ToDecimal(MWSell.Text);

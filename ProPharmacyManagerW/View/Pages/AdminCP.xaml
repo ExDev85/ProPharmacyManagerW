@@ -69,7 +69,7 @@
                 </Grid.ColumnDefinitions>
                 <Controls:WaterMarkTextBox x:Name="MName" Height="30" Margin="6,4,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="9" MaxLines="1" MaxLength="50" WaterMark="أسم الدواء" FontSize="14" ToolTip="أسم الدواء"/>
                 <Controls:WaterMarkTextBox x:Name="MSS" Height="30" Margin="6,39,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="10" MaxLines="1" MaxLength="50" WaterMark="الماده الفعاله" ToolTip="الماده الفعاله" FontSize="14" />
-                <ComboBox x:Name="MSUP" Height="30" Margin="6,74,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" FontSize="14" ToolTip="الشركة/المخزن موزعه الدواء" SelectedIndex="0" IsReadOnly="True">
+                <ComboBox x:Name="MSUP" Height="30" Margin="6,74,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" FontSize="14" ToolTip="الشركة/المخزن موزعه الدواء" SelectedIndex="0" IsReadOnly="True" >
                     <ListBoxItem Content="الموزع*"/>
                 </ComboBox>
                 <DatePicker x:Name="MEX" Height="30" Margin="6,109,6,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="11" FirstDayOfWeek="Saturday" DisplayDateStart="2016-01-01" Text="تاريخ انتهاء الصلاحية" FontSize="14" ToolTip="تاريخ انتهاء الصلاحية" />
