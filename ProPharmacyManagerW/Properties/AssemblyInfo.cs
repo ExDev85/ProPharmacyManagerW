@@ -7,13 +7,13 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ProPharmacyManagerW")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("ProPharmacyManager W")]
+[assembly: AssemblyDescription("This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("by adguard")]
+[assembly: AssemblyCompany("ShababConquer")]
 [assembly: AssemblyProduct("ProPharmacyManagerW")]
-[assembly: AssemblyCopyright("Copyright © by adguard 2016")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Some Copyright Reserved © ShababCo blog 2016")]
+[assembly: AssemblyTrademark("PPHM W")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -53,3 +53,5 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.9.9.7")]
 [assembly: AssemblyFileVersion("0.9.9.7")]
+[assembly: NeutralResourcesLanguage("ar-EG")]
+

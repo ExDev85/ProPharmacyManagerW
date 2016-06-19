@@ -3,11 +3,16 @@ suporrted anymore) and the W one (W stand for WPF)
 For more information about the ProPharmacyManager Application, please see 
 http://shababco.blogspot.com/ 
 
-The ProPharmacyManagerW Application uses MySqlBackup.NET 2.0.9.2, a .NET C#
+The ProPharmacyManagerW Application uses MySqlBackup.NET 2.0.9.4, a .NET C#
 Library for backing-up, encrypting and creating Databases (*.sql files).
 MySqlBackup.NET is licensed under the terms of the publicdomain. (http://creativecommons.org/licenses/publicdomain/)
 For more information about MySqlBackup.NET,
 please see http://mysqlbackupnet.codeplex.com
+
+The Application uses MySql.Data 6.9.8, ADO.Net driver for MySQL
+MySql.Data is licensed under the terms of the GPLv2. (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+For more information about MySqlBackup.NET,
+please see http://dev.mysql.com/downloads/
 
 NOTE:1- You must setup a localhost (XAMPP Recommended) with/or MySQl service
         (InnoDB enabled for AppServ) or MySQL program.
@@ -16,4 +21,4 @@ NOTE:1- You must setup a localhost (XAMPP Recommended) with/or MySQl service
         the first time and it will ask you to add a new user as admin.
 	 4- Make sure that this files exist with the program exe file 
         MySql.Data.dll and MySqlBackup.dll.
-     5- You need Visual Studio 2010 or higher to build the source code
+     5- You need Visual Studio 2010 or higher to edit the source code
