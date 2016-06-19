@@ -5,7 +5,6 @@
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
 using ProPharmacyManagerW.Database;
-using ProPharmacyManagerW.View;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -447,8 +446,16 @@ namespace ProPharmacyManagerW.View.Pages
             LogOut.IsEnabled = true;
             SearchBox.Focus();
         }
-        //Background colors back
-        void BGGB()
+        /// <summary>
+        /// Linear Gradient Brush Background
+        /// </summary>
+        /// <param name="fb">Frist red</param>
+        /// <param name="fb">Frist green</param>
+        /// <param name="fb">Frist blue</param>
+        /// <param name="fb">Second red</param>
+        /// <param name="fb">Second green</param>
+        /// <param name="fb">Second blue</param>
+        void LGBB(byte fr, byte fg, byte fb, byte sr, byte sg, byte sb)
         {
             LinearGradientBrush ng = new LinearGradientBrush();
             ng.StartPoint = new Point(0.5, 0);
@@ -456,16 +463,17 @@ namespace ProPharmacyManagerW.View.Pages
             ng.MappingMode = BrushMappingMode.RelativeToBoundingBox;
             GradientStop gs1 = new GradientStop();
             //#FF3630B4
-            gs1.Color = Color.FromRgb(54, 48, 180);
+            gs1.Color = Color.FromRgb(fr, fg, fb);
             gs1.Offset = 0.833;
             ng.GradientStops.Add(gs1);
             GradientStop gs2 = new GradientStop();
             //#FF151083
-            gs2.Color = Color.FromRgb(21, 16, 131);
+            gs2.Color = Color.FromRgb(sr, sg, sb);
             gs2.Offset = 1;
             ng.GradientStops.Add(gs2);
             AddNewDrugBoard.Background = ng;
         }
+
         // add drug panel
         private void MIAddDrug_Click(object sender, RoutedEventArgs e)
         {
@@ -479,7 +487,7 @@ namespace ProPharmacyManagerW.View.Pages
             LogOut.IsEnabled = false;
             ADType.SelectedIndex = 0;
             ADName.Focus();
-            BGGB();
+            LGBB(51, 153, 255, 0, 102, 204);
         }
 
         private void ADName_KeyDown(object sender, KeyEventArgs e)
@@ -521,9 +529,9 @@ namespace ProPharmacyManagerW.View.Pages
             ADName.Foreground = Brushes.Blue;
             ADName.Background = Brushes.White;
             ADName.Items.Clear();
-            BGGB();
+            LGBB(51, 153, 255, 0, 102, 204);
         }
-        
+
         private void ADName_LostFocus(object sender, RoutedEventArgs e)
         {
             if (ADName.Text == "")
@@ -532,99 +540,9 @@ namespace ProPharmacyManagerW.View.Pages
             }
         }
 
-        private void ADBarCode_GotFocus(object sender, RoutedEventArgs e)
+        private void RestoreBackground(object sender, RoutedEventArgs e)
         {
-            ADBarCode.Foreground = Brushes.Blue;
-            ADBarCode.Background = Brushes.White;
-            if (ADBarCode.Text == "الباركود")
-            {
-                ADBarCode.Text = "";
-            }
-            BGGB();
-        }
-
-        private void ADBarCode_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (ADBarCode.Text == "")
-            {
-                ADBarCode.Text = "الباركود";
-            }
-        }
-
-        private void ADSS_GotFocus(object sender, RoutedEventArgs e)
-        {
-            ADSS.Foreground = Brushes.Blue;
-            ADSS.Background = Brushes.White;
-            if (ADSS.Text == "المادة الفعاله")
-            {
-                ADSS.Text = "";
-            }
-            BGGB();
-        }
-
-        private void ADSS_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (ADSS.Text == "")
-            {
-                ADSS.Text = "المادة الفعاله";
-            }
-        }
-
-        private void ADEXP_GotFocus(object sender, RoutedEventArgs e)
-        {
-            ADEXP.Foreground = Brushes.Blue;
-            ADEXP.Background = Brushes.White;
-            if (ADEXP.Text == "تاريخ انتهاء الصلاحيه*")
-            {
-                ADEXP.Text = "";
-            }
-            BGGB();
-        }
-
-        private void ADEXP_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (ADEXP.Text == "")
-            {
-                ADEXP.Text = "تاريخ انتهاء الصلاحيه*";
-            }
-        }
-
-        private void ADPrice_GotFocus(object sender, RoutedEventArgs e)
-        {
-            ADPrice.Foreground = Brushes.Blue;
-            ADPrice.Background = Brushes.White;
-            if (ADPrice.Text == "سعر الدواء*")
-            {
-                ADPrice.Text = "";
-            }
-            BGGB();
-        }
-
-        private void ADPrice_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (ADPrice.Text == "")
-            {
-                ADPrice.Text = "سعر الدواء*";
-            }
-        }
-
-        private void ADTotal_GotFocus(object sender, RoutedEventArgs e)
-        {
-            ADTotal.Foreground = Brushes.Blue;
-            ADTotal.Background = Brushes.White;
-            if (ADTotal.Text == "الكميه*")
-            {
-                ADTotal.Text = "";
-            }
-            BGGB();
-        }
-
-        private void ADTotal_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (ADTotal.Text == "")
-            {
-                ADTotal.Text = "الكميه*";
-            }
+            LGBB(51, 153, 255, 0, 102, 204);
         }
 
         private void ADType_GotFocus(object sender, RoutedEventArgs e)
@@ -635,7 +553,7 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 ADType.Text = "";
             }
-            BGGB();
+            LGBB(51, 153, 255, 0, 102, 204);
         }
 
         private void ADType_LostFocus(object sender, RoutedEventArgs e)
@@ -645,51 +563,6 @@ namespace ProPharmacyManagerW.View.Pages
                 ADType.Text = "النوع*";
             }
         }
-
-        private void ADNote_GotFocus(object sender, RoutedEventArgs e)
-        {
-            ADNote.Foreground = Brushes.Blue;
-            ADNote.Background = Brushes.White;
-            if (ADNote.Text == "ملاحظات")
-            {
-                ADNote.Text = "";
-            }
-            BGGB();
-        }
-
-        private void ADNote_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (ADNote.Text == "")
-            {
-                ADNote.Text = "ملاحظات";
-            }
-        }
-
-        private void ADPrice_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (!char.IsDigit(e.Text, e.Text.Length - 1) && e.Text != ".")
-            {
-                e.Handled = true;
-            }
-            if (e.Text == "." && (sender as TextBox).Text.IndexOf('.') > -1)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void ADTotal_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (!char.IsDigit(e.Text, e.Text.Length - 1) && e.Text != ".")
-            {
-                e.Handled = true;
-            }
-            if (e.Text == "." && (sender as TextBox).Text.IndexOf('.') > -1)
-            {
-                e.Handled = true;
-            }
-        }
-
-        // add medic command
         private void AddDrug_Click(object sender, RoutedEventArgs e)
         {
             #region textboxs States
@@ -710,7 +583,7 @@ namespace ProPharmacyManagerW.View.Pages
             }
             else if (ADEXP.Text == "")
             {
-                ADEXP.Background = Brushes.Red;
+                MessageBox.Show("ادخل تاريخ انتهاء الصلاحية");
                 return;
             }
             else if (ADEXP.SelectedDate <= DateTime.Now.Date)
@@ -718,12 +591,7 @@ namespace ProPharmacyManagerW.View.Pages
                 ADEXP.Background = Brushes.Red;
                 return;
             }
-            if (ADPrice.Text == "سعر الدواء*")
-            {
-                ADPrice.Foreground = Brushes.Red;
-                return;
-            }
-            else if (ADPrice.Text == "")
+            if (ADPrice.Text == "")
             {
                 ADPrice.Background = Brushes.Red;
                 return;
@@ -733,12 +601,7 @@ namespace ProPharmacyManagerW.View.Pages
                 ADPrice.Foreground = Brushes.Red;
                 return;
             }
-            if (ADTotal.Text == "الكميه*")
-            {
-                ADTotal.Foreground = Brushes.Red;
-                return;
-            }
-            else if (ADTotal.Text == "")
+            if (ADTotal.Text == "")
             {
                 ADTotal.Background = Brushes.Red;
                 return;
@@ -747,18 +610,6 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 ADTotal.Foreground = Brushes.Red;
                 return;
-            }
-            if (ADBarCode.Text == "الباركود")
-            {
-                ADBarCode.Text = "";
-            }
-            if (ADSS.Text == "المادة الفعاله")
-            {
-                ADSS.Text = "";
-            }
-            if (ADNote.Text == "ملاحظات")
-            {
-                ADNote.Text = "";
             }
             #endregion
             byte PType;
@@ -795,25 +646,14 @@ namespace ProPharmacyManagerW.View.Pages
                     .Insert("Total", Convert.ToDecimal(ADTotal.Text))
                     .Insert("SPrice", Convert.ToDecimal(ADPrice.Text))
                     .Insert("Notes", ADNote.Text).Execute();
-                LinearGradientBrush ng = new LinearGradientBrush();
-                ng.StartPoint = new Point(0.5, 0);
-                ng.EndPoint = new Point(0.5, 1);
-                ng.MappingMode = BrushMappingMode.RelativeToBoundingBox;
-                GradientStop gs1 = new GradientStop();
-                gs1.Color = Color.FromRgb(5, 124, 48);
-                gs1.Offset = 0.833;
-                ng.GradientStops.Add(gs1);
-                GradientStop gs2 = new GradientStop();
-                gs2.Color = Color.FromRgb(0, 64, 24);
-                gs2.Offset = 1;
-                ng.GradientStops.Add(gs2);
-                AddNewDrugBoard.Background = ng;
+                LGBB(46, 204, 113, 42, 186, 102);
                 Console.WriteLine(AccountsTable.UserName + " add " + ADTotal.Text + " " + ADName.Text + " which each cost " + ADPrice.Text);
                 var later = DateTime.Now.Second;
             }
             catch (Exception ex)
             {
-                AddNewDrugBoard.Background = Brushes.Red;
+                LGBB(216, 51, 74, 191, 38, 60);
+                MessageBox.Show("غالبا تم استخدام نفس اسم الدواء من قبل");
                 Kernel.Core.SaveException(ex);
             }
         }

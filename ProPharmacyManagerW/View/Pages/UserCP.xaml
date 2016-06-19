@@ -58,32 +58,28 @@
                     <ColumnDefinition Width="238*" />
                     <ColumnDefinition Width="236*" />
                 </Grid.ColumnDefinitions>
-                <Label x:Name="label1" Content="اسم الدواء" Height="34" HorizontalAlignment="Left" Margin="6,0,0,0" VerticalAlignment="Top" Width="236" Foreground="White" />
-                <TextBox x:Name="MName" Height="30" Margin="6,33,3,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="8" IsReadOnly="True" MaxLines="1" MaxLength="50" />
-                <Label x:Name="label2" Content="مدة الصلاحية" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="6,134,0,0" VerticalAlignment="Top" Width="236" />
-                <DatePicker x:Name="MEX" Height="30" Margin="6,167,0,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="11" FirstDayOfWeek="Saturday" DisplayDateStart="2016-01-01" Text="" />
-                <Label x:Name="label3" Content="السعر" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="6,201,0,0" VerticalAlignment="Top" Width="236"/>
-                <TextBox x:Name="MPrice" Height="30" Margin="6,234,3,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="10" IsReadOnly="True" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly"/>
-                <Label x:Name="label4" Content="الكمية (الموجود/المراد بيعه)" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="6,270,0,0" VerticalAlignment="Top" Width="236" />
-                <TextBox x:Name="MExist" Height="30" Margin="6,302,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="123" TabIndex="11" IsReadOnly="True" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" />
-                <TextBox x:Name="MWSell" Height="30" Margin="140,302,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="102" TabIndex="3" Text="1" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" />
-                <Label x:Name="label5" Content="ملاحظات الدواء" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="7,191,0,0" VerticalAlignment="Top" Width="226" Grid.Column="1" />
-                <TextBox x:Name="MNotes" Margin="7,224,6,8" Grid.Column="1" TextWrapping="Wrap" Foreground="Red" TabIndex="6" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
-                <CheckBox x:Name="NewBill" Content="   فاتورة جديدة" Grid.Column="1" Height="30" Margin="7,4,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="226" TabIndex="4" />
-                <Label x:Name="label6" Content="رقم الفاتورة" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="7,60,0,0" VerticalAlignment="Top" Width="226" Grid.Column="1" />
-                <TextBox x:Name="BillNo" Height="30" Margin="7,99,3,0" VerticalAlignment="Top" Grid.Column="1" Foreground="Blue" TabIndex="14" IsReadOnly="True" MaxLines="1" MaxLength="20" />
-                <Label x:Name="label7" Content="اسم العميل" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="7,134,0,0" VerticalAlignment="Top" Width="233" Grid.Column="1" />
-                <TextBox x:Name="Client" Height="30" Margin="7,167,6,0" VerticalAlignment="Top" Grid.Column="1" Foreground="Green" TabIndex="5" MaxLines="1" MaxLength="50" />
-                <Label x:Name="label8" Content="النوع" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="6,337,0,0" VerticalAlignment="Top" Width="236" />
-                <ComboBox x:Name="MType" Background="White" Foreground="Blue" HorizontalContentAlignment="Stretch" IsEditable="True" Margin="6,369,3,0" TabIndex="6" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="30" IsReadOnly="True" >
+                <Controls:WaterMarkTextBox x:Name="MName" Height="30" Margin="6,4,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="9" MaxLines="1" MaxLength="50" WaterMark="أسم الدواء" FontSize="14" ToolTip="أسم الدواء" IsReadOnly="True"/>
+                <Controls:WaterMarkTextBox x:Name="MSS" Height="30" Margin="6,39,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="10" MaxLines="1" MaxLength="50" WaterMark="الماده الفعاله" ToolTip="الماده الفعاله" FontSize="14" IsReadOnly="True"/>
+                <ComboBox x:Name="MSUP" Height="30" Margin="6,74,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" FontSize="14" ToolTip="الشركة/المخزن موزعه الدواء" SelectedIndex="0" IsReadOnly="True">
+                    <ListBoxItem Content="الموزع*"/>
+                </ComboBox>
+                <DatePicker x:Name="MEX" Height="30" Margin="6,109,6,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="11" FirstDayOfWeek="Saturday" DisplayDateStart="2016-01-01" Text="تاريخ انتهاء الصلاحية" FontSize="14" ToolTip="تاريخ انتهاء الصلاحية" IsTabStop="True" />
+                <Controls:WaterMarkTextBox x:Name="MPrice" Height="30" Margin="6,144,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" FontSize="14" WaterMark="السعر" ToolTip="سعر الدواء للمستهلك" IsReadOnly="True"/>
+                <Controls:WaterMarkTextBox x:Name="MExist" Height="30" Margin="6,182,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="120" TabIndex="13" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" WaterMark="الكمية الموجودة" ToolTip="الكمية المتوفرة فى الصيدليه" FontSize="14" IsReadOnly="True"/>
+                <Controls:WaterMarkTextBox x:Name="MWSell" Height="30" Margin="137,182,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="99" TabIndex="14" Text="1" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" FontSize="14" WaterMark="المراد بيعه" ToolTip="الكميه المباعه (الافتراضى واحد)" />
+                <ComboBox Name="MType" Background="White" Foreground="Blue" HorizontalContentAlignment="Stretch" IsEditable="False" Margin="6,217,9,0" TabIndex="15" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="30" IsReadOnly="True" SelectedIndex="0" ToolTip="نوع الدواء" FontSize="14" >
+                    <ListBoxItem Content="النوع*"/>
                     <ListBoxItem Content="اقراص"/>
                     <ListBoxItem Content="حقن"/>
                     <ListBoxItem Content="شرب"/>
                     <ListBoxItem Content="كريم/مرهم"/>
                     <ListBoxItem Content="اخرى"/>
                 </ComboBox>
-                <Label x:Name="label1_Copy" Content="الماده الفعاله" Height="34" HorizontalAlignment="Left" Margin="6,66,0,0" VerticalAlignment="Top" Width="236" Foreground="White" />
-                <TextBox x:Name="MSS" Height="30" Margin="6,99,3,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="8" IsReadOnly="True" MaxLines="1" MaxLength="50" />
+                <Controls:WaterMarkTextBox x:Name="MNotes" Margin="6,252,9,0" TextWrapping="Wrap" Foreground="Red" TabIndex="19" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" WaterMark="ملاحظات الدواء" FontSize="14" ToolTip="ملاحظات عن الدواء مثل مكانه او اى شئ اخر" WaterMarkColor="#FF972B2B" VerticalContentAlignment="Top" />
+                <CheckBox Name="NewBill" Content="   فاتورة جديدة" Grid.Column="1" Height="30" Margin="7,4,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="226" TabIndex="16" />
+                <Label Name="label6" Content="رقم الفاتورة" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="7,39,0,0" VerticalAlignment="Top" Width="226" Grid.Column="1" />
+                <TextBox Name="BillNo" Height="30" Margin="7,76,6,0" VerticalAlignment="Top" Grid.Column="1" Foreground="Blue" TabIndex="17" MaxLines="1" MaxLength="20" IsReadOnlyCaretVisible="True" PreviewTextInput="NumbersOnly" IsReadOnly="True"/>
+                <Controls:WaterMarkTextBox x:Name="Client" Height="30" Margin="7,111,6,0" VerticalAlignment="Top" Grid.Column="1" Foreground="Green" TabIndex="18" MaxLines="1" MaxLength="50" WaterMark="اسم العميل و الذى سيظهر فى الفاتورة" ToolTip="أسم العميل" FontSize="14" />
             </Grid>
         </GroupBox>
         <Controls:ImageButton x:Name="LogOut" Grid.Column="1" Grid.Row="2" Height="60" HorizontalAlignment="Right" Margin="0,11,58,0" VerticalAlignment="Top" Width="139" Image="/ProPharmacyManagerW;component/Images/Logout1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Logout3.png" ImageHover="/ProPharmacyManagerW;component/Images/Logout2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Logout3.png" TabIndex="9" Click="LogOut_Click" />
@@ -93,8 +89,8 @@
         <Border x:Name="AddNewDrugBoard" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Right" Width="277" FlowDirection="RightToLeft" Grid.RowSpan="3" Margin="0,0,0,10" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Hidden">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <GradientStop Color="#FF151083" Offset="1"/>
-                    <GradientStop Color="#FF3630B4" Offset="0.833"/>
+                    <GradientStop Color="#FF0066CC" Offset="1"/>
+                    <GradientStop Color="#FF3399FF" Offset="0.438"/>
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
@@ -111,20 +107,21 @@
                 </Grid.RowDefinitions>
                 <Controls:ImageButton x:Name="AddDrug" Content="" HorizontalAlignment="Right" Height="40" Margin="0,23,10,0" VerticalAlignment="Top" Width="110" Grid.Row="8" Click="AddDrug_Click" Foreground="White" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/MAdd1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/MAdd3.png" ImageHover="/ProPharmacyManagerW;component/Images/MAdd2.png" ImagePressed="/ProPharmacyManagerW;component/Images/MAdd3.png" TabIndex="34" IsTabStop="False"/>
                 <Controls:ImageButton x:Name="BackToMain" Content="" HorizontalAlignment="Left" Height="40" Margin="10,23,0,0" VerticalAlignment="Top" Width="112" Grid.Row="8" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="35" IsTabStop="False"/>
-                <ComboBox x:Name="ADName" Margin="10" Text="أسم الدواء*" Foreground="Blue" FontWeight="Bold" FontSize="14" GotFocus="ADName_GotFocus" LostFocus="ADName_LostFocus" TabIndex="25" IsTabStop="False" KeyDown="ADName_KeyDown" IsEditable="True" MaxDropDownHeight="150"/>
-                <TextBox x:Name="ADBarCode" Margin="10" TextWrapping="Wrap" Text="الباركود" Grid.Row="1" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADBarCode_GotFocus" LostFocus="ADBarCode_LostFocus" TabIndex="26" IsTabStop="False"/>
-                <TextBox x:Name="ADSS" Margin="10" TextWrapping="Wrap" Text="المادة الفعاله" Grid.Row="2" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADSS_GotFocus" LostFocus="ADSS_LostFocus" TabIndex="27" IsTabStop="False" />
-                <DatePicker x:Name="ADEXP" Margin="10" Grid.Row="3" FirstDayOfWeek="Saturday" Text="تاريخ انتهاء الصلاحيه*" SelectedDateFormat="Short" DisplayDateStart="2016-01-01" FontSize="14" FontWeight="Bold" Foreground="Blue" GotFocus="ADEXP_GotFocus" LostFocus="ADEXP_LostFocus" TabIndex="28"/>
-                <TextBox x:Name="ADPrice" Margin="10" TextWrapping="Wrap" Text="سعر الدواء*" Grid.Row="4" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADPrice_GotFocus" LostFocus="ADPrice_LostFocus" TabIndex="30" IsTabStop="False" PreviewTextInput="ADPrice_PreviewTextInput"/>
-                <TextBox x:Name="ADTotal" Margin="10" TextWrapping="Wrap" Text="الكميه*" Grid.Row="5" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADTotal_GotFocus" LostFocus="ADTotal_LostFocus" TabIndex="31" IsTabStop="False" PreviewTextInput="ADTotal_PreviewTextInput"/>
-                <ComboBox x:Name="ADType" Margin="10" Text="النوع*" Grid.Row="6" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADType_GotFocus" LostFocus="ADType_LostFocus" Background="White" IsReadOnly="True" TabIndex="32" IsTabStop="False" IsTextSearchEnabled="False">
+                <ComboBox x:Name="ADName" Margin="10" Text="أسم الدواء*" Foreground="Blue" FontWeight="Bold" FontSize="14" GotFocus="ADName_GotFocus" LostFocus="ADName_LostFocus" TabIndex="25" KeyDown="ADName_KeyDown" IsEditable="True" MaxDropDownHeight="150"/>
+                <Controls:WaterMarkTextBox x:Name="ADBarCode" Margin="10" TextWrapping="Wrap" Grid.Row="1" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="26" WaterMark="الباكود" ToolTip="امسح الباركود على علبه الدواء او ادخله يدويا"/>
+                <Controls:WaterMarkTextBox x:Name="ADSS" Margin="10" TextWrapping="Wrap" Grid.Row="2" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="27" WaterMark="الماده الفعاله" ToolTip="الماده الفعاله"/>
+                <DatePicker x:Name="ADEXP" Margin="10" Grid.Row="3" FirstDayOfWeek="Saturday" Text="تاريخ انتهاء الصلاحيه*" SelectedDateFormat="Short" DisplayDateStart="2016-01-01" FontSize="14" FontWeight="Bold" Foreground="Blue" TabIndex="28"/>
+                <Controls:WaterMarkTextBox x:Name="ADPrice" Margin="10" TextWrapping="Wrap" Grid.Row="4" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="30" PreviewTextInput="NumbersOnly" WaterMark="السعر*" ToolTip="سعر الدواء للمستهلك"/>
+                <Controls:WaterMarkTextBox x:Name="ADTotal" Margin="10" TextWrapping="Wrap" Grid.Row="5" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="31" PreviewTextInput="NumbersOnly" WaterMark="الكمية*" ToolTip="كميه الصنف الذى ستضيفه" />
+                <ComboBox x:Name="ADType" Margin="10" Text="النوع*" Grid.Row="6" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADType_GotFocus" LostFocus="ADType_LostFocus" Background="White" IsReadOnly="True" TabIndex="32" IsTextSearchEnabled="False" SelectedIndex="0">
+                    <ListBoxItem Content="النوع*" Foreground="Blue"/>
                     <ListBoxItem Content="اقراص" Foreground="Blue"/>
                     <ListBoxItem Content="حقن" Foreground="Blue"/>
                     <ListBoxItem Content="شرب" Foreground="Blue"/>
                     <ListBoxItem Content="كريم/مرهم" Foreground="Blue"/>
                     <ListBoxItem Content="اخرى" Foreground="Blue"/>
                 </ComboBox>
-                <TextBox x:Name="ADNote" Margin="10,10,10,0" TextWrapping="Wrap" Text="ملاحظات" Grid.Row="7" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADNote_GotFocus" LostFocus="ADNote_LostFocus" TabIndex="33" AcceptsReturn="True" IsTabStop="False"/>
+                <Controls:WaterMarkTextBox x:Name="ADNote" Margin="10,10,10,0" TextWrapping="Wrap" Grid.Row="7" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="33" AcceptsReturn="True" WaterMark="ملاحظات الدواء" ToolTip="ملاحظات عن الدواء مثل مكانه او اى شئ اخر" WaterMarkColor="#FF972B2B" VerticalContentAlignment="Top" />
             </Grid>
         </Border>
     </Grid>
