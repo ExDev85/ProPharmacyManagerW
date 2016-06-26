@@ -22,6 +22,33 @@ namespace ProPharmacyManagerW.View
         }
 
         #region window status
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F1)
+            {
+                About abo = new About();
+                abo.ShowDialog();
+            }
+            else if (e.Key == Key.F11)
+            {
+                Kernel.Core.IsSetup = false;
+                Set set = new Set();
+                set.Show();
+            }
+            else if (e.Key == Key.F12)
+            {
+                if (Kernel.Core.IsCMode == false)
+                {
+                    ConGui consl = new ConGui();
+                    consl.Show();
+                }
+            }
+            if (UN.Text == "")
+            {
+                UN.Focus();
+            }
+        }
+
         private void Closem1_Click(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
@@ -31,29 +58,11 @@ namespace ProPharmacyManagerW.View
         {
             this.WindowState = WindowState.Minimized;
         }
-
-        private void border1_MouseDown(object sender, MouseButtonEventArgs e)
+        
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                if (e.ClickCount == 2)
-                {
-                    //if (this.WindowState == System.Windows.WindowState.Normal)
-                    //{
-                    //    this.WindowState = System.Windows.WindowState.Maximized;
-                    //}
-                    //else
-                    //{
-                    //    this.WindowState = System.Windows.WindowState.Normal;
-                    //}
-                }
-                else
-                {
-                    this.DragMove();
-                }
-            }
+            this.DragMove();
         }
-
         private void button2_Click(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
@@ -82,38 +91,11 @@ namespace ProPharmacyManagerW.View
                 MessageBox.Show("ادخل اسم المستخدم او كلمه المرور", "خطا", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.F1)
-            {
-                About abo = new About();
-                abo.ShowDialog();
-            }
-            else if (e.Key == Key.F11)
-            {
-                Kernel.Core.IsSetup = false;
-                Set set = new Set();
-                set.Show();
-            }
-            else if (e.Key == Key.F12)
-            {
-                if (Kernel.Core.IsCMode == false)
-                {
-                    ConGui consl = new ConGui();
-                    consl.Show();
-                }
-            }
-            if (UN.Text == "")
-            {
-                UN.Focus();
-            }
-        }
-
+        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             UN.Focus();
         }
-
+        
     }
 }
