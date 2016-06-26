@@ -34,7 +34,28 @@ namespace ProPharmacyManagerW.View.Pages
         /// </summary>
         public static bool IsInstallCompleted = false;
         public static bool IsClosing = false;
-
+        /// <summary>
+        /// Filling textboxes text with default values if they were empty
+        /// </summary>
+        void fill()
+        {
+            if (DBHost.Text == "")
+            {
+                DBHost.Text = "localhost";
+            }
+            if (DBName.Text == "")
+            {
+                DBName.Text = "phdb";
+            }
+            if (DBUser.Text == "")
+            {
+                DBUser.Text = "root";
+            }
+            if (DBPass.Text == "")
+            {
+                DBPass.Text = "1234";
+            }
+        }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\"))
@@ -80,6 +101,7 @@ namespace ProPharmacyManagerW.View.Pages
             if (Core.IsSetup == true)
             {
                 Console.WriteLine("Starting to install");
+                fill();
                 bgw.RunWorkerAsync();
             }
         }
@@ -87,6 +109,7 @@ namespace ProPharmacyManagerW.View.Pages
         private void UpgradeB_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Starting to upgrade");
+            fill();
             file.Write("MySql", "Host", DBHost.Text);
             file.Write("MySql", "Username", DBUser.Text);
             file.Write("MySql", "Password", DBPass.Text);
@@ -102,6 +125,7 @@ namespace ProPharmacyManagerW.View.Pages
         private void WConB_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Write the config file");
+            fill();
             file.Write("MySql", "Host", DBHost.Text);
             file.Write("MySql", "Username", DBUser.Text);
             file.Write("MySql", "Password", DBPass.Text);

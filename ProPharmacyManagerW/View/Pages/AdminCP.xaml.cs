@@ -579,6 +579,7 @@ namespace ProPharmacyManagerW.View.Pages
             LogOut.IsEnabled = false;
             ADType.SelectedIndex = 0;
             ADName.Focus();
+            //#3399FF, #0066CC
             LGBB(51, 153, 255, 0, 102, 204);
         }
 
@@ -621,6 +622,7 @@ namespace ProPharmacyManagerW.View.Pages
             ADName.Foreground = Brushes.Blue;
             ADName.Background = Brushes.White;
             ADName.Items.Clear();
+            //#3399FF, #0066CC
             LGBB(51, 153, 255, 0, 102, 204);
         }
 
@@ -634,6 +636,7 @@ namespace ProPharmacyManagerW.View.Pages
 
         private void RestoreBackground(object sender, RoutedEventArgs e)
         {
+            //#3399FF, #0066CC
             LGBB(51, 153, 255, 0, 102, 204);
         }
 
@@ -645,6 +648,7 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 ADType.Text = "";
             }
+            //#3399FF, #0066CC
             LGBB(51, 153, 255, 0, 102, 204);
         }
 
@@ -740,12 +744,13 @@ namespace ProPharmacyManagerW.View.Pages
                     .Insert("Total", Convert.ToDecimal(ADTotal.Text))
                     .Insert("SPrice", Convert.ToDecimal(ADPrice.Text))
                     .Insert("Notes", ADNote.Text).Execute();
+                //#2ECC71, #2aba66
                 LGBB(46, 204, 113, 42, 186, 102);
                 Console.WriteLine(AccountsTable.UserName + " add " + ADTotal.Text + " " + ADName.Text + " which each cost " + ADPrice.Text);
-                var later = DateTime.Now.Second;
             }
             catch (Exception ex)
             {
+                //#d8334a, #BF263C
                 LGBB(216, 51, 74, 191, 38, 60);
                 MessageBox.Show("غالبا تم استخدام نفس اسم الدواء من قبل");
                 Kernel.Core.SaveException(ex);
