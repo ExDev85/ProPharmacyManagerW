@@ -7,6 +7,7 @@
 using ProPharmacyManagerW.Kernel;
 using System;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
@@ -28,16 +29,31 @@ namespace ProPharmacyManagerW.View
 
         private void checkSetUpState(object sender, EventArgs e)
         {
-            if (Pages.Register.IsRegisterFromSetup == true && Core.IsSetup == true)
+            if(Pages.Setup.IsClosing == true)
             {
-                if (Pages.Register.IsRegisCom)
-                {
-                    Pages.Register.IsRegisterFromSetup = false;
-                    Pages.Register.IsRegisCom = false;
-                }
-                Core.IsSetup = false;
+                Pages.Setup.IsClosing = false;
                 Close();
                 checkSetUp.Stop();
+            }
+            if (Core.IsSetup == true)
+            {
+                if (Pages.Setup.IsInstallCompleted)
+                {
+                    Pages.Setup.IsInstallCompleted = false;
+                    Pages.Register re = new Pages.Register();
+                    setreg.Navigate(re);
+                }
+                if (Pages.Register.IsRegisterFromSetup == true)
+                {
+                    if (Pages.Register.IsRegisCom)
+                    {
+                        Pages.Register.IsRegisterFromSetup = false;
+                        Pages.Register.IsRegisCom = false;
+                        Core.IsSetup = false;
+                        Close();
+                        checkSetUp.Stop();
+                    }
+                }
             }
         }
         /// <summary>
@@ -45,17 +61,30 @@ namespace ProPharmacyManagerW.View
         /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Core.IsSetup == true)
-            {
-                //#FF2B41A4
-                SolidColorBrush NC = new SolidColorBrush();
-                NC.Color = Color.FromRgb(43, 65, 164);
-                this.Background = NC;
-                checkSetUp.Interval = TimeSpan.FromMilliseconds(500);
-                checkSetUp.Tick += checkSetUpState;
-                checkSetUp.Start();
-            }
+            //#FF2B41A4
+            SolidColorBrush NC = new SolidColorBrush();
+            NC.Color = Color.FromRgb(43, 65, 164);
+            this.Background = NC;
+            checkSetUp.Interval = TimeSpan.FromMilliseconds(500);
+            checkSetUp.Tick += checkSetUpState;
+            checkSetUp.Start();
+        }
 
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.F1)
+            {
+                About abo = new About();
+                abo.ShowDialog();
+            }
+            else if (e.Key == Key.F12)
+            {
+                if (Core.IsCMode == false)
+                {
+                    ConGui consl = new ConGui();
+                    consl.Show();
+                }
+            }
         }
     }
 }

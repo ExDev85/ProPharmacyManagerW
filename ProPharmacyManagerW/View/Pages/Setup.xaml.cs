@@ -6,7 +6,6 @@
 // </copyright>
 using ProPharmacyManagerW.Database;
 using ProPharmacyManagerW.Kernel;
-using ProPharmacyManagerW.View;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -30,6 +29,11 @@ namespace ProPharmacyManagerW.View.Pages
         IniFile file = new IniFile(Paths.SetupConfigPath);
 
         private BackgroundWorker bgw;
+        /// <summary>
+        /// Check if installing process is compeleteing or not to load register page
+        /// </summary>
+        public static bool IsInstallCompleted = false;
+        public static bool IsClosing = false;
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -75,12 +79,14 @@ namespace ProPharmacyManagerW.View.Pages
         {
             if (Core.IsSetup == true)
             {
+                Console.WriteLine("Starting to install");
                 bgw.RunWorkerAsync();
             }
         }
 
         private void UpgradeB_Click(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine("Starting to upgrade");
             file.Write("MySql", "Host", DBHost.Text);
             file.Write("MySql", "Username", DBUser.Text);
             file.Write("MySql", "Password", DBPass.Text);
@@ -90,14 +96,12 @@ namespace ProPharmacyManagerW.View.Pages
             CreateDB.UpgradeTables();
             MessageBox.Show("تمت الترقية بنجاح");
             Console.WriteLine("Upgraded the database you have");
-            if (Core.IsSetup == true)
-            {
-                Register.IsRegisterFromSetup = true;
-            }
+            IsClosing = true;
         }
 
         private void WConB_Click(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine("Write the config file");
             file.Write("MySql", "Host", DBHost.Text);
             file.Write("MySql", "Username", DBUser.Text);
             file.Write("MySql", "Password", DBPass.Text);
@@ -107,20 +111,15 @@ namespace ProPharmacyManagerW.View.Pages
             file.Write("Settings", "DrugsLog", "1");
             MessageBox.Show("تمت كتابه ملف الاعدادت بنجاح");
             Console.WriteLine("I see a little uninstaller in you");
-            if (Core.IsSetup == true)
-            {
-                Register.IsRegisterFromSetup = true;
-            }
+            IsClosing = true;
         }
 
         private void ExitB_Click(object sender, RoutedEventArgs e)
         {
-            if (Core.IsSetup == true)
-            {
-                Environment.Exit(0);
-            }
+            Environment.Exit(0);
         }
 
+        #region Intalling process
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             bgw.ReportProgress(5);
@@ -156,7 +155,7 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 CreateDB.CreateTables();
             }));
-            bgw.ReportProgress(100);
+            bgw.ReportProgress(95);
             Thread.Sleep(900);
         }
 
@@ -165,15 +164,14 @@ namespace ProPharmacyManagerW.View.Pages
             Console.WriteLine("It's only logical for database to be set");
             MessageBox.Show("تم تنصيب الاعدادات\nمن فضلك انشاء حساب جديد لتتمكن من الدخول");
             pB.Visibility = Visibility.Hidden;
-            Accounts reg = new Accounts();
-            reg.Title = "اضافه مستخدم";
-            reg.ShowDialog();
+            IsInstallCompleted = true;
         }
 
         private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             pB.Value = e.ProgressPercentage;
         }
-      
+        #endregion
+
     }
 }

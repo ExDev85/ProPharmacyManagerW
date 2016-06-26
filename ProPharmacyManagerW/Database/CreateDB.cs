@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using ProPharmacyManagerW.Kernel;
 using System;
 using System.Windows;
+using System.IO;
 
 namespace ProPharmacyManagerW.Database
 {
@@ -31,9 +32,19 @@ namespace ProPharmacyManagerW.Database
                     }
                     catch (Exception e)
                     {
+                        Console.WriteLine("Something went wrong \"Microsoft style\"");
                         MessageBox.Show("هناك مشكله فى السيرفر او بيانات الاتصال به");
                         Core.SaveException(e);
-                        return;
+                        if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\BackupConfig.ini"))
+                        {
+                            File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\BackupConfig.ini");
+                        }
+                        if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Configuration.ini"))
+                        {
+                            File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Configuration.ini");
+                        }
+                        Console.WriteLine("Program configuration files has been deleted \r\n now we goning to shutdown your PC");
+                        Environment.Exit(0);
                     }
                     string db = QueryExpress.ExecuteScalarStr(cmd, db1);
                     if (string.IsNullOrEmpty(db))

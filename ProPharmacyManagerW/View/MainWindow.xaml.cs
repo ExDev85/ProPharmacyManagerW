@@ -87,7 +87,7 @@ namespace ProPharmacyManagerW.View
         {
             if (e.Key == Key.F1)
             {
-                View.About abo = new View.About();
+                About abo = new About();
                 abo.ShowDialog();
             }
             else if (e.Key == Key.F11)
@@ -100,7 +100,7 @@ namespace ProPharmacyManagerW.View
             {
                 if (Kernel.Core.IsCMode == false)
                 {
-                    View.ConGui consl = new View.ConGui();
+                    ConGui consl = new ConGui();
                     consl.Show();
                 }
             }
