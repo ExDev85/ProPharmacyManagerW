@@ -43,7 +43,7 @@ namespace ProPharmacyManagerW.Database
                         {
                             File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Configuration.ini");
                         }
-                        Console.WriteLine("Program configuration files has been deleted \r\n now we goning to shutdown your PC");
+                        Console.WriteLine("Program configuration files has been deleted \r\n now we are goning to shutdown your PC");
                         Environment.Exit(0);
                     }
                     string db = QueryExpress.ExecuteScalarStr(cmd, db1);

@@ -2,6 +2,7 @@ ProPharmacyManagerW
 
 0.9.9.7:
 1.  Improvements to the UI.
+2.  New command to delete the program config file/s or folder.
 
 0.9.9.6:
 1.  You don't have to run the program as administrator anymore.

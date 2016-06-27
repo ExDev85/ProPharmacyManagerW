@@ -106,7 +106,7 @@ namespace ProPharmacyManagerW
                                 try
                                 {
                                     MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT);
-                                    cmd.Insert("accounts").Insert("Username", data[1]).Insert("Password", Kernel.Core.GetSHAHashData(data[2])).Insert("State", data[3]).Insert("Phone", data[4]).Execute();
+                                    cmd.Insert("accounts").Insert("Username", data[1]).Insert("Password", Core.GetSHAHashData(data[2])).Insert("State", data[3]).Insert("Phone", data[4]).Execute();
                                     WriteLine("You add a new user " + data[1]);
                                 }
                                 catch (Exception e)
@@ -230,6 +230,48 @@ namespace ProPharmacyManagerW
                                 catch (Exception e)
                                 {
                                     WriteLine("Are you 100% sure that is a MySQL file/n" + e);
+                                }
+                                break;
+                            }
+                        #endregion
+                        #region Delete table or database
+                        case "#DelTemp":
+                            {
+                                if (data[1] == "-all")
+                                {
+                                    try
+                                    {
+                                        if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW"))
+                                        {
+                                            Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW");
+                                            WriteLine("You just deleted everything the program stand for \nI hope you are happy");
+                                        }
+                                    }
+                                    catch(Exception e)
+                                    {
+                                        WriteLine("Maybe the folder isn't there so stop trying to delete it");
+                                        Core.SaveException(e);
+                                    }
+                                }
+                                else
+                                {
+                                    try
+                                    {
+                                        if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\BackupConfig.ini"))
+                                        {
+                                            File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\BackupConfig.ini");
+                                        }
+                                        if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Configuration.ini"))
+                                        {
+                                            File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Configuration.ini");
+                                        }
+                                        WriteLine("You just deleted the config files");
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        WriteLine("Maybe the files are not there so stop trying to delete them");
+                                        Core.SaveException(e);
+                                    }
                                 }
                                 break;
                             }
