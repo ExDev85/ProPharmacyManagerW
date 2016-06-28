@@ -234,7 +234,7 @@ namespace ProPharmacyManagerW
                                 break;
                             }
                         #endregion
-                        #region Delete table or database
+                        #region Delete config folder
                         case "#DelTemp":
                             {
                                 if (data[1] == "-all")
@@ -283,7 +283,8 @@ namespace ProPharmacyManagerW
         #adddrug Name Barcode(Could be empty -type null-) ScientificName(Could be empty -type null-) ExpirationDate(should be yyyy/mm/dd) Type(type 1 for syrup - 2 for tab - 3 Injection - 4 for Cream/Ointments - 0 for other) Total(must be numbers) SPrice(must be numbers) Notes(Could be empty -type null-)
         #Drop db (to delete your database good luck with that)
         #Drop table tablename (delete a spacific table to ruin the database)
-        #import path (type the full path for the sql file to import it like c:\meds.sql)");
+        #import path (type the full path for the sql file to import it like c:\meds.sql)
+        #DelTemp (type '-all' to delete the config folder with backups files like #DelTemp -all)");
                                 break;
                             }
                         default:
