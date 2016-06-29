@@ -8,6 +8,7 @@ using ProPharmacyManagerW.Database;
 using ProPharmacyManagerW.Kernel;
 using System;
 using System.IO;
+using System.Text;
 using System.Threading;
 
 namespace ProPharmacyManagerW
@@ -193,35 +194,24 @@ namespace ProPharmacyManagerW
                             {
                                 try
                                 {
-                                    Thread th = new Thread(() => {
-                                        string[] MN = File.ReadAllLines(data[1]);
-                                        foreach (string line in MN)
+                                    Thread th = new Thread(() =>
+                                    {
+                                        using (StreamReader sr = File.OpenText(data[1]))
                                         {
-                                            if (line.Length == 0)
+                                            StringBuilder sb = new StringBuilder();
+                                            while (sb.Append(sr.ReadLine()).Length > 0)
                                             {
-                                                continue;
-                                            }
-                                            if (line.StartsWith("INSERT INTO `medics`") && line.EndsWith(";"))
-                                            {
-                                                try
+                                                sb.Replace("INSERT INTO `medics`", "INSERT IGNORE INTO `medics`");
+                                                MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT)
                                                 {
-                                                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT)
-                                                    {
-                                                        Command = line
-                                                    };
-                                                    cmd.Execute();
-                                                }
-                                                catch
-                                                {
-                                                    string CTR = line.Replace("INSERT INTO `medics`", "REPLACE INTO `medics`");
-                                                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT)
-                                                    {
-                                                        Command = CTR
-                                                    };
-                                                    cmd.Execute();
-                                                }
+                                                    Command = sb.ToString()
+                                                };
+                                                cmd.Execute();
                                                 WriteT(".");
+                                                sb.Clear();
                                             }
+                                            sr.Dispose();
+                                            sr.Close();
                                         }
                                         WriteLineF("The file is well imported");
                                     });
