@@ -55,7 +55,7 @@ namespace ProPharmacyManagerW.View
 
         private void CheckRegiserState(object sender, EventArgs e)
         {
-            if (Pages.Register.IsRegisCom == true && Pages.Register.IsRegisterFromSetup == true)
+            if (Pages.Register.IsRegisCom == true && Kernel.Core.IsSetup == true)
             {
                 Close();
             }

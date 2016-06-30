@@ -225,22 +225,25 @@ namespace ProPharmacyManagerW
                             }
                         #endregion
                         #region Delete config folder
-                        case "#DelTemp":
+                        case "#deltemp":
                             {
-                                if (data[1] == "-all")
+                                if (data.Length >= 2)
                                 {
-                                    try
+                                    if (data[1] == "-all")
                                     {
-                                        if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW"))
+                                        try
                                         {
-                                            Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW");
-                                            WriteLine("You just deleted everything the program stand for \nI hope you are happy");
+                                            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW"))
+                                            {
+                                                Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW");
+                                                WriteLine("You just deleted everything the program stand for \nI hope you are happy");
+                                            }
                                         }
-                                    }
-                                    catch(Exception e)
-                                    {
-                                        WriteLine("Maybe the folder isn't there so stop trying to delete it");
-                                        Core.SaveException(e);
+                                        catch (Exception e)
+                                        {
+                                            WriteLine("Maybe the folder isn't there so stop trying to delete it");
+                                            Core.SaveException(e);
+                                        }
                                     }
                                 }
                                 else
@@ -274,7 +277,7 @@ namespace ProPharmacyManagerW
         #Drop db (to delete your database good luck with that)
         #Drop table tablename (delete a spacific table to ruin the database)
         #import path (type the full path for the sql file to import it like c:\meds.sql)
-        #DelTemp (type '-all' to delete the config folder with backups files like #DelTemp -all)");
+        #deltemp (type '-all' to delete the config folder with backups files like #deltemp -all)");
                                 break;
                             }
                         default:

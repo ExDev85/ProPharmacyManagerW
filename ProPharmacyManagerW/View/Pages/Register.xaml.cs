@@ -20,11 +20,6 @@ namespace ProPharmacyManagerW.View.Pages
         {
             InitializeComponent();
         }
-
-        /// <summary>
-        /// Check if registertion is for setup process
-        /// </summary>
-        public static bool IsRegisterFromSetup;
         /// <summary>
         /// check if user insert the new user to the database without problems
         /// </summary>
@@ -51,7 +46,7 @@ namespace ProPharmacyManagerW.View.Pages
                     MessageBox.Show("اختار صلاحيات المستخدم");
                     return;
             }
-            if (RUName.Text == "" || RUName.Text == "اسم المستخدم*")
+            if (RUName.Text == "")
             {
                 RUName.Background = Brushes.Red;
                 return;
@@ -75,19 +70,14 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 try
                 {
-                    if (RUPhone.Text == "رقم الهاتف")
-                    {
-                        RUPhone.Text = "";
-                    }
                     MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT);
-                    cmd.Insert("accounts").Insert("Username", RUName.Text).Insert("Password", Kernel.Core.GetSHAHashData(RUPass1.Password)).Insert("State", state).Insert("Phone", RUPhone.Text).Execute();                  
+                    cmd.Insert("accounts").Insert("Username", RUName.Text).Insert("Password", Kernel.Core.GetSHAHashData(RUPass1.Password)).Insert("State", state).Insert("Phone", RUPhone.Text).Execute();
                     IsRegisCom = true;
-                    MessageBox.Show("تم تسجيل الموظف بنجاح");
-                    if (Kernel.Core.IsSetup == true)
+                    if (Kernel.Core.IsSetup != true)
                     {
-                        IsRegisterFromSetup = true;
+                        MessageBox.Show("تم تسجيل الموظف بنجاح");
                     }
-                    Console.WriteLine("You add " + RUName.Text + " as "  + state + " so much wow");
+                    Console.WriteLine("You add " + RUName.Text + " as " + state + " so much wow");
                 }
                 catch
                 {
@@ -101,19 +91,11 @@ namespace ProPharmacyManagerW.View.Pages
         }
 
         #region buttons status
-        private void RUName_GotFocus(object sender, RoutedEventArgs e)
+        private void RUName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (RUName.Text == "اسم المستخدم*")
+            if (RUName.Text != "")
             {
-                RUName.Text = "";
-            }
-        }
-
-        private void RUName_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (RUName.Text == "")
-            {
-                RUName.Text = "اسم المستخدم*";
+                RUName.Background = Brushes.White;
             }
         }
 
@@ -148,31 +130,7 @@ namespace ProPharmacyManagerW.View.Pages
                 RUPass2.Password = "حشسسصخقي";
             }
         }
-
-        private void RUPhone_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (RUPhone.Text == "رقم الهاتف")
-            {
-                RUPhone.Text = "";
-            }
-        }
-
-        private void RUPhone_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (RUPhone.Text == "")
-            {
-                RUPhone.Text = "رقم الهاتف";
-            }
-        }
         #endregion
-
-        private void RUName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (RUName.Text != "" || RUName.Text != "اسم المستخدم*")
-            {
-                RUName.Background = Brushes.White;
-            }
-        }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {

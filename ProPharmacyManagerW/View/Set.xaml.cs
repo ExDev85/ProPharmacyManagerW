@@ -29,7 +29,7 @@ namespace ProPharmacyManagerW.View
 
         private void checkSetUpState(object sender, EventArgs e)
         {
-            if(Pages.Setup.IsClosing == true)
+            if (Pages.Setup.IsClosing == true)
             {
                 Pages.Setup.IsClosing = false;
                 Close();
@@ -43,16 +43,12 @@ namespace ProPharmacyManagerW.View
                     Pages.Register re = new Pages.Register();
                     setreg.Navigate(re);
                 }
-                if (Pages.Register.IsRegisterFromSetup == true)
+                if (Pages.Register.IsRegisCom)
                 {
-                    if (Pages.Register.IsRegisCom)
-                    {
-                        Pages.Register.IsRegisterFromSetup = false;
-                        Pages.Register.IsRegisCom = false;
-                        Core.IsSetup = false;
-                        Close();
-                        checkSetUp.Stop();
-                    }
+                    Pages.Register.IsRegisCom = false;
+                    Core.IsSetup = false;
+                    Close();
+                    checkSetUp.Stop();
                 }
             }
         }
@@ -70,7 +66,7 @@ namespace ProPharmacyManagerW.View
             checkSetUp.Start();
         }
 
-        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F1)
             {
