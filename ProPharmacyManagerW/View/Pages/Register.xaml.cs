@@ -7,6 +7,7 @@
 using ProPharmacyManagerW.Database;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace ProPharmacyManagerW.View.Pages
@@ -24,6 +25,14 @@ namespace ProPharmacyManagerW.View.Pages
         /// check if user insert the new user to the database without problems
         /// </summary>
         public static bool IsRegisCom;
+
+        private void NumbersOnly(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                e.Handled = true;
+            }
+        }
 
         private void InsReg_Click(object sender, RoutedEventArgs e)
         {
@@ -143,5 +152,6 @@ namespace ProPharmacyManagerW.View.Pages
                 RUState.SelectedIndex = 0;
             }
         }
+        
     }
 }

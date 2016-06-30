@@ -29,7 +29,7 @@
             <ListBoxItem Content="مدير"/>
             <ListBoxItem Content="موظف"/>
         </ComboBox>
-        <Controls:WaterMarkTextBox x:Name="RUPhone" WaterMark="رقم الهاتف" HorizontalAlignment="Left" Height="32" Margin="10,4,0,0" Grid.Row="5" VerticalAlignment="Top" Width="280" MaxLines="1" TabIndex="5" HorizontalScrollBarVisibility="Auto" Foreground="#FF282EB6" FontWeight="Bold" FontSize="15" MaxLength="20"/>
+        <Controls:WaterMarkTextBox x:Name="RUPhone" WaterMark="رقم الهاتف" HorizontalAlignment="Left" Height="32" Margin="10,4,0,0" Grid.Row="5" VerticalAlignment="Top" Width="280" MaxLines="1" TabIndex="5" HorizontalScrollBarVisibility="Auto" Foreground="#FF282EB6" FontWeight="Bold" FontSize="15" MaxLength="20" PreviewTextInput="NumbersOnly"/>
         <Label x:Name="label1" Content="* كل المُعلم بـ* يجب ان يتم ادخاله&#xD;&#xA;* اذا كنت تقوم بإعداد البرنامج لاول مرة يجب ان تختار&#xD;&#xA;المستخدم بصلاحيات المدير" HorizontalAlignment="Left" Height="63" Margin="10,5,0,0" Grid.Row="6" VerticalAlignment="Top" Width="280" FontWeight="Bold" Foreground="Red"/>
         <Button x:Name="InsReg" Content="تسجيل" HorizontalAlignment="Right" Height="32" Margin="0,1,20,0" Grid.Row="7" VerticalAlignment="Top" Width="92" FontSize="15" Foreground="#FF046111" ForceCursor="True" FontWeight="Bold" Click="InsReg_Click" TabIndex="6" IsDefault="True"/>
 
