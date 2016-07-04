@@ -9,7 +9,7 @@ MySqlBackup.NET is licensed under the terms of the publicdomain. (http://creativ
 For more information about MySqlBackup.NET,
 please see http://mysqlbackupnet.codeplex.com
 
-The Application uses MySql.Data 6.9.8, ADO.Net driver for MySQL
+The Application uses MySql.Data 6.9.9, ADO.Net driver for MySQL
 MySql.Data is licensed under the terms of the GPLv2. (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
 For more information about MySql.Data,
 please see http://dev.mysql.com/downloads/
