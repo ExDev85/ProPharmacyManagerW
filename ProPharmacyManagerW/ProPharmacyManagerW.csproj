@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>PPHM-Green.ico</ApplicationIcon>
+    <ApplicationIcon>PPHM W Icon Green.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -367,9 +367,6 @@
     <Resource Include="Images\upgr3.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PPHM-Green.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
@@ -388,6 +385,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\addnewuser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PPHM W Icon Green.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PPHM W.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PPHM W Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PPHM W Trans.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

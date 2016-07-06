@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Controls:ImageButton x:Name="button1" HorizontalAlignment="Left" Width="54" Image="/ProPharmacyManagerW;component/Images/LoginBGC11.png" ImageDisabled="/ProPharmacyManagerW;component/Images/LoginBGC3.png" ImageHover="/ProPharmacyManagerW;component/Images/LoginBGC2.png" ImagePressed="/ProPharmacyManagerW;component/Images/LoginBGC3.png" Height="43" VerticalAlignment="Top" Click="button1_Click" TabIndex="36" />
         <Controls:ImageButton x:Name="imageButton1" HorizontalAlignment="Left" Margin="51,0,0,0"  Width="52" Image="/ProPharmacyManagerW;component/Images/LoginBGM1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/LoginBGM3.png" ImageHover="/ProPharmacyManagerW;component/Images/LoginBGM2.png" ImagePressed="/ProPharmacyManagerW;component/Images/LoginBGM3.png" Height="43" VerticalAlignment="Top" Click="imageButton1_Click" TabIndex="37" />
-        <Image Name="image1" Grid.Column="1" Stretch="Fill" HorizontalAlignment="Right" Width="54" Source="/ProPharmacyManagerW;component/Images/CPLogo.png" Height="43" VerticalAlignment="Top" />
+        <Image Name="image1" Grid.Column="1" Stretch="Fill" HorizontalAlignment="Right" Width="54" Source="/ProPharmacyManagerW;component/Images/PPHM W Trans.png" Height="43" VerticalAlignment="Top" />
         <Border BorderBrush="{x:Null}" BorderThickness="1" Grid.ColumnSpan="2" Margin="109,0,49,0" Name="border1" MouseDown="border1_MouseDown" Background="#5E00688F" FlowDirection="RightToLeft" Height="43" VerticalAlignment="Top"/>
         <Frame x:Name="FFhost" Grid.Column="1" Source="Pages\AdminCP.xaml" BorderThickness="0" FlowDirection="RightToLeft" NavigationUIVisibility="Hidden" Grid.RowSpan="2" />
     </Grid>

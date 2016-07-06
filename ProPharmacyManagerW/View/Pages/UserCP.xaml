@@ -19,7 +19,7 @@
             <RowDefinition Height="429*" />
             <RowDefinition Height="94*" />
         </Grid.RowDefinitions>
-        <Image Grid.Column="1" x:Name="image1" Stretch="Fill" HorizontalAlignment="Right" Width="54" Source="/ProPharmacyManagerW;component/Images/CPLogo.png" Height="43" VerticalAlignment="Top" />
+        <Image Grid.Column="1" x:Name="image1" Stretch="Fill" HorizontalAlignment="Right" Width="54" Source="/ProPharmacyManagerW;component/Images/PPHM W Trans.png" Height="43" VerticalAlignment="Top" />
 
         <Menu Height="31" x:Name="menu1" Background="#050B87B3" Foreground="White" IsMainMenu="True" VerticalAlignment="Top" FlowDirection="RightToLeft" Grid.ColumnSpan="2" Margin="0,0,54,0" Width="350" MaxWidth="350" HorizontalAlignment="Right">
             <MenuItem x:Name="MeEmp" FontSize="15" FontWeight="Bold" Header="موظفين" TabIndex="1" Foreground="White">
