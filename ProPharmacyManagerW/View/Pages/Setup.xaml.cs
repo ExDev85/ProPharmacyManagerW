@@ -34,6 +34,7 @@ namespace ProPharmacyManagerW.View.Pages
         /// </summary>
         public static bool IsInstallCompleted = false;
         public static bool IsClosing = false;
+        public static bool IsUpgrading = false;
         /// <summary>
         /// Filling textboxes text with default values if they were empty
         /// </summary>
@@ -115,27 +116,10 @@ namespace ProPharmacyManagerW.View.Pages
             file.Write("MySql", "Password", DBPass.Text);
             file.Write("MySql", "Database", DBName.Text);
             file.Write("Upgrade", "Version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", ""));
-            DataHolder.CreateConnection(Core.INIDecrypt(file.ReadString("MySql", "Username")), Core.INIDecrypt(file.ReadString("MySql", "Password")), Core.INIDecrypt(file.ReadString("MySql", "Database")), Core.INIDecrypt(file.ReadString("MySql", "Host")));
-            CreateDB.UpgradeTables();
-            MessageBox.Show("تمت الترقية بنجاح");
-            Console.WriteLine("Upgraded the database you have");
-            IsClosing = true;
-        }
-
-        private void WConB_Click(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Write the config file");
-            fill();
-            file.Write("MySql", "Host", DBHost.Text);
-            file.Write("MySql", "Username", DBUser.Text);
-            file.Write("MySql", "Password", DBPass.Text);
-            file.Write("MySql", "Database", DBName.Text);
-            file.Write("Upgrade", "Version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", ""));
             file.Write("Settings", "AccountsLog", "1");
             file.Write("Settings", "DrugsLog", "1");
-            MessageBox.Show("تمت كتابه ملف الاعدادت بنجاح");
-            Console.WriteLine("I see a little uninstaller in you");
-            IsClosing = true;
+            DataHolder.CreateConnection(Core.INIDecrypt(file.ReadString("MySql", "Username")), Core.INIDecrypt(file.ReadString("MySql", "Password")), Core.INIDecrypt(file.ReadString("MySql", "Database")), Core.INIDecrypt(file.ReadString("MySql", "Host")));
+            IsUpgrading = true;
         }
 
         private void ExitB_Click(object sender, RoutedEventArgs e)

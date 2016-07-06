@@ -5,7 +5,6 @@
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
 using ProPharmacyManagerW.Database;
-using ProPharmacyManagerW.View;
 using System;
 using System.Threading;
 using System.Windows;
@@ -67,6 +66,7 @@ namespace ProPharmacyManagerW.View.Pages
                 dataGrid.Columns[1].DisplayIndex = 4;
                 dataGrid.Columns[5].Visibility = Visibility.Collapsed;
                 dataGrid.Columns[7].Visibility = Visibility.Collapsed;
+                Pb.Visibility = Visibility.Collapsed;
             });
         }
         

@@ -1,0 +1,74 @@
+﻿<Page x:Class="ProPharmacyManagerW.View.Pages.Upgrade"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:vm ="clr-namespace:ProPharmacyManagerW.ViewModel"
+      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls"
+      xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="400"
+      Title="ترقية" FlowDirection="RightToLeft" Loaded="Page_Loaded">
+    <Page.Resources>
+        <vm:FAllMeds x:Key="Checked" />
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="60*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="51*"/>
+            <RowDefinition Height="290*"/>
+            <RowDefinition Height="59*"/>
+        </Grid.RowDefinitions>
+        <CheckBox x:Name="PPHMCB" Content="PPHM" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="10,10,10,0" VerticalAlignment="Top" IsChecked="{Binding IsByNameChecked, Source={StaticResource Checked}}"/>
+        <CheckBox x:Name="PPHMWCB" Content="PPHM W" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="11,10,10,0" VerticalAlignment="Top" Grid.Column="1" IsChecked="{Binding IsByBarCodeChecked, Source={StaticResource Checked}}"/>
+        <CheckBox x:Name="PPHMWXCB" Content="PPHM WL" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Column="2" IsChecked="{Binding IsByScientificNameChecked, Source={StaticResource Checked}}"/>
+        <ListView x:Name="PPHMLV" Margin="6,0,4,0" Grid.Row="1" SelectionMode="Single" FlowDirection="LeftToRight" SelectedIndex="15" IsEnabled="{Binding IsChecked, ElementName=PPHMCB}">
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </ListView.Resources>
+            <ListBoxItem Content="Alpha"/>
+            <ListBoxItem Content="Beta"/>
+            <ListBoxItem Content="1.0"/>
+            <ListBoxItem Content="2.0"/>
+            <ListBoxItem Content="2.1"/>
+            <ListBoxItem Content="2.2"/>
+            <ListBoxItem Content="2.3"/>
+            <ListBoxItem Content="2.4"/>
+            <ListBoxItem Content="3.0"/>
+            <ListBoxItem Content="4.0"/>
+            <ListBoxItem Content="4.1"/>
+            <ListBoxItem Content="4.2"/>
+            <ListBoxItem Content="5.0"/>
+            <ListBoxItem Content="5.1"/>
+            <ListBoxItem Content="5.1.1"/>
+        </ListView>
+        <ListView x:Name="PPHMWLV" Margin="6,0,5,0" Grid.Row="1" SelectionMode="Single" Grid.Column="1" FlowDirection="LeftToRight" SelectedIndex="2" IsEnabled="{Binding IsChecked, ElementName=PPHMWCB}">
+            <ListView.Resources>
+                <Style TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </ListView.Resources>
+            <ListBoxItem Content="0.9.9.1"/>
+            <ListBoxItem Content="0.9.9.5"/>
+            <ListBoxItem Content="0.9.9.6"/>
+        </ListView>
+        <ListView x:Name="PPHMWXLV" Margin="0,0,10,0" Grid.Row="1" SelectionMode="Single" FlowDirection="LeftToRight" Grid.Column="2" SelectedIndex="0" IsEnabled="{Binding IsChecked, ElementName=PPHMWXCB}">
+            <ListView.Resources>
+                <Style TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </ListView.Resources>
+            <ListBoxItem Content="قريبا"/>
+        </ListView>
+        <Controls:ImageButton x:Name="UpgradeB" Content="" Height="38" Margin="10,0,18,10" Grid.Row="2" VerticalAlignment="Bottom" Grid.Column="2" TabIndex="6" BorderBrush="#FF2B41A4" Foreground="White" Background="#FF0081B5" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/upgr1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/upgr3.png" ImageHover="/ProPharmacyManagerW;component/Images/upgr2.png" ImagePressed="/ProPharmacyManagerW;component/Images/upgr3.png" Click="UpgradeB_Click"/>
+        <Controls:ImageButton x:Name="WConB" Content="" Grid.Column="1" HorizontalAlignment="Right" Height="38" Margin="0,11,12,0" Grid.Row="2" VerticalAlignment="Top" Width="112" Image="/ProPharmacyManagerW;component/Images/Conf1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Conf3.png" ImageHover="/ProPharmacyManagerW;component/Images/Conf2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Conf3.png" TabIndex="8" Background="#FF008B8E" Click="WConB_Click"/>
+        <Controls:ImageButton x:Name="ExitB" Content="" Height="38" Margin="8,0,10,11" Grid.Row="2" VerticalAlignment="Bottom" TabIndex="7" Foreground="White" BorderBrush="#FF2B41A4" Background="#FFEA002A" FontSize="18.667" FontWeight="Bold" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Setext1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Setext3.png" ImageHover="/ProPharmacyManagerW;component/Images/Setext2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Setext3.png" Click="ExitB_Click"/>
+        <ProgressBar x:Name="pB" Grid.ColumnSpan="3" Height="5" VerticalAlignment="Top" Visibility="Visible" IsIndeterminate="True"/>
+    </Grid>
+</Page>

@@ -9,7 +9,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="400"
       d:DesignWidth="400"
-      Title="Setup" ShowsNavigationUI="False" FlowDirection="RightToLeft" Margin="2" RenderTransformOrigin="0,0" ClipToBounds="True" Background="#FF2B41A4" Loaded="Page_Loaded">
+      Title="اعداد" ShowsNavigationUI="False" FlowDirection="RightToLeft" Margin="2" RenderTransformOrigin="0,0" ClipToBounds="True" Background="#FF2B41A4" Loaded="Page_Loaded">
     <Page.Resources>
         <cm:BackgroundWorker x:Name="bgw" x:Key="bgw" WorkerReportsProgress="True" WorkerSupportsCancellation="False" DoWork="BackgroundWorker_DoWork" RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted" ProgressChanged="BackgroundWorker_ProgressChanged"/>
     </Page.Resources>
@@ -48,6 +48,5 @@
         <Controls:ImageButton x:Name="UpgradeB" Content="" Height="38" Margin="14,0,15,-45" Grid.Row="13" VerticalAlignment="Bottom" Grid.Column="1" TabIndex="6" BorderBrush="#FF2B41A4" Foreground="White" Background="#FF0081B5" FontSize="18.667" FontWeight="Bold" Click="UpgradeB_Click" Image="/ProPharmacyManagerW;component/Images/upgr1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/upgr3.png" ImageHover="/ProPharmacyManagerW;component/Images/upgr2.png" ImagePressed="/ProPharmacyManagerW;component/Images/upgr3.png"/>
         <Controls:ImageButton x:Name="SetB" Content="" Height="38" Margin="7,0,10,-45" Grid.Row="13" VerticalAlignment="Bottom" Grid.Column="2" TabIndex="5" Background="#FF6E6E6E" BorderBrush="#FF2B41A4" Foreground="White" FontSize="18.667" FontWeight="Bold" Click="SetB_Click" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/Set1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Set3.png" ImageHover="/ProPharmacyManagerW;component/Images/Set2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Set3.png" />
         <ProgressBar x:Name="pB" Grid.ColumnSpan="3" Height="5" VerticalAlignment="Top" Visibility="Visible"/>
-        <Controls:ImageButton x:Name="WConB" Content="" Grid.Column="2" HorizontalAlignment="Right" Height="36" Margin="0,0,10,0" Grid.Row="2" VerticalAlignment="Top" Width="112" Image="/ProPharmacyManagerW;component/Images/Conf1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Conf3.png" ImageHover="/ProPharmacyManagerW;component/Images/Conf2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Conf3.png" Click="WConB_Click" TabIndex="8" Background="#FF008B8E"/>
     </Grid>
 </Page>

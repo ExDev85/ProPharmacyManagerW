@@ -25,10 +25,15 @@ namespace ProPharmacyManagerW.View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            IOBox.Text += Console.GSLog;
+            if (Console.GSLog.Length > 0)
+            {
+                IOBox.Text += Console.GSLog;
+            }
             checkInput.Interval = TimeSpan.FromMilliseconds(100);
             checkInput.Tick += checkInputState;
             checkInput.Start();
+            IOBox.ScrollToEnd();
+            IOBox.SelectionStart = IOBox.Text.Length;
         }
 
         private void checkInputState(object sender, EventArgs e)
@@ -67,6 +72,7 @@ namespace ProPharmacyManagerW.View
             {
                 IOBox.Text += "\n";
             }
+            IOBox.SelectionStart = IOBox.Text.Length;
         }
     }
 }

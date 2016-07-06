@@ -201,14 +201,22 @@ namespace ProPharmacyManagerW
                                             StringBuilder sb = new StringBuilder();
                                             while (sb.Append(sr.ReadLine()).Length > 0)
                                             {
-                                                sb.Replace("INSERT INTO `medics`", "INSERT IGNORE INTO `medics`");
-                                                MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT)
+                                                retry:
+                                                try
                                                 {
-                                                    Command = sb.ToString()
-                                                };
-                                                cmd.Execute();
-                                                WriteT(".");
-                                                sb.Clear();
+                                                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT)
+                                                    {
+                                                        Command = sb.ToString()
+                                                    };
+                                                    cmd.Execute();
+                                                    WriteT(".");
+                                                    sb.Clear();
+                                                }
+                                                catch
+                                                {
+                                                    sb.Replace("INSERT INTO `medics`", "INSERT IGNORE INTO `medics`");
+                                                    goto retry;
+                                                }
                                             }
                                             sr.Dispose();
                                             sr.Close();

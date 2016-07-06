@@ -7,7 +7,7 @@
 namespace ProPharmacyManagerW.ViewModel
 {
     /// <summary>
-    /// Checkboxs status in all drugs page
+    /// ckeck if Checkbox is already checked ;)
     /// </summary>
     public class FAllMeds : Kernel.CommonBase
     {
@@ -25,9 +25,9 @@ namespace ProPharmacyManagerW.ViewModel
                     _IsByNameChecked = true;
                     _IsByBarCodeChecked = false;
                     _IsByScientificNameChecked = false;
+                    RaisePropertyChanged("IsByNameChecked");
                     RaisePropertyChanged("IsByBarCodeChecked");
                     RaisePropertyChanged("IsByScientificNameChecked");
-                    RaisePropertyChanged("IsByNameChecked");
                 }
             }
         }
@@ -42,8 +42,8 @@ namespace ProPharmacyManagerW.ViewModel
                     _IsByBarCodeChecked = true;
                     _IsByScientificNameChecked = false;
                     RaisePropertyChanged("IsByNameChecked");
-                    RaisePropertyChanged("IsByScientificNameChecked");
                     RaisePropertyChanged("IsByBarCodeChecked");
+                    RaisePropertyChanged("IsByScientificNameChecked");
                 }
             }
         }

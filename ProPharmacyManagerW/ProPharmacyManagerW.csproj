@@ -137,6 +137,9 @@
     <Compile Include="View\Pages\StaCP.xaml.cs">
       <DependentUpon>StaCP.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\Upgrade.xaml.cs">
+      <DependentUpon>Upgrade.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\UserCP.xaml.cs">
       <DependentUpon>UserCP.xaml</DependentUpon>
     </Compile>
@@ -228,6 +231,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Pages\StaCP.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Pages\Upgrade.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

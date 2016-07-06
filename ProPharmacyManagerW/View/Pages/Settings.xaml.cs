@@ -63,7 +63,6 @@ namespace ProPharmacyManagerW.View.Pages
                 Core.sb = Core.INIDecrypt(file2.ReadString("Settings", "Backup"));
                 Core.st = Core.INIDecrypt(file2.ReadString("Settings", "Type"));
                 Core.stt = Core.INIDecrypt(file2.ReadString("Settings", "Time"));
-                //TODO time value selected item
                 if (Core.sb == "0")
                 {
                     IsBackupActive.IsChecked = false;

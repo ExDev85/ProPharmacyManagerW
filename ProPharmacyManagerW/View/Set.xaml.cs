@@ -50,6 +50,20 @@ namespace ProPharmacyManagerW.View
                     Close();
                     checkSetUp.Stop();
                 }
+                if (Pages.Setup.IsUpgrading)
+                {
+                    Pages.Upgrade ug = new Pages.Upgrade();
+                    setreg.Navigate(ug);
+                    Pages.Setup.IsUpgrading = false;
+                }
+                else if (Pages.Upgrade.IsUpgradeComp)
+                {
+                    Core.IsSetup = false;
+                    Pages.Setup.IsUpgrading = false;
+                    Pages.Upgrade.IsUpgradeComp = false;
+                    Close();
+                    checkSetUp.Stop();
+                }
             }
         }
         /// <summary>
