@@ -55,7 +55,7 @@ namespace ProPharmacyManagerW.View.Pages
                         const string logs =
                             "ALTER TABLE `logs` CHANGE `Account` `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL FIRST, ADD `Online` tinyint(5) UNSIGNED NOT NULL DEFAULT 0 AFTER `LogoutDate`;";
                         const string medics =
-                            "ALTER TABLE `medics` ADD `Barcode` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `Name`, CHANGE `Count` `Total` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `Type`, ADD `BPrice` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `Total`, CHANGE `Price` `SPrice` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `BPrice`, CHANGE `Substance` `ScientificName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `Barcode`, CHANGE `Expiry` `ExpirationDate` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' AFTER `ScientificName`, CHANGE `Note` `Notes` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `SPrice`;";
+                            "ALTER TABLE `medics` ADD `Barcode` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `Name`, CHANGE `Count` `Total` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `Type`, ADD `BPrice` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `Total`, CHANGE `Price` `SPrice` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `BPrice`, CHANGE `Substance` `ScientificName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `Barcode`, CHANGE `Expiry` `ExpirationDate` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' AFTER `ScientificName`, CHANGE `Note` `Notes` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `SPrice`, ADD COLUMN `Id` bigint(20) unsigned NOT NULL AUTO_INCREMENT FIRST ,DROP PRIMARY KEY, ADD PRIMARY KEY(`Id`, `Name`), ADD COLUMN `Supplier` varchar(50) NULL AFTER `ScientificName`;";
                         const string medlog =
                             "ALTER TABLE `medlog` CHANGE `Name` `MedName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL FIRST, CHANGE `Total` `TotalAmount` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `SellDate`, CHANGE `Cost` `TotalPrice` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `TotalAmount`, ADD `Cashier` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `TotalPrice`;";
                         const string suppliers =
@@ -97,7 +97,7 @@ namespace ProPharmacyManagerW.View.Pages
                         const string logs =
                             "ALTER TABLE `logs` CHANGE `Username` `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL FIRST;";
                         const string medics =
-                            "ALTER TABLE `medics` CHANGE `ActivePrinciple` `ScientificName` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, CHANGE `Total` `Total` decimal(15,2) UNSIGNED NOT NULL DEFAULT '0.00' AFTER `Type`, ADD `BPrice` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `Total`, CHANGE `Price` `SPrice` decimal(15,2) UNSIGNED NOT NULL DEFAULT '0.00' AFTER `BPrice`;";
+                            "ALTER TABLE `medics` CHANGE `ActivePrinciple` `ScientificName` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL, CHANGE `Total` `Total` decimal(15,2) UNSIGNED NOT NULL DEFAULT '0.00' AFTER `Type`, ADD `BPrice` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `Total`, CHANGE `Price` `SPrice` decimal(15,2) UNSIGNED NOT NULL DEFAULT '0.00' AFTER `BPrice`, ADD COLUMN `Id` bigint(20) unsigned NOT NULL AUTO_INCREMENT FIRST ,DROP PRIMARY KEY, ADD PRIMARY KEY(`Id`, `Name`), ADD COLUMN `Supplier` varchar(50) NULL AFTER `ScientificName`;";
                         const string medlog =
                             "ALTER TABLE `medlog` CHANGE `Cashier` `Cashier` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `TotalPrice`, CHANGE `TotalAmount` `TotalAmount` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `SellDate`, CHANGE `TotalPrice` `TotalPrice` decimal(15,2) UNSIGNED NOT NULL DEFAULT 0.00 AFTER `TotalAmount`;";
                         const string suppliers =
@@ -130,7 +130,7 @@ namespace ProPharmacyManagerW.View.Pages
                         const string logs =
                             "ALTER TABLE `logs` CHANGE `Username` `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL FIRST;";
                         const string medics =
-                            "";
+                            "ALTER TABLE `medics` ADD COLUMN `Id` bigint(20) unsigned NOT NULL AUTO_INCREMENT FIRST ,DROP PRIMARY KEY, ADD PRIMARY KEY(`Id`, `Name`), ADD COLUMN `Supplier` varchar(50) NULL AFTER `ScientificName`;";
                         const string suppliers =
                             "CREATE TABLE `suppliers` (`Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT ,`Name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `Salesman` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `Phones` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,`Notes` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,PRIMARY KEY (`Id`), UNIQUE INDEX `Name` (`Name`) USING BTREE)ENGINE=InnoDB DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=Compact;";
                         try
@@ -139,7 +139,6 @@ namespace ProPharmacyManagerW.View.Pages
                             {
                                 using (MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand())
                                 {
-                                    Console.WriteLine("Now you are gonne need to fix this problem manually ;p");
                                     cmd.Connection = conn;
                                     conn.Open();
                                     QueryExpress.ExecuteScalarStr(cmd, logs + medics + suppliers);
@@ -150,6 +149,7 @@ namespace ProPharmacyManagerW.View.Pages
                         }
                         catch (Exception ex)
                         {
+                            Console.WriteLine("Now you are gonne need to fix this problem manually ;p");
                             Kernel.Core.SaveException(ex);
                             MessageBox.Show("هناك مشكله غالبا بسبب انك اختارت اصدار خاطئ\nاتصل بالمطور لحل المشكله");
                             Environment.Exit(0);
@@ -160,18 +160,19 @@ namespace ProPharmacyManagerW.View.Pages
                         //0.9.9.6
                         const string logs =
                             "ALTER TABLE `logs` CHANGE `Username` `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL FIRST;";
+                        const string medics =
+                            "ALTER TABLE `medics` ADD COLUMN `Id` bigint(20) unsigned NOT NULL AUTO_INCREMENT FIRST ,DROP PRIMARY KEY, ADD PRIMARY KEY(`Id`, `Name`), ADD COLUMN `Supplier` varchar(50) NULL AFTER `ScientificName`;";
                         const string suppliers =
-                            "CREATE TABLE `suppliers` (`Id`  int(10) UNSIGNED NOT NULL AUTO_INCREMENT ,`Name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `Salesman` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `Phones` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,`Notes` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,PRIMARY KEY (`Id`), UNIQUE INDEX `Name` (`Name`) USING BTREE )ENGINE=InnoDB DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=Compact;";
+                            "CREATE TABLE `suppliers` (`Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT ,`Name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `Salesman` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `Phones` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,`Notes` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,PRIMARY KEY (`Id`), UNIQUE INDEX `Name` (`Name`) USING BTREE )ENGINE=InnoDB DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=Compact;";
                         try
                         {
                             using (var conn = DataHolder.MySqlConnection)
                             {
                                 using (MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand())
                                 {
-                                    Console.WriteLine("Now you are gonne need to fix this problem manually ;p");
                                     cmd.Connection = conn;
                                     conn.Open();
-                                    QueryExpress.ExecuteScalarStr(cmd, logs + suppliers);
+                                    QueryExpress.ExecuteScalarStr(cmd, medics + logs + suppliers);
                                     conn.Dispose();
                                     conn.Close();
                                 }
@@ -179,6 +180,7 @@ namespace ProPharmacyManagerW.View.Pages
                         }
                         catch (Exception ex)
                         {
+                            Console.WriteLine("Now you are gonne need to fix this problem manually ;p");
                             Kernel.Core.SaveException(ex);
                             MessageBox.Show("هناك مشكله غالبا بسبب انك اختارت اصدار خاطئ\nاتصل بالمطور لحل المشكله");
                             Environment.Exit(0);

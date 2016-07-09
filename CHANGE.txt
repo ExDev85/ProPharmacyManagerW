@@ -5,7 +5,8 @@ ProPharmacyManagerW
 2.  New command to delete the program config file/s or folder.
 3.  Improve import command speed.
 4.  Change Upgrade process from older versions.
-5.  Change the program icon
+5.  Change the program icon.
+6.  Add the same item more than once.
 
 0.9.9.6:
 1.  You don't have to run the program as administrator anymore.
