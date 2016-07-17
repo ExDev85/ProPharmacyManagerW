@@ -68,11 +68,18 @@ namespace ProPharmacyManagerW.View
 
         private void IOBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-           if (IOBox.GetLineLength(IOBox.GetLastVisibleLineIndex()) > 100)
+            try
             {
-                IOBox.Text += "\n";
+                if (IOBox.GetLineLength(IOBox.GetLastVisibleLineIndex()) > 100)
+                {
+                    IOBox.Text += "\n";
+                }
+                IOBox.SelectionStart = IOBox.Text.Length;
             }
-            IOBox.SelectionStart = IOBox.Text.Length;
+            catch (Exception ex)
+            {
+                Kernel.Core.SaveException(ex);
+            }
         }
     }
 }

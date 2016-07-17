@@ -1,7 +1,7 @@
 ﻿<Window x:Class="ProPharmacyManagerW.View.About"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="المساعدة" Height="400" Width="600" Background="#FF15AF05" Icon="/ProPharmacyManagerW;component/PPHM-Green.ico" WindowStartupLocation="CenterScreen" MinHeight="332" MinWidth="438" Loaded="Window_Loaded">
+        Title="المساعدة" Height="400" Width="600" Background="#FF15AF05" Icon="/ProPharmacyManagerW;component/PPHM W Icon Green.ico" WindowStartupLocation="CenterScreen" MinHeight="332" MinWidth="438" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="67*" />
