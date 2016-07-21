@@ -1,6 +1,6 @@
-##ProPharmacyManagerW
+#ProPharmacyManagerW
 
-#0.9.9.7:
+##0.9.9.7:
 1.  Improvements to the UI.
 2.  New command to delete the program config file/s or folder.
 3.  Improve import command speed.
@@ -8,13 +8,13 @@
 5.  Change the program icon.
 6.  Add the same item more than once.
 
-#0.9.9.6:
+##0.9.9.6:
 1.  You don't have to run the program as administrator anymore.
 2.  Improvements to the UI.
 3.  Improvements to search result suggestions.
 4.  Add automatic backing up system (daily, weekly or monthly).
 
-#0.9.9.5:
+##0.9.9.5:
 1.  Improvements to the UI.
 2.  Fix the UI problems under XP.
 3.  Improvements to the setup process.
