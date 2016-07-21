@@ -1,5 +1,5 @@
-## ProPharmacyManager
-	Application has two version so far Normal one (not
+# ProPharmacyManager
+Application has two version so far Normal one (not
 suporrted anymore) and the W one (W stand for WPF)
 For more information about the ProPharmacyManager Application, please see 
 http://shababco.blogspot.com/ 
@@ -15,7 +15,7 @@ MySql.Data is licensed under the terms of the GPLv2. (http://www.gnu.org/license
 For more information about MySql.Data,
 please see http://dev.mysql.com/downloads/
 
-# NOTE:
+## NOTE:
 		1- You must setup a localhost (AppServ Recommended) with/or MySQl service
         		(InnoDB enabled for AppServ old versions).
 		2- Netframework 4.0 full or client.
