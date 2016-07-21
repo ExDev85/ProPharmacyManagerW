@@ -9,12 +9,12 @@ AppServ or WAMP
 AppServ (http://www.appservnetwork.com/)
 يجب ان تتاكد من تفعيل ال
 InnoDB (http://i.imgur.com/J2nKz8X.jpg)
-يمكنك تحميل
+او يمكنك تحميل
 MySQL (https://www.mysql.com/downloads/)
 فقط من موقع الشركه الخاصه به مجانا
 
 وندز 7 و اكس بى
-ستحتاج للنت فرام ورك 4.0
+ستحتاج للنت فرام ورك 4
 
 لمن ليس لديه خبرة مع السى شارب يمكنك فتح البرنامج من المسار التالى
 ProPharmacyManagerW\bin\Debug\ProPharmacyManagerW.exe
