@@ -13,6 +13,9 @@
                     xmlns:vm="clr-namespace:ProPharmacyManagerW.ViewModel">
     <vm:WMTBMVC x:Key="MultiVisibilityConvertor"/>
     <Style TargetType="{x:Type f:WaterMarkTextBox}">
+        <Setter Property="Text" Value=""/>
+        <Setter Property="WaterMark" Value="placeholder"/>
+        <Setter Property="WaterMarkColor" Value="Gray"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
