@@ -81,9 +81,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\IconButton.cs" />
-    <Compile Include="View\Accounts.xaml.cs">
-      <DependentUpon>Accounts.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\CP.xaml.cs">
       <DependentUpon>CP.xaml</DependentUpon>
     </Compile>
@@ -162,10 +159,6 @@
     <Page Include="Themes\ImageButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Accounts.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\CP.xaml">
       <Generator>MSBuild:Compile</Generator>

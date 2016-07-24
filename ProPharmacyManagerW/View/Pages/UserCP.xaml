@@ -11,17 +11,18 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="508*" />
-            <ColumnDefinition Width="270*" />
+            <ColumnDefinition Width="260*" />
+            <ColumnDefinition Width="262*"/>
+            <ColumnDefinition Width="277*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="43*" />
             <RowDefinition Height="429*" />
             <RowDefinition Height="94*" />
         </Grid.RowDefinitions>
-        <Image Grid.Column="1" x:Name="image1" Stretch="Fill" HorizontalAlignment="Right" Width="54" Source="/ProPharmacyManagerW;component/Images/PPHM W Trans.png" Height="43" VerticalAlignment="Top" />
+        <Image Grid.Column="2" x:Name="image1" Stretch="Fill" HorizontalAlignment="Right" Width="54" Source="/ProPharmacyManagerW;component/Images/PPHM W Trans.png" Height="43" VerticalAlignment="Top" />
 
-        <Menu Height="31" x:Name="menu1" Background="#050B87B3" Foreground="White" IsMainMenu="True" VerticalAlignment="Top" FlowDirection="RightToLeft" Grid.ColumnSpan="2" Margin="0,0,54,0" Width="350" MaxWidth="350" HorizontalAlignment="Right">
+        <Menu Height="31" x:Name="menu1" Background="#050B87B3" Foreground="White" IsMainMenu="True" VerticalAlignment="Top" FlowDirection="RightToLeft" Grid.ColumnSpan="2" Margin="0,0,54,0" Width="350" MaxWidth="350" HorizontalAlignment="Right" Grid.Column="1">
             <MenuItem x:Name="MeEmp" FontSize="15" FontWeight="Bold" Header="موظفين" TabIndex="1" Foreground="White">
                 <MenuItem Header="لوحه التحكم" Background="White" Foreground="Blue" Click="MIPASEMP_Click" />
                 <MenuItem Header="لوحه الحالة" Background="White" Foreground="Blue" Click="MISTAEMP_Click" />
@@ -40,7 +41,7 @@
                 <MenuItem Header="عن البرنامج" Background="White" Foreground="Blue" x:Name="about" Click="about_Click" />
             </MenuItem>
         </Menu>
-        <GroupBox Grid.Column="1" Grid.Row="1" Header="البحث" Height="248" Margin="11,120,8,0" x:Name="groupBox1" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold">
+        <GroupBox Grid.Column="2" Grid.Row="1" Header="البحث" Height="248" Margin="11,120,8,0" x:Name="groupBox1" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="73*" />
@@ -52,7 +53,7 @@
                 <CheckBox x:Name="ByBarCode" Content="بواسطه الباركود" HorizontalAlignment="Left" Height="43" Margin="6,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Foreground="White"/>
             </Grid>
         </GroupBox>
-        <GroupBox FlowDirection="RightToLeft" FontSize="18" FontWeight="Bold" Foreground="White" Header="النتيجة" Margin="12,7,10,13" x:Name="groupBox2" Grid.Row="1">
+        <GroupBox FlowDirection="RightToLeft" FontSize="18" FontWeight="Bold" Foreground="White" Header="النتيجة" Margin="12,7,10,13" x:Name="groupBox2" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="238*" />
@@ -82,11 +83,11 @@
                 <Controls:WaterMarkTextBox x:Name="Client" Height="30" Margin="7,111,6,0" VerticalAlignment="Top" Grid.Column="1" Foreground="Green" TabIndex="18" MaxLines="1" MaxLength="50" WaterMark="اسم العميل و الذى سيظهر فى الفاتورة" ToolTip="أسم العميل" FontSize="14" />
             </Grid>
         </GroupBox>
-        <Controls:ImageButton x:Name="LogOut" Grid.Column="1" Grid.Row="2" Height="60" HorizontalAlignment="Right" Margin="0,11,58,0" VerticalAlignment="Top" Width="139" Image="/ProPharmacyManagerW;component/Images/Logout1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Logout3.png" ImageHover="/ProPharmacyManagerW;component/Images/Logout2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Logout3.png" TabIndex="9" Click="LogOut_Click" />
-        <Controls:ImageButton x:Name="UpdateM" Height="60" Margin="306,10,52,0" VerticalAlignment="Top" Grid.Row="2" Image="/ProPharmacyManagerW;component/Images/Update1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Update3.png" ImageHover="/ProPharmacyManagerW;component/Images/Update2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Update3.png" TabIndex="8" Width="139" Click="UpdateM_Click" />
+        <Controls:ImageButton x:Name="LogOut" Grid.Column="2" Grid.Row="2" Height="60" HorizontalAlignment="Right" Margin="0,11,58,0" VerticalAlignment="Top" Width="139" Image="/ProPharmacyManagerW;component/Images/Logout1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Logout3.png" ImageHover="/ProPharmacyManagerW;component/Images/Logout2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Logout3.png" TabIndex="9" Click="LogOut_Click" />
+        <Controls:ImageButton x:Name="UpdateM" Height="60" Margin="58.14,10,64,0" VerticalAlignment="Top" Grid.Row="2" Image="/ProPharmacyManagerW;component/Images/Update1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Update3.png" ImageHover="/ProPharmacyManagerW;component/Images/Update2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Update3.png" TabIndex="8" Width="139" Click="UpdateM_Click" Grid.Column="1" />
         <Controls:ImageButton x:Name="SellM" Height="60" HorizontalAlignment="Left" Margin="51,11,0,0" VerticalAlignment="Top" Width="139" Grid.Row="2" Image="/ProPharmacyManagerW;component/Images/Sell1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Sell3.png" ImageHover="/ProPharmacyManagerW;component/Images/Sell2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Sell3.png" TabIndex="7" Click="SellM_Click" />
-        <Label x:Name="WelMsg" Content="اهلا بك يا مدير" Grid.Column="1" Grid.Row="1" Height="48" Margin="17,29,10,0" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold"  Width="250" MaxWidth="250"/>
-        <Border x:Name="AddNewDrugBoard" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Right" Width="277" FlowDirection="RightToLeft" Grid.RowSpan="3" Margin="0,0,0,10" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Hidden">
+        <Label x:Name="WelMsg" Content="اهلا بك يا مدير" Grid.Column="2" Grid.Row="1" Height="48" Margin="17,29,10,0" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold"  Width="250" MaxWidth="250"/>
+        <Border x:Name="AddNewDrugBoard" BorderThickness="1" Grid.Column="2" HorizontalAlignment="Right" Width="277" FlowDirection="RightToLeft" Grid.RowSpan="3" Margin="0,0,0,10" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Hidden">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF0066CC" Offset="1"/>
@@ -122,6 +123,26 @@
                     <ListBoxItem Content="اخرى" Foreground="Blue"/>
                 </ComboBox>
                 <Controls:WaterMarkTextBox x:Name="ADNote" Margin="10,10,10,0" TextWrapping="Wrap" Grid.Row="7" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="33" AcceptsReturn="True" WaterMark="ملاحظات الدواء" ToolTip="ملاحظات عن الدواء مثل مكانه او اى شئ اخر" WaterMarkColor="#FF972B2B" VerticalContentAlignment="Top" />
+            </Grid>
+        </Border>
+        <Border x:Name="UserBoard" BorderThickness="1" Grid.Column="1" FlowDirection="RightToLeft" Grid.RowSpan="3" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" Grid.ColumnSpan="2" Margin="2,0,0,0" >
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF0066CC" Offset="1"/>
+                    <GradientStop Color="#FF3399FF" Offset="0.438"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="259*"/>
+                    <ColumnDefinition Width="277*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="535*"/>
+                    <RowDefinition Height="62*"/>
+                </Grid.RowDefinitions>
+                <Frame x:Name="TwoPanelFame" Content="" Margin="9,-1,0,10" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" />
+                <Controls:ImageButton x:Name="BackToMain2" Content="" HorizontalAlignment="Left" Height="40" Margin="69,12,0,0" VerticalAlignment="Top" Width="112" Grid.Row="1" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="35"/>
             </Grid>
         </Border>
     </Grid>

@@ -42,13 +42,29 @@ namespace ProPharmacyManagerW.View.Pages
             MNotes.Clear();
         }
 
+        /// <summary>
+        /// Disable Main window control to show panels
+        /// </summary>
+        private void DisableMain()
+        {
+            image1.IsEnabled = false;
+            menu1.IsEnabled = false;
+            groupBox1.IsEnabled = false;
+            groupBox2.IsEnabled = false;
+            SellM.IsEnabled = false;
+            UpdateM.IsEnabled = false;
+            DeleteM.IsEnabled = false;
+            LogOut.IsEnabled = false;
+            ADType.SelectedIndex = 0;
+        }
+
         #region Menuitems
         /// <summary>
         /// Open about window
         /// </summary>
         private void about_Click(object sender, RoutedEventArgs e)
         {
-            View.About abo = new View.About();
+            About abo = new About();
             abo.ShowDialog();
         }
         /// <summary>
@@ -56,42 +72,39 @@ namespace ProPharmacyManagerW.View.Pages
         /// </summary>
         private void MIAddEMP_Click(object sender, RoutedEventArgs e)
         {
-            Accounts acc = new Accounts();
-            edtFromAdm = false;
-            acc.Title = "اضافه موظف";
-            acc.Show();
+            DisableMain();
+            Register re = new Register();
+            TwoPanelFame.Navigate(re);
+            UserBoard.Visibility = Visibility.Visible;
         }
         /// <summary>
         /// edit password | delete exist employee
         /// </summary>
-        public static bool edtFromAdm;
         private void MIPASEMP_Click(object sender, RoutedEventArgs e)
         {
-            edtFromAdm = true;
-            Accounts acc = new Accounts();
-            acc.Title = "لوحه التحكم";
-            acc.Show();
+            AccCP ac = new AccCP();
+            TwoPanelFame.Navigate(ac);
+            UserBoard.Visibility = Visibility.Visible;
         }
         /// <summary>
         /// edit exist employee state
         /// </summary>
-        public static bool edtStaFromAdm;
         private void MISTAEMP_Click(object sender, RoutedEventArgs e)
         {
-            edtStaFromAdm = true;
-            Accounts acc = new Accounts();
-            acc.Title = "لوحه الحالة";
-            acc.Show();
+            DisableMain();
+            StaCP sc = new StaCP();
+            TwoPanelFame.Navigate(sc);
+            UserBoard.Visibility = Visibility.Visible;
         }
         /// <summary>
         /// open logs page for login processes
         /// </summary>
-        public static bool LoginLogs;
         private void MILOGLOG_Click(object sender, RoutedEventArgs e)
         {
-            LoginLogs = true;
-            Accounts ac = new Accounts();
-            ac.Show();
+            DisableMain();
+            AccLogs al = new AccLogs();
+            TwoPanelFame.Navigate(al);
+            UserBoard.Visibility = Visibility.Visible;
         }
         /// <summary>
         /// Database settings page to open
@@ -527,7 +540,14 @@ namespace ProPharmacyManagerW.View.Pages
         //back to main menu
         private void BackToMain_Click(object sender, RoutedEventArgs e)
         {
-            AddNewDrugBoard.Visibility = Visibility.Collapsed;
+            if (AddNewDrugBoard.Visibility == Visibility.Visible)
+            {
+                AddNewDrugBoard.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                UserBoard.Visibility = Visibility.Collapsed;
+            }
             image1.IsEnabled = true;
             menu1.IsEnabled = true;
             groupBox1.IsEnabled = true;
@@ -568,16 +588,8 @@ namespace ProPharmacyManagerW.View.Pages
         // add drug panel
         private void MIAddDrug_Click(object sender, RoutedEventArgs e)
         {
+            DisableMain();
             AddNewDrugBoard.Visibility = Visibility.Visible;
-            image1.IsEnabled = false;
-            menu1.IsEnabled = false;
-            groupBox1.IsEnabled = false;
-            groupBox2.IsEnabled = false;
-            SellM.IsEnabled = false;
-            UpdateM.IsEnabled = false;
-            DeleteM.IsEnabled = false;
-            LogOut.IsEnabled = false;
-            ADType.SelectedIndex = 0;
             ADName.Focus();
             //#3399FF, #0066CC
             LGBB(51, 153, 255, 0, 102, 204);
