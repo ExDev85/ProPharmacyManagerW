@@ -81,6 +81,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="ViewModel\AllType.cs" />
     <Compile Include="View\CP.xaml.cs">
       <DependentUpon>CP.xaml</DependentUpon>
     </Compile>

@@ -19,15 +19,22 @@ namespace ProPharmacyManagerW.View
         {
             InitializeComponent();
             Kernel.Core.IsCMode = true;
-
         }
         private DispatcherTimer checkInput = new DispatcherTimer();
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Console.GSLog.Length > 0)
+            try
             {
-                IOBox.Text += Console.GSLog;
+                if (Console.GSLog.Length > 0)
+                {
+                    IOBox.Text += Console.GSLog;
+                }
+            }
+            catch (Exception ex)
+            {
+                IOBox.Text = "Console Window\n\r";
+                Kernel.Core.SaveException(ex);
             }
             checkInput.Interval = TimeSpan.FromMilliseconds(100);
             checkInput.Tick += checkInputState;
@@ -54,7 +61,7 @@ namespace ProPharmacyManagerW.View
                 {
                     return;
                 }
-                else 
+                else
                 {
                     Console.CommandsAI(IOBox.GetLineText(IOBox.GetLastVisibleLineIndex()));
                 }

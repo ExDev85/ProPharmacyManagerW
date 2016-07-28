@@ -152,6 +152,6 @@ namespace ProPharmacyManagerW.View.Pages
                 RUState.SelectedIndex = 0;
             }
         }
-        
+
     }
 }

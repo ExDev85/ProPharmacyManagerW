@@ -21,7 +21,7 @@ namespace ProPharmacyManagerW.View
     {
         public Set()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
         //Timer to close the config window after finish setup the porgram for the first time
@@ -66,6 +66,7 @@ namespace ProPharmacyManagerW.View
                 }
             }
         }
+
         /// <summary>
         /// This code check if the form should load setup or settings page
         /// </summary>
@@ -96,5 +97,6 @@ namespace ProPharmacyManagerW.View
                 }
             }
         }
+
     }
 }

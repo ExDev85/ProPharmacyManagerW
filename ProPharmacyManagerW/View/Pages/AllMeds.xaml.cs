@@ -36,36 +36,21 @@ namespace ProPharmacyManagerW.View.Pages
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
                 Pb.Visibility = Visibility.Visible;
-                if (dataGrid.Columns.Count > 3)
-                {
-                    return;
-                }
-                var mA = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM medics", DataHolder.MySqlConnection);
-                var mT = new System.Data.DataTable();
+                mA = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM medics", DataHolder.MySqlConnection);
+                mT = new System.Data.DataTable();
                 mA.Fill(mT);
-                if (mT.Rows.Count == 0)
-                {
-                    mT.Rows.Add(new object[mT.Columns.Count]);
-                }
-                if (mT.Rows.Count < 2)
-                {
-                    MessageBox.Show("اضف بعض الادويه اولا");
-                    BackMainB_Click(sender, e);
-                    return;
-                }
-                mT.Columns["Name"].ColumnName = "اسم الدواء";
-                mT.Columns["Barcode"].ColumnName = "الباركود";
-                mT.Columns["ScientificName"].ColumnName = "المادة الفعالة";
-                mT.Columns["ExpirationDate"].ColumnName = "تاريخ انتهاء الصلاحية";
-                mT.Columns["Type"].ColumnName = "النوع";
-                mT.Columns["Total"].ColumnName = "الكمية";
-                mT.Columns["SPrice"].ColumnName = "سعر البيع";
-                mT.Columns["Notes"].ColumnName = "ملاحظات";
                 dataGrid.ItemsSource = mT.DefaultView;
-                dataGrid.Columns[0].DisplayIndex = 7;
-                dataGrid.Columns[1].DisplayIndex = 4;
-                dataGrid.Columns[5].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[7].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[11].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[12].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[13].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[14].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[15].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[16].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[17].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[18].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[19].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[20].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[21].Visibility = Visibility.Collapsed;
                 Pb.Visibility = Visibility.Collapsed;
             });
         }
@@ -88,38 +73,6 @@ namespace ProPharmacyManagerW.View.Pages
                     {
                         mT.Rows.Add(new object[mT.Columns.Count]);
                     }
-                    if (mT.Columns.Contains("Name"))
-                    {
-                        mT.Columns["Name"].ColumnName = "اسم الدواء";
-                    }
-                    if (mT.Columns.Contains("Barcode"))
-                    {
-                        mT.Columns["Barcode"].ColumnName = "الباركود";
-                    }
-                    if (mT.Columns.Contains("ScientificName"))
-                    {
-                        mT.Columns["ScientificName"].ColumnName = "المادة الفعالة";
-                    }
-                    if (mT.Columns.Contains("ExpirationDate"))
-                    {
-                        mT.Columns["ExpirationDate"].ColumnName = "تاريخ انتهاء الصلاحية";
-                    }
-                    if (mT.Columns.Contains("Type"))
-                    {
-                        mT.Columns["Type"].ColumnName = "النوع";
-                    }
-                    if (mT.Columns.Contains("Total"))
-                    {
-                        mT.Columns["Total"].ColumnName = "الكمية";
-                    }
-                    if (mT.Columns.Contains("SPrice"))
-                    {
-                        mT.Columns["SPrice"].ColumnName = "السعر";
-                    }
-                    if (mT.Columns.Contains("Notes"))
-                    {
-                        mT.Columns["Notes"].ColumnName = "ملاحظات";
-                    }
                     dataGrid.ItemsSource = mT.DefaultView;
                     Pb.Visibility = Visibility.Hidden;
                 }
@@ -136,39 +89,7 @@ namespace ProPharmacyManagerW.View.Pages
                     if (mT.Rows.Count == 0)
                     {
                         mT.Rows.Add(new object[mT.Columns.Count]);
-                    }
-                    if (mT.Columns.Contains("Name"))
-                    {
-                        mT.Columns["Name"].ColumnName = "اسم الدواء";
-                    }
-                    if (mT.Columns.Contains("Barcode"))
-                    {
-                        mT.Columns["Barcode"].ColumnName = "الباركود";
-                    }
-                    if (mT.Columns.Contains("ScientificName"))
-                    {
-                        mT.Columns["ScientificName"].ColumnName = "المادة الفعالة";
-                    }
-                    if (mT.Columns.Contains("ExpirationDate"))
-                    {
-                        mT.Columns["ExpirationDate"].ColumnName = "تاريخ انتهاء الصلاحية";
-                    }
-                    if (mT.Columns.Contains("Type"))
-                    {
-                        mT.Columns["Type"].ColumnName = "النوع";
-                    }
-                    if (mT.Columns.Contains("Total"))
-                    {
-                        mT.Columns["Total"].ColumnName = "الكمية";
-                    }
-                    if (mT.Columns.Contains("SPrice"))
-                    {
-                        mT.Columns["SPrice"].ColumnName = "السعر";
-                    }
-                    if (mT.Columns.Contains("Notes"))
-                    {
-                        mT.Columns["Notes"].ColumnName = "ملاحظات";
-                    }
+                    }                
                     dataGrid.ItemsSource = mT.DefaultView;
                     Pb.Visibility = Visibility.Hidden;
                 }
@@ -185,38 +106,6 @@ namespace ProPharmacyManagerW.View.Pages
                     if (mT.Rows.Count == 0)
                     {
                         mT.Rows.Add(new object[mT.Columns.Count]);
-                    }
-                    if (mT.Columns.Contains("Name"))
-                    {
-                        mT.Columns["Name"].ColumnName = "اسم الدواء";
-                    }
-                    if (mT.Columns.Contains("Barcode"))
-                    {
-                        mT.Columns["Barcode"].ColumnName = "الباركود";
-                    }
-                    if (mT.Columns.Contains("ScientificName"))
-                    {
-                        mT.Columns["ScientificName"].ColumnName = "المادة الفعالة";
-                    }
-                    if (mT.Columns.Contains("ExpirationDate"))
-                    {
-                        mT.Columns["ExpirationDate"].ColumnName = "تاريخ انتهاء الصلاحية";
-                    }
-                    if (mT.Columns.Contains("Type"))
-                    {
-                        mT.Columns["Type"].ColumnName = "النوع";
-                    }
-                    if (mT.Columns.Contains("Total"))
-                    {
-                        mT.Columns["Total"].ColumnName = "الكمية";
-                    }
-                    if (mT.Columns.Contains("SPrice"))
-                    {
-                        mT.Columns["SPrice"].ColumnName = "السعر";
-                    }
-                    if (mT.Columns.Contains("Notes"))
-                    {
-                        mT.Columns["Notes"].ColumnName = "ملاحظات";
                     }
                     dataGrid.ItemsSource = mT.DefaultView;
                     Pb.Visibility = Visibility.Hidden;
@@ -293,11 +182,6 @@ namespace ProPharmacyManagerW.View.Pages
                 SearchBox.Items.Clear();
                 SearchBox.IsDropDownOpen = true;
             }
-        }
-
-        private void dataGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            dataGrid.IsReadOnly = true;
         }
     }
 }
