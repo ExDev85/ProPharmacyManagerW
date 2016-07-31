@@ -5,35 +5,24 @@
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
 using System;
-using System.Windows;
+using System.Text.RegularExpressions;
 using System.Windows.Data;
-using System.Windows.Media;
 
 namespace ProPharmacyManagerW.ViewModel
 {
-    public class AllAmount : IValueConverter
+    class NoDecimal : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             try
             {
-                if (System.Convert.ToByte(value) == 0)
-                {
-                    return Brushes.Red;
-                }
-                else if (System.Convert.ToByte(value) > 0 && System.Convert.ToByte(value) <= 5)
-                {
-                    return Brushes.OrangeRed;
-                }
-                else
-                {
-                    return DependencyProperty.UnsetValue;
-                }
+                var newValue = value.ToString().Replace(".00", "");
+                return newValue;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Kernel.Core.SaveException(e);
-                return DependencyProperty.UnsetValue;
+                return "0";
             }
         }
 

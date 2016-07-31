@@ -1,36 +1,29 @@
-﻿// <copyright>
-//      This work is licensed under the
-//      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
-//      To view a copy of this license, visit
-//      http://creativecommons.org/licenses/by-nc-sa/4.0/.
-// </copyright>
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 
 namespace ProPharmacyManagerW.ViewModel
 {
-    public class AllAmount : IValueConverter
+    class AllTextColor : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             try
             {
-                if (System.Convert.ToByte(value) == 0)
+                if (System.Convert.ToByte(value) >= 0 && System.Convert.ToByte(value) <= 5)
                 {
-                    return Brushes.Red;
-                }
-                else if (System.Convert.ToByte(value) > 0 && System.Convert.ToByte(value) <= 5)
-                {
-                    return Brushes.OrangeRed;
+                    return Brushes.White;
                 }
                 else
                 {
-                    return DependencyProperty.UnsetValue;
+                    return Brushes.Blue;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Kernel.Core.SaveException(e);
                 return DependencyProperty.UnsetValue;
