@@ -29,8 +29,8 @@
             <RowDefinition Height="55*"/>
             <RowDefinition Height="68*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="True" SelectionMode="Single" Foreground="Blue" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="3" IsReadOnly="True">
-           <DataGrid.Columns>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="True" SelectionMode="Single" Foreground="Blue" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="3" IsReadOnly="True" Loaded="dataGrid_Loaded">
+            <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="#" FrameworkElement.FlowDirection="RightToLeft" FontSize="14" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="اسم الدواء" FrameworkElement.FlowDirection="RightToLeft" FontSize="14" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Barcode}" Header="الباركود" FrameworkElement.FlowDirection="RightToLeft" FontSize="14" IsReadOnly="True">
@@ -53,8 +53,8 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Type, Converter={StaticResource AllType}}" Header="النوع" FrameworkElement.FlowDirection="RightToLeft" FontSize="14" IsReadOnly="False"/>
-                <DataGridTextColumn Binding="{Binding Path=Total, Converter={StaticResource NoDecimal}}" Header="الكمية" FontSize="14" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding Type, Converter={StaticResource AllType}}" Header="النوع" FrameworkElement.FlowDirection="RightToLeft" FontSize="14" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Total, Converter={StaticResource NoDecimal}}" Header="الكمية" FontSize="14" IsReadOnly="True">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="TextAlignment" Value="Right"/>
@@ -64,7 +64,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=BPrice, Converter={StaticResource NoDecimal}}" Header="شراء" FrameworkElement.FlowDirection="RightToLeft" FontSize="14" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding BPrice, Converter={StaticResource NoDecimal}}" Header="شراء" FrameworkElement.FlowDirection="RightToLeft" FontSize="14" IsReadOnly="True">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="TextAlignment" Value="Right"/>
@@ -72,7 +72,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=SPrice, Converter={StaticResource NoDecimal}}" Header="بيع" FrameworkElement.FlowDirection="RightToLeft" FontSize="14" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding SPrice, Converter={StaticResource NoDecimal}}" Header="بيع" FrameworkElement.FlowDirection="RightToLeft" FontSize="14" IsReadOnly="True">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="TextAlignment" Value="Right"/>
@@ -83,13 +83,13 @@
                 <DataGridTextColumn Binding="{Binding Notes}" Header="ملاحظات" FrameworkElement.FlowDirection="RightToLeft" FontSize="14" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <ComboBox Margin="10,10,10,0" Name="SearchBox" VerticalAlignment="Stretch" Foreground="Blue" Background="White" IsEditable="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" TabIndex="1"  Grid.Row="1" Grid.ColumnSpan="3" KeyDown="SearchBox_KeyDown" GotFocus="SearchBox_GotFocus" FontSize="14" FontWeight="Bold" MaxDropDownHeight="100" />
-        <ProgressBar x:Name="Pb" Height="5" VerticalAlignment="Top" IsTabStop="False" IsIndeterminate="True" Grid.ColumnSpan="3" Visibility="Hidden"/>
+        <ComboBox Margin="10,10,10,0" x:Name="SearchBox" VerticalAlignment="Stretch" Foreground="Blue" Background="White" IsEditable="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" TabIndex="1"  Grid.Row="1" Grid.ColumnSpan="3" KeyDown="SearchBox_KeyDown" GotFocus="SearchBox_GotFocus" FontSize="14" FontWeight="Bold" MaxDropDownHeight="100" />
         <CheckBox x:Name="cByName" Content="بالاسم" Height="35" Margin="10,10,10,0" Grid.Row="2" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White" IsChecked="{Binding IsByNameChecked, Source={StaticResource Checked}}"  />
         <CheckBox x:Name="cByBar" Content="بالباركود" Height="35" Margin="10,10,10,0" Grid.Row="2" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White" Grid.Column="1" IsChecked="{Binding IsByBarCodeChecked, Source={StaticResource Checked}}" />
         <CheckBox x:Name="cBySub" Content="بالماده الفعاله" Height="35" Margin="10,10,10,0" Grid.Row="2" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White" Grid.Column="2" IsChecked="{Binding IsByScientificNameChecked, Source={StaticResource Checked}}" />
         <Controls:ImageButton x:Name="SearchB" Content="" Grid.Column="2" HorizontalAlignment="Left" Height="50" Width="120" Margin="66,10,0,0" Grid.Row="3" VerticalAlignment="Top" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/Search1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Search3.png" ImageHover="/ProPharmacyManagerW;component/Images/Search2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Search3.png" Click="SearchB_Click"/>
         <Controls:ImageButton x:Name="UpdateB" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="50" Width="120" Margin="66,10,0,0" Grid.Row="3" VerticalAlignment="Top" Image="/ProPharmacyManagerW;component/Images/Update1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Update3.png" ImageHover="/ProPharmacyManagerW;component/Images/Update2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Update3.png" Click="UpdateB_Click"/>
         <Controls:ImageButton x:Name="BackMainB" Content="" Grid.Column="0" HorizontalAlignment="Left" Height="50" Width="120" Margin="66,10,0,0" Grid.Row="3" VerticalAlignment="Top" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" Click="BackMainB_Click"/>
+        <ProgressBar x:Name="Pb" Height="5" VerticalAlignment="Top" IsTabStop="False" IsIndeterminate="True" Grid.ColumnSpan="3" Visibility="Collapsed"/>
     </Grid>
 </Page>

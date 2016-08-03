@@ -33,28 +33,9 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 Pb.Height = 10;
             }
-            Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
-            {
-                Pb.Visibility = Visibility.Visible;
-                mA = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM medics", DataHolder.MySqlConnection);
-                mT = new System.Data.DataTable();
-                mA.Fill(mT);
-                dataGrid.ItemsSource = mT.DefaultView;
-                dataGrid.Columns[11].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[12].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[13].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[14].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[15].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[16].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[17].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[18].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[19].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[20].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[21].Visibility = Visibility.Collapsed;
-                Pb.Visibility = Visibility.Collapsed;
-            });
+            Pb.Visibility = Visibility.Visible;            
         }
-        
+
         private void SearchB_Click(object sender, RoutedEventArgs e)
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
@@ -89,7 +70,7 @@ namespace ProPharmacyManagerW.View.Pages
                     if (mT.Rows.Count == 0)
                     {
                         mT.Rows.Add(new object[mT.Columns.Count]);
-                    }                
+                    }
                     dataGrid.ItemsSource = mT.DefaultView;
                     Pb.Visibility = Visibility.Hidden;
                 }
@@ -182,6 +163,29 @@ namespace ProPharmacyManagerW.View.Pages
                 SearchBox.Items.Clear();
                 SearchBox.IsDropDownOpen = true;
             }
+        }
+
+        private void dataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (ThreadStart)delegate ()
+            {
+                mA = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM medics", DataHolder.MySqlConnection);
+                mT = new System.Data.DataTable();
+                mA.Fill(mT);
+                dataGrid.ItemsSource = mT.DefaultView;
+                dataGrid.Columns[11].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[12].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[13].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[14].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[15].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[16].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[17].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[18].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[19].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[20].Visibility = Visibility.Collapsed;
+                dataGrid.Columns[21].Visibility = Visibility.Collapsed;
+                Pb.Visibility = Visibility.Collapsed;
+            });
         }
     }
 }
