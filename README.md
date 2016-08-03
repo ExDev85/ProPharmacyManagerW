@@ -4,13 +4,13 @@ suporrted anymore) and the W one (W stand for WPF)
 For more information about the ProPharmacyManager Application, please see 
 http://shababco.blogspot.com/ 
 
-The Application uses MySqlBackup.NET 2.0.9.4, a .NET C#
+The Application uses MySqlBackup.NET, a .NET C#
 Library for backing-up, encrypting and creating Databases (*.sql files).
 MySqlBackup.NET is licensed under the terms of the publicdomain. (http://creativecommons.org/licenses/publicdomain/)
 For more information about MySqlBackup.NET,
 please see http://mysqlbackupnet.codeplex.com
 
-The Application uses MySql.Data 6.9.9, ADO.Net driver for MySQL
+The Application uses MySql.Data, ADO.Net driver for MySQL
 MySql.Data is licensed under the terms of the GPLv2. (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
 For more information about MySql.Data,
 please see http://dev.mysql.com/downloads/
