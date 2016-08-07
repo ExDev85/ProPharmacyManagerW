@@ -28,7 +28,6 @@ namespace ProPharmacyManagerW.View.Pages
         IniFile file1 = new IniFile(Paths.SetupConfigPath);
         IniFile file2 = new IniFile(Paths.BackupConfigPath);
 
-        public static bool IsClosingSet;
         public static bool IsRecAcc;
         public static bool IsRecMed;
 
@@ -130,7 +129,7 @@ namespace ProPharmacyManagerW.View.Pages
 
         private void BackToMain_Click(object sender, RoutedEventArgs e)
         {
-            IsClosingSet = true;
+            CP.BackToMain = true;
         }
 
         private void SetB2_Click(object sender, RoutedEventArgs e)

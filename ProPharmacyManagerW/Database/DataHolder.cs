@@ -11,7 +11,9 @@ namespace ProPharmacyManagerW.Database
     public static class DataHolder
     {
         private static string MySqlUsername, MySqlPassword, MySqlDatabase, MySqlHost;
+
         private static string ConnectionString;
+
         /// <summary> 
         /// get connection information to connect to the database
         /// </summary> 
@@ -27,6 +29,7 @@ namespace ProPharmacyManagerW.Database
             MySqlDatabase = database;
             ConnectionString = "Server=" + MySqlHost + ";Database='" + MySqlDatabase + "';Username='" + MySqlUsername + "';Password='" + MySqlPassword + "';Pooling=true; Max Pool Size = 160000; Min Pool Size = 0;CHARSET=utf8";
         }
+
         /// <summary> 
         /// get connection information to create DB
         /// </summary> 
@@ -40,6 +43,7 @@ namespace ProPharmacyManagerW.Database
             MySqlPassword = password;
             ConnectionString = "Server=" + MySqlHost + ";Username='" + MySqlUsername + "';Password='" + MySqlPassword + "';Pooling=true; Max Pool Size = 160000; Min Pool Size = 0;CHARSET=utf8";
         }
+
         public static MySqlConnection MySqlConnection
         {
             get
@@ -49,5 +53,6 @@ namespace ProPharmacyManagerW.Database
                 return conn;
             }
         }
+
     }
 }

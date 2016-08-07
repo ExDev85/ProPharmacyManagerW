@@ -56,6 +56,7 @@ namespace ProPharmacyManagerW.Database
                 }
             }
         }
+
         /// <summary> 
         /// when user change the database name from setting
         /// </summary> 
@@ -80,6 +81,7 @@ namespace ProPharmacyManagerW.Database
                 }
             }
         }
+
         /// <summary> 
         /// create tables
         /// </summary> 
@@ -109,5 +111,6 @@ namespace ProPharmacyManagerW.Database
                 }
             }
         }
+
     }
 }

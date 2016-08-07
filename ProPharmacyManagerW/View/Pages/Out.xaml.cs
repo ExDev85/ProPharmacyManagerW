@@ -5,7 +5,6 @@
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
 using ProPharmacyManagerW.Database;
-using ProPharmacyManagerW.View;
 using System;
 using System.Threading;
 using System.Windows;
@@ -52,5 +51,6 @@ namespace ProPharmacyManagerW.View.Pages
                 Pb.Visibility = Visibility.Hidden;
             });
         }
+
     }
 }

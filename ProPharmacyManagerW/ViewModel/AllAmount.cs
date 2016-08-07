@@ -7,7 +7,6 @@
 using System;
 using System.Windows;
 using System.Windows.Data;
-using System.Windows.Media;
 
 namespace ProPharmacyManagerW.ViewModel
 {
@@ -19,18 +18,18 @@ namespace ProPharmacyManagerW.ViewModel
             {
                 if (System.Convert.ToByte(value) == 0)
                 {
-                    return Brushes.Red;
+                    return "#E91818";
                 }
                 else if (System.Convert.ToByte(value) > 0 && System.Convert.ToByte(value) <= 5)
                 {
-                    return Brushes.OrangeRed;
+                    return "#F24D16";
                 }
                 else
                 {
                     return DependencyProperty.UnsetValue;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Kernel.Core.SaveException(e);
                 return DependencyProperty.UnsetValue;

@@ -33,7 +33,7 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 Pb.Height = 10;
             }
-            Pb.Visibility = Visibility.Visible;            
+            Pb.Visibility = Visibility.Visible;
         }
 
         private void SearchB_Click(object sender, RoutedEventArgs e)
@@ -187,5 +187,6 @@ namespace ProPharmacyManagerW.View.Pages
                 Pb.Visibility = Visibility.Collapsed;
             });
         }
+
     }
 }

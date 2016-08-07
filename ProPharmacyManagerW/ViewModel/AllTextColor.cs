@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// <copyright>
+//      This work is licensed under the
+//      Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+//      To view a copy of this license, visit
+//      http://creativecommons.org/licenses/by-nc-sa/4.0/.
+// </copyright>
+using System;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;

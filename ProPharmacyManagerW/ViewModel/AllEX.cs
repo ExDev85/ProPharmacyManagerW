@@ -7,7 +7,6 @@
 using System;
 using System.Windows;
 using System.Windows.Data;
-using System.Windows.Media;
 
 namespace ProPharmacyManagerW.ViewModel
 {
@@ -25,33 +24,33 @@ namespace ProPharmacyManagerW.ViewModel
                 var dt = (d1 - d2).TotalDays;
                 if (dt > -5)
                 {
-                    return Brushes.Red;
+                    return "#E91818";
                 }
                 else if (dt > -15 && dt < -6)
                 {
-                    return Brushes.OrangeRed;
+                    return "#F24D16";
                 }
                 else if (dt > -30 && dt < -16)
                 {
-                    return Brushes.YellowGreen;
+                    return "#EDD834";
                 }
                 else if (dt > -50 && dt < -31)
                 {
-                    return Brushes.ForestGreen;
+                    return "#4CD4B0";
                 }
                 else if (dt > -60 && dt < -51)
                 {
-                    return Brushes.Green;
+                    return "#16A086";
                 }
                 else
                 {
                     return DependencyProperty.UnsetValue;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Kernel.Core.SaveException(e);
-                return Brushes.Firebrick;
+                return DependencyProperty.UnsetValue;
             }
         }
 

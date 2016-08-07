@@ -5,9 +5,11 @@
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
 using ProPharmacyManagerW.Database;
+using ProPharmacyManagerW.View.Pages;
 using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace ProPharmacyManagerW.View
@@ -26,12 +28,14 @@ namespace ProPharmacyManagerW.View
         /// Check if user want to get back to main cp
         /// </summary>
         public static bool BackToMain;
+
         /// <summary>
-        /// If a page is closing or not
+        /// Check if user logging out or not
         /// </summary>
-        public static bool IsClosing;
+        public static bool IsLoggingOut;
 
         private DispatcherTimer checkClosing = new DispatcherTimer();
+
 
         #region Window Status
         //The title bar to maxmize the form when user double click it or drag it by hold
@@ -59,18 +63,146 @@ namespace ProPharmacyManagerW.View
         //X Button that close the current form
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            //to record the logout date 
-            MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
-            cmd.Update("logs").Set("LogoutDate", DateTime.Now.ToString()).Set("Online", 0).Where("Online", 1).Execute();
-            //open login window after user logs out
-            MainWindow loginw = new MainWindow();
-            loginw.Show();
-            this.Close();
+            IsLoggingOut = true;
         }
         // - Button that minimize the current form
         private void imageButton1_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void PCP_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    this.DragMove();
+                }
+            }
+            catch
+            {
+                Console.WriteLine("CP.xaml.cs LN79 error");
+            }
+        }
+        #endregion
+
+        #region Menuitems
+        /// <summary>
+        /// Open about window
+        /// </summary>
+        private void about_Click(object sender, RoutedEventArgs e)
+        {
+            About abo = new About();
+            abo.ShowDialog();
+        }
+        /// <summary>
+        ///add new employee
+        /// </summary>
+        private void MIAddEMP_Click(object sender, RoutedEventArgs e)
+        {
+            FFhost.IsEnabled = false;
+            Register re = new Register();
+            TwoPanelFame.Navigate(re);
+            UserBoard.Visibility = Visibility.Visible;
+        }
+        /// <summary>
+        /// edit password | delete exist employee
+        /// </summary>
+        private void MIPASEMP_Click(object sender, RoutedEventArgs e)
+        {
+            AccCP ac = new AccCP();
+            TwoPanelFame.Navigate(ac);
+            UserBoard.Visibility = Visibility.Visible;
+        }
+        /// <summary>
+        /// edit exist employee state
+        /// </summary>
+        private void MISTAEMP_Click(object sender, RoutedEventArgs e)
+        {
+            FFhost.IsEnabled = false;
+            StaCP sc = new StaCP();
+            TwoPanelFame.Navigate(sc);
+            UserBoard.Visibility = Visibility.Visible;
+        }
+        /// <summary>
+        /// open logs page for login processes
+        /// </summary>
+        private void MILOGLOG_Click(object sender, RoutedEventArgs e)
+        {
+            FFhost.IsEnabled = false;
+            AccLogs al = new AccLogs();
+            TwoPanelFame.Navigate(al);
+            UserBoard.Visibility = Visibility.Visible;
+        }
+        /// <summary>
+        /// Database settings page to open
+        /// </summary>
+        public static bool IsOSettings;
+        private void MISet_Click(object sender, RoutedEventArgs e)
+        {
+            IsOSettings = true;
+            Settings set = new Settings();
+            FFhost.Navigate(set);
+        }
+        /// <summary>
+        /// open bills page
+        /// </summary>
+        public static bool IsBills;
+        private void MIBills_Click(object sender, RoutedEventArgs e)
+        {
+            IsBills = true;
+            Bills bl = new Bills();
+            FFhost.Navigate(bl);
+        }
+        /// <summary>
+        /// open all drugs page
+        /// </summary>
+        public static bool IsAll;
+        private void MIAllMeds_Click(object sender, RoutedEventArgs e)
+        {
+            AllMeds am = new AllMeds();
+            FFhost.Navigate(am);
+        }
+        /// <summary>
+        /// open end expiration page
+        /// </summary>
+        public static bool IsEX;
+        private void MIExy_Click(object sender, RoutedEventArgs e)
+        {
+            IsEX = true;
+            Expiration ex = new Expiration();
+            FFhost.Navigate(ex);
+        }
+        /// <summary>
+        /// open Soldout page
+        /// </summary>
+        public static bool IsSO;
+        private void MISO_Click(object sender, RoutedEventArgs e)
+        {
+            IsSO = true;
+            Out so = new Out();
+            FFhost.Navigate(so);
+        }
+        /// <summary>
+        /// open end SoldLog page
+        /// </summary>
+        public static bool IsSL;
+        private void MISM_Click(object sender, RoutedEventArgs e)
+        {
+            IsSL = true;
+            SoldLogs sl = new SoldLogs();
+            FFhost.Navigate(sl);
+        }
+        /// <summary>
+        /// open end Backup and restore page
+        /// </summary>
+        public static bool IsBR;
+        private void BAR_Click(object sender, RoutedEventArgs e)
+        {
+            IsBR = true;
+            BAR br = new BAR();
+            FFhost.Navigate(br);
         }
         #endregion
 
@@ -78,14 +210,14 @@ namespace ProPharmacyManagerW.View
         {
             if (e.Key == Key.F1)
             {
-                View.About abo = new View.About();
+                About abo = new About();
                 abo.ShowDialog();
             }
             else if (e.Key == Key.F12)
             {
                 if (Kernel.Core.IsCMode == false)
                 {
-                    View.ConGui consl = new View.ConGui();
+                    ConGui consl = new ConGui();
                     consl.Show();
                 }
             }
@@ -100,94 +232,286 @@ namespace ProPharmacyManagerW.View
             else if (AccountsTable.IsAdmin() == false)
             {
                 this.Title = "لوحه الموظفين";
-                Pages.UserCP cu = new Pages.UserCP();
+                UserCP cu = new UserCP();
                 FFhost.Navigate(cu);
+                MeSe.Visibility = Visibility.Collapsed;
+                MIAddEMP.Visibility = Visibility.Collapsed;
+                MILOGLOG.Visibility = Visibility.Collapsed;
+                MISM.Visibility = Visibility.Collapsed;
             }
-            checkClosing.Interval = TimeSpan.FromMilliseconds(500);
+            checkClosing.Interval = TimeSpan.FromMilliseconds(100);
             checkClosing.Tick += checkClosingState;
             checkClosing.Start();
         }
 
+        private void NumbersOnly(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1) && e.Text != ".")
+            {
+                e.Handled = true;
+            }
+        }
+
         private void checkClosingState(object sender, EventArgs e)
         {
-            if (Pages.AdminCP.IsOSettings)
+            if (IsLoggingOut == true)
             {
-                Pages.Settings set = new Pages.Settings();
-                FFhost.Navigate(set);
-                Pages.AdminCP.IsOSettings = false;
-            }
-            if (Pages.Settings.IsClosingSet && AccountsTable.IsAdmin() == false)
-            {
-                this.Title = "لوحه الموظفين";
-                Pages.UserCP cu = new Pages.UserCP();
-                FFhost.Navigate(cu);
-                Pages.Settings.IsClosingSet = false;
-            }
-            else if (Pages.Settings.IsClosingSet && AccountsTable.IsAdmin() == true)
-            {
-                this.Title = "لوحه المدراء";
-                Pages.AdminCP ac = new Pages.AdminCP();
-                FFhost.Navigate(ac);
-                Pages.Settings.IsClosingSet = false;
-            }
-            if (IsClosing == true)
-            {
-                checkClosing.Stop();
+                //open login window after user logs out
                 MainWindow loginw = new MainWindow();
-                IsClosing = false;
+                Close();
                 loginw.Show();
-                this.Close();
+                IsLoggingOut = false;
             }
             if (BackToMain == true)
             {
                 if (AccountsTable.IsAdmin() == true)
                 {
-                    Pages.AdminCP ac = new Pages.AdminCP();
+                    AdminCP ac = new AdminCP();
                     FFhost.Navigate(ac);
                 }
                 else
                 {
-                    Pages.UserCP cu = new Pages.UserCP();
+                    UserCP cu = new UserCP();
                     FFhost.Navigate(cu);
                 }
                 BackToMain = false;
             }
-            if (Pages.AdminCP.IsBills == true)
+        }
+
+        #region Add Drugs Panel
+        //back to main menu
+        private void BackToMain_Click(object sender, RoutedEventArgs e)
+        {
+            if (AddNewDrugBoard.Visibility == Visibility.Visible)
             {
-                Pages.Bills bl = new Pages.Bills();
-                FFhost.Navigate(bl);
-                Pages.AdminCP.IsBills = false;
+                AddNewDrugBoard.Visibility = Visibility.Collapsed;
             }
-            else if (Pages.AdminCP.IsAll == true)
+            else
             {
-                Pages.AllMeds am = new Pages.AllMeds();
-                FFhost.Navigate(am);
-                Pages.AdminCP.IsAll = false;
+                UserBoard.Visibility = Visibility.Collapsed;
             }
-            else if (Pages.AdminCP.IsEX == true)
+            FFhost.IsEnabled = true;
+        }
+        /// <summary>
+        /// Linear Gradient Brush Background
+        /// </summary>
+        /// <param name="fb">Frist red</param>
+        /// <param name="fb">Frist green</param>
+        /// <param name="fb">Frist blue</param>
+        /// <param name="fb">Second red</param>
+        /// <param name="fb">Second green</param>
+        /// <param name="fb">Second blue</param>
+        void LGBB(byte fr, byte fg, byte fb, byte sr, byte sg, byte sb)
+        {
+            LinearGradientBrush ng = new LinearGradientBrush();
+            ng.StartPoint = new Point(0.5, 0);
+            ng.EndPoint = new Point(0.5, 1);
+            ng.MappingMode = BrushMappingMode.RelativeToBoundingBox;
+            GradientStop gs1 = new GradientStop();
+            //#FF3630B4
+            gs1.Color = Color.FromRgb(fr, fg, fb);
+            gs1.Offset = 0.833;
+            ng.GradientStops.Add(gs1);
+            GradientStop gs2 = new GradientStop();
+            //#FF151083
+            gs2.Color = Color.FromRgb(sr, sg, sb);
+            gs2.Offset = 1;
+            ng.GradientStops.Add(gs2);
+            AddNewDrugBoard.Background = ng;
+        }
+        // add drug panel
+        private void MIAddDrug_Click(object sender, RoutedEventArgs e)
+        {
+            FFhost.IsEnabled = false;
+            AddNewDrugBoard.Visibility = Visibility.Visible;
+            ADName.Focus();
+            //#3399FF, #0066CC
+            LGBB(51, 153, 255, 0, 102, 204);
+        }
+
+        private void ADName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (ADName.Text == "أسم الدواء*")
             {
-                Pages.Expiration ex = new Pages.Expiration();
-                FFhost.Navigate(ex);
-                Pages.AdminCP.IsEX = false;
+                ADName.Text = "";
             }
-            else if (Pages.AdminCP.IsSL == true)
+            if (!ADName.Items.IsEmpty)
             {
-                Pages.SoldLogs sl = new Pages.SoldLogs();
-                FFhost.Navigate(sl);
-                Pages.AdminCP.IsSL = false;
+                ADName.Items.Clear();
             }
-            else if (Pages.AdminCP.IsSO == true)
+            if (ADName.IsDropDownOpen == false && ADName.Text.Length > 0)
             {
-                Pages.Out so = new Pages.Out();
-                FFhost.Navigate(so);
-                Pages.AdminCP.IsSO = false;
+                ADName.IsDropDownOpen = true;
             }
-            else if (Pages.AdminCP.IsBR == true)
+            try
             {
-                Pages.BAR br = new Pages.BAR();
-                FFhost.Navigate(br);
-                Pages.AdminCP.IsBR = false;
+                if (ADName.Text.Length == 0)
+                {
+                    return;
+                }
+                MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
+                cmd.Select("medics").WhereLike("Name", ADName.Text);
+                MySqlReader r = new MySqlReader(cmd);
+                while (r.Read() && ADName.Items.Count <= 10)
+                {
+                    ADName.Items.Add(r.ReadString("Name"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Kernel.Core.SaveException(ex);
             }
         }
+
+        private void ADName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ADName.Foreground = Brushes.Blue;
+            ADName.Background = Brushes.White;
+            ADName.Items.Clear();
+            //#3399FF, #0066CC
+            LGBB(51, 153, 255, 0, 102, 204);
+        }
+
+        private void ADName_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (ADName.Text == "")
+            {
+                ADName.Text = "أسم الدواء*";
+            }
+        }
+
+        private void RestoreBackground(object sender, RoutedEventArgs e)
+        {
+            //#3399FF, #0066CC
+            LGBB(51, 153, 255, 0, 102, 204);
+        }
+
+        private void ADType_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ADType.Foreground = Brushes.Blue;
+            ADType.Background = Brushes.White;
+            if (ADType.Text == "النوع*")
+            {
+                ADType.Text = "";
+            }
+            //#3399FF, #0066CC
+            LGBB(51, 153, 255, 0, 102, 204);
+        }
+
+        private void ADType_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (ADType.Text == "")
+            {
+                ADType.Text = "النوع*";
+            }
+        }
+
+        // add medic command
+        private void AddDrug_Click(object sender, RoutedEventArgs e)
+        {
+            #region textboxs States
+            if (ADName.Text == "أسم الدواء*")
+            {
+                ADName.Foreground = Brushes.Red;
+                return;
+            }
+            else if (ADName.Text == "")
+            {
+                ADName.Background = Brushes.Red;
+                return;
+            }
+            if (ADEXP.Text == "تاريخ انتهاء الصلاحيه*")
+            {
+                ADEXP.Foreground = Brushes.Red;
+                return;
+            }
+            else if (ADEXP.Text == "")
+            {
+                MessageBox.Show("ادخل تاريخ انتهاء الصلاحية");
+                return;
+            }
+            else if (ADEXP.SelectedDate <= DateTime.Now.Date)
+            {
+                ADEXP.Background = Brushes.Red;
+                return;
+            }
+            if (ADPrice.Text == "")
+            {
+                ADPrice.Background = Brushes.Red;
+                return;
+            }
+            else if (Convert.ToDecimal(ADPrice.Text) <= 0)
+            {
+                ADPrice.Foreground = Brushes.Red;
+                return;
+            }
+            if (ADTotal.Text == "")
+            {
+                ADTotal.Background = Brushes.Red;
+                return;
+            }
+            else if (Convert.ToDecimal(ADTotal.Text) <= 0)
+            {
+                ADTotal.Foreground = Brushes.Red;
+                return;
+            }
+            #endregion
+            byte PType;
+            switch (ADType.Text)
+            {
+                case "شرب":
+                    PType = 1;
+                    break;
+                case "اقراص":
+                    PType = 2;
+                    break;
+                case "حقن":
+                    PType = 3;
+                    break;
+                case "كريم/مرهم":
+                    PType = 4;
+                    break;
+                case "اخرى":
+                    PType = 0;
+                    break;
+                default:
+                    ADType.Background = Brushes.Red;
+                    return;
+            }
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT);
+                cmd.Insert("medics")
+                    .Insert("Name", ADName.Text)
+                    .Insert("Barcode", ADBarCode.Text)
+                    .Insert("ScientificName", ADSS.Text)
+                    .Insert("ExpirationDate", ADEXP.Text)
+                    .Insert("Type", PType)
+                    .Insert("Total", Convert.ToDecimal(ADTotal.Text))
+                    .Insert("SPrice", Convert.ToDecimal(ADPrice.Text))
+                    .Insert("Notes", ADNote.Text).Execute();
+                //#2ECC71, #2aba66
+                LGBB(46, 204, 113, 42, 186, 102);
+                Console.WriteLine(AccountsTable.UserName + " add " + ADTotal.Text + " " + ADName.Text + " which each cost " + ADPrice.Text);
+            }
+            catch (Exception ex)
+            {
+                //#d8334a, #BF263C
+                LGBB(216, 51, 74, 191, 38, 60);
+                MessageBox.Show("غالبا تم استخدام نفس اسم الدواء من قبل");
+                Kernel.Core.SaveException(ex);
+            }
+        }
+        #endregion
+
+        private void PCP_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (Kernel.Core.aa == "1")
+            {
+                MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
+                cmd.Update("logs").Set("LogoutDate", DateTime.Now.ToString()).Set("Online", 0).Where("Online", 1).Execute();
+            }
+        }
+
     }
 }

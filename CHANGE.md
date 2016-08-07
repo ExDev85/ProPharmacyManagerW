@@ -1,7 +1,7 @@
 #ProPharmacyManagerW
 
 ##0.9.9.7:
-1.  Improvements to the UI.
+1.  Improvements to the UI/UX.
 2.  New command to delete the program config file/s or folder.
 3.  Improve import command speed.
 4.  Change Upgrade process from older versions.

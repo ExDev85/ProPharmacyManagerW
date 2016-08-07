@@ -37,7 +37,7 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="TextAlignment" Value="Right"/>
-                            <Setter Property="Margin" Value="2,0,2,0"/>
+                            <Setter Property="Padding" Value="2,0,2,0"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
@@ -47,7 +47,7 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="TextAlignment" Value="Right"/>
-                            <Setter Property="Margin" Value="2,0,2,0"/>
+                            <Setter Property="Padding" Value="2,0,2,0"/>
                             <Setter Property="Background" Value="{Binding ExpirationDate, Converter={StaticResource AllEX}}"/>
                             <Setter Property="Foreground" Value="{Binding Total, Converter={StaticResource AllTextColor}}"/>
                         </Style>
@@ -58,7 +58,7 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="TextAlignment" Value="Right"/>
-                            <Setter Property="Margin" Value="2,0,2,0"/>
+                            <Setter Property="Padding" Value="2,0,2,0"/>
                             <Setter Property="Background" Value="{Binding Total, Converter={StaticResource AllAmount}}"/>
                             <Setter Property="Foreground" Value="{Binding Total, Converter={StaticResource AllTextColor}}"/>
                         </Style>
@@ -68,7 +68,7 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="TextAlignment" Value="Right"/>
-                            <Setter Property="Margin" Value="2,0,2,0"/>
+                            <Setter Property="Padding" Value="2,0,2,0"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
@@ -76,7 +76,7 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="TextAlignment" Value="Right"/>
-                            <Setter Property="Margin" Value="2,0,2,0"/>
+                            <Setter Property="Padding" Value="2,0,2,0"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>

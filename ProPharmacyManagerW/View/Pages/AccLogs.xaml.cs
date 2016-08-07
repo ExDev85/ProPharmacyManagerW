@@ -6,6 +6,7 @@
 // </copyright>
 using ProPharmacyManagerW.Database;
 using System;
+using System.Data;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,8 +23,10 @@ namespace ProPharmacyManagerW.View.Pages
         {
             InitializeComponent();
         }
+
         MySql.Data.MySqlClient.MySqlDataAdapter mAdapter;
-        System.Data.DataTable mTable;
+        DataTable mTable;
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (Environment.OSVersion.Version.Build <= 2600)
@@ -33,8 +36,8 @@ namespace ProPharmacyManagerW.View.Pages
             Pb.Visibility = Visibility.Visible;
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
-                mAdapter = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM logs ORDER BY LoginDate DESC", DataHolder.MySqlConnection);
-                mTable = new System.Data.DataTable();
+                mAdapter = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM logs", DataHolder.MySqlConnection);
+                mTable = new DataTable();
                 mAdapter.Fill(mTable);
                 if (mTable.Rows.Count == 0)
                 {
