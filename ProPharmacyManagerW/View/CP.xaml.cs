@@ -36,7 +36,6 @@ namespace ProPharmacyManagerW.View
 
         private DispatcherTimer checkClosing = new DispatcherTimer();
 
-
         #region Window Status
         //The title bar to maxmize the form when user double click it or drag it by hold
         private void border1_MouseDown(object sender, MouseButtonEventArgs e)
@@ -232,8 +231,6 @@ namespace ProPharmacyManagerW.View
             else if (AccountsTable.IsAdmin() == false)
             {
                 this.Title = "لوحه الموظفين";
-                UserCP cu = new UserCP();
-                FFhost.Navigate(cu);
                 MeSe.Visibility = Visibility.Collapsed;
                 MIAddEMP.Visibility = Visibility.Collapsed;
                 MILOGLOG.Visibility = Visibility.Collapsed;
@@ -257,22 +254,30 @@ namespace ProPharmacyManagerW.View
             if (IsLoggingOut == true)
             {
                 //open login window after user logs out
+                this.Close();
                 MainWindow loginw = new MainWindow();
-                Close();
-                loginw.Show();
-                IsLoggingOut = false;
+                if (IsLoaded == false)
+                {
+                    IsLoggingOut = false;
+                    loginw.ShowDialog();
+                    checkClosing.Stop();
+                }
             }
             if (BackToMain == true)
             {
+                MainCP ac = new MainCP();
+                FFhost.Navigate(ac);
                 if (AccountsTable.IsAdmin() == true)
                 {
-                    AdminCP ac = new AdminCP();
-                    FFhost.Navigate(ac);
+                    this.Title = "لوحه المدراء";
                 }
-                else
+                else if (AccountsTable.IsAdmin() == false)
                 {
-                    UserCP cu = new UserCP();
-                    FFhost.Navigate(cu);
+                    this.Title = "لوحه الموظفين";
+                    MeSe.Visibility = Visibility.Collapsed;
+                    MIAddEMP.Visibility = Visibility.Collapsed;
+                    MILOGLOG.Visibility = Visibility.Collapsed;
+                    MISM.Visibility = Visibility.Collapsed;
                 }
                 BackToMain = false;
             }

@@ -14,20 +14,18 @@ using System.Windows.Media;
 namespace ProPharmacyManagerW.View.Pages
 {
     /// <summary>
-    /// Interaction logic for Employees Control Panel
+    /// Interaction logic for Admins Constrol panel
     /// </summary>
-    public partial class UserCP : Page
+    public partial class MainCP : Page
     {
-        public UserCP()
+        public MainCP()
         {
             InitializeComponent();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            WelMsg.Content = "اهلا بك يا " + AccountsTable.UserName;
-        }
-
+        /// <summary>
+        /// reset textboxs every new search to default
+        /// </summary>
         private void Clear()
         {
             MName.Clear();
@@ -40,7 +38,7 @@ namespace ProPharmacyManagerW.View.Pages
             MExist.Foreground = Brushes.Blue;
             MExist.Background = Brushes.White;
             MWSell.Text = "1";
-            MType.Text = "";
+            MType.SelectedIndex = 0;
             MNotes.Clear();
         }
 
@@ -72,19 +70,6 @@ namespace ProPharmacyManagerW.View.Pages
                     break;
             }
         }
-
-        private void NumbersOnly(object sender, TextCompositionEventArgs e)
-        {
-            if (!char.IsDigit(e.Text, e.Text.Length - 1) && e.Text != ".")
-            {
-                e.Handled = true;
-            }
-            if (e.Text == "." && (sender as TextBox).Text.IndexOf('.') > -1)
-            {
-                e.Handled = true;
-            }
-        }
-
         /// <summary>
         /// check if selling process is complete or not
         /// </summary>
@@ -138,14 +123,12 @@ namespace ProPharmacyManagerW.View.Pages
                 Kernel.Core.SaveException(ex);
             }
         }
-        /// <summary>
-        /// to save selling time
-        /// </summary>
+
         private void SaveSold()
         {
             if (Kernel.Core.bb == "1")
             {
-                //calculate the total selling SPrice
+                //calculate the total selling price
                 decimal totalpr = Convert.ToDecimal(MPrice.Text) * Convert.ToDecimal(MWSell.Text);
                 try
                 {
@@ -165,6 +148,13 @@ namespace ProPharmacyManagerW.View.Pages
                     Kernel.Core.SaveException(e);
                 }
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            WelMsg.Content = "اهلا بك يا " + AccountsTable.UserName;
+            BillNo.Text = BillsTable.BillNO.ToString();
+            SearchBox.Focus();
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -285,6 +275,118 @@ namespace ProPharmacyManagerW.View.Pages
             }
         }
 
+        private void Page_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (SearchBox.Text.Length == 0)
+            //{
+            //    SearchBox.Focus();
+            //}
+        }
+
+        private void NumbersOnly(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1) && e.Text != ".")
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Page_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            //SearchBox.Focus();
+        }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            CP.IsLoggingOut = true;
+        }
+
+        private void UpdateM_Click(object sender, RoutedEventArgs e)
+        {
+            if (MName.Text == "" || MPrice.Text == "" || MExist.Text == "" || MEX.Text == "")
+            {
+                MessageBox.Show("لا يمكن اتمام عمليه التحديث بسبب وجود حقل مهم فارغ");
+                return;
+            }
+            try
+            {
+                switch (MType.Text)
+                {
+                    case "شرب":
+                        Ptype = 1;
+                        break;
+                    case "اقراص":
+                        Ptype = 2;
+                        break;
+                    case "حقن":
+                        Ptype = 3;
+                        break;
+                    case "كريم/مرهم":
+                        Ptype = 4;
+                        break;
+                    case "اخرى":
+                        Ptype = 0;
+                        break;
+                }
+                if (AccountsTable.IsAdmin() == true)
+                {
+                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
+                    cmd.Update("medics")
+                        .Set("Name", MName.Text)
+                        .Set("ScientificName", MSS.Text)
+                        .Set("ExpirationDate", MEX.Text)
+                        .Set("Type", Ptype)
+                        .Set("Total", MExist.Text)
+                        .Set("SPrice", MPrice.Text)
+                        .Set("Notes", MNotes.Text);
+                    cmd.Where("Name", MName.Text).Execute();
+                    Console.WriteLine("update the '" + MName.Text + "' drug I hope you are not high");
+                    MessageBox.Show("تم التحديث");
+                }
+                else
+                {
+                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
+                    cmd.Update("medics")
+                        .Set("Notes", MNotes.Text);
+                    cmd.Where("Name", MName.Text).Execute();
+                    Console.WriteLine("Update '" + MName.Text + "' Notes I noticed what you did there");
+                    MessageBox.Show("تم التحديث ملاحظات الدواء");
+                }
+            }
+            catch (Exception ex)
+            {
+                Kernel.Core.SaveException(ex);
+            }
+        }
+
+        private void DeleteM_Click(object sender, RoutedEventArgs e)
+        {
+            if (MName.Text == "" || MPrice.Text == "" || MExist.Text == "")
+            {
+                MessageBox.Show("لا يمكن اتمام عمليه الحذف");
+                return;
+            }
+            try
+            {
+                if (AccountsTable.IsAdmin() == true)
+                {
+                    new MySqlCommand(MySqlCommandType.DELETE).Delete("medics", "Name", MName.Text).Execute();
+                    Clear();
+                    Console.WriteLine("Delete '" + MName.Text + "' now we're talking");
+                    MessageBox.Show("تم حذف الدواء");
+                }
+                else
+                {
+                    Console.WriteLine(AccountsTable.UserName + "was trying to Delete '" + MName.Text);
+                    MessageBox.Show("يجب ان تكون مدير لتستطيع الحذف");
+                }
+            }
+            catch (Exception ex)
+            {
+                Kernel.Core.SaveException(ex);
+            }
+        }
+
         private void SellM_Click(object sender, RoutedEventArgs e)
         {
             if (MName.Text == "" || Client.Text == "" || MPrice.Text == "" || MExist.Text == "" || MWSell.Text == "")
@@ -309,13 +411,6 @@ namespace ProPharmacyManagerW.View.Pages
                         BillNo.Text = r.ReadString("ID");
                     }
                     r.Close();
-                    if (Convert.ToDecimal(MExist.Text) <= 0)
-                    {
-                        MExist.Background = Brushes.Red;
-                        MExist.Foreground = Brushes.White;
-                        Console.WriteLine("Searched for - " + MName.Text + " - I believe that you should get new ones");
-                    }
-                    // to reset it for the new selling process
                     CompleteSelling = false;
                 }
                 catch (Exception ex)
@@ -342,28 +437,6 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 MessageBox.Show("الدواء غير متوفر");
             }
-        }
-
-        private void UpdateM_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
-                cmd.Update("medics")
-                    .Set("Notes", MNotes.Text);
-                cmd.Where("Name", MName.Text).Execute();
-                Console.WriteLine("Update '" + MName.Text + "' Notes I noticed what you did there");
-                MessageBox.Show("تم التحديث ملاحظات الدواء");
-            }
-            catch (Exception ex)
-            {
-                Kernel.Core.SaveException(ex);
-            }
-        }
-
-        private void LogOut_Click(object sender, RoutedEventArgs e)
-        {
-            CP.IsLoggingOut = true;
         }
 
     }

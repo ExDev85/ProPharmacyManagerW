@@ -105,8 +105,8 @@
     <Compile Include="View\Pages\AccLogs.xaml.cs">
       <DependentUpon>AccLogs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\AdminCP.xaml.cs">
-      <DependentUpon>AdminCP.xaml</DependentUpon>
+    <Compile Include="View\Pages\MainCP.xaml.cs">
+      <DependentUpon>MainCP.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\AllMeds.xaml.cs">
       <DependentUpon>AllMeds.xaml</DependentUpon>
@@ -140,9 +140,6 @@
     </Compile>
     <Compile Include="View\Pages\Upgrade.xaml.cs">
       <DependentUpon>Upgrade.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Pages\UserCP.xaml.cs">
-      <DependentUpon>UserCP.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Set.xaml.cs">
       <DependentUpon>Set.xaml</DependentUpon>
@@ -191,7 +188,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Pages\AdminCP.xaml">
+    <Page Include="View\Pages\MainCP.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -236,10 +233,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Pages\Upgrade.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Pages\UserCP.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

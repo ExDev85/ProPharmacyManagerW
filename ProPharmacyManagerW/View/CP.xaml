@@ -21,7 +21,7 @@
         <Controls:ImageButton x:Name="imageButton1" HorizontalAlignment="Left" Margin="51,0,0,0"  Width="52" Image="/ProPharmacyManagerW;component/Images/LoginBGM1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/LoginBGM3.png" ImageHover="/ProPharmacyManagerW;component/Images/LoginBGM2.png" ImagePressed="/ProPharmacyManagerW;component/Images/LoginBGM3.png" Height="43" VerticalAlignment="Top" Click="imageButton1_Click" TabIndex="37" />
         <Image Name="image1" Stretch="Fill" HorizontalAlignment="Right" Width="54" Source="/ProPharmacyManagerW;component/Images/PPHM W Trans.png" Height="43" VerticalAlignment="Top" Grid.Column="2" />
         <Border BorderBrush="{x:Null}" BorderThickness="1" Margin="109,0,49,0" Name="border1" MouseDown="border1_MouseDown" Background="#5E00688F" FlowDirection="RightToLeft" Height="43" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
-        <Frame x:Name="FFhost" Source="Pages\AdminCP.xaml" BorderThickness="0" FlowDirection="RightToLeft" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.ColumnSpan="3" />
+        <Frame x:Name="FFhost" Source="Pages\MainCP.xaml" BorderThickness="0" FlowDirection="RightToLeft" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.ColumnSpan="3" />
         <Menu Height="31" Name="menu1" Background="#050B87B3" Foreground="White" IsMainMenu="True" VerticalAlignment="Top" FlowDirection="RightToLeft" Margin="0,0,54,0" Width="350" MaxWidth="350" HorizontalAlignment="Right" Grid.ColumnSpan="2" Grid.Column="1">
             <MenuItem x:Name="MeEmp" FontSize="15" FontWeight="Bold" Header="موظفين" TabIndex="1" Foreground="White">
                 <MenuItem x:Name="MIAddEMP" Header="اضافه" Background="White" Foreground="Blue" Click="MIAddEMP_Click" />
