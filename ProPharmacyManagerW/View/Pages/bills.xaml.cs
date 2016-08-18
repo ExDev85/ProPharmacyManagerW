@@ -5,7 +5,6 @@
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
 using ProPharmacyManagerW.Database;
-using ProPharmacyManagerW.View;
 using System;
 using System.Linq;
 using System.Threading;

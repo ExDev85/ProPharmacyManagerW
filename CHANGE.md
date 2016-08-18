@@ -7,8 +7,9 @@
 4.  Change Upgrade process from older versions.
 5.  Change the program icon.
 6.  Add the same item more than once.
-7.  Control users info from the main window
-8.  Items type in all medics window will show now as text not numbers
+7.  Control users info from the main window.
+8.  Items type in all medics window will show now as text not numbers.
+9.  Add option to disable Bills system.
 
 ##0.9.9.6:
 1.  You don't have to run the program as administrator anymore.
