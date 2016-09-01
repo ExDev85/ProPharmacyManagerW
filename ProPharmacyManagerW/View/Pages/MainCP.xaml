@@ -49,21 +49,19 @@
                 </Grid.ColumnDefinitions>
                 <Controls:WaterMarkTextBox x:Name="MName" Height="30" Margin="6,4,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="9" MaxLines="1" MaxLength="50" WaterMark="أسم الدواء" FontSize="14" ToolTip="أسم الدواء"/>
                 <Controls:WaterMarkTextBox x:Name="MSS" Height="30" Margin="6,39,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="10" MaxLines="1" MaxLength="50" WaterMark="الماده الفعاله" ToolTip="الماده الفعاله" FontSize="14" />
-                <ComboBox x:Name="MSUP" Height="30" Margin="6,74,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" FontSize="14" ToolTip="الشركة/المخزن موزعه الدواء" SelectedIndex="0" IsReadOnly="True" >
-                    <ListBoxItem Content="الموزع*"/>
-                </ComboBox>
+                <Controls:WaterMarkComboBox x:Name="MSUP" WaterMark="الموزع" Height="30" Margin="6,74,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" FontSize="14" ToolTip="الشركة/المخزن موزعه الدواء" IsReadOnly="True" >
+                </Controls:WaterMarkComboBox>
                 <DatePicker x:Name="MEX" Height="30" Margin="6,109,6,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="11" FirstDayOfWeek="Saturday" DisplayDateStart="2016-01-01" Text="تاريخ انتهاء الصلاحية" FontSize="14" ToolTip="تاريخ انتهاء الصلاحية" />
                 <Controls:WaterMarkTextBox x:Name="MPrice" Height="30" Margin="6,144,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" FontSize="14" WaterMark="السعر" ToolTip="سعر الدواء للمستهلك"/>
                 <Controls:WaterMarkTextBox x:Name="MExist" Height="30" Margin="6,182,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="120" TabIndex="13" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" WaterMark="الكمية الموجودة" ToolTip="الكمية المتوفرة فى الصيدليه" FontSize="14" />
                 <Controls:WaterMarkTextBox x:Name="MWSell" Height="30" Margin="137,182,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="99" TabIndex="14" Text="1" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" FontSize="14" WaterMark="المراد بيعه" ToolTip="الكميه المباعه (الافتراضى واحد)" />
-                <ComboBox Name="MType" Background="White" Foreground="Blue" HorizontalContentAlignment="Stretch" IsEditable="False" Margin="6,217,9,0" TabIndex="15" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="30" IsReadOnly="True" SelectedIndex="0" ToolTip="نوع الدواء" FontSize="14" >
-                    <ListBoxItem Content="النوع*"/>
+                <Controls:WaterMarkComboBox x:Name="MType" WaterMark="النوع*" Background="White" Foreground="Blue" HorizontalContentAlignment="Stretch" IsEditable="False" Margin="6,217,9,0" TabIndex="15" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="30" IsReadOnly="True" ToolTip="نوع الدواء" FontSize="14" >
                     <ListBoxItem Content="اقراص"/>
                     <ListBoxItem Content="حقن"/>
                     <ListBoxItem Content="شرب"/>
                     <ListBoxItem Content="كريم/مرهم"/>
                     <ListBoxItem Content="اخرى"/>
-                </ComboBox>
+                </Controls:WaterMarkComboBox>
                 <Controls:WaterMarkTextBox x:Name="MNotes" Margin="6,252,9,0" TextWrapping="Wrap" Foreground="Red" TabIndex="19" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" WaterMark="ملاحظات الدواء" FontSize="14" ToolTip="ملاحظات عن الدواء مثل مكانه او اى شئ اخر" WaterMarkColor="#FF972B2B" VerticalContentAlignment="Top" />
                 <CheckBox x:Name="EnBills" Content="    تفعيل الفواتير" Grid.Column="1" Height="30" Margin="7,11,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="226" TabIndex="16" />
                 <CheckBox Name="NewBill" Content="   فاتورة جديدة" Grid.Column="1" Height="30" Margin="7,46,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="226" TabIndex="16" IsEnabled="{Binding IsChecked, ElementName=EnBills}" />

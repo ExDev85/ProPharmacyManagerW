@@ -25,16 +25,22 @@
                             <TextBox x:Name="Textbox"
                                    Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}"
                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                   Width="{TemplateBinding ActualWidth}"                            
-                                   Height="{TemplateBinding ActualHeight}"                             
+                                   Width="{TemplateBinding ActualWidth}"
+                                   Height="{TemplateBinding ActualHeight}"
                                    FontSize="{TemplateBinding FontSize}"
-                                   Foreground="{TemplateBinding Foreground}">
+                                   Foreground="{TemplateBinding Foreground}"
+                                   IsTabStop="{TemplateBinding IsTabStop}"
+                                   IsEnabled="{TemplateBinding IsEnabled}"
+                                   Opacity="{TemplateBinding Opacity}"
+                                   TabIndex="{TemplateBinding TabIndex}">
                             </TextBox>
                             <Label x:Name="WaterMark"
                                  Content="{TemplateBinding WaterMark}"
-                                 Foreground="{TemplateBinding WaterMarkColor}"                                
-                                 Width="{TemplateBinding ActualWidth}"                            
-                                 Height="{TemplateBinding ActualHeight}" 
+                                 Foreground="{TemplateBinding WaterMarkColor}"
+                                 Width="{TemplateBinding ActualWidth}"
+                                 Height="{TemplateBinding ActualHeight}"
+                                 IsEnabled="{TemplateBinding IsEnabled}"
+                                 Opacity="{TemplateBinding Opacity}"
                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                  IsHitTestVisible="False"
                                  FontSize="{TemplateBinding FontSize}">

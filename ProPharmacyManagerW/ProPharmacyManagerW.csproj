@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>PPHM W Icon Green.ico</ApplicationIcon>
+    <ApplicationIcon>PPHMico.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -81,6 +81,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="Controls\WaterMarkComboBox.cs" />
     <Compile Include="ViewModel\AllTextColor.cs" />
     <Compile Include="ViewModel\AllType.cs" />
     <Compile Include="ViewModel\NoDecimal.cs" />
@@ -157,6 +158,10 @@
       <DependentUpon>ConGui.xaml</DependentUpon>
     </Compile>
     <Page Include="Themes\ImageButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\WaterMarkComboBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -334,10 +339,6 @@
     <Resource Include="Images\OPENSOURCE.png" />
     <Resource Include="Images\Personal.ico" />
     <Resource Include="Images\Personal.png" />
-    <Resource Include="Images\PPHM-Blue.ico" />
-    <Resource Include="Images\PPHM-Blue.png" />
-    <Resource Include="Images\PPHM-Green.ico" />
-    <Resource Include="Images\PPHM.png" />
     <Resource Include="Images\Restore1.png" />
     <Resource Include="Images\Restore2.png" />
     <Resource Include="Images\Restore3.png" />
@@ -381,19 +382,20 @@
     <Resource Include="Images\addnewuser.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PPHM W Icon Green.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\PPHM W.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\PPHM W Blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\PPHM W Trans.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Add-File-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AboutLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TitleLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="PPHMico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ico500.png" />
+    <Content Include="Images\Logo.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
