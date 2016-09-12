@@ -80,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\CustomDataGrid.cs" />
     <Compile Include="Controls\IconButton.cs" />
     <Compile Include="Controls\WaterMarkComboBox.cs" />
     <Compile Include="ViewModel\AllTextColor.cs" />
@@ -157,6 +158,10 @@
     <Compile Include="View\ConGui.xaml.cs">
       <DependentUpon>ConGui.xaml</DependentUpon>
     </Compile>
+    <Page Include="Themes\CustomDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\ImageButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -43,6 +43,7 @@
                                  Opacity="{TemplateBinding Opacity}"
                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                  IsHitTestVisible="False"
+                                 IsTabStop="False"
                                  FontSize="{TemplateBinding FontSize}">
                                 <Label.Visibility>
                                     <MultiBinding Converter="{StaticResource MultiVisibilityConvertor}">

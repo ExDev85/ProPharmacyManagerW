@@ -71,20 +71,19 @@
                 </Grid.RowDefinitions>
                 <Controls:ImageButton x:Name="AddDrug" Content="" HorizontalAlignment="Right" Height="40" Margin="0,23,10,0" VerticalAlignment="Top" Width="110" Grid.Row="8" Click="AddDrug_Click" Foreground="White" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/MAdd1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/MAdd3.png" ImageHover="/ProPharmacyManagerW;component/Images/MAdd2.png" ImagePressed="/ProPharmacyManagerW;component/Images/MAdd3.png" TabIndex="34"/>
                 <Controls:ImageButton x:Name="BackToMainB" Content="" HorizontalAlignment="Left" Height="40" Margin="10,23,0,0" VerticalAlignment="Top" Width="112" Grid.Row="8" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="35"/>
-                <ComboBox x:Name="ADName" Margin="10" Text="أسم الدواء*" Foreground="Blue" FontWeight="Bold" FontSize="14" GotFocus="ADName_GotFocus" LostFocus="ADName_LostFocus" TabIndex="25" KeyDown="ADName_KeyDown" IsEditable="True" MaxDropDownHeight="150"/>
+                <Controls:WaterMarkComboBox x:Name="ADName" Margin="10" WaterMark="أسم الدواء*" Foreground="Blue" FontWeight="Bold" FontSize="14" TabIndex="25" KeyDown="ADName_KeyDown" IsEditable="True" MaxDropDownHeight="150"/>
                 <Controls:WaterMarkTextBox x:Name="ADBarCode" Margin="10" TextWrapping="Wrap" Grid.Row="1" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="26" WaterMark="الباكود" ToolTip="امسح الباركود على علبه الدواء او ادخله يدويا"/>
                 <Controls:WaterMarkTextBox x:Name="ADSS" Margin="10" TextWrapping="Wrap" Grid.Row="2" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="27" WaterMark="الماده الفعاله" ToolTip="الماده الفعاله"/>
                 <DatePicker x:Name="ADEXP" Margin="10" Grid.Row="3" FirstDayOfWeek="Saturday" Text="تاريخ انتهاء الصلاحيه*" SelectedDateFormat="Short" DisplayDateStart="2016-01-01" FontSize="14" FontWeight="Bold" Foreground="Blue" TabIndex="28"/>
                 <Controls:WaterMarkTextBox x:Name="ADPrice" Margin="10" TextWrapping="Wrap" Grid.Row="4" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="30" PreviewTextInput="NumbersOnly" WaterMark="السعر*" ToolTip="سعر الدواء للمستهلك"/>
                 <Controls:WaterMarkTextBox x:Name="ADTotal" Margin="10" TextWrapping="Wrap" Grid.Row="5" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="31" PreviewTextInput="NumbersOnly" WaterMark="الكمية*" ToolTip="كميه الصنف الذى ستضيفه" />
-                <ComboBox x:Name="ADType" Margin="10" Text="النوع*" Grid.Row="6" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="ADType_GotFocus" LostFocus="ADType_LostFocus" Background="White" IsReadOnly="True" TabIndex="32" IsTextSearchEnabled="False" SelectedIndex="0">
-                    <ListBoxItem Content="النوع*" Foreground="Blue"/>
+                <Controls:WaterMarkComboBox x:Name="ADType" WaterMark="النوع*" Margin="10" Grid.Row="6" Foreground="Blue" FontSize="14" FontWeight="Bold" Background="White" IsReadOnly="True" TabIndex="32" IsTextSearchEnabled="False">
                     <ListBoxItem Content="اقراص" Foreground="Blue"/>
                     <ListBoxItem Content="حقن" Foreground="Blue"/>
                     <ListBoxItem Content="شرب" Foreground="Blue"/>
                     <ListBoxItem Content="كريم/مرهم" Foreground="Blue"/>
                     <ListBoxItem Content="اخرى" Foreground="Blue"/>
-                </ComboBox>
+                </Controls:WaterMarkComboBox>
                 <Controls:WaterMarkTextBox x:Name="ADNote" Margin="10,10,10,0" TextWrapping="Wrap" Grid.Row="7" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="33" AcceptsReturn="True" WaterMark="ملاحظات الدواء" ToolTip="ملاحظات عن الدواء مثل مكانه او اى شئ اخر" WaterMarkColor="#FF972B2B" VerticalContentAlignment="Top" />
             </Grid>
         </Border>

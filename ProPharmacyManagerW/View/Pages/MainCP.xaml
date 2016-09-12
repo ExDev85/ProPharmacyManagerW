@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="599" d:DesignWidth="799"
-      Title="لوحة المدراء" Loaded="Page_Loaded" KeyDown="Page_KeyDown" TextInput="Page_TextInput">
+      Title="لوحة المدراء" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,6 +19,7 @@
             <RowDefinition Height="502*" />
             <RowDefinition Height="97*" />
         </Grid.RowDefinitions>
+        <Label Name="WelMsg" Content="اهلا بك يا مدير" Grid.Column="2" Grid.Row="0" Height="48" Margin="12,25,15,0" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold" MaxWidth="250"/>
         <GroupBox Name="groupBox1" Grid.Column="2" Grid.Row="0" Header="البحث" Margin="11,78,8,33" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold">
             <Grid>
                 <Grid.RowDefinitions>
@@ -27,11 +28,11 @@
                     <RowDefinition Height="88*" />
                     <RowDefinition Height="155*"/>
                 </Grid.RowDefinitions>
-                <ComboBox Name="SearchBox" Margin="6,17,6,6" VerticalAlignment="Stretch" Foreground="Blue" Background="White" IsEditable="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" TabIndex="6" GotFocus="SearchBox_GotFocus" KeyDown="SearchBox_KeyDown" MaxDropDownHeight="100" IsTextSearchEnabled="False" />
-                <Controls:ImageButton x:Name="SearchButton" Grid.Row="2" Height="60" Margin="44,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Image="/ProPharmacyManagerW;component/Images/Search1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Search3.png" ImageHover="/ProPharmacyManagerW;component/Images/Search2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Search3.png" TabIndex="8" Click="SearchButton_Click" IsDefault="True" />
-                <CheckBox x:Name="ByBarCode" Content="بواسطه الباركود" HorizontalAlignment="Left" Height="40" Margin="6,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Foreground="White" TabIndex="7"/>
-                <Expander x:Name="MoreMeds" Header="المزيد من النتائج" Margin="10" Grid.Row="3" Foreground="White" FontSize="14" IsExpanded="False">
-                    <ListView x:Name="ItemsList" FontSize="14" FontWeight="Bold" SelectionMode="Single" SelectionChanged="ItemsList_SelectionChanged">
+                <Controls:WaterMarkComboBox x:Name="SearchBox" WaterMark="البحث" Margin="6,17,6,6" VerticalAlignment="Stretch" Foreground="Blue" Background="White" IsEditable="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" TabIndex="0" GotFocus="SearchBox_GotFocus" KeyDown="SearchBox_KeyDown" MaxDropDownHeight="100" IsTextSearchEnabled="False" />
+                <Controls:ImageButton x:Name="SearchButton" Grid.Row="2" Height="60" Margin="44,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Image="/ProPharmacyManagerW;component/Images/Search1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Search3.png" ImageHover="/ProPharmacyManagerW;component/Images/Search2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Search3.png" TabIndex="2" Click="SearchButton_Click" IsDefault="True" />
+                <CheckBox x:Name="ByBarCode" Content="بواسطه الباركود" HorizontalAlignment="Left" Height="40" Margin="6,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234" Foreground="White" TabIndex="1"/>
+                <Expander x:Name="MoreMeds" Header="المزيد من النتائج" Margin="10" Grid.Row="3" Foreground="White" FontSize="14" IsExpanded="False" TabIndex="3">
+                    <ListView x:Name="ItemsList" FontSize="14" FontWeight="Bold" SelectionMode="Single" SelectionChanged="ItemsList_SelectionChanged" TabIndex="4">
                         <ListView.Resources>
                             <Style TargetType="GridViewColumnHeader">
                                 <Setter Property="Visibility" Value="Collapsed" />
@@ -47,33 +48,31 @@
                     <ColumnDefinition Width="238*" />
                     <ColumnDefinition Width="236*" />
                 </Grid.ColumnDefinitions>
-                <Controls:WaterMarkTextBox x:Name="MName" Height="30" Margin="6,4,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="9" MaxLines="1" MaxLength="50" WaterMark="أسم الدواء" FontSize="14" ToolTip="أسم الدواء"/>
-                <Controls:WaterMarkTextBox x:Name="MSS" Height="30" Margin="6,39,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="10" MaxLines="1" MaxLength="50" WaterMark="الماده الفعاله" ToolTip="الماده الفعاله" FontSize="14" />
-                <Controls:WaterMarkComboBox x:Name="MSUP" WaterMark="الموزع" Height="30" Margin="6,74,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" FontSize="14" ToolTip="الشركة/المخزن موزعه الدواء" IsReadOnly="True" >
-                </Controls:WaterMarkComboBox>
-                <DatePicker x:Name="MEX" Height="30" Margin="6,109,6,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="11" FirstDayOfWeek="Saturday" DisplayDateStart="2016-01-01" Text="تاريخ انتهاء الصلاحية" FontSize="14" ToolTip="تاريخ انتهاء الصلاحية" />
-                <Controls:WaterMarkTextBox x:Name="MPrice" Height="30" Margin="6,144,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="12" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" FontSize="14" WaterMark="السعر" ToolTip="سعر الدواء للمستهلك"/>
-                <Controls:WaterMarkTextBox x:Name="MExist" Height="30" Margin="6,182,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="120" TabIndex="13" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" WaterMark="الكمية الموجودة" ToolTip="الكمية المتوفرة فى الصيدليه" FontSize="14" />
-                <Controls:WaterMarkTextBox x:Name="MWSell" Height="30" Margin="137,182,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="99" TabIndex="14" Text="1" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" FontSize="14" WaterMark="المراد بيعه" ToolTip="الكميه المباعه (الافتراضى واحد)" />
-                <Controls:WaterMarkComboBox x:Name="MType" WaterMark="النوع*" Background="White" Foreground="Blue" HorizontalContentAlignment="Stretch" IsEditable="False" Margin="6,217,9,0" TabIndex="15" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="30" IsReadOnly="True" ToolTip="نوع الدواء" FontSize="14" >
+                <Controls:WaterMarkTextBox x:Name="MName" Height="30" Margin="6,4,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="5" MaxLines="1" MaxLength="50" WaterMark="أسم الدواء" FontSize="14" ToolTip="أسم الدواء"/>
+                <Controls:WaterMarkTextBox x:Name="MSS" Height="30" Margin="6,39,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="6" MaxLines="1" MaxLength="50" WaterMark="الماده الفعاله" ToolTip="الماده الفعاله" FontSize="14" />
+                <Controls:WaterMarkComboBox x:Name="MSUP" WaterMark="الموزع" Height="30" Margin="6,74,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="7" FontSize="14" ToolTip="الشركة/المخزن موزعه الدواء" IsReadOnly="True"/>
+                <DatePicker x:Name="MEX" Height="30" Margin="6,109,6,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="8" FirstDayOfWeek="Saturday" DisplayDateStart="2016-01-01" Text="تاريخ انتهاء الصلاحية" FontSize="14" ToolTip="تاريخ انتهاء الصلاحية" />
+                <Controls:WaterMarkTextBox x:Name="MPrice" Height="30" Margin="6,144,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="9" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" FontSize="14" WaterMark="السعر" ToolTip="سعر الدواء للمستهلك"/>
+                <Controls:WaterMarkTextBox x:Name="MExist" Height="30" Margin="6,182,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="120" TabIndex="10" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" WaterMark="الكمية الموجودة" ToolTip="الكمية المتوفرة فى الصيدليه" FontSize="14" />
+                <Controls:WaterMarkTextBox x:Name="MWSell" Height="30" Margin="137,182,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="99" TabIndex="11" Text="1" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" FontSize="14" WaterMark="المراد بيعه" ToolTip="الكميه المباعه (الافتراضى واحد)" />
+                <Controls:WaterMarkComboBox x:Name="MType" WaterMark="النوع*" Background="White" Foreground="Blue" HorizontalContentAlignment="Stretch" IsEditable="False" Margin="6,217,9,0" TabIndex="12" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="30" IsReadOnly="True" ToolTip="نوع الدواء" FontSize="14" >
                     <ListBoxItem Content="اقراص"/>
                     <ListBoxItem Content="حقن"/>
                     <ListBoxItem Content="شرب"/>
                     <ListBoxItem Content="كريم/مرهم"/>
                     <ListBoxItem Content="اخرى"/>
                 </Controls:WaterMarkComboBox>
-                <Controls:WaterMarkTextBox x:Name="MNotes" Margin="6,252,9,0" TextWrapping="Wrap" Foreground="Red" TabIndex="19" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" WaterMark="ملاحظات الدواء" FontSize="14" ToolTip="ملاحظات عن الدواء مثل مكانه او اى شئ اخر" WaterMarkColor="#FF972B2B" VerticalContentAlignment="Top" />
-                <CheckBox x:Name="EnBills" Content="    تفعيل الفواتير" Grid.Column="1" Height="30" Margin="7,11,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="226" TabIndex="16" />
-                <CheckBox Name="NewBill" Content="   فاتورة جديدة" Grid.Column="1" Height="30" Margin="7,46,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="226" TabIndex="16" IsEnabled="{Binding IsChecked, ElementName=EnBills}" />
+                <Controls:WaterMarkTextBox x:Name="MNotes" Margin="6,252,9,0" TextWrapping="Wrap" Foreground="Red" TabIndex="13" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" WaterMark="ملاحظات الدواء" FontSize="14" ToolTip="ملاحظات عن الدواء مثل مكانه او اى شئ اخر" WaterMarkColor="#FF972B2B" VerticalContentAlignment="Top" />
+                <CheckBox x:Name="EnBills" Content="    تفعيل الفواتير" Grid.Column="1" Height="30" Margin="7,11,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="226" TabIndex="14" />
+                <CheckBox Name="NewBill" Content="   فاتورة جديدة" Grid.Column="1" Height="30" Margin="7,46,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="226" TabIndex="15" IsEnabled="{Binding IsChecked, ElementName=EnBills}" />
                 <Label Name="label6" Content="رقم الفاتورة" Foreground="White" Height="34" HorizontalAlignment="Left" Margin="7,81,0,0" VerticalAlignment="Top" Width="226" Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=EnBills}" />
                 <TextBox Name="BillNo" Height="30" Margin="7,118,6,0" VerticalAlignment="Top" Grid.Column="1" Foreground="Blue" TabIndex="17" MaxLines="1" MaxLength="20" IsReadOnlyCaretVisible="True" PreviewTextInput="NumbersOnly" IsEnabled="{Binding IsChecked, ElementName=EnBills}" />
-                <Controls:WaterMarkTextBox x:Name="Client" Height="30" Margin="7,153,6,0" VerticalAlignment="Top" Grid.Column="1" Foreground="Green" TabIndex="18" MaxLines="1" MaxLength="50" WaterMark="اسم العميل و الذى سيظهر فى الفاتورة" ToolTip="أسم العميل" FontSize="14" IsEnabled="{Binding IsChecked, ElementName=EnBills}" />
-                </Grid>
+                <Controls:WaterMarkTextBox x:Name="Client" Height="30" Margin="7,153,6,0" VerticalAlignment="Top" Grid.Column="1" Foreground="Green" TabIndex="16" MaxLines="1" MaxLength="50" WaterMark="اسم العميل و الذى سيظهر فى الفاتورة" ToolTip="أسم العميل" FontSize="14" IsEnabled="{Binding IsChecked, ElementName=EnBills}" />
+            </Grid>
         </GroupBox>
-        <Controls:ImageButton x:Name="LogOut" Grid.Column="2" Grid.Row="1" Height="60" HorizontalAlignment="Right" Margin="0,11,58,0" VerticalAlignment="Top" Width="140" Image="/ProPharmacyManagerW;component/Images/Logout1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Logout3.png" ImageHover="/ProPharmacyManagerW;component/Images/Logout2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Logout3.png" TabIndex="23" Click="LogOut_Click" IsCancel="True" />
-        <Controls:ImageButton x:Name="DeleteM" Height="60" Margin="147,11,251,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" Image="/ProPharmacyManagerW;component/Images/MDelete1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/MDelete3.png" ImageHover="/ProPharmacyManagerW;component/Images/MDelete2.png" ImagePressed="/ProPharmacyManagerW;component/Images/MDelete3.png" TabIndex="22" Click="DeleteM_Click" Grid.Column="1" />
-        <Controls:ImageButton x:Name="UpdateM" Height="60" Margin="218,11,164,0" VerticalAlignment="Top" Grid.Row="1" Image="/ProPharmacyManagerW;component/Images/Update1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Update3.png" ImageHover="/ProPharmacyManagerW;component/Images/Update2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Update3.png" TabIndex="21" Click="UpdateM_Click" Grid.ColumnSpan="2" />
-        <Controls:ImageButton x:Name="SellM" Height="60" HorizontalAlignment="Left" Margin="24,11,0,0" VerticalAlignment="Top" Width="140" Grid.Row="1" Image="/ProPharmacyManagerW;component/Images/Sell1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Sell3.png" ImageHover="/ProPharmacyManagerW;component/Images/Sell2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Sell3.png" TabIndex="20" Click="SellM_Click" />
-        <Label Name="WelMsg" Content="اهلا بك يا مدير" Grid.Column="2" Grid.Row="0" Height="48" Margin="12,25,15,0" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold" MaxWidth="250"/>
+        <Controls:ImageButton x:Name="SellM" Height="60" HorizontalAlignment="Left" Margin="24,11,0,0" VerticalAlignment="Top" Width="140" Grid.Row="1" Image="/ProPharmacyManagerW;component/Images/Sell1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Sell3.png" ImageHover="/ProPharmacyManagerW;component/Images/Sell2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Sell3.png" TabIndex="17" Click="SellM_Click" />
+        <Controls:ImageButton x:Name="UpdateM" Height="60" Margin="218,11,164,0" VerticalAlignment="Top" Grid.Row="1" Image="/ProPharmacyManagerW;component/Images/Update1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Update3.png" ImageHover="/ProPharmacyManagerW;component/Images/Update2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Update3.png" TabIndex="18" Click="UpdateM_Click" Grid.ColumnSpan="2" />
+        <Controls:ImageButton x:Name="DeleteM" Height="60" Margin="147,11,251,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" Image="/ProPharmacyManagerW;component/Images/MDelete1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/MDelete3.png" ImageHover="/ProPharmacyManagerW;component/Images/MDelete2.png" ImagePressed="/ProPharmacyManagerW;component/Images/MDelete3.png" TabIndex="19" Click="DeleteM_Click" Grid.Column="1" />
+        <Controls:ImageButton x:Name="LogOut" Grid.Column="2" Grid.Row="1" Height="60" HorizontalAlignment="Right" Margin="0,11,58,0" VerticalAlignment="Top" Width="140" Image="/ProPharmacyManagerW;component/Images/Logout1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Logout3.png" ImageHover="/ProPharmacyManagerW;component/Images/Logout2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Logout3.png" TabIndex="20" Click="LogOut_Click" IsCancel="True" />
     </Grid>
 </Page>

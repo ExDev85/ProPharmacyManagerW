@@ -179,6 +179,7 @@
                                 Margin="3,3,23,3"
                                 Focusable="True"                               
                                 Visibility="Hidden"
+                                BorderThickness="0"
                                 IsReadOnly="{TemplateBinding IsReadOnly}"/>
                         <Popup Name="Popup"
                                 Placement="Bottom"
@@ -192,7 +193,7 @@
                                   MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                 <Border x:Name="DropDownBorder"
                                         Background="White"
-                                        BorderThickness="2"
+                                        BorderThickness="1"
                                         BorderBrush="Gray"/>
                                 <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
@@ -206,6 +207,7 @@
                                  Height="{TemplateBinding ActualHeight}" 
                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                  IsHitTestVisible="False"
+                                 IsTabStop="False"
                                  FontSize="{TemplateBinding FontSize}">
                             <Label.Visibility>
                                 <MultiBinding Converter="{StaticResource MultiVisibilityConvertor}">

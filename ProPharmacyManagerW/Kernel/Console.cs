@@ -196,7 +196,12 @@ namespace ProPharmacyManagerW
                                 {
                                     Thread th = new Thread(() =>
                                     {
-                                        using (StreamReader sr = File.OpenText(data[1]))
+                                        string newPath = null;
+                                        if (data[1].Contains("~"))
+                                        {
+                                            newPath = data[1].Replace("~", " ");
+                                        }
+                                        using (StreamReader sr = File.OpenText(newPath))
                                         {
                                             StringBuilder sb = new StringBuilder();
                                             while (sb.Append(sr.ReadLine()).Length > 0)

@@ -2,7 +2,8 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls"
       xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="600"
@@ -26,11 +27,10 @@
         <ListBox x:Name="UNList" Margin="10,10,10,8" TabIndex="0" Grid.RowSpan="6" SelectionChanged="UNList_SelectionChanged"/>
         <Button x:Name="EdtB" Content="تغيير" Grid.Column="1" Height="40" Margin="78,5,10,0" Grid.Row="7" VerticalAlignment="Top" Foreground="#FF0D6318" FontSize="16" FontWeight="Bold" Click="EdtB_Click" TabIndex="4" IsDefault="True"/>
         <PasswordBox x:Name="UP" Grid.Column="1" Height="35" Margin="10,5,10,0" VerticalAlignment="Top" Grid.Row="1" TabIndex="1"/>
-        <ComboBox x:Name="RUState" Height="30" Margin="10,10,10,0" Grid.Row="3" VerticalAlignment="Top" TabIndex="4" SelectedIndex="0" Foreground="#FF282EB6" FontSize="15" FontWeight="Bold" Grid.Column="1">
-            <ListBoxItem Content="صلاحيات المستخدم"/>
+        <Controls:WaterMarkComboBox x:Name="RUState" WaterMark="صلاحيات المستخدم*" Height="30" Margin="10,10,10,0" Grid.Row="3" VerticalAlignment="Top" TabIndex="4" Foreground="#FF282EB6" FontSize="15" FontWeight="Bold" Grid.Column="1">
             <ListBoxItem Content="مدير"/>
             <ListBoxItem Content="موظف"/>
-        </ComboBox>
+        </Controls:WaterMarkComboBox>
         <TextBox x:Name="PHN" Grid.Column="1" Height="35" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Row="5" TabIndex="3" FontSize="18.667" Foreground="#FF12459E"/>
         <Label x:Name="label" Content="كلمه المرور الحالية:" Grid.Column="1" Margin="0,0,10,1" FontSize="14" FontWeight="Bold" Foreground="White"/>
         <Label x:Name="label_Copy" Content="الصلاحيات:" Grid.Column="1" Margin="10,0,0,6" FontSize="14" FontWeight="Bold" Foreground="White" Grid.Row="2"/>

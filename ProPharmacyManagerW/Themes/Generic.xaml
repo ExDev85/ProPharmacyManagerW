@@ -16,5 +16,6 @@
         <ResourceDictionary Source="/ProPharmacyManagerW;component/Themes/WaterMarkTextBox.xaml"/>
         <ResourceDictionary Source="/ProPharmacyManagerW;component/Themes/WaterMarkComboBox.xaml"/>
         <ResourceDictionary Source="/ProPharmacyManagerW;component/Themes/IconButton.xaml"/>
+        <ResourceDictionary Source="/ProPharmacyManagerW;component/Themes/CustomDataGrid.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

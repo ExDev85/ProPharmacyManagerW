@@ -63,9 +63,6 @@ namespace ProPharmacyManagerW.View.Pages
                 case "مجهول":
                     state = 0;
                     break;
-                case "صلاحيات المستخدم":
-                    state = 0;
-                    break;
                 default:
                     MessageBox.Show("اختار صلاحيات المستخدم");
                     return;

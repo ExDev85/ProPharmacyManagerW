@@ -38,7 +38,7 @@ namespace ProPharmacyManagerW.View.Pages
             MExist.Foreground = Brushes.Blue;
             MExist.Background = Brushes.White;
             MWSell.Text = "1";
-            MType.SelectedIndex = 0;
+            MType.SelectedIndex = -1;
             MNotes.Clear();
         }
         /// <summary>
@@ -144,6 +144,9 @@ namespace ProPharmacyManagerW.View.Pages
             }
         }
 
+        /// <summary>
+        /// Makes logs for sold meds
+        /// </summary>
         private void SaveSold()
         {
             if (Kernel.Core.bb == "1")
@@ -234,7 +237,7 @@ namespace ProPharmacyManagerW.View.Pages
                     {
                         ItemsList.Items.Add(r.ReadInt64("Id"));
                     }
-                    if (ItemsList.Items.Count <= 1)
+                    if (ItemsList.Items.Count < 1)
                     {
                         ItemsList.Items.Clear();
                         ItemsList.Items.Add("لا يوجد شئ اخر");
@@ -282,7 +285,7 @@ namespace ProPharmacyManagerW.View.Pages
                     {
                         ItemsList.Items.Add(r.ReadInt64("Id"));
                     }
-                    if (ItemsList.Items.Count <= 1)
+                    if (ItemsList.Items.Count < 1)
                     {
                         ItemsList.Items.Clear();
                         ItemsList.Items.Add("لا يوجد شئ اخر");
@@ -312,7 +315,7 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 SearchBox.Items.Clear();
             }
-            if (SearchBox.IsDropDownOpen == false && SearchBox.Text.Length > 0)
+            if (SearchBox.IsDropDownOpen == false)
             {
                 SearchBox.IsDropDownOpen = true;
             }
@@ -332,25 +335,12 @@ namespace ProPharmacyManagerW.View.Pages
             }
         }
 
-        private void Page_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (SearchBox.Text.Length == 0)
-            //{
-            //    SearchBox.Focus();
-            //}
-        }
-
         private void NumbersOnly(object sender, TextCompositionEventArgs e)
         {
             if (!char.IsDigit(e.Text, e.Text.Length - 1) && e.Text != ".")
             {
                 e.Handled = true;
             }
-        }
-
-        private void Page_TextInput(object sender, TextCompositionEventArgs e)
-        {
-            //SearchBox.Focus();
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)

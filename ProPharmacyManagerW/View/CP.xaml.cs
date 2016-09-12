@@ -289,6 +289,14 @@ namespace ProPharmacyManagerW.View
         {
             if (AddNewDrugBoard.Visibility == Visibility.Visible)
             {
+                ADName.Text = "";
+                ADBarCode.Text = "";
+                ADSS.Text = "";
+                ADEXP.Text = "";
+                ADType.SelectedIndex = -1;
+                ADTotal.Text = "";
+                ADPrice.Text = "";
+                ADNote.Text = "";
                 AddNewDrugBoard.Visibility = Visibility.Collapsed;
             }
             else
@@ -336,14 +344,6 @@ namespace ProPharmacyManagerW.View
 
         private void ADName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (ADName.Text == "أسم الدواء*")
-            {
-                ADName.Text = "";
-            }
-            if (!ADName.Items.IsEmpty)
-            {
-                ADName.Items.Clear();
-            }
             if (ADName.IsDropDownOpen == false && ADName.Text.Length > 0)
             {
                 ADName.IsDropDownOpen = true;
@@ -352,6 +352,7 @@ namespace ProPharmacyManagerW.View
             {
                 if (ADName.Text.Length == 0)
                 {
+                    ADName.Items.Clear();
                     return;
                 }
                 MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
@@ -377,50 +378,16 @@ namespace ProPharmacyManagerW.View
             LGBB(51, 153, 255, 0, 102, 204);
         }
 
-        private void ADName_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (ADName.Text == "")
-            {
-                ADName.Text = "أسم الدواء*";
-            }
-        }
-
         private void RestoreBackground(object sender, RoutedEventArgs e)
         {
             //#3399FF, #0066CC
             LGBB(51, 153, 255, 0, 102, 204);
         }
-
-        private void ADType_GotFocus(object sender, RoutedEventArgs e)
-        {
-            ADType.Foreground = Brushes.Blue;
-            ADType.Background = Brushes.White;
-            if (ADType.Text == "النوع*")
-            {
-                ADType.Text = "";
-            }
-            //#3399FF, #0066CC
-            LGBB(51, 153, 255, 0, 102, 204);
-        }
-
-        private void ADType_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (ADType.Text == "")
-            {
-                ADType.Text = "النوع*";
-            }
-        }
-
         // add medic command
         private void AddDrug_Click(object sender, RoutedEventArgs e)
         {
             #region textboxs States
-            if (ADName.Text == "أسم الدواء*")
-            {
-                ADName.Foreground = Brushes.Red;
-                return;
-            }
-            else if (ADName.Text == "")
+            if (ADName.Text == "")
             {
                 ADName.Background = Brushes.Red;
                 return;

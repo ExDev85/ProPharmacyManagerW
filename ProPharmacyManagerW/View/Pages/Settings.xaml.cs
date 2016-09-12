@@ -91,31 +91,38 @@ namespace ProPharmacyManagerW.View.Pages
                     WeeklyC.IsChecked = true;
                     if (Convert.ToByte(Core.stt) == 1)
                     {
-                        DayCB.SelectedIndex = 3;
+                        //monday
+                        DayCB.SelectedIndex = 2;
                     }
                     else if (Convert.ToByte(Core.stt) == 2)
                     {
-                        DayCB.SelectedIndex = 4;
+                        //tuesday
+                        DayCB.SelectedIndex = 3;
                     }
                     else if (Convert.ToByte(Core.stt) == 3)
                     {
-                        DayCB.SelectedIndex = 5;
+                        //wednesday
+                        DayCB.SelectedIndex = 4;
                     }
                     else if (Convert.ToByte(Core.stt) == 4)
                     {
-                        DayCB.SelectedIndex = 6;
+                        //thursday
+                        DayCB.SelectedIndex = 5;
                     }
                     else if (Convert.ToByte(Core.stt) == 5)
                     {
-                        DayCB.SelectedIndex = 7;
+                        //friday
+                        DayCB.SelectedIndex = 6;
                     }
                     else if (Convert.ToByte(Core.stt) == 6)
                     {
-                        DayCB.SelectedIndex = 1;
+                        //saturday
+                        DayCB.SelectedIndex = 0;
                     }
                     else if (Convert.ToByte(Core.stt) == 7)
                     {
-                        DayCB.SelectedIndex = 2;
+                        //sunday
+                        DayCB.SelectedIndex = 1;
                     }
                 }
                 if (Core.st == "3")
@@ -243,7 +250,7 @@ namespace ProPharmacyManagerW.View.Pages
             }
             else if (MonthlyC.IsChecked == true)
             {
-                if (DayCB.Text == "يوم الشهر")
+                if (DayCB.Text == "يوم الشهر" || DayCB.Text == "")
                 {
                     MessageBox.Show("اختار يوم من ايام الاسبوع");
                     return;
