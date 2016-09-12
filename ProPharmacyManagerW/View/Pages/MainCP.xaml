@@ -20,7 +20,10 @@
             <RowDefinition Height="97*" />
         </Grid.RowDefinitions>
         <Label Name="WelMsg" Content="اهلا بك يا مدير" Grid.Column="2" Grid.Row="0" Height="48" Margin="12,25,15,0" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold" MaxWidth="250"/>
-        <GroupBox Name="groupBox1" Grid.Column="2" Grid.Row="0" Header="البحث" Margin="11,78,8,33" FlowDirection="RightToLeft" Foreground="White" FontSize="18" FontWeight="Bold">
+        <GroupBox Name="groupBox1" Grid.Column="2" Grid.Row="0" Margin="11,78,8,33" FlowDirection="RightToLeft" FontSize="18" FontWeight="Bold" BorderBrush="White" Foreground="White">
+            <GroupBox.Header>
+                <Label Foreground="White">البحث</Label>
+            </GroupBox.Header>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="65*" />
@@ -42,7 +45,10 @@
                 </Expander>
             </Grid>
         </GroupBox>
-        <GroupBox FlowDirection="RightToLeft" FontSize="18" FontWeight="Bold" Foreground="White" Header="النتيجة" Margin="12,7,10,13" Name="groupBox2" Grid.Row="0" Grid.ColumnSpan="2">
+        <GroupBox FlowDirection="RightToLeft" FontSize="18" FontWeight="Bold" Margin="12,7,10,13" Name="groupBox2" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="White" Foreground="White">
+            <GroupBox.Header>
+                <Label Foreground="White">النتيجة</Label>
+            </GroupBox.Header>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="238*" />

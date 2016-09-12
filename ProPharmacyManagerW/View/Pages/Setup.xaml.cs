@@ -56,6 +56,10 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 DBPass.Text = "1234";
             }
+            else if (DBPass.Text == "null")
+            {
+                DBPass.Text = "";
+            }
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {

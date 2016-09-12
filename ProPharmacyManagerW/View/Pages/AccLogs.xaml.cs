@@ -29,6 +29,7 @@ namespace ProPharmacyManagerW.View.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            //custom UI changes for XP
             if (Environment.OSVersion.Version.Build <= 2600)
             {
                 Pb.Height = 10;

@@ -24,7 +24,7 @@
         <Controls:WaterMarkTextBox x:Name="RUName" WaterMark="أسم المستخدم*" Height="32" Margin="10,4,10,0" Grid.Row="1" VerticalAlignment="Top" MaxLines="1" TabIndex="0" HorizontalScrollBarVisibility="Auto" Foreground="#FF282EB6" FontWeight="Bold" FontSize="15" MaxLength="30" TextChanged="RUName_TextChanged"/>
         <PasswordBox x:Name="RUPass1" Height="31" Margin="10,5,10,0" Grid.Row="2" VerticalAlignment="Top" TabIndex="1" Password="حشسسصخقي" Foreground="#FF282EB6" FontSize="15" GotFocus="RUPass1_GotFocus" LostFocus="RUPass1_LostFocus"/>
         <PasswordBox x:Name="RUPass2" Height="31" Margin="10,5,10,0" Grid.Row="3" VerticalAlignment="Top" TabIndex="2" Password="حشسسصخقي" Foreground="#FF282EB6" FontSize="15" LostFocus="RUPass2_LostFocus" GotFocus="RUPass2_GotFocus"/>
-        <Controls:WaterMarkComboBox x:Name="RUState" WaterMark="صلاحية المستخدم*" Height="30" Margin="10,5,10,0" Grid.Row="4" VerticalAlignment="Top" TabIndex="3" Foreground="#FF282EB6" FontSize="15" FontWeight="Bold">
+        <Controls:WaterMarkComboBox x:Name="RUState" WaterMark="صلاحيات المستخدم*" Height="30" Margin="10,5,10,0" Grid.Row="4" VerticalAlignment="Top" TabIndex="3" Foreground="#FF282EB6" FontSize="15" FontWeight="Bold">
             <ListBoxItem Content="مدير"/>
             <ListBoxItem Content="موظف"/>
         </Controls:WaterMarkComboBox>

@@ -29,6 +29,7 @@ namespace ProPharmacyManagerW.View.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            //custom UI changes for XP
             if (Environment.OSVersion.Version.Build <= 2600)
             {
                 Pb.Height = 10;
@@ -96,7 +97,7 @@ namespace ProPharmacyManagerW.View.Pages
 
         private void UpdateB_Click(object sender, RoutedEventArgs e)
         {
-            Page_Loaded(sender, e);
+            dataGrid_Loaded(sender, e);
             Pb.Visibility = Visibility.Visible;
         }
 
@@ -167,25 +168,34 @@ namespace ProPharmacyManagerW.View.Pages
 
         private void dataGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            Dispatcher.BeginInvoke(DispatcherPriority.Background, (ThreadStart)delegate ()
+            try
             {
-                mA = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM medics", DataHolder.MySqlConnection);
-                mT = new System.Data.DataTable();
-                mA.Fill(mT);
-                dataGrid.ItemsSource = mT.DefaultView;
-                dataGrid.Columns[11].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[12].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[13].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[14].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[15].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[16].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[17].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[18].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[19].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[20].Visibility = Visibility.Collapsed;
-                dataGrid.Columns[21].Visibility = Visibility.Collapsed;
-                Pb.Visibility = Visibility.Collapsed;
-            });
+                Dispatcher.BeginInvoke(DispatcherPriority.Background, (ThreadStart)delegate ()
+                {
+                    mA = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM medics", DataHolder.MySqlConnection);
+                    mT = new System.Data.DataTable();
+                    mA.Fill(mT);
+                    dataGrid.ItemsSource = mT.DefaultView;
+                    dataGrid.Columns[11].Visibility = Visibility.Collapsed;
+                    dataGrid.Columns[12].Visibility = Visibility.Collapsed;
+                    dataGrid.Columns[13].Visibility = Visibility.Collapsed;
+                    dataGrid.Columns[14].Visibility = Visibility.Collapsed;
+                    dataGrid.Columns[15].Visibility = Visibility.Collapsed;
+                    dataGrid.Columns[16].Visibility = Visibility.Collapsed;
+                    dataGrid.Columns[17].Visibility = Visibility.Collapsed;
+                    dataGrid.Columns[18].Visibility = Visibility.Collapsed;
+                    dataGrid.Columns[19].Visibility = Visibility.Collapsed;
+                    dataGrid.Columns[20].Visibility = Visibility.Collapsed;
+                    dataGrid.Columns[21].Visibility = Visibility.Collapsed;
+                    Pb.Visibility = Visibility.Collapsed;
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Y da real MVC.");
+                Kernel.Core.SaveException(ex);
+                BackMainB_Click(sender, e);
+            }
         }
 
     }

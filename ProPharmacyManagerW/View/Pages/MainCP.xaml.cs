@@ -189,6 +189,11 @@ namespace ProPharmacyManagerW.View.Pages
                 MExist.IsReadOnly = true;
                 MPrice.IsReadOnly = true;
             }
+            //custom UI changes for XP
+            if (Environment.OSVersion.Version.Build <= 2600)
+            {
+                Client.FontSize = 10;
+            }
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

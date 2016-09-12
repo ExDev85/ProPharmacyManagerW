@@ -145,10 +145,6 @@ namespace ProPharmacyManagerW.View.Pages
         {
             if (Kernel.Core.IsSetup == true)
             {
-                RUState.SelectedIndex = 1;
-            }
-            else
-            {
                 RUState.SelectedIndex = 0;
             }
         }
