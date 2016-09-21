@@ -90,7 +90,7 @@ namespace ProPharmacyManagerW.View.Pages
                 switch (result)
                 {
                     case MessageBoxResult.OK:
-                        Console.WriteLine("WeWa WeWa WeWa WeWa");
+                        Console.WriteLine("WeWa WeWa WeWa WeWa\n\r this is the police sirens run .. run");
                         MessageBox.Show("جارى استكمال عمليه البيع");
                         break;
                     case MessageBoxResult.Cancel:
@@ -135,7 +135,7 @@ namespace ProPharmacyManagerW.View.Pages
                 else
                 {
                     MessageBox.Show("الدواء غير متوفر");
-                    Console.WriteLine("So now we sell space");
+                    Console.WriteLine("So basically you are tring to copy Apple business model");
                 }
             }
             catch (Exception ex)
@@ -227,7 +227,7 @@ namespace ProPharmacyManagerW.View.Pages
                         {
                             MEX.Background = Brushes.Red;
                             MEX.Foreground = Brushes.OrangeRed;
-                            Console.WriteLine("Exy exy - " + MName.Text + " - " + ItemId + " - I believe that you should get rid of that");
+                            Console.WriteLine("bad deadpool - " + MName.Text + " - " + ItemId + " - you should get rid of that");
                         }
                         Console.WriteLine("Searched for - " + MName.Text + " - " + ItemId + " -");
                     }
@@ -275,7 +275,7 @@ namespace ProPharmacyManagerW.View.Pages
                         {
                             MEX.Background = Brushes.Red;
                             MEX.Foreground = Brushes.OrangeRed;
-                            Console.WriteLine("Exy exy - " + MName.Text + " - I believe that you should get rid of that");
+                            Console.WriteLine("Red Alert - " + MName.Text + " - you should get rid of that");
                         }
                         Console.WriteLine("Searched for - " + MName.Text + " -");
                     }

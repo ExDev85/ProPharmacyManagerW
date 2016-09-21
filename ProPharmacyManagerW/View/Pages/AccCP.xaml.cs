@@ -109,7 +109,7 @@ namespace ProPharmacyManagerW.View.Pages
                                 label1.Content = "تم تغيير كلمه المرور بنجاح.";
                                 label1.Foreground = Brushes.Green;
                                 label1.Visibility = Visibility.Visible;
-                                Console.WriteLine(UNList.SelectedItem.ToString() + " changed his password");
+                                Console.WriteLine(UNList.SelectedItem.ToString() + " password has changed");
                             }
                             catch (Exception ex2)
                             {

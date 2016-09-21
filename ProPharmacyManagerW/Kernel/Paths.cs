@@ -13,6 +13,6 @@ namespace ProPharmacyManagerW.Kernel
         public static string UnhandledExceptionsPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Exceptions\\";
         public static string SetupConfigPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Configuration.ini";
         public static string BackupConfigPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\BackupConfig.ini";
-        public static string BackupsPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\BackUps\\";
+        public static string BackupsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\PPHMWB\\";
     }
 }

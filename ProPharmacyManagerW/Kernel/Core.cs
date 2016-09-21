@@ -198,6 +198,7 @@ namespace ProPharmacyManagerW.Kernel
                         }
                         catch (Exception e)
                         {
+                            Console.WriteLine("Check the automatic backup system in the core");
                             SaveException(e);
                             File.Delete(Paths.BackupConfigPath);
                         }
@@ -208,8 +209,15 @@ namespace ProPharmacyManagerW.Kernel
             catch (Exception ex)
             {
                 SaveException(ex);
-                File.Delete(Paths.SetupConfigPath);
-                File.Delete(Paths.BackupConfigPath);
+                if (File.Exists(Paths.SetupConfigPath))
+                {
+                    File.Delete(Paths.SetupConfigPath);
+                }
+                if (File.Exists(Paths.BackupConfigPath))
+                {
+                    File.Delete(Paths.BackupConfigPath);
+                }
+                Console.WriteLine("Program configuration files has been deleted \r\n now we are goning to shutdown your PC");
             }
         }
         /// <summary> 

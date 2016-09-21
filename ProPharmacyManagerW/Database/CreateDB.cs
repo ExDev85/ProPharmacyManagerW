@@ -35,13 +35,13 @@ namespace ProPharmacyManagerW.Database
                         Console.WriteLine("Something went wrong \"Microsoft style\"");
                         MessageBox.Show("هناك مشكله فى السيرفر او بيانات الاتصال به");
                         Core.SaveException(e);
-                        if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\BackupConfig.ini"))
+                        if (File.Exists(Paths.SetupConfigPath))
                         {
-                            File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\BackupConfig.ini");
+                            File.Delete(Paths.SetupConfigPath);
                         }
-                        if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Configuration.ini"))
+                        if (File.Exists(Paths.BackupConfigPath))
                         {
-                            File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\Configuration.ini");
+                            File.Delete(Paths.BackupConfigPath);
                         }
                         Console.WriteLine("Program configuration files has been deleted \r\n now we are goning to shutdown your PC");
                         Environment.Exit(0);

@@ -86,6 +86,7 @@ namespace ProPharmacyManagerW.Database
                             }
                         default:
                             MessageBox.Show("من انت؟ هل تعمل فى هذه الصيدليه؟");
+                            Console.WriteLine("User states is unknown");
                             return false;
                     }
                 }
@@ -97,6 +98,7 @@ namespace ProPharmacyManagerW.Database
             }
             catch (Exception ll)
             {
+                Console.WriteLine("Error while loging in");
                 Kernel.Core.SaveException(ll);
                 return false;
             }

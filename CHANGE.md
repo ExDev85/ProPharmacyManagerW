@@ -10,6 +10,7 @@
 7.  Control users info from the main window.
 8.  Items type in all medics window will show now as text not numbers.
 9.  Add option to disable Bills system.
+10. Uses MyDocuments folder as default one for backingup the database.
 
 ##0.9.9.6:
 1.  You don't have to run the program as administrator anymore.
