@@ -83,7 +83,8 @@
     <Compile Include="Controls\CustomDataGrid.cs" />
     <Compile Include="Controls\IconButton.cs" />
     <Compile Include="Controls\WaterMarkComboBox.cs" />
-    <Compile Include="ViewModel\AllTextColor.cs" />
+    <Compile Include="ViewModel\AllEXTextColor.cs" />
+    <Compile Include="ViewModel\AllAmoutTextColor.cs" />
     <Compile Include="ViewModel\AllType.cs" />
     <Compile Include="ViewModel\NoDecimal.cs" />
     <Compile Include="View\CP.xaml.cs">

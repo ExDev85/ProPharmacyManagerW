@@ -11,13 +11,16 @@ using System.Windows.Media;
 
 namespace ProPharmacyManagerW.ViewModel
 {
-    class AllTextColor : IValueConverter
+    class AllEXTextColor : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             try
             {
-                if (System.Convert.ToByte(value) >= 0 && System.Convert.ToByte(value) <= 5)
+                var d1 = DateTime.Now.Date;
+                var d2 = System.Convert.ToDateTime(value).Date;
+                var dt = (d1 - d2).TotalDays;
+                if (dt > -5)
                 {
                     return Brushes.White;
                 }

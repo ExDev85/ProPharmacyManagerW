@@ -14,7 +14,8 @@
         <vm:AllType x:Key="AllType"/>
         <vm:AllEX x:Key="AllEX"/>
         <vm:NoDecimal x:Key="NoDecimal"/>
-        <vm:AllTextColor x:Key="AllTextColor"/>
+        <vm:AllAmoutTextColor x:Key="AllAmoutTextColor"/>
+        <vm:AllEXTextColor x:Key="AllEXTextColor"/>
         <vm:AllAmount x:Key="AllAmount"/>
     </Page.Resources>
     <Grid>
@@ -49,7 +50,7 @@
                             <Setter Property="TextAlignment" Value="Right"/>
                             <Setter Property="Padding" Value="2,0,2,0"/>
                             <Setter Property="Background" Value="{Binding ExpirationDate, Converter={StaticResource AllEX}}"/>
-                            <Setter Property="Foreground" Value="{Binding Total, Converter={StaticResource AllTextColor}}"/>
+                            <Setter Property="Foreground" Value="{Binding ExpirationDate, Converter={StaticResource AllEXTextColor}}"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
@@ -60,7 +61,7 @@
                             <Setter Property="TextAlignment" Value="Right"/>
                             <Setter Property="Padding" Value="2,0,2,0"/>
                             <Setter Property="Background" Value="{Binding Total, Converter={StaticResource AllAmount}}"/>
-                            <Setter Property="Foreground" Value="{Binding Total, Converter={StaticResource AllTextColor}}"/>
+                            <Setter Property="Foreground" Value="{Binding Total, Converter={StaticResource AllAmoutTextColor}}"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
