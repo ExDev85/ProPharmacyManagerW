@@ -16,7 +16,7 @@ For more information about MySql.Data,
 please see http://dev.mysql.com/downloads/
 
 ## NOTE:
-		1- You must setup a localhost (AppServ Recommended) with/or MySQl service
+		1- You must setup a localhost Server(AppServ Recommended) with/or MySQl service
         		(InnoDB enabled for AppServ old versions).
 		2- Netframework 4.0 full or client.
 		3- The database will be created automatically when the user run the program for
