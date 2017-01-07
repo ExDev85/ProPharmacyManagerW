@@ -1,6 +1,6 @@
 # ProPharmacyManager
-Application has two version so far Normal one (not
-suporrted anymore) and the W one (W stand for WPF)
+Application has three version so far Normal one (not
+supported anymore) and the W one (W stand for WPF) also WL (L stand for lite) that uses SQLite
 For more information about the ProPharmacyManager Application, please see 
 http://shababco.blogspot.com/ 
 
