@@ -5,6 +5,7 @@
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
 using ProPharmacyManagerW.Database;
+using ProPharmacyManagerW.Kernel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -120,8 +121,7 @@ namespace ProPharmacyManagerW.View.Pages
                         MExist.Text = tot.ToString();
                         MySqlCommand CMD = new MySqlCommand(MySqlCommandType.UPDATE);
                         CMD.Update("medics")
-                            .Set("Total", tot);
-                        CMD.Where("Name", MName.Text).Execute();
+                            .Set("Total", tot).Where("Name", MName.Text).Execute();
                         MessageBox.Show("تم بيع " + MWSell.Text);
                         SaveSold();
                         CompleteSelling = true;
@@ -149,7 +149,8 @@ namespace ProPharmacyManagerW.View.Pages
         /// </summary>
         private void SaveSold()
         {
-            if (Kernel.Core.bb == "1")
+            Config co = new Config();
+            if (co.DrugsLog == "1")
             {
                 //calculate the total selling price
                 decimal totalpr = Convert.ToDecimal(MPrice.Text) * Convert.ToDecimal(MWSell.Text);
@@ -528,6 +529,5 @@ namespace ProPharmacyManagerW.View.Pages
                 Console.WriteLine("Searched for - " + MName.Text + " -");
             }
         }
-
     }
 }

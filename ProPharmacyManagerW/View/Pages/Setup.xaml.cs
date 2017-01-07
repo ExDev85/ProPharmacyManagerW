@@ -27,6 +27,7 @@ namespace ProPharmacyManagerW.View.Pages
         }
         
         IniFile file = new IniFile(Paths.SetupConfigPath);
+        Config co = new Config();
 
         private BackgroundWorker bgw;
         /// <summary>
@@ -35,32 +36,7 @@ namespace ProPharmacyManagerW.View.Pages
         public static bool IsInstallCompleted = false;
         public static bool IsClosing = false;
         public static bool IsUpgrading = false;
-        /// <summary>
-        /// Filling textboxes text with default values if they were empty
-        /// </summary>
-        void fill()
-        {
-            if (DBHost.Text == "")
-            {
-                DBHost.Text = "localhost";
-            }
-            if (DBName.Text == "")
-            {
-                DBName.Text = "phdb";
-            }
-            if (DBUser.Text == "")
-            {
-                DBUser.Text = "root";
-            }
-            if (DBPass.Text == "")
-            {
-                DBPass.Text = "1234";
-            }
-            else if (DBPass.Text == "null")
-            {
-                DBPass.Text = "";
-            }
-        }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\PPHMW\\"))
@@ -80,14 +56,18 @@ namespace ProPharmacyManagerW.View.Pages
                     Title = "تنصيب البرنامج";
                     pB.Visibility = Visibility.Visible;
                 }
+                else if (Core.IsUpgrading == true)
+                {
+                    Core.IsSetup = true;
+                    Title = "ترقية البرنامج";
+                    pB.Visibility = Visibility.Visible;
+                }
                 else if (File.Exists(Paths.SetupConfigPath))
                 {
                     Core.IsSetup = false;
                     Title = "اعدادت البرنامج";
-                    DBHost.Text = Core.INIDecrypt(file.ReadString("MySql", "Host"));
-                    DBName.Text = Core.INIDecrypt(file.ReadString("MySql", "Database"));
-                    DBUser.Text = Core.INIDecrypt(file.ReadString("MySql", "Username"));
-                    DBPass.Text = Core.INIDecrypt(file.ReadString("MySql", "Password"));
+                    Config co = new Config();
+                    co.Read();
                 }
 
             }
@@ -106,7 +86,6 @@ namespace ProPharmacyManagerW.View.Pages
             if (Core.IsSetup == true)
             {
                 Console.WriteLine("Starting to install");
-                fill();
                 bgw.RunWorkerAsync();
             }
         }
@@ -114,15 +93,15 @@ namespace ProPharmacyManagerW.View.Pages
         private void UpgradeB_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Starting to upgrade");
-            fill();
-            file.Write("MySql", "Host", DBHost.Text);
-            file.Write("MySql", "Username", DBUser.Text);
-            file.Write("MySql", "Password", DBPass.Text);
-            file.Write("MySql", "Database", DBName.Text);
-            file.Write("Upgrade", "Version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", ""));
-            file.Write("Settings", "AccountsLog", "1");
-            file.Write("Settings", "DrugsLog", "1");
+            Config co = new Config
+            {
+                Hostname = DBHost.Text,
+                DbName = DBName.Text,
+                DbUserName = DBUser.Text,
+                DbUserPassword = DBPass.Text
+            };
             DataHolder.CreateConnection(Core.INIDecrypt(file.ReadString("MySql", "Username")), Core.INIDecrypt(file.ReadString("MySql", "Password")), Core.INIDecrypt(file.ReadString("MySql", "Database")), Core.INIDecrypt(file.ReadString("MySql", "Host")));
+            Core.IsUpgrading = true;
             IsUpgrading = true;
         }
 
@@ -135,38 +114,32 @@ namespace ProPharmacyManagerW.View.Pages
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             bgw.ReportProgress(5);
-            Thread.Sleep(500);
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
-                file.Write("MySql", "Host", DBHost.Text);
-                file.Write("MySql", "Username", DBUser.Text);
-                file.Write("MySql", "Password", DBPass.Text);
-                file.Write("MySql", "Database", DBName.Text);
-                file.Write("Upgrade", "Version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", ""));
-                file.Write("Settings", "AccountsLog", "1");
-                file.Write("Settings", "DrugsLog", "1");
+                co.Hostname = DBHost.Text;
+                co.DbName = DBName.Text;
+                co.DbUserName = DBUser.Text;
+                co.DbUserPassword = DBPass.Text;
+                co.AccountsLog = "1";
+                co.DrugsLog = "1";
+                co.Write(true, true);
             });
             bgw.ReportProgress(30);
             if (!Directory.Exists(Paths.BackupsPath))
             {
                 Directory.CreateDirectory(Paths.BackupsPath);
             }
-            Thread.Sleep(500);
-
             bgw.ReportProgress(40);
             Thread.Sleep(500);
-            DataHolder.CreateConnection(Core.INIDecrypt(file.ReadString("MySql", "Username")), Core.INIDecrypt(file.ReadString("MySql", "Password")), Core.INIDecrypt(file.ReadString("MySql", "Host")));
+            DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.Hostname);
             Dispatcher.Invoke((Action)(() =>
             {
-                CreateDB.Createdb(DBName.Text);
+                CreateDB.Createdb(co.DbName);
             }));
             Thread.Sleep(500);
             bgw.ReportProgress(60);
-            DataHolder.CreateConnection(Core.INIDecrypt(file.ReadString("MySql", "Username")), Core.INIDecrypt(file.ReadString("MySql", "Password")), Core.INIDecrypt(file.ReadString("MySql", "Database")), Core.INIDecrypt(file.ReadString("MySql", "Host")));
-            Dispatcher.Invoke((Action)(() =>
-            {
-                CreateDB.CreateTables();
-            }));
+            DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.DbName, co.Hostname);
+            Dispatcher.Invoke((Action)(CreateDB.CreateTables));
             bgw.ReportProgress(95);
             Thread.Sleep(900);
         }

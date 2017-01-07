@@ -25,7 +25,7 @@ namespace ProPharmacyManagerW.View.Pages
             InitializeComponent();
         }
 
-        IniFile file1 = new IniFile(Paths.SetupConfigPath);
+        Config co = new Config();
         IniFile file2 = new IniFile(Paths.BackupConfigPath);
 
         public static bool IsRecAcc;
@@ -35,24 +35,25 @@ namespace ProPharmacyManagerW.View.Pages
         {
             if (File.Exists(Paths.SetupConfigPath))
             {
-                DBHost.Text = Core.INIDecrypt(file1.ReadString("MySql", "Host"));
-                DBName.Text = Core.INIDecrypt(file1.ReadString("MySql", "Database"));
-                DBUser.Text = Core.INIDecrypt(file1.ReadString("MySql", "Username"));
-                DBPass.Password = Core.INIDecrypt(file1.ReadString("MySql", "Password"));
-                Vers.Content = Core.INIDecrypt(file1.ReadString("Upgrade", "Version"));
-                if (Core.aa == "0")
+                co.Read(true, true);
+                DBHost.Text = co.Hostname;
+                DBName.Text = co.DbName;
+                DBUser.Text = co.DbUserName;
+                DBPass.Password = co.DbUserPassword;
+                Vers.Content = co.Version;
+                if (co.AccountsLog == "0")
                 {
                     AccLogs.IsChecked = false;
                 }
-                if (Core.aa == "1")
+                if (co.AccountsLog == "1")
                 {
                     AccLogs.IsChecked = true;
                 }
-                if (Core.bb == "0")
+                if (co.DrugsLog == "0")
                 {
                     MedLogs.IsChecked = false;
                 }
-                if (Core.bb == "1")
+                if (co.DrugsLog == "1")
                 {
                     MedLogs.IsChecked = true;
                 }
@@ -137,53 +138,53 @@ namespace ProPharmacyManagerW.View.Pages
         private void BackToMain_Click(object sender, RoutedEventArgs e)
         {
             CP.BackToMain = true;
-        }
-
-        private void SetB2_Click(object sender, RoutedEventArgs e)
-        {
-            if (AccLogs.IsChecked == true)
-            {
-                file1.Write("Settings", "AccountsLog", "1");
-                IsRecAcc = true;
-            }
-            else
-            {
-                file1.Write("Settings", "AccountsLog", "0");
-                IsRecAcc = false;
-            }
-            if (MedLogs.IsChecked == true)
-            {
-                file1.Write("Settings", "DrugsLog", "1");
-                IsRecMed = true;
-            }
-            else
-            {
-                file1.Write("Settings", "DrugsLog", "0");
-                IsRecMed = false;
-            }
-            Core.aa = Core.INIDecrypt(file1.ReadString("Settings", "AccountsLog"));
-            Core.bb = Core.INIDecrypt(file1.ReadString("Settings", "DrugsLog"));
-            MessageBox.Show("تم حفظ الاعدادات بنجاح");
-        }
-
+        }   
+        //database
         private void SetB1_Click(object sender, RoutedEventArgs e)
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
                 BackUp.NewDbBackup();
                 MessageBox.Show("تم اخذ نسخه احتياطيه من القاعده القديمه");
-                DataHolder.CreateConnection(Core.INIDecrypt(file1.ReadString("MySql", "Username")), Core.INIDecrypt(file1.ReadString("MySql", "Password")), Core.INIDecrypt(file1.ReadString("MySql", "Host")));
-                CreateDB.Createdb(file1.ReadString("MySql", "Database"), DBName.Text);
-                file1.Write("MySql", "Host", DBHost.Text);
-                file1.Write("MySql", "Username", DBUser.Text);
-                file1.Write("MySql", "Password", DBPass.Password);
-                file1.Write("MySql", "Database", DBName.Text);
+                DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.Hostname);
+                CreateDB.Createdb(co.DbName, DBName.Text);
+                co.Write();
                 MessageBox.Show("تم الحفظ سيتم غلق البرنامج الان");
                 Environment.Exit(0);
             });
         }
-
-        private void SetB4_Click(object sender, RoutedEventArgs e)
+        //logs
+        private void SetB2_Click(object sender, RoutedEventArgs e)
+        {
+            if (AccLogs.IsChecked == true)
+            {
+                co.AccountsLog = "1";
+                co.Write(false, false, true, false);
+                IsRecAcc = true;
+            }
+            else
+            {
+                co.AccountsLog = "0";
+                co.Write(false, false, true, false);
+                IsRecAcc = false;
+            }
+            if (MedLogs.IsChecked == true)
+            {
+                co.DrugsLog = "1";
+                co.Write(false, false, false, true);
+                IsRecMed = true;
+            }
+            else
+            {
+                co.DrugsLog = "0";
+                co.Write(false, false, false, true);
+                IsRecMed = false;
+            }
+            co.Read(true, true);
+            MessageBox.Show("تم حفظ الاعدادات بنجاح");
+        }
+        //backups
+        private void SetB3_Click(object sender, RoutedEventArgs e)
         {
             if (IsBackupActive.IsChecked == true)
             {

@@ -27,12 +27,12 @@
                                    Source="{TemplateBinding Image}"
                                    Width="{TemplateBinding ImageWidth}"
                                    Height="{TemplateBinding ImageHeight}"
-                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
                                    Grid.Column="0"/>
                             <TextBlock x:Name="contentText"
                                        Text="{TemplateBinding Content}"
-                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                       HorizontalAlignment="Center" 
                                        Margin="{TemplateBinding Padding}" 
                                        VerticalAlignment="Center"
                                        Grid.Column="1"/>

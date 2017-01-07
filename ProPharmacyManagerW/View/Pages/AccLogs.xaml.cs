@@ -37,7 +37,7 @@ namespace ProPharmacyManagerW.View.Pages
             Pb.Visibility = Visibility.Visible;
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
-                mAdapter = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM logs", DataHolder.MySqlConnection);
+                mAdapter = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM logs ORDER BY LoginDate DESC", DataHolder.MySqlConnection);
                 mTable = new DataTable();
                 mAdapter.Fill(mTable);
                 if (mTable.Rows.Count == 0)

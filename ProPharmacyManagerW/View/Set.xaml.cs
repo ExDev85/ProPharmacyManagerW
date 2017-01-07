@@ -73,9 +73,12 @@ namespace ProPharmacyManagerW.View
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //#FF2B41A4
-            SolidColorBrush NC = new SolidColorBrush();
-            NC.Color = Color.FromRgb(43, 65, 164);
+            SolidColorBrush NC = new SolidColorBrush {Color = Color.FromRgb(43, 65, 164)};
             this.Background = NC;
+            if (Core.IsUpgrading == true)
+            {
+                Pages.Setup.IsUpgrading = true;
+            }
             checkSetUp.Interval = TimeSpan.FromMilliseconds(500);
             checkSetUp.Tick += checkSetUpState;
             checkSetUp.Start();

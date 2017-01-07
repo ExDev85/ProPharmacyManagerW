@@ -34,7 +34,7 @@
                 <AccessText TextWrapping="Wrap" Text="* كل المُعلم بـ* يجب ان يتم ادخاله&#xD;&#xA;* اذا كنت تقوم بإعداد البرنامج لاول مرة يجب ان تختار المستخدم بصلاحيات المدير"/>
             </Label.Content>
         </Label>
-        <Button x:Name="InsReg" Content="تسجيل" HorizontalAlignment="Right" Height="32" Margin="0,1,20,0" Grid.Row="7" VerticalAlignment="Top" Width="92" FontSize="15" Foreground="#FF046111" ForceCursor="True" FontWeight="Bold" Click="InsReg_Click" TabIndex="5" IsDefault="True"/>
+        <Controls:IconButton x:Name="InsReg" Content="تسجيل" FlowDirection="LeftToRight" HorizontalAlignment="Right" Height="32" Margin="0,1,20,0" Grid.Row="7" VerticalAlignment="Top" Width="92" FontSize="20" Foreground="White" ForceCursor="True" FontWeight="Bold" Click="InsReg_Click" TabIndex="5" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/UserAdd.png" Background="#FF18A6A6" ColorHover="#FF026868" ColorPressed="#FF023C3C" ColorDisabled="#FF023C3C"/>
 
     </Grid>
 </Page>

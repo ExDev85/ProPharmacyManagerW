@@ -1,9 +1,10 @@
-﻿<Page x:Class="ProPharmacyManagerW.View.Pages.AccCP"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
+      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls" x:Class="ProPharmacyManagerW.View.Pages.AccCP"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="600"
       Title="لوحه تغيير كلمه مرور الموظفين" FlowDirection="RightToLeft" Loaded="Page_Loaded">
@@ -24,8 +25,8 @@
             <ColumnDefinition Width="229*"/>
         </Grid.ColumnDefinitions>
         <ListBox x:Name="UNList" Margin="10,10,10,8" TabIndex="0" Grid.RowSpan="6"/>
-        <Button x:Name="DelB" Content="حذف" HorizontalAlignment="Left" Height="40" Margin="10,5,0,0" Grid.Row="7" VerticalAlignment="Top" Width="141" FontSize="16" FontWeight="Bold" Foreground="Red" Click="DelB_Click" TabIndex="5"/>
-        <Button x:Name="EdtB" Content="تغيير" Grid.Column="1" Height="40" Margin="78,5,10,0" Grid.Row="7" VerticalAlignment="Top" Foreground="#FF0D6318" FontSize="16" FontWeight="Bold" Click="EdtB_Click" TabIndex="4" IsDefault="True"/>
+        <Controls:IconButton x:Name="DelB" Content="حذف" FlowDirection="LeftToRight" HorizontalAlignment="Left" Height="40" Margin="10,5,0,0" Grid.Row="7" VerticalAlignment="Top" Width="141" FontSize="30" FontWeight="Bold" Foreground="White" Click="DelB_Click" TabIndex="5" Image="/ProPharmacyManagerW;component/Images/UserDelete.png" Background="Red" ColorHover="#FFB00000" ColorPressed="#FF740000" ColorDisabled="#FF740000"/>
+        <Controls:IconButton x:Name="EdtB" Content="  تـغيــيــر" FlowDirection="LeftToRight" Grid.Column="1" Height="40" Margin="78,5,10,0" Grid.Row="7" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold" Click="EdtB_Click" TabIndex="4" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/UserSettings.png" Background="#FF0D6318" ColorHover="#FF004D0A" ColorPressed="#FF003C08" ColorDisabled="#FF003C08"/>
         <TextBox x:Name="OUP" Grid.Column="1" Height="35" Margin="10,5,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" TabIndex="1"/>
         <PasswordBox x:Name="NUP1" Grid.Column="1" Height="35" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Row="3" TabIndex="2"/>
         <PasswordBox x:Name="NUP2" Grid.Column="1" Height="35" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Row="5" TabIndex="3"/>
@@ -35,5 +36,6 @@
         <Label x:Name="label1" Content="Label" Grid.Column="1" Margin="10,0,10,10" Grid.Row="6" FontSize="15" FontWeight="Bold" Visibility="Hidden"/>
         <CheckBox x:Name="AdminPCB" Content="إستخدم صلاحيات المدير" Margin="0,9,0,10" Grid.Row="6" FontWeight="Bold" Foreground="#FFD6C410" FontSize="14" />
 
+        
     </Grid>
 </Page>

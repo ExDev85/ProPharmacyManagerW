@@ -9,6 +9,7 @@ using ProPharmacyManagerW.View;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -34,14 +35,7 @@ namespace ProPharmacyManagerW.Kernel
         static readonly string PasswordHash = "SHC@HAM&ABRZ";
         static readonly string SaltKey = "P@FAMK!TRP";
         static readonly string VIKey = "@Gjg9!b8tf&T6jl4k1b";
-        /// <summary>
-        /// login log settings
-        /// </summary>
-        public static string aa;
-        /// <summary>
-        /// selling drugs log settings
-        /// </summary>
-        public static string bb;
+
         /// <summary>
         /// Automatic backing up is active
         /// </summary>
@@ -71,7 +65,6 @@ namespace ProPharmacyManagerW.Kernel
         {
             try
             {
-                IniFile file1 = new IniFile(Paths.SetupConfigPath);
                 IniFile file2 = new IniFile(Paths.BackupConfigPath);
                 if (!File.Exists(Paths.SetupConfigPath))
                 {
@@ -79,33 +72,42 @@ namespace ProPharmacyManagerW.Kernel
                     Set set = new Set { Title = "تنصيب البرنامج" };
                     set.ShowDialog();
                 }
-                DataHolder.CreateConnection(INIDecrypt(file1.ReadString("MySql", "Username")), INIDecrypt(file1.ReadString("MySql", "Password")), INIDecrypt(file1.ReadString("MySql", "Database")), INIDecrypt(file1.ReadString("MySql", "Host")));
+                Config co = new Config();
+                co.Read(true);
+                DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.DbName, co.Hostname);
+                string ver = co.Version;
+                if (Convert.ToInt16(ver) < Convert.ToInt16(Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", "")))
+                {
+                    IsSetup = true;
+                    //IsUpgrading = true;
+                    Set set = new Set { Title = "ترقية البرنامج" };
+                    set.ShowDialog();
+                }
                 if (!IsSetup)
                 {
+                    co.Read(true, true);
                     BillsTable.LBN();
                     MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
                     cmd.Update("logs").Set("Online", 0).Where("Online", 1).Execute();
-                    aa = INIDecrypt(file1.ReadString("Settings", "AccountsLog"));
-                    bb = INIDecrypt(file1.ReadString("Settings", "DrugsLog"));
                     sb = INIDecrypt(file2.ReadString("Settings", "Backup"));
                     tb = INIDecrypt(file2.ReadString("Settings", "TakeBackup"));
                     st = INIDecrypt(file2.ReadString("Settings", "Type"));
                     stt = INIDecrypt(file2.ReadString("Settings", "Time"));
                     std = INIDecrypt(file2.ReadString("Settings", "Date"));
                     #region database logs
-                    if (aa == "0")
+                    if (co.AccountsLog == "0")
                     {
                         View.Pages.Settings.IsRecAcc = false;
                     }
-                    else if (aa == "1")
+                    else if (co.AccountsLog == "1")
                     {
                         View.Pages.Settings.IsRecAcc = true;
                     }
-                    if (bb == "0")
+                    if (co.DrugsLog == "0")
                     {
                         View.Pages.Settings.IsRecMed = false;
                     }
-                    else if (bb == "1")
+                    else if (co.DrugsLog == "1")
                     {
                         View.Pages.Settings.IsRecMed = true;
                     }

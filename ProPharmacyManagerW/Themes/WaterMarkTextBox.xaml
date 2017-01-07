@@ -29,7 +29,7 @@
                                    Height="{TemplateBinding ActualHeight}"
                                    FontSize="{TemplateBinding FontSize}"
                                    Foreground="{TemplateBinding Foreground}"
-                                   IsTabStop="{TemplateBinding IsTabStop}"
+                                   IsTabStop="False"
                                    IsEnabled="{TemplateBinding IsEnabled}"
                                    Opacity="{TemplateBinding Opacity}"
                                    TabIndex="{TemplateBinding TabIndex}">

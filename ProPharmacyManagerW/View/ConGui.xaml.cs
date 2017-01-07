@@ -20,6 +20,7 @@ namespace ProPharmacyManagerW.View
             InitializeComponent();
             Kernel.Core.IsCMode = true;
         }
+
         private DispatcherTimer checkInput = new DispatcherTimer();
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -36,7 +37,7 @@ namespace ProPharmacyManagerW.View
                 IOBox.Text = "Console Window\n\r";
                 Kernel.Core.SaveException(ex);
             }
-            checkInput.Interval = TimeSpan.FromMilliseconds(100);
+            checkInput.Interval = TimeSpan.FromMilliseconds(300);
             checkInput.Tick += checkInputState;
             checkInput.Start();
             IOBox.ScrollToEnd();
@@ -83,9 +84,9 @@ namespace ProPharmacyManagerW.View
                 }
                 IOBox.SelectionStart = IOBox.Text.Length;
             }
-            catch (Exception ex)
+            catch
             {
-                Kernel.Core.SaveException(ex);
+                IOBox.Text += "\n\r Console can't keep up Developer is going to fix that, for now Do Not Panic";
             }
         }
     }

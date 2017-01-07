@@ -4,6 +4,7 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
+using ProPharmacyManagerW.Kernel;
 using System;
 using System.Windows;
 
@@ -15,18 +16,21 @@ namespace ProPharmacyManagerW.Database
         public static string UserPassword;
 
         private static States.AccountState State;
+
         /// <summary> 
         /// saves who and when he logged in
         /// </summary> 
         private static void SaveLogin()
         {
-            if (Kernel.Core.aa == "1")
+            Config co = new Config();
+            co.Read(false, false, true,false);
+            if (co.AccountsLog == "1")
             {
                 try
                 {
                     MySqlCommand cmd1 = new MySqlCommand(MySqlCommandType.INSERT);
                     cmd1.Insert("logs")
-                        .Insert("Username", UserName).Insert("LoginDate", DateTime.Now.ToString()).Insert("Online", 1).Execute();
+                        .Insert("Username", UserName).Insert("LoginDate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")).Insert("Online", 1).Execute();
                 }
                 catch (Exception e)
                 {

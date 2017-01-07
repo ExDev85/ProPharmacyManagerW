@@ -5,6 +5,7 @@
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
 using ProPharmacyManagerW.Database;
+using ProPharmacyManagerW.Kernel;
 using ProPharmacyManagerW.View.Pages;
 using System;
 using System.Windows;
@@ -478,10 +479,12 @@ namespace ProPharmacyManagerW.View
 
         private void PCP_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (Kernel.Core.aa == "1")
+            Config co = new Config();
+            co.Read(false, false, true, false);
+            if (co.AccountsLog == "1")
             {
                 MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
-                cmd.Update("logs").Set("LogoutDate", DateTime.Now.ToString()).Set("Online", 0).Where("Online", 1).Execute();
+                cmd.Update("logs").Set("LogoutDate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")).Set("Online", 0).Where("Online", 1).Execute();
             }
         }
 

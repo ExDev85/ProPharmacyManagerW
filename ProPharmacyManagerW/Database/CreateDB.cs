@@ -7,8 +7,8 @@
 using MySql.Data.MySqlClient;
 using ProPharmacyManagerW.Kernel;
 using System;
-using System.Windows;
 using System.IO;
+using System.Windows;
 
 namespace ProPharmacyManagerW.Database
 {
@@ -92,7 +92,7 @@ namespace ProPharmacyManagerW.Database
             const string bills =
                 "CREATE TABLE `bills` (`ID` int(20) NOT NULL auto_increment, `ClientName` varchar(50) default NULL, `Cashier` varchar(30) default NULL, `Medics` text, `BillDate` varchar(100) default NULL, PRIMARY KEY  (`ID`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
             const string logs =
-                "CREATE TABLE `logs` (`Username` varchar(20) NOT NULL, `LoginDate` varchar(30) NOT NULL, `LogoutDate` varchar(30) default NULL, `Online` tinyint(5) unsigned NOT NULL default '0') ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+                "CREATE TABLE `logs` (`Username` varchar(20) NOT NULL, `LoginDate` datetime NOT NULL, `LogoutDate` datetime NULL, `Online` tinyint(5) unsigned NOT NULL default '0') ENGINE=InnoDB DEFAULT CHARSET=utf8;";
             const string medics =
                 "CREATE TABLE `medics` (`Id` bigint(20) unsigned NOT NULL AUTO_INCREMENT, `Name` varchar(50) NOT NULL, `Barcode` varchar(50) DEFAULT NULL, `ScientificName` varchar(50) DEFAULT NULL, `Supplier` varchar(50) DEFAULT NULL, `ExpirationDate` varchar(10) NOT NULL DEFAULT '0', `Type` tinyint(5) unsigned NOT NULL DEFAULT '0', `Total` decimal(15,2) unsigned NOT NULL DEFAULT '0.00', `BPrice` decimal(15,2) unsigned NOT NULL DEFAULT '0.00', `SPrice` decimal(15,2) unsigned NOT NULL DEFAULT '0.00', `Notes` text, PRIMARY KEY (`Id`,`Name`)) ENGINE=InnoDB AUTO_INCREMENT=3803 DEFAULT CHARSET=utf8;";
             const string medlog =

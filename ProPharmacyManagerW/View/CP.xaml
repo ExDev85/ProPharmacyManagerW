@@ -19,7 +19,166 @@
         </Grid.RowDefinitions>
         <Controls:ImageButton x:Name="button1" HorizontalAlignment="Left" Width="54" Image="/ProPharmacyManagerW;component/Images/LoginBGC11.png" ImageDisabled="/ProPharmacyManagerW;component/Images/LoginBGC3.png" ImageHover="/ProPharmacyManagerW;component/Images/LoginBGC2.png" ImagePressed="/ProPharmacyManagerW;component/Images/LoginBGC3.png" Height="43" VerticalAlignment="Top" Click="button1_Click" TabIndex="36" />
         <Controls:ImageButton x:Name="imageButton1" HorizontalAlignment="Left" Margin="51,0,0,0"  Width="52" Image="/ProPharmacyManagerW;component/Images/LoginBGM1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/LoginBGM3.png" ImageHover="/ProPharmacyManagerW;component/Images/LoginBGM2.png" ImagePressed="/ProPharmacyManagerW;component/Images/LoginBGM3.png" Height="43" VerticalAlignment="Top" Click="imageButton1_Click" TabIndex="37" />
-        <Image Name="image1" Stretch="Fill" HorizontalAlignment="Right" Width="54" Source="/ProPharmacyManagerW;component/Images/TitleLogo.png" Height="43" VerticalAlignment="Top" Grid.Column="2" />
+        <Image Name="image1" Stretch="Fill" HorizontalAlignment="Right" Width="54" Height="43" VerticalAlignment="Top" Grid.Column="2" Margin="1">
+            <Image.Source>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:svg="http://sharpvectors.codeplex.com/runtime/">
+                            <DrawingGroup x:Name="DrawingLayer4">
+                                <DrawingGroup.ClipGeometry>
+                                    <RectangleGeometry Rect="0,0,744.09448819,1052.3622047" />
+                                </DrawingGroup.ClipGeometry>
+                                <DrawingGroup x:Name="layer4">
+                                    <DrawingGroup x:Name="layer1_3" Transform="1.0751869,0,0,1.0682243,335.63465,-50.956364">
+                                        <DrawingGroup x:Name="g4137" Transform="2.5882447,0,0,2.5882447,288.04445,860.66733">
+                                            <DrawingGroup x:Name="g4139">
+                                                <GeometryDrawing x:Name="path4145" Brush="#FF00A3E0">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry FillRule="Nonzero" Figures="M76.4,107.4L76.4,107.4C76.4,107.5 76.5,107.5 76.4,107.4 76.5,107.5 76.4,107.5 76.4,107.4z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+                                            </DrawingGroup>
+                                        </DrawingGroup>
+                                        <DrawingGroup x:Name="g4186" Transform="1.7896434,0,0,1.7896434,122.26202,-206.11588" />
+                                        <DrawingGroup x:Name="g4257" Transform="4.4595754,0,0,4.4595754,897.47669,718.74898" />
+                                        <DrawingGroup x:Name="g4351" Transform="3.3551288,0,0,3.3551288,1230.4215,574.69829" />
+                                        <DrawingGroup x:Name="g4619" Transform="5.1994163,0,0,5.1994163,1009.4887,-68.305457" />
+                                        <DrawingGroup x:Name="g4653" Transform="2.3116188,0,0,2.3116188,659.19292,588.2881" />
+                                        <DrawingGroup x:Name="g4678" Transform="5.403338,0,0,5.403338,-832.40035,-218.91839">
+                                            <GeometryDrawing x:Name="path4694" Brush="#FFFFFFFF">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry FillRule="Nonzero" Figures="M64.238,73.638C64.238,75.545 62.694,77.09 60.787,77.09 58.892,77.09 57.342,75.545 57.342,73.638 57.342,71.745 58.893,70.2 60.787,70.2 62.694,70.2 64.238,71.745 64.238,73.638z" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing x:Name="path4696" Brush="#FFFFFFFF">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry FillRule="Nonzero" Figures="M61.747,62.064C61.747,62.953 61.02,63.686 60.125,63.686 59.224,63.686 58.497,62.953 58.497,62.064 58.497,61.168 59.224,60.436 60.125,60.436 61.021,60.437 61.747,61.169 61.747,62.064z" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing x:Name="path4702" Brush="#FFFFFFFF">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry FillRule="Nonzero" Figures="M41.059,50.127C41.059,51.023 40.332,51.75 39.436,51.75 38.535,51.75 37.808,51.023 37.808,50.127 37.808,49.232 38.535,48.505 39.436,48.505 40.332,48.506 41.059,49.232 41.059,50.127z" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                        <DrawingGroup x:Name="g4724" Transform="5.2936021,0,0,5.2936021,-121.68136,568.36664" />
+                                        <DrawingGroup x:Name="g4749" Transform="7.5527064,0,0,7.5527064,235.04063,-98.67733" />
+                                        <DrawingGroup x:Name="g4891" Transform="7.4357906,0,0,7.4357906,-882.29563,356.76089" />
+                                        <DrawingGroup x:Name="g4910" Transform="3.9871775,0,0,3.9871775,-232.6564,55.123549">
+                                            <DrawingGroup x:Name="g4912">
+                                                <GeometryDrawing x:Name="path4914" Brush="#FF272525">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry FillRule="Nonzero" Figures="M89.069,40.316C93.049,44.286,93.049,50.785,89.069,54.755L55.756,88.079C51.776,92.05,45.277,92.05,41.317,88.079L7.993,54.756C4.023,50.785,4.023,44.287,7.993,40.317L41.316,6.999C45.276,3.023,51.775,3.023,55.755,6.999L89.069,40.316z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+                                                <DrawingGroup x:Name="g4916">
+                                                    <DrawingGroup Transform="0.2183,0,0,0.2183,3.7217,2.7212">
+                                                        <ImageDrawing Rect="150.535762786865,150.535762786865,123.92847442627,123.92847442627">
+                                                        </ImageDrawing>
+                                                    </DrawingGroup>
+                                                    <DrawingGroup x:Name="g4920">
+                                                        <GeometryDrawing x:Name="path4943">
+                                                            <GeometryDrawing.Brush>
+                                                                <RadialGradientBrush Center="48.320301,-3.4579999" RadiusX="100.4477" RadiusY="100.4477" GradientOrigin="0.5,0.5" MappingMode="Absolute" Opacity="1">
+                                                                    <GradientStop Color="#FF00ABEB" Offset="0" />
+                                                                    <GradientStop Color="#FF22AAE7" Offset="0.028999999999999998" />
+                                                                    <GradientStop Color="#FF3FA8E3" Offset="0.0603" />
+                                                                    <GradientStop Color="#FF53A8E0" Offset="0.091400000000000009" />
+                                                                    <GradientStop Color="#FF60A7DF" Offset="0.122" />
+                                                                    <GradientStop Color="#FF64A7DE" Offset="0.1515" />
+                                                                    <GradientStop Color="#FF4674B7" Offset="0.3273" />
+                                                                    <GradientStop Color="#FF333B8B" Offset="0.5212" />
+                                                                    <GradientStop Color="#FF211C51" Offset="0.7576" />
+                                                                    <GradientStop Color="#FF171043" Offset="1" />
+                                                                </RadialGradientBrush>
+                                                            </GeometryDrawing.Brush>
+                                                            <GeometryDrawing.Geometry>
+                                                                <PathGeometry FillRule="Nonzero" Figures="M86.981,40.693C90.748,44.459,90.748,50.619,86.981,54.385L55.38,85.986C51.614,89.753,45.448,89.753,41.683,85.986L10.091,54.385C6.314,50.619,6.314,44.454,10.091,40.693L41.683,9.091C45.449,5.32,51.615,5.32,55.38,9.091L86.981,40.693z" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                        <DrawingGroup x:Name="g4945">
+                                                            <GeometryDrawing x:Name="path4947" Brush="#FFFFFFFF">
+                                                                <GeometryDrawing.Geometry>
+                                                                    <PathGeometry FillRule="Nonzero" Figures="M41.316,86.358L9.704,54.756C7.724,52.771,6.734,50.151,6.734,47.536L6.734,47.536C6.734,44.922,7.724,42.302,9.704,40.316L9.704,40.316 41.316,8.72C43.296,6.73,45.921,5.74,48.525,5.74L48.525,5.74C51.151,5.74,53.754,6.73,55.755,8.72L55.755,8.72 87.347,40.317 86.981,40.693 86.615,41.059 55.003,9.457C53.217,7.676,50.882,6.789,48.525,6.789L48.525,6.789C46.179,6.789,43.834,7.677,42.047,9.457L42.047,9.457 10.457,41.064C8.671,42.839,7.789,45.185,7.789,47.536L7.789,47.536C7.789,49.887,8.671,52.233,10.457,54.014L10.457,54.014 42.048,85.616C43.834,87.397,46.18,88.285,48.526,88.285L48.526,88.285C50.882,88.285,53.228,87.397,55.004,85.616L55.004,85.616 86.616,54.014C88.391,52.234,89.285,49.887,89.285,47.536L89.285,47.536C89.285,45.19,88.391,42.845,86.616,41.058L86.616,41.058 86.982,40.692 87.348,40.316C89.338,42.307,90.328,44.921,90.328,47.536L90.328,47.536C90.328,50.15,89.338,52.77,87.348,54.756L87.348,54.756 55.756,86.358C53.755,88.342,51.152,89.333,48.526,89.333L48.526,89.333C45.922,89.333,43.297,88.343,41.316,86.358L41.316,86.358z" />
+                                                                </GeometryDrawing.Geometry>
+                                                            </GeometryDrawing>
+                                                        </DrawingGroup>
+                                                    </DrawingGroup>
+                                                </DrawingGroup>
+                                                <DrawingGroup x:Name="g4949">
+                                                    <GeometryDrawing x:Name="path4951" Brush="#FFFFFFFF">
+                                                        <GeometryDrawing.Geometry>
+                                                            <PathGeometry FillRule="Nonzero" Figures="M57.435,24.43C57.349,19.47 53.303,15.472 48.322,15.477 43.341,15.482 39.295,19.485 39.209,24.451L39.209,24.451 39.23,48.128 57.478,48.107 57.456,24.43 57.435,24.43z" />
+                                                        </GeometryDrawing.Geometry>
+                                                    </GeometryDrawing>
+                                                    <GeometryDrawing x:Name="path4953" Brush="#FFA5A7A9">
+                                                        <GeometryDrawing.Geometry>
+                                                            <PathGeometry FillRule="Nonzero" Figures="M39.251,71.8C39.348,76.766 43.404,80.763 48.375,80.758 53.367,80.752 57.413,76.749 57.488,71.784L57.499,71.789 57.478,48.111 39.23,48.128 39.251,71.8 39.251,71.8z" />
+                                                        </GeometryDrawing.Geometry>
+                                                    </GeometryDrawing>
+                                                    <DrawingGroup x:Name="g4955">
+                                                        <GeometryDrawing x:Name="path4957" Brush="#FFFFFFFF">
+                                                            <GeometryDrawing.Geometry>
+                                                                <PathGeometry FillRule="Nonzero" Figures="M54.616,28.168C54.099,27.619 53.345,27.189 52.485,26.995 51.797,26.844 50.677,26.833 49.515,27.097L49.515,24.37C50.236,23.951 50.677,23.176 50.677,22.336 50.677,21.04 49.622,19.98 48.331,19.98 47.019,19.98 45.964,21.04 45.964,22.336 45.964,23.181 46.416,23.956 47.148,24.375L47.148,27.904C44.62,29.125 42.661,31.38 42.521,34.43 42.392,37.443 44.781,39.617 47.148,41.709L47.148,50.882C45.158,52.248 43.038,53.835 42.952,56.687 42.855,60.071 45.19,62.099 47.245,63.708 47.277,65.145 47.309,66.598 47.352,67.975 47.395,69.508 47.449,70.778 47.493,71.838 46.417,72.692 45.427,73.161 45.405,73.172L45.598,73.769C46.158,73.667 46.847,73.479 47.557,73.194 47.772,76.981 47.997,77.073 48.203,77.159L48.332,77.213 48.439,77.159C48.676,77.062 48.934,76.949 49.17,72.403 50.978,71.316 52.613,69.573 52.635,66.996 52.667,65.173 51.043,63.182 49.45,61.886 49.493,59.324 49.514,56.926 49.514,55.231L49.514,53.106C51.623,51.665 54.098,49.84 54.098,46.473 54.098,43.659 51.785,41.577 49.514,39.57L49.514,30.634C50.009,31.075 50.665,31.404 51.386,31.576 51.752,31.667 52.117,31.71 52.484,31.71 52.731,31.71 52.979,31.689 53.215,31.646L53.796,31.543 53.4,31.117C53.379,31.096 53.034,30.73 52.528,30.482 52.754,30.493 52.98,30.525 53.206,30.589 53.476,30.665 53.819,30.826 54.185,31.084L54.378,31.213 54.562,31.068C54.906,30.794 55.132,30.444 55.218,30.073 55.369,29.433 55.154,28.76 54.616,28.168z M46.288,22.336C46.288,21.211 47.202,20.297 48.332,20.297 49.451,20.297 50.365,21.211 50.365,22.336 50.365,23.089 49.946,23.778 49.29,24.133L49.192,24.154C49.192,24.154 49.192,25.3 49.192,27.167 48.611,27.312 48.019,27.511 47.461,27.753 47.461,25.553 47.461,24.17 47.461,24.17L47.363,24.133C46.696,23.778,46.288,23.09,46.288,22.336z M42.845,34.447C42.974,31.547 44.803,29.427 47.149,28.249 47.256,28.201 47.364,28.147 47.461,28.099 47.987,27.862 48.547,27.668 49.107,27.518 48.935,27.749 48.763,28.072 48.656,28.508 48.526,29.094 48.699,29.713 49.15,30.267 48.656,30.434 48.053,30.687 47.462,31.074 47.364,31.138 47.257,31.214 47.15,31.294 46.224,31.983 45.45,33.021 45.385,34.56 45.342,35.636 46.095,36.728 47.15,37.81L47.15,41.285C44.91,39.3,42.727,37.218,42.845,34.447z M49.192,30.584C49.192,33.118 49.192,36.163 49.192,39.289 49.192,39.434 49.192,39.574 49.192,39.714 49.192,40.855 49.192,42.006 49.192,43.141 49.192,43.292 49.192,43.443 49.192,43.588 49.192,45.627 49.192,47.601 49.192,49.404 48.709,49.807 48.128,50.216 47.471,50.663 47.471,50.663 47.471,50.669 47.46,50.669 47.46,48.103 47.46,45.068 47.46,41.99 47.46,41.85 47.46,41.711 47.46,41.565 47.46,40.419 47.46,39.262 47.46,38.127 47.46,37.981 47.46,37.831 47.46,37.68 47.46,35.469 47.46,33.333 47.46,31.445 48.031,31.036 48.655,30.762 49.192,30.584z M47.148,31.687L47.148,37.352C46.266,36.405 45.664,35.469 45.696,34.57 45.75,33.252 46.374,32.333 47.148,31.687z M47.461,55.229C47.461,55.025 47.461,54.815 47.461,54.594 47.934,54.196 48.515,53.787 49.192,53.319 49.192,54.024 49.192,54.67 49.192,55.229 49.192,56.725 49.181,59.049 49.149,61.625 49.149,61.76 49.149,61.895 49.138,62.029 49.127,62.927 49.106,63.847 49.084,64.772 49.084,64.912 49.084,65.046 49.084,65.186 49.041,66.994 48.998,68.796 48.934,70.426 48.579,70.862 48.192,71.244 47.793,71.583 47.696,69.317 47.621,66.596 47.567,63.959 47.567,63.819 47.556,63.685 47.556,63.551 47.535,62.529 47.513,61.523 47.513,60.565 47.502,60.404 47.502,60.248 47.502,60.086 47.472,58.14 47.461,56.419 47.461,55.229z M48.332,76.868C48.139,76.792 47.987,75.28 47.869,73.064 48.192,72.923 48.515,72.768 48.838,72.595 48.72,75.06 48.547,76.776 48.332,76.868z M52.324,66.99C52.292,69.427 50.806,71.025 49.192,72.025 49.074,72.09 48.966,72.155 48.859,72.219 48.525,72.412 48.181,72.579 47.858,72.719 47.751,72.768 47.643,72.811 47.536,72.854 46.707,73.187 45.965,73.381 45.534,73.457 45.534,73.457 46.46,73.032 47.514,72.23 47.611,72.155 47.707,72.074 47.815,71.988 48.181,71.686 48.568,71.337 48.913,70.95 49.02,70.82 49.139,70.691 49.247,70.556 50.032,69.572 50.613,68.351 50.57,66.919 50.549,66.295 50.075,65.677 49.408,65.053 49.429,64.127 49.44,63.201 49.451,62.293 50.957,63.579 52.346,65.414 52.324,66.99z M49.269,69.987C49.29,69.368 49.312,68.695 49.333,67.964 49.354,67.162 49.365,66.323 49.387,65.484 49.893,65.979 50.247,66.468 50.258,66.926 50.29,68.099 49.871,69.12 49.269,69.987z M53.776,46.471C53.776,49.58 51.516,51.34 49.515,52.717 49.408,52.792 49.3,52.863 49.192,52.938 49.149,52.965 49.117,52.992 49.074,53.024 48.461,53.439 47.923,53.821 47.461,54.181 47.353,54.273 47.245,54.359 47.149,54.45 46.31,55.177 45.837,55.876 45.804,56.769 45.772,58.097 46.321,59.211 47.192,60.212 47.203,61.201 47.213,62.245 47.235,63.3 45.288,61.761 43.189,59.814 43.276,56.698 43.34,54.089 45.277,52.561 47.149,51.269 47.256,51.194 47.364,51.119 47.461,51.048 47.525,51.011 47.579,50.968 47.644,50.925 48.225,50.527 48.742,50.166 49.193,49.812 49.301,49.726 49.409,49.639 49.516,49.553 50.614,48.628 51.238,47.735 51.238,46.47 51.238,45.491 50.507,44.474 49.516,43.457L49.516,39.993C51.668,41.898,53.776,43.883,53.776,46.471z M47.181,59.7C46.525,58.845 46.094,57.888 46.116,56.779 46.137,56.069 46.504,55.477 47.149,54.874L47.149,55.229C47.148,56.402,47.159,57.963,47.181,59.7z M49.516,49.135L49.516,43.916C50.344,44.804 50.936,45.665 50.936,46.472 50.936,47.536 50.42,48.332 49.516,49.135z" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                        <GeometryDrawing x:Name="path4959" Brush="#FF313170">
+                                                            <GeometryDrawing.Geometry>
+                                                                <PathGeometry FillRule="Nonzero" Figures="M52.421,27.302C52.151,27.238,51.894,27.211,51.625,27.2L51.636,27.189C51.604,27.189 51.582,27.189 51.549,27.189 51.495,27.189 51.452,27.184 51.388,27.184 51.173,27.184 50.968,27.2 50.764,27.232 50.355,27.27 49.936,27.329 49.516,27.42 49.409,27.446 49.301,27.468 49.193,27.495 48.612,27.645 48.02,27.845 47.462,28.098 47.364,28.146 47.257,28.2 47.15,28.248 44.804,29.426 42.975,31.546 42.846,34.446 42.728,37.217 44.911,39.299 47.15,41.284L47.15,37.81C46.095,36.728 45.342,35.636 45.385,34.56 45.449,33.021 46.224,31.983 47.15,31.294 47.257,31.213 47.365,31.138 47.462,31.074 48.075,30.676 48.699,30.417 49.193,30.251 49.301,30.224 49.398,30.192 49.495,30.165 49.947,30.665 50.636,31.074 51.474,31.268 51.808,31.349 52.141,31.392 52.486,31.392 52.722,31.392 52.949,31.371 53.174,31.333 53.174,31.333 52.679,30.816 52.055,30.633 51.743,30.536 50.957,30.574 50.957,30.574L51.366,30.37C51.366,30.359 51.764,30.16 52.399,30.16 52.689,30.16 52.98,30.203 53.281,30.284 53.604,30.365 53.959,30.548 54.357,30.822 54.648,30.591 54.831,30.311 54.917,29.993 55.176,28.9 54.057,27.695 52.421,27.302z" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                        <GeometryDrawing x:Name="path4961" Brush="#FFFFFFFF">
+                                                            <GeometryDrawing.Geometry>
+                                                                <PathGeometry FillRule="Nonzero" Figures="M52.496,28.814C52.496,29.078 52.7,29.288 52.959,29.288 53.217,29.288 53.433,29.078 53.433,28.814 53.433,28.556 53.217,28.346 52.959,28.346 52.7,28.346 52.496,28.556 52.496,28.814z" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                        <GeometryDrawing x:Name="path4963" Brush="#FF313170">
+                                                            <GeometryDrawing.Geometry>
+                                                                <PathGeometry FillRule="Nonzero" Figures="M54.143,31.886C54.465,31.886 54.724,31.693 54.735,31.682 54.789,31.644 54.789,31.579 54.756,31.536 54.724,31.488 54.659,31.482 54.616,31.515 54.595,31.526 54.25,31.784 53.862,31.618 53.722,31.558 53.69,31.408 53.636,31.23 53.582,31.037 53.539,30.816 53.302,30.709 52.851,30.478 52.463,30.795 52.334,30.988 52.302,31.037 52.313,31.101 52.355,31.134 52.398,31.172 52.473,31.155 52.505,31.107 52.516,31.091 52.807,30.692 53.215,30.897 53.356,30.962 53.388,31.107 53.431,31.279 53.485,31.478 53.538,31.704 53.775,31.811 53.905,31.864 54.024,31.886 54.143,31.886L54.143,31.886z" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                        <GeometryDrawing x:Name="path4965" Brush="#FF313170">
+                                                            <GeometryDrawing.Geometry>
+                                                                <PathGeometry FillRule="Nonzero" Figures="M49.192,24.155L49.29,24.134C49.946,23.779 50.365,23.09 50.365,22.337 50.365,21.212 49.451,20.298 48.332,20.298 47.202,20.298 46.288,21.212 46.288,22.337 46.288,23.09 46.696,23.779 47.363,24.134L47.461,24.171C47.461,24.171 47.461,25.554 47.461,27.754 48.02,27.512 48.611,27.313 49.192,27.168 49.192,25.301 49.192,24.155 49.192,24.155z" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                        <GeometryDrawing x:Name="path4967" Brush="#FF313170">
+                                                            <GeometryDrawing.Geometry>
+                                                                <PathGeometry FillRule="Nonzero" Figures="M48.332,76.868C48.547,76.776 48.72,75.059 48.838,72.596 48.515,72.769 48.192,72.924 47.869,73.065 47.987,75.28 48.139,76.792 48.332,76.868z" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                        <GeometryDrawing x:Name="path4969" Brush="#FF313170">
+                                                            <GeometryDrawing.Geometry>
+                                                                <PathGeometry FillRule="Nonzero" Figures="M47.461,31.445C47.461,33.333 47.461,35.469 47.461,37.68 47.461,37.831 47.461,37.981 47.461,38.127 47.461,39.262 47.461,40.419 47.461,41.565 47.461,41.711 47.461,41.85 47.461,41.99 47.461,45.068 47.461,48.102 47.461,50.669 47.472,50.669 47.472,50.669 47.472,50.669 48.128,50.216 48.709,49.808 49.193,49.404 49.193,47.601 49.193,45.627 49.193,43.588 49.193,43.443 49.193,43.292 49.193,43.141 49.193,42.006 49.193,40.855 49.193,39.714 49.193,39.574 49.193,39.434 49.193,39.289 49.193,36.163 49.193,33.118 49.193,30.584 48.655,30.762 48.031,31.036 47.461,31.445z" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                        <GeometryDrawing x:Name="path4971" Brush="#FF313170">
+                                                            <GeometryDrawing.Geometry>
+                                                                <PathGeometry FillRule="Nonzero" Figures="M49.516,39.994L49.516,43.458C50.506,44.475 51.238,45.492 51.238,46.471 51.238,47.735 50.614,48.629 49.516,49.554 49.409,49.64 49.301,49.727 49.193,49.813 48.742,50.167 48.225,50.528 47.644,50.926 47.58,50.969 47.526,51.012 47.461,51.049 47.363,51.119 47.256,51.195 47.149,51.27 45.277,52.562 43.34,54.089 43.276,56.699 43.189,59.814 45.288,61.761 47.235,63.301 47.214,62.246 47.203,61.202 47.192,60.213 46.321,59.212 45.772,58.098 45.804,56.77 45.836,55.876 46.31,55.177 47.149,54.451 47.246,54.36 47.353,54.274 47.461,54.182 47.923,53.822 48.461,53.44 49.074,53.025 49.117,52.993 49.149,52.966 49.192,52.939 49.3,52.864 49.408,52.793 49.515,52.718 51.516,51.341 53.776,49.581 53.776,46.472 53.776,43.883 51.668,41.898 49.516,39.994z" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                        <GeometryDrawing x:Name="path4973" Brush="#FF313170">
+                                                            <GeometryDrawing.Geometry>
+                                                                <PathGeometry FillRule="Nonzero" Figures="M47.461,54.595C47.461,54.816 47.461,55.026 47.461,55.23 47.461,56.419 47.472,58.14 47.504,60.088 47.504,60.249 47.504,60.405 47.515,60.567 47.515,61.525 47.536,62.531 47.558,63.553 47.558,63.687 47.569,63.822 47.569,63.961 47.623,66.598 47.698,69.319 47.795,71.585 48.193,71.246 48.58,70.863 48.936,70.428 49,68.798 49.043,66.995 49.086,65.188 49.086,65.048 49.086,64.914 49.086,64.774 49.107,63.849 49.129,62.929 49.14,62.031 49.151,61.896 49.151,61.761 49.151,61.627 49.183,59.051 49.194,56.727 49.194,55.231 49.194,54.671 49.194,54.026 49.194,53.321 48.515,53.788 47.934,54.196 47.461,54.595z" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                        <GeometryDrawing x:Name="path4975" Brush="#FF313170">
+                                                            <GeometryDrawing.Geometry>
+                                                                <PathGeometry FillRule="Nonzero" Figures="M49.451,62.294C49.44,63.202 49.43,64.128 49.408,65.054 50.075,65.678 50.549,66.296 50.57,66.92 50.613,68.352 50.032,69.572 49.247,70.557 49.139,70.692 49.02,70.821 48.913,70.951 48.568,71.338 48.182,71.687 47.815,71.989 47.708,72.075 47.611,72.156 47.514,72.231 46.459,73.033 45.534,73.458 45.534,73.458 45.965,73.383 46.707,73.188 47.536,72.855 47.643,72.812 47.751,72.769 47.858,72.72 48.181,72.58 48.525,72.413 48.859,72.22 48.966,72.156 49.074,72.091 49.192,72.026 50.806,71.026 52.292,69.427 52.324,66.991 52.346,65.414 50.957,63.579 49.451,62.294z" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                    </DrawingGroup>
+                                                </DrawingGroup>
+                                            </DrawingGroup>
+                                        </DrawingGroup>
+                                    </DrawingGroup>
+                                </DrawingGroup>
+                            </DrawingGroup>
+                        </DrawingGroup>
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Image.Source>
+        </Image>
         <Border BorderBrush="{x:Null}" BorderThickness="1" Margin="109,0,49,0" Name="border1" MouseDown="border1_MouseDown" Background="#5E00688F" FlowDirection="RightToLeft" Height="43" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
         <Frame x:Name="FFhost" Source="Pages\MainCP.xaml" BorderThickness="0" FlowDirection="RightToLeft" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.ColumnSpan="3" />
         <Menu Height="31" Name="menu1" Background="#050B87B3" Foreground="White" IsMainMenu="True" VerticalAlignment="Top" FlowDirection="RightToLeft" Margin="0,0,54,0" Width="350" MaxWidth="350" HorizontalAlignment="Right" Grid.ColumnSpan="2" Grid.Column="1">
@@ -69,8 +228,8 @@
                     <RowDefinition Height="60*"/>
                     <RowDefinition Height="60*"/>
                 </Grid.RowDefinitions>
-                <Controls:ImageButton x:Name="AddDrug" Content="" HorizontalAlignment="Right" Height="40" Margin="0,23,10,0" VerticalAlignment="Top" Width="110" Grid.Row="8" Click="AddDrug_Click" Foreground="White" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/MAdd1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/MAdd3.png" ImageHover="/ProPharmacyManagerW;component/Images/MAdd2.png" ImagePressed="/ProPharmacyManagerW;component/Images/MAdd3.png" TabIndex="34"/>
-                <Controls:ImageButton x:Name="BackToMainB" Content="" HorizontalAlignment="Left" Height="40" Margin="10,23,0,0" VerticalAlignment="Top" Width="112" Grid.Row="8" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="35"/>
+                <Controls:IconButton x:Name="AddDrug" Content="  أضـف" HorizontalAlignment="Right" Height="40" Margin="0,23,10,0" VerticalAlignment="Top" Width="110" Grid.Row="8" Click="AddDrug_Click" Foreground="White" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/DbAdd.png" TabIndex="34" Background="#FF18A6A6" ColorHover="#FF026868" ColorPressed="#FF023C3C" ColorDisabled="#FF023C3C" FlowDirection="LeftToRight"/>
+                <Controls:IconButton x:Name="BackToMainB" Content="عودة" HorizontalAlignment="Left" Height="40" Margin="10,23,0,0" VerticalAlignment="Top" Width="112" Grid.Row="8" Click="BackToMain_Click" FontSize="20" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Home.png" TabIndex="35" FlowDirection="LeftToRight" Foreground="White" Background="#FF309B25" ColorHover="#FF096300" ColorPressed="#FF053400" ColorDisabled="#FF053400"/>
                 <Controls:WaterMarkComboBox x:Name="ADName" Margin="10" WaterMark="أسم الدواء*" Foreground="Blue" FontWeight="Bold" FontSize="14" TabIndex="25" KeyDown="ADName_KeyDown" IsEditable="True" MaxDropDownHeight="150"/>
                 <Controls:WaterMarkTextBox x:Name="ADBarCode" Margin="10" TextWrapping="Wrap" Grid.Row="1" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="26" WaterMark="الباكود" ToolTip="امسح الباركود على علبه الدواء او ادخله يدويا"/>
                 <Controls:WaterMarkTextBox x:Name="ADSS" Margin="10" TextWrapping="Wrap" Grid.Row="2" Foreground="Blue" FontSize="14" FontWeight="Bold" GotFocus="RestoreBackground" TabIndex="27" WaterMark="الماده الفعاله" ToolTip="الماده الفعاله"/>
@@ -104,7 +263,7 @@
                     <RowDefinition Height="62*"/>
                 </Grid.RowDefinitions>
                 <Frame x:Name="TwoPanelFame" Content="" Margin="9,-1,0,10" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" />
-                <Controls:ImageButton x:Name="BackToMain2" Content="" HorizontalAlignment="Left" Height="40" Margin="69,12,0,0" VerticalAlignment="Top" Width="112" Grid.Row="1" Click="BackToMain_Click" Foreground="Red" FontSize="18.667" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Bhome1.png" ImageDisabled="/ProPharmacyManagerW;component/Images/Bhome3.png" ImageHover="/ProPharmacyManagerW;component/Images/Bhome2.png" ImagePressed="/ProPharmacyManagerW;component/Images/Bhome3.png" TabIndex="35"/>
+                <Controls:IconButton x:Name="BackToMain2" Content="عودة" HorizontalAlignment="Left" Height="40" Margin="69,12,0,0" VerticalAlignment="Top" Width="112" Grid.Row="1" Click="BackToMain_Click" FontSize="20" FontWeight="Bold" TabIndex="35" Image="/ProPharmacyManagerW;component/Images/Home.png" FlowDirection="LeftToRight" Foreground="White" Background="#FF309B25" ColorHover="#FF096300" ColorPressed="#FF053400" ColorDisabled="#FF053400"/>
             </Grid>
         </Border>
     </Grid>

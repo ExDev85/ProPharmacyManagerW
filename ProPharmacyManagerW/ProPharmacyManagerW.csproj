@@ -83,6 +83,7 @@
     <Compile Include="Controls\CustomDataGrid.cs" />
     <Compile Include="Controls\IconButton.cs" />
     <Compile Include="Controls\WaterMarkComboBox.cs" />
+    <Compile Include="Kernel\Config.cs" />
     <Compile Include="ViewModel\AllEXTextColor.cs" />
     <Compile Include="ViewModel\AllAmoutTextColor.cs" />
     <Compile Include="ViewModel\AllType.cs" />
@@ -299,31 +300,11 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Backup1.png" />
-    <Resource Include="Images\Backup2.png" />
-    <Resource Include="Images\Backup3.png" />
     <Resource Include="Images\BG.png" />
-    <Resource Include="Images\Bhome1.png" />
-    <Resource Include="Images\Bhome2.png" />
-    <Resource Include="Images\Bhome3.png" />
-    <Resource Include="Images\by-nc-sa.png" />
     <Resource Include="Images\Command Prompt.ico" />
     <Resource Include="Images\Command Prompt.png" />
-    <Resource Include="Images\Conf1.png" />
-    <Resource Include="Images\Conf2.png" />
-    <Resource Include="Images\Conf3.png" />
     <Resource Include="Images\Configure.ico" />
     <Resource Include="Images\Configure.png" />
-    <Resource Include="Images\CPLogo.png" />
-    <Resource Include="Images\DBackup1.png" />
-    <Resource Include="Images\DBackup2.png" />
-    <Resource Include="Images\DBackup3.png" />
-    <Resource Include="Images\Exit1.png" />
-    <Resource Include="Images\Exit2.png" />
-    <Resource Include="Images\Exit3.png" />
-    <Resource Include="Images\Login1.png" />
-    <Resource Include="Images\Login2.png" />
-    <Resource Include="Images\Login3.png" />
     <Resource Include="Images\LoginBG.png" />
     <Resource Include="Images\LoginBGC1.png" />
     <Resource Include="Images\LoginBGC11.png" />
@@ -332,40 +313,8 @@
     <Resource Include="Images\LoginBGM1.png" />
     <Resource Include="Images\LoginBGM2.png" />
     <Resource Include="Images\LoginBGM3.png" />
-    <Resource Include="Images\Logout1.png" />
-    <Resource Include="Images\Logout2.png" />
-    <Resource Include="Images\Logout3.png" />
-    <Resource Include="Images\MAdd1.png" />
-    <Resource Include="Images\MAdd2.png" />
-    <Resource Include="Images\MAdd3.png" />
-    <Resource Include="Images\MDelete1.png" />
-    <Resource Include="Images\MDelete2.png" />
-    <Resource Include="Images\MDelete3.png" />
-    <Resource Include="Images\MySQL.png" />
-    <Resource Include="Images\OPENSOURCE.png" />
     <Resource Include="Images\Personal.ico" />
     <Resource Include="Images\Personal.png" />
-    <Resource Include="Images\Restore1.png" />
-    <Resource Include="Images\Restore2.png" />
-    <Resource Include="Images\Restore3.png" />
-    <Resource Include="Images\Search1.png" />
-    <Resource Include="Images\Search2.png" />
-    <Resource Include="Images\Search3.png" />
-    <Resource Include="Images\Sell1.png" />
-    <Resource Include="Images\Sell2.png" />
-    <Resource Include="Images\Sell3.png" />
-    <Resource Include="Images\Set1.png" />
-    <Resource Include="Images\Set2.png" />
-    <Resource Include="Images\Set3.png" />
-    <Resource Include="Images\Setext1.png" />
-    <Resource Include="Images\Setext2.png" />
-    <Resource Include="Images\Setext3.png" />
-    <Resource Include="Images\Update1.png" />
-    <Resource Include="Images\Update2.png" />
-    <Resource Include="Images\Update3.png" />
-    <Resource Include="Images\upgr1.png" />
-    <Resource Include="Images\upgr2.png" />
-    <Resource Include="Images\upgr3.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
@@ -391,16 +340,55 @@
     <Resource Include="Images\Add-File-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\AboutLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\TitleLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="PPHMico.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\ico500.png" />
+    <Resource Include="Images\Write.png" />
+    <Resource Include="Images\DbRestore.png" />
+    <Resource Include="Images\DbAdd.png" />
+    <Content Include="Images\DbAdd.svg" />
+    <Content Include="Images\DbRestore.svg" />
+    <Resource Include="Images\Delete.png" />
+    <Content Include="Images\Delete.svg" />
+    <Resource Include="Images\FileDelete.png" />
+    <Content Include="Images\FileDelete.svg" />
+    <Resource Include="Images\Home.png" />
+    <Resource Include="Images\FileExplorer.png" />
+    <Content Include="Images\FileExplorer.svg" />
+    <Content Include="Images\Home.svg" />
+    <Resource Include="Images\Refresh.png" />
+    <Content Include="Images\Refresh.svg" />
+    <Resource Include="Images\Settings.png" />
+    <Content Include="Images\Settings.svg" />
+    <Content Include="Images\Write.svg" />
+    <Resource Include="Images\Logout.png" />
+    <Resource Include="Images\Exit.png" />
+    <Content Include="Images\Exit.svg" />
+    <Resource Include="Images\Login.png" />
+    <Resource Include="Images\install.png" />
+    <Content Include="Images\Install.svg" />
+    <Content Include="Images\Login.svg" />
+    <Content Include="Images\Logout.svg" />
+    <Resource Include="Images\Sell.png" />
+    <Resource Include="Images\Search.png" />
+    <Content Include="Images\Search.svg" />
+    <Content Include="Images\Sell.svg" />
+    <Resource Include="Images\UserAdd.png" />
+    <Content Include="Images\UserAdd.svg" />
+    <Resource Include="Images\UserDelete.png" />
+    <Content Include="Images\UserDelete.svg" />
+    <Resource Include="Images\UserInfo.png" />
+    <Content Include="Images\UserInfo.svg" />
+    <Resource Include="Images\UserSettings.png" />
+    <Content Include="Images\UserSettings.svg" />
+    <Resource Include="Images\DbBackup.png" />
+    <Content Include="Images\DbBackup.svg" />
+    <Resource Include="Images\DbDelete.png" />
+    <Content Include="Images\DbDelete.svg" />
+    <Resource Include="Images\DbUpdate.png" />
+    <Content Include="Images\DbUpdate.svg" />
+    <Resource Include="Images\DbUpgrade.png" />
+    <Content Include="Images\DbUpgrade.svg" />
     <Content Include="Images\Logo.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

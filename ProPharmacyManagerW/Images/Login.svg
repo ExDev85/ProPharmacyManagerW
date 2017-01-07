@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100"
+   height="100"
+   viewBox="0 0 100 100"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Login.svg"
+   inkscape:export-filename="C:\Users\ahmed\Downloads\DbUpgrade.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#323232"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="35.416467"
+     inkscape:cy="83.518604"
+     inkscape:document-units="px"
+     inkscape:current-layer="g4130"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-952.36214)">
+    <g
+       id="g4104"
+       transform="matrix(0.10995233,0,0,0.10101967,-4.9756083,951.85207)"
+       style="fill:#ffffff">
+      <g
+         id="g4130"
+         transform="matrix(0.91867176,0,0,1.1148044,40.704988,-57.464307)">
+        <path
+           id="path4134"
+           d="M 566.14485,558.52182 C 81.243812,541.01967 348.11856,204.48096 558.15076,83.198053 c 0,0 36.64289,-33.849284 -20.74957,-18.847151 C 146.171,172.12265 -433.13625,733.94119 559.08235,737.39727 c 25.95787,-1.41809 36.11335,5.22791 35.31497,23.03945 l -5.39624,146.61013 c -1.66397,41.77499 -7.81794,40.23767 29.59139,12.95996 L 983.43486,643.56347 c 0,0 17.10224,-15.32154 -3.89936,-27.03924 l -359.09487,-252.55 c -22.45491,-16.6364 -20.26017,-1.20815 -19.98726,8.3955 l 8.22229,148.38144 c 6.3368,34.24402 -8.9059,39.27065 -42.53081,37.77065 z"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccccccccccc" />
+      </g>
+    </g>
+  </g>
+</svg>

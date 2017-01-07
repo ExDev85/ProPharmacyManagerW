@@ -27,7 +27,7 @@ namespace ProPharmacyManagerW.Database
             MySqlHost = host;
             MySqlPassword = password;
             MySqlDatabase = database;
-            ConnectionString = "Server=" + MySqlHost + ";Database='" + MySqlDatabase + "';Username='" + MySqlUsername + "';Password='" + MySqlPassword + "';Pooling=true; Max Pool Size = 160000; Min Pool Size = 0;CHARSET=utf8";
+            ConnectionString = "Server=" + MySqlHost + ";Database='" + MySqlDatabase + "';Username='" + MySqlUsername + "';Password='" + MySqlPassword + "';Pooling=true; Max Pool Size = 160000; Min Pool Size = 0;CHARSET=utf8;convert zero datetime=True";
         }
 
         /// <summary> 
@@ -41,15 +41,14 @@ namespace ProPharmacyManagerW.Database
             MySqlUsername = user;
             MySqlHost = host;
             MySqlPassword = password;
-            ConnectionString = "Server=" + MySqlHost + ";Username='" + MySqlUsername + "';Password='" + MySqlPassword + "';Pooling=true; Max Pool Size = 160000; Min Pool Size = 0;CHARSET=utf8";
+            ConnectionString = "Server=" + MySqlHost + ";Username='" + MySqlUsername + "';Password='" + MySqlPassword + "';Pooling=true; Max Pool Size = 160000; Min Pool Size = 0;CHARSET=utf8;convert zero datetime=True";
         }
 
         public static MySqlConnection MySqlConnection
         {
             get
             {
-                MySqlConnection conn = new MySqlConnection();
-                conn.ConnectionString = ConnectionString;
+                MySqlConnection conn = new MySqlConnection {ConnectionString = ConnectionString};
                 return conn;
             }
         }

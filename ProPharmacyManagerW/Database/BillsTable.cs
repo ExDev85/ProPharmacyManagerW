@@ -17,6 +17,7 @@ namespace ProPharmacyManagerW.Database
         public static decimal bMCost = 0;
         public static string bClient;
         private static string bMList;
+
         /// <summary> 
         /// get bill nubmer
         /// </summary> 
@@ -105,5 +106,6 @@ namespace ProPharmacyManagerW.Database
                 Kernel.Core.SaveException(e);
             }
         }
+
     }
 }

@@ -49,11 +49,6 @@ namespace ProPharmacyManagerW.View
             }
         }
 
-        private void Closem1_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
         private void imageButton1_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
@@ -63,13 +58,13 @@ namespace ProPharmacyManagerW.View
         {
             this.DragMove();
         }
-        private void button2_Click(object sender, RoutedEventArgs e)
+        private void ExitB_Click(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
         }
         #endregion
 
-        private void button3_Click(object sender, RoutedEventArgs e)
+        private void LoginB_Click(object sender, RoutedEventArgs e)
         {
             if (UN.Text != "" || UP.Password != "")
             {
