@@ -89,6 +89,7 @@ namespace ProPharmacyManagerW.View
         
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Kernel.Core.StartUp_Engine();
             UN.Focus();
         }
         

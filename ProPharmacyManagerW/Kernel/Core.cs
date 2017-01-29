@@ -26,6 +26,10 @@ namespace ProPharmacyManagerW.Kernel
         /// </summary>
         public static bool IsUpgrading;
         /// <summary>
+        /// check is the user have accounts to login with in the database
+        /// </summary>
+        public static bool NoAccount;
+        /// <summary>
         /// Check if console is active or not
         /// </summary>
         public static bool IsCMode;
@@ -86,6 +90,14 @@ namespace ProPharmacyManagerW.Kernel
                 if (!IsSetup)
                 {
                     co.Read(true, true);
+                    if (AccountsTable.CountUsers() == 0)
+                    {
+                        IsSetup = true;
+                        NoAccount = true;
+                        Set set = new Set { Title = "تنصيب البرنامج" };
+                        View.Pages.Setup.IsInstallCompleted = true;
+                        set.ShowDialog();
+                    }
                     BillsTable.LBN();
                     MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
                     cmd.Update("logs").Set("Online", 0).Where("Online", 1).Execute();

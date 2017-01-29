@@ -82,6 +82,7 @@ namespace ProPharmacyManagerW.View.Pages
                     MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT);
                     cmd.Insert("accounts").Insert("Username", RUName.Text).Insert("Password", Kernel.Core.GetSHAHashData(RUPass1.Password)).Insert("State", state).Insert("Phone", RUPhone.Text).Execute();
                     IsRegisCom = true;
+                    Kernel.Core.NoAccount = false;
                     if (Kernel.Core.IsSetup != true)
                     {
                         MessageBox.Show("تم تسجيل الموظف بنجاح");

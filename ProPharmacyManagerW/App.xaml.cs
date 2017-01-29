@@ -22,7 +22,7 @@ namespace ProPharmacyManagerW
 
         private void Application_Activated(object sender, EventArgs e)
         {
-            Kernel.Core.StartUp_Engine();
+            
         }
     }
 }

@@ -102,9 +102,25 @@ namespace ProPharmacyManagerW.Database
             }
             catch (Exception ll)
             {
-                Console.WriteLine("Error while loging in");
+                Console.WriteLine("Error while logging in");
                 Kernel.Core.SaveException(ll);
                 return false;
+            }
+        }
+
+        public static int CountUsers()
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(MySqlCommandType.COUNT);
+                cmd.Count("accounts");
+                return cmd.Execute();
+            }
+            catch (Exception ll)
+            {
+                Console.WriteLine("Error while logging in");
+                Core.SaveException(ll);
+                return 0;
             }
         }
 

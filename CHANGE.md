@@ -13,6 +13,8 @@
 10. Uses MyDocuments folder as default one for backingup the database.
 11. Now you can connect to server without password with simply type -null-
 	in the database password field.
+12. Register new account window will show up at startup if you setup
+	the program without creating a new account.
 
 ##0.9.9.6:
 1.  You don't have to run the program as administrator anymore.

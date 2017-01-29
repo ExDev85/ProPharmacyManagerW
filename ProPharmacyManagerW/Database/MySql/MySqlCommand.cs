@@ -70,7 +70,7 @@ namespace ProPharmacyManagerW.Database
                     }
                 case MySqlCommandType.COUNT:
                     {
-                        _command = new StringBuilder("SELECT count(<V>) FROM <R>");
+                        _command = new StringBuilder("SELECT count(*) FROM <R>");
                         break;
                     }
                 case MySqlCommandType.CLEAR:
@@ -568,6 +568,10 @@ namespace ProPharmacyManagerW.Database
             {
                 conn.Open();
                 MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(this.Command, conn);
+                if (Type == MySqlCommandType.COUNT)
+                {
+                    return System.Convert.ToInt32(cmd.ExecuteScalar());
+                }
                 res = cmd.ExecuteNonQuery();
                 conn.Close();
             }
@@ -631,6 +635,10 @@ namespace ProPharmacyManagerW.Database
                 _command = _command.Replace("<V>", values);
             }
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(Command, conn);
+            if (Type == MySqlCommandType.COUNT)
+            {
+                return System.Convert.ToInt32(cmd.ExecuteScalar());
+            }
             return cmd.ExecuteNonQuery();
         }
     }

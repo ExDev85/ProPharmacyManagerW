@@ -64,8 +64,11 @@ namespace ProPharmacyManagerW.View.Pages
                 }
                 else if (File.Exists(Paths.SetupConfigPath))
                 {
-                    Core.IsSetup = false;
-                    Title = "اعدادت البرنامج";
+                    if (!Core.NoAccount)
+                    {
+                        Core.IsSetup = false;
+                        Title = "اعدادت البرنامج";
+                    }
                     Config co = new Config();
                     co.Read();
                 }
