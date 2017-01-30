@@ -26,9 +26,13 @@ namespace ProPharmacyManagerW.Kernel
         /// </summary>
         public static bool IsUpgrading;
         /// <summary>
-        /// check is the user have accounts to login with in the database
+        /// check if the user have accounts to login with in the database
         /// </summary>
         public static bool NoAccount;
+        /// <summary>
+        /// check if StartUp_Engine has being run
+        /// </summary>
+        private static bool EngineOn;
         /// <summary>
         /// Check if console is active or not
         /// </summary>
@@ -67,171 +71,175 @@ namespace ProPharmacyManagerW.Kernel
         /// </summary> 
         public static void StartUp_Engine()
         {
-            try
+            if (!EngineOn)
             {
-                IniFile file2 = new IniFile(Paths.BackupConfigPath);
-                if (!File.Exists(Paths.SetupConfigPath))
+                try
                 {
-                    IsSetup = true;
-                    Set set = new Set { Title = "تنصيب البرنامج" };
-                    set.ShowDialog();
-                }
-                Config co = new Config();
-                co.Read(true);
-                DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.DbName, co.Hostname);
-                string ver = co.Version;
-                if (Convert.ToInt16(ver) < Convert.ToInt16(Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", "")))
-                {
-                    IsSetup = true;
-                    //IsUpgrading = true;
-                    Set set = new Set { Title = "ترقية البرنامج" };
-                    set.ShowDialog();
-                }
-                if (!IsSetup)
-                {
-                    co.Read(true, true);
-                    if (AccountsTable.CountUsers() == 0)
+                    IniFile file2 = new IniFile(Paths.BackupConfigPath);
+                    if (!File.Exists(Paths.SetupConfigPath))
                     {
                         IsSetup = true;
-                        NoAccount = true;
                         Set set = new Set { Title = "تنصيب البرنامج" };
-                        View.Pages.Setup.IsInstallCompleted = true;
                         set.ShowDialog();
                     }
-                    BillsTable.LBN();
-                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
-                    cmd.Update("logs").Set("Online", 0).Where("Online", 1).Execute();
-                    sb = INIDecrypt(file2.ReadString("Settings", "Backup"));
-                    tb = INIDecrypt(file2.ReadString("Settings", "TakeBackup"));
-                    st = INIDecrypt(file2.ReadString("Settings", "Type"));
-                    stt = INIDecrypt(file2.ReadString("Settings", "Time"));
-                    std = INIDecrypt(file2.ReadString("Settings", "Date"));
-                    #region database logs
-                    if (co.AccountsLog == "0")
+                    Config co = new Config();
+                    co.Read(true);
+                    DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.DbName, co.Hostname);
+                    string ver = co.Version;
+                    if (Convert.ToInt16(ver) < Convert.ToInt16(Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", "")))
                     {
-                        View.Pages.Settings.IsRecAcc = false;
+                        IsSetup = true;
+                        //IsUpgrading = true;
+                        Set set = new Set { Title = "ترقية البرنامج" };
+                        set.ShowDialog();
                     }
-                    else if (co.AccountsLog == "1")
+                    if (!IsSetup)
                     {
-                        View.Pages.Settings.IsRecAcc = true;
-                    }
-                    if (co.DrugsLog == "0")
-                    {
-                        View.Pages.Settings.IsRecMed = false;
-                    }
-                    else if (co.DrugsLog == "1")
-                    {
-                        View.Pages.Settings.IsRecMed = true;
-                    }
-                    #endregion
-                    #region automatic backup system
-                    if (File.Exists(Paths.BackupConfigPath))
-                    {
-                        try
+                        co.Read(true, true);
+                        if (AccountsTable.CountUsers() == 0)
                         {
-                            if (Convert.ToByte(sb) == 1)
+                            IsSetup = true;
+                            NoAccount = true;
+                            Set set = new Set { Title = "تنصيب البرنامج" };
+                            View.Pages.Setup.IsInstallCompleted = true;
+                            set.ShowDialog();
+                        }
+                        BillsTable.LBN();
+                        MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
+                        cmd.Update("logs").Set("Online", 0).Where("Online", 1).Execute();
+                        sb = INIDecrypt(file2.ReadString("Settings", "Backup"));
+                        tb = INIDecrypt(file2.ReadString("Settings", "TakeBackup"));
+                        st = INIDecrypt(file2.ReadString("Settings", "Type"));
+                        stt = INIDecrypt(file2.ReadString("Settings", "Time"));
+                        std = INIDecrypt(file2.ReadString("Settings", "Date"));
+                        #region database logs
+                        if (co.AccountsLog == "0")
+                        {
+                            View.Pages.Settings.IsRecAcc = false;
+                        }
+                        else if (co.AccountsLog == "1")
+                        {
+                            View.Pages.Settings.IsRecAcc = true;
+                        }
+                        if (co.DrugsLog == "0")
+                        {
+                            View.Pages.Settings.IsRecMed = false;
+                        }
+                        else if (co.DrugsLog == "1")
+                        {
+                            View.Pages.Settings.IsRecMed = true;
+                        }
+                        #endregion
+                        #region automatic backup system
+                        if (File.Exists(Paths.BackupConfigPath))
+                        {
+                            try
                             {
-                                if (Convert.ToByte(st) == 1)
+                                if (Convert.ToByte(sb) == 1)
                                 {
-                                    string[] time = stt.Split(':');
-                                    if (Convert.ToByte(tb) == 0)
+                                    if (Convert.ToByte(st) == 1)
                                     {
-                                        if (DateTime.Now.Date == Convert.ToDateTime(std))
+                                        string[] time = stt.Split(':');
+                                        if (Convert.ToByte(tb) == 0)
                                         {
-                                            if (DateTime.Now.Hour - Convert.ToByte(time[0]) == 0 && DateTime.Now.Minute - Convert.ToByte(time[1]) >= 0)
+                                            if (DateTime.Now.Date == Convert.ToDateTime(std))
+                                            {
+                                                if (DateTime.Now.Hour - Convert.ToByte(time[0]) == 0 && DateTime.Now.Minute - Convert.ToByte(time[1]) >= 0)
+                                                {
+                                                    BackUp.Backup("PROPHMW");
+                                                    file2.Write("Settings", "TakeBackup", "1");
+                                                    tb = "1";
+                                                    Console.WriteLine("Daily backup has been taken");
+                                                }
+                                                if (DateTime.Now.Hour - Convert.ToByte(time[0]) >= 1)
+                                                {
+                                                    BackUp.Backup("PROPHMW");
+                                                    file2.Write("Settings", "TakeBackup", "1");
+                                                    tb = "1";
+                                                    Console.WriteLine("Daily backup has been taken");
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (DateTime.Now.Date > Convert.ToDateTime(std))
+                                            {
+                                                file2.Write("Settings", "TakeBackup", "0");
+                                                tb = "0";
+                                                Console.WriteLine("Daily backup has been reset");
+                                            }
+                                        }
+                                    }
+                                    else if (Convert.ToByte(st) == 2)
+                                    {
+                                        if (Convert.ToByte(tb) == 0)
+                                        {
+                                            if (Convert.ToByte(stt) <= Convert.ToByte(DateTime.Now.DayOfWeek))
                                             {
                                                 BackUp.Backup("PROPHMW");
                                                 file2.Write("Settings", "TakeBackup", "1");
                                                 tb = "1";
-                                                Console.WriteLine("Daily backup has been taken");
+                                                Console.WriteLine("Weekly backup has been taken");
                                             }
-                                            if (DateTime.Now.Hour - Convert.ToByte(time[0]) >= 1)
+                                        }
+                                        else
+                                        {
+                                            if (Convert.ToByte(stt) > Convert.ToByte(DateTime.Now.DayOfWeek))
+                                            {
+                                                file2.Write("Settings", "TakeBackup", "0");
+                                                tb = "0";
+                                                Console.WriteLine("Weekly backup has been reset");
+                                            }
+                                        }
+                                    }
+                                    else if (Convert.ToByte(st) == 3)
+                                    {
+                                        if (Convert.ToByte(tb) == 0)
+                                        {
+                                            if (Convert.ToByte(stt) <= Convert.ToByte(DateTime.Now.Day))
                                             {
                                                 BackUp.Backup("PROPHMW");
                                                 file2.Write("Settings", "TakeBackup", "1");
                                                 tb = "1";
-                                                Console.WriteLine("Daily backup has been taken");
+                                                Console.WriteLine("Monthly backup has been taken");
                                             }
                                         }
-                                    }
-                                    else
-                                    {
-                                        if (DateTime.Now.Date > Convert.ToDateTime(std))
+                                        else
                                         {
-                                            file2.Write("Settings", "TakeBackup", "0");
-                                            tb = "0";
-                                            Console.WriteLine("Daily backup has been reset");
-                                        }
-                                    }
-                                }
-                                else if (Convert.ToByte(st) == 2)
-                                {
-                                    if (Convert.ToByte(tb) == 0)
-                                    {
-                                        if (Convert.ToByte(stt) <= Convert.ToByte(DateTime.Now.DayOfWeek))
-                                        {
-                                            BackUp.Backup("PROPHMW");
-                                            file2.Write("Settings", "TakeBackup", "1");
-                                            tb = "1";
-                                            Console.WriteLine("Weekly backup has been taken");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (Convert.ToByte(stt) > Convert.ToByte(DateTime.Now.DayOfWeek))
-                                        {
-                                            file2.Write("Settings", "TakeBackup", "0");
-                                            tb = "0";
-                                            Console.WriteLine("Weekly backup has been reset");
-                                        }
-                                    }
-                                }
-                                else if (Convert.ToByte(st) == 3)
-                                {
-                                    if (Convert.ToByte(tb) == 0)
-                                    {
-                                        if (Convert.ToByte(stt) <= Convert.ToByte(DateTime.Now.Day))
-                                        {
-                                            BackUp.Backup("PROPHMW");
-                                            file2.Write("Settings", "TakeBackup", "1");
-                                            tb = "1";
-                                            Console.WriteLine("Monthly backup has been taken");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (Convert.ToByte(stt) > Convert.ToByte(DateTime.Now.Day))
-                                        {
-                                            file2.Write("Settings", "TakeBackup", "0");
-                                            tb = "0";
-                                            Console.WriteLine("Monthly backup has been reset");
+                                            if (Convert.ToByte(stt) > Convert.ToByte(DateTime.Now.Day))
+                                            {
+                                                file2.Write("Settings", "TakeBackup", "0");
+                                                tb = "0";
+                                                Console.WriteLine("Monthly backup has been reset");
+                                            }
                                         }
                                     }
                                 }
                             }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Check the automatic backup system in the core");
+                                SaveException(e);
+                                File.Delete(Paths.BackupConfigPath);
+                            }
                         }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Check the automatic backup system in the core");
-                            SaveException(e);
-                            File.Delete(Paths.BackupConfigPath);
-                        }
+                        #endregion
+                        EngineOn = true;
                     }
-                    #endregion
                 }
-            }
-            catch (Exception ex)
-            {
-                SaveException(ex);
-                if (File.Exists(Paths.SetupConfigPath))
+                catch (Exception ex)
                 {
-                    File.Delete(Paths.SetupConfigPath);
+                    SaveException(ex);
+                    if (File.Exists(Paths.SetupConfigPath))
+                    {
+                        File.Delete(Paths.SetupConfigPath);
+                    }
+                    if (File.Exists(Paths.BackupConfigPath))
+                    {
+                        File.Delete(Paths.BackupConfigPath);
+                    }
+                    Console.WriteLine("Program configuration files has been deleted \r\n now we are goning to shutdown your PC");
                 }
-                if (File.Exists(Paths.BackupConfigPath))
-                {
-                    File.Delete(Paths.BackupConfigPath);
-                }
-                Console.WriteLine("Program configuration files has been deleted \r\n now we are goning to shutdown your PC");
             }
         }
         /// <summary> 
