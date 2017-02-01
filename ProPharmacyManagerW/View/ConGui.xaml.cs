@@ -5,7 +5,10 @@
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace ProPharmacyManagerW.View
@@ -25,46 +28,56 @@ namespace ProPharmacyManagerW.View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            richTextBox.AppendText("Welcome to PPHM Console window\rI really hope that you know what you are doing here!!\rYou can write commands in here see every step or even better erase the whole database have fun ;)\n|>");
+            richTextBox.ScrollToEnd();
+            richTextBox.CaretPosition = richTextBox.CaretPosition.DocumentEnd;
             try
             {
-                if (Console.GSLog.Length > 0)
+                if (Console.NewEntry == true)
                 {
-                    IOBox.Text += Console.GSLog;
+                    lock (Console.GSLog)
+                    {
+                        richTextBox.AppendText(Console.GSLog);
+                        Console.GSLog = "";
+                    }
                 }
             }
             catch (Exception ex)
             {
-                IOBox.Text = "Console Window\n\r";
                 Kernel.Core.SaveException(ex);
             }
-            checkInput.Interval = TimeSpan.FromMilliseconds(300);
+            checkInput.Interval = TimeSpan.FromMilliseconds(1000);
             checkInput.Tick += checkInputState;
             checkInput.Start();
-            IOBox.ScrollToEnd();
-            IOBox.SelectionStart = IOBox.Text.Length;
+            richTextBox.Focus();
         }
 
         private void checkInputState(object sender, EventArgs e)
         {
             if (Console.NewEntry == true)
             {
-                IOBox.Text += Console.GS;
-                IOBox.ScrollToEnd();
+                lock (Console.GSLog)
+                {
+                    richTextBox.AppendText(Console.GSLog);
+                    Console.GSLog = "";
+                    Console.GS = "";
+                }
+                richTextBox.ScrollToEnd();
+                richTextBox.CaretPosition = richTextBox.CaretPosition.DocumentEnd;
                 Console.NewEntry = false;
             }
-        }
-
-        private void IOBox_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Return)
+            else
             {
-                if (IOBox.GetLineText(IOBox.GetLastVisibleLineIndex()).Length == 0 || IOBox.GetLineText(IOBox.GetLastVisibleLineIndex()).Contains("You must start your command with # like"))
+                if (!string.IsNullOrEmpty(Console.GS))
                 {
-                    return;
-                }
-                else
-                {
-                    Console.CommandsAI(IOBox.GetLineText(IOBox.GetLastVisibleLineIndex()));
+                    lock (Console.GS)
+                    {
+                        richTextBox.AppendText(Console.GS);
+                        Console.GS = "";
+                    }
+                    richTextBox.ScrollToEnd();
+                    richTextBox.CaretPosition = richTextBox.CaretPosition.DocumentEnd;
+                    Console.NewEntry = false;
                 }
             }
         }
@@ -74,20 +87,71 @@ namespace ProPharmacyManagerW.View
             Kernel.Core.IsCMode = false;
         }
 
-        private void IOBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        public void NewPrompt()
         {
-            try
-            {
-                if (IOBox.GetLineLength(IOBox.GetLastVisibleLineIndex()) > 100)
-                {
-                    IOBox.Text += "\n";
-                }
-                IOBox.SelectionStart = IOBox.Text.Length;
-            }
-            catch
-            {
-                IOBox.Text += "\n\r Console can't keep up Developer is going to fix that, for now Do Not Panic";
-            }
+            TextRange tr = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+            richTextBox.ScrollToEnd();
+            richTextBox.CaretPosition = richTextBox.CaretPosition.DocumentEnd;
+            richTextBox.AppendText("\r|>");
         }
+
+        private void richTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            TextRange tr = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+            var currentLine = new TextRange(richTextBox.CaretPosition.GetLineStartPosition(0), richTextBox.CaretPosition.GetLineStartPosition(1) ?? richTextBox.CaretPosition.DocumentEnd).Text;
+            switch (e.Key)
+            {
+                case Key.Enter:
+                    e.Handled = true;
+                    Regex reg = new Regex(@"([#]).+");
+                    MatchCollection fou = reg.Matches(currentLine);
+                    foreach (Match m in fou)
+                    {
+                        if (m.Success)
+                        {
+                            string ccc = m.Value;
+                            Console.CommandsAI(m.Value.Replace("\r", ""));
+                            return;
+                        }
+                    }
+                    NewPrompt();
+                    break;
+                case Key.Tab:
+                    e.Handled = true;
+                    break;
+                case Key.Back:
+                    if (currentLine == "|>\r\n")
+                    {
+                        e.Handled = true;
+                    }
+                    else if (currentLine.StartsWith("Welcome to PPHM Console window"))
+                    {
+                        e.Handled = true;
+                    }
+                    else if (currentLine.StartsWith("I really hope that you know what you are doing here!!"))
+                    {
+                        e.Handled = true;
+                    }
+                    else if (currentLine.StartsWith("You can write commands in here see every step or even better erase the whole database have fun ;)"))
+                    {
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        Regex rex = new Regex(@"\[\w+:\w+:\w+:\w+\]");
+                        MatchCollection fon = rex.Matches(currentLine);
+                        foreach (Match m in fon)
+                        {
+                            if (m.Success)
+                            {
+                                e.Handled = true;
+                            }
+                        }
+                    }
+                    break;
+            }
+            base.OnPreviewKeyDown(e);
+        }
+
     }
 }

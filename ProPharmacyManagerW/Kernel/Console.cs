@@ -34,7 +34,7 @@ namespace ProPharmacyManagerW
         public static string TimeStamp()
         {
             DateTime NOW = DateTime.Now;
-            return "[" + NOW.Hour + ":" + NOW.Minute + ":" + NOW.Second.ToString() + ":" + NOW.Millisecond.ToString() + "] ";
+            return "[" + NOW.Hour + ":" + NOW.Minute + ":" + NOW.Second + ":" + NOW.Millisecond + "] |>";
         }
         /// <summary>
         /// write string in the same line
@@ -67,20 +67,12 @@ namespace ProPharmacyManagerW
         /// <returns></returns>
         public static string WriteLine(string value)
         {
-            NewEntry = true;
-            GS = TimeStamp() + value + "\n";
-            GSLog += TimeStamp() + value + "\n";
-            return GS;
-        }
-        /// <summary>
-        /// new line then write string
-        /// </summary>
-        /// <param name="value">the new text to add</param>
-        /// <returns></returns>
-        public static string WriteLineF(string value)
-        {
-            NewEntry = true;
-            GS = "\n" + TimeStamp() + value + "\n";
+            if (!Core.IsCMode)
+            {
+                NewEntry = true;
+            }
+            GS = "\r" + TimeStamp() + value + "\r|>";
+            GSLog += "\r" + TimeStamp() + value + "\r|>";
             return GS;
         }
         /// <summary>
@@ -201,6 +193,11 @@ namespace ProPharmacyManagerW
                                         {
                                             newPath = data[1].Replace("~", " ");
                                         }
+                                        else
+                                        {
+                                            newPath = data[1];
+                                        }
+                                        WriteLine("Importing ");
                                         using (StreamReader sr = File.OpenText(newPath))
                                         {
                                             StringBuilder sb = new StringBuilder();
@@ -226,7 +223,7 @@ namespace ProPharmacyManagerW
                                             sr.Dispose();
                                             sr.Close();
                                         }
-                                        WriteLineF("The file is well imported");
+                                        WriteLine("The file is well imported");
                                     });
                                     th.Start();
                                 }
@@ -284,13 +281,13 @@ namespace ProPharmacyManagerW
                         #endregion
                         case "#help":
                             {
-                                WriteLine(@"
-        #addacc Username Password State(type 2 for admin - 1 for employee) PhoneNumber(could be empty -type null-)
-        #adddrug Name Barcode(Could be empty -type null-) ScientificName(Could be empty -type null-) ExpirationDate(should be yyyy/mm/dd) Type(type 1 for syrup - 2 for tab - 3 Injection - 4 for Cream/Ointments - 0 for other) Total(must be numbers) SPrice(must be numbers) Notes(Could be empty -type null-)
-        #Drop db (to delete your database good luck with that)
-        #Drop table tablename (delete a spacific table to ruin the database)
-        #import path (type the full path for the sql file to import it like c:\meds.sql)
-        #deltemp (type '-all' to delete the config folder with backups files like #deltemp -all)");
+                                WriteLine(@"Here is some Commands
+#addacc Username Password State(type 2 for admin - 1 for employee) PhoneNumber(could be empty -type null-)
+#adddrug Name Barcode(Could be empty -type null-) ScientificName(Could be empty -type null-) ExpirationDate(should be yyyy/mm/dd) Type(type 1 for syrup - 2 for tab - 3 Injection - 4 for Cream/Ointments - 0 for other) Total(must be numbers) SPrice(must be numbers) Notes(Could be empty -type null-)
+#Drop db (to delete your database good luck with that)
+#Drop table tablename (delete a spacific table to ruin the database)
+#import path (type the full path for the sql file to import it like c:\meds.sql)
+#deltemp (type '-all' to delete the config folder with backups files like #deltemp -all)");
                                 break;
                             }
                         default:
@@ -310,5 +307,6 @@ namespace ProPharmacyManagerW
                 WriteLine("You must login as admin");
             }
         }
+
     }
 }

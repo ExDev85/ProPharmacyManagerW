@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProPharmacyManagerW.View"
         mc:Ignorable="d"
-        Title="Console" Height="400" Width="600" Background="Black" Foreground="White" Loaded="Window_Loaded" ShowInTaskbar="False" Icon="/ProPharmacyManagerW;component/Images/Command Prompt.ico" WindowStyle="ToolWindow" Closing="Window_Closing" MinHeight="300" MinWidth="500">
+        Title="Console" Height="400" Width="600" Background="Black" Foreground="White" Loaded="Window_Loaded" Icon="/ProPharmacyManagerW;component/Images/Command Prompt.ico" WindowStyle="ToolWindow" Closing="Window_Closing" MinHeight="300" MinWidth="500">
     <Grid>
-        <TextBox x:Name="IOBox" AcceptsReturn="True" Background="Black" Foreground="Green" FontFamily="Consolas" TabIndex="0" Text="Welcome to PPHM Console window&#xA;I really hope that you know what you are doing here!!&#xA;You can write commands in here see every step or even better erase the whole database have fun ;)&#xD;&#xA;" PreviewKeyDown="IOBox_PreviewKeyDown" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" TextChanged="IOBox_TextChanged" />
+        <RichTextBox x:Name="richTextBox" Background="Black" BorderBrush="{x:Null}" Foreground="Green" CaretBrush="White" PreviewKeyDown="richTextBox_PreviewKeyDown"/>
     </Grid>
 </Window>
