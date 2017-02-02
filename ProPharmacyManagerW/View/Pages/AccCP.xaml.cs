@@ -145,21 +145,29 @@ namespace ProPharmacyManagerW.View.Pages
             //Delete any user Admin privileges requires
             if (AdminPCB.IsChecked == true)
             {
-                try
+                if (UNList.SelectedItem.ToString() != AccountsTable.UserName)
                 {
-                    new MySqlCommand(MySqlCommandType.DELETE).Delete("accounts", "Username", UNList.SelectedItem.ToString()).Execute();
-                    label1.Content = "تم حذف الحساب بنجاح.";
-                    label1.Foreground = Brushes.Red;
-                    label1.Visibility = Visibility.Visible;
-                    Console.WriteLine("Good job you have just deleted " + UNList.SelectedItem.ToString());
-                    ReloadList();
+                    try
+                    {
+                        new MySqlCommand(MySqlCommandType.DELETE).Delete("accounts", "Username", UNList.SelectedItem.ToString()).Execute();
+                        label1.Content = "تم حذف الحساب بنجاح.";
+                        label1.Foreground = Brushes.Red;
+                        label1.Visibility = Visibility.Visible;
+                        Console.WriteLine("Good job you have just deleted " + UNList.SelectedItem.ToString());
+                        ReloadList();
+                    }
+                    catch (Exception ex)
+                    {
+                        label1.Content = "ليس هناك حساب بهذا الاسم.";
+                        label1.Foreground = Brushes.Red;
+                        label1.Visibility = Visibility.Visible;
+                        Kernel.Core.SaveException(ex);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    label1.Content = "ليس هناك حساب بهذا الاسم.";
-                    label1.Foreground = Brushes.Red;
-                    label1.Visibility = Visibility.Visible;
-                    Kernel.Core.SaveException(ex);
+                    Console.WriteLine(AccountsTable.UserName + "shot himself in the foot.");
+                    MessageBox.Show("لا يمكنك حذف حسابك");
                 }
             }
         }
