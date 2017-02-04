@@ -166,7 +166,7 @@ namespace ProPharmacyManagerW.View.Pages
                 }
                 else
                 {
-                    Console.WriteLine(AccountsTable.UserName + "shot himself in the foot.");
+                    Console.WriteLine(AccountsTable.UserName + " shot himself in the foot.");
                     MessageBox.Show("لا يمكنك حذف حسابك");
                 }
             }

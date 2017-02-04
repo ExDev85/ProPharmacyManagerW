@@ -136,6 +136,16 @@ namespace ProPharmacyManagerW.View
             UserBoard.Visibility = Visibility.Visible;
         }
         /// <summary>
+        /// Suppliers manger
+        /// </summary>
+        private void MISS_Click(object sender, RoutedEventArgs e)
+        {
+            FFhost.IsEnabled = false;
+            AddSup ss = new AddSup();
+            TwoPanelFame.Navigate(ss);
+            UserBoard.Visibility = Visibility.Visible;
+        }
+        /// <summary>
         /// Database settings page to open
         /// </summary>
         public static bool IsOSettings;
@@ -215,7 +225,7 @@ namespace ProPharmacyManagerW.View
             }
             else if (e.Key == Key.F12)
             {
-                if (Kernel.Core.IsCMode == false)
+                if (Core.IsCMode == false)
                 {
                     ConGui consl = new ConGui();
                     consl.Show();
@@ -487,6 +497,6 @@ namespace ProPharmacyManagerW.View
                 cmd.Update("logs").Set("LogoutDate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")).Set("Online", 0).Where("Online", 1).Execute();
             }
         }
-
+        
     }
 }

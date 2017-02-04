@@ -109,6 +109,9 @@
     <Compile Include="View\Pages\AccLogs.xaml.cs">
       <DependentUpon>AccLogs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\AddSup.xaml.cs">
+      <DependentUpon>AddSup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\MainCP.xaml.cs">
       <DependentUpon>MainCP.xaml</DependentUpon>
     </Compile>
@@ -199,6 +202,10 @@
     <Page Include="View\Pages\AccLogs.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Pages\AddSup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\MainCP.xaml">
       <Generator>MSBuild:Compile</Generator>
