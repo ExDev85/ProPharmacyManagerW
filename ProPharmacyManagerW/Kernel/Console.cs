@@ -8,6 +8,7 @@ using ProPharmacyManagerW.Database;
 using ProPharmacyManagerW.Kernel;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -198,6 +199,9 @@ namespace ProPharmacyManagerW
                                             newPath = data[1];
                                         }
                                         WriteLine("Importing ");
+                                        var lines = File.ReadAllLines(newPath).Count();
+                                        var currentLine = 0;
+                                        var progress = 0;
                                         using (StreamReader sr = File.OpenText(newPath))
                                         {
                                             StringBuilder sb = new StringBuilder();
@@ -211,15 +215,24 @@ namespace ProPharmacyManagerW
                                                         Command = sb.ToString()
                                                     };
                                                     cmd.Execute();
-                                                    WriteT(".");
-                                                    sb.Clear();
                                                 }
                                                 catch
                                                 {
                                                     sb.Replace("INSERT INTO `medics`", "INSERT IGNORE INTO `medics`");
                                                     goto retry;
                                                 }
+                                                finally
+                                                {
+                                                    progress = (currentLine * 100) / lines;
+                                                    if (progress.ToString().Contains("0"))
+                                                    {
+                                                        WriteT(".." + progress.ToString() + "%");
+                                                    }
+                                                    currentLine++;
+                                                    sb.Clear();
+                                                }
                                             }
+                                            WriteT("..100%");
                                             sr.Dispose();
                                             sr.Close();
                                         }
