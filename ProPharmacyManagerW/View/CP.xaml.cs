@@ -343,7 +343,9 @@ namespace ProPharmacyManagerW.View
             ng.GradientStops.Add(gs2);
             AddNewDrugBoard.Background = ng;
         }
-        // add drug panel
+        /// <summary>
+        /// open add drug panel
+        /// </summary>
         private void MIAddDrug_Click(object sender, RoutedEventArgs e)
         {
             FFhost.IsEnabled = false;
@@ -351,6 +353,20 @@ namespace ProPharmacyManagerW.View
             ADName.Focus();
             //#3399FF, #0066CC
             LGBB(51, 153, 255, 0, 102, 204);
+            LoadSup();
+        }
+        /// <summary>
+        /// Load suppliers
+        /// </summary>
+        private void LoadSup()
+        {
+            MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
+            cmd.Select("suppliers");
+            MySqlReader r = new MySqlReader(cmd);
+            while (r.Read())
+            {
+                ADSUP.Items.Add(r.ReadString("Name"));
+            }
         }
 
         private void ADName_KeyDown(object sender, KeyEventArgs e)
@@ -394,7 +410,7 @@ namespace ProPharmacyManagerW.View
             //#3399FF, #0066CC
             LGBB(51, 153, 255, 0, 102, 204);
         }
-        // add medic command
+        // add new medic command
         private void AddDrug_Click(object sender, RoutedEventArgs e)
         {
             #region textboxs States
@@ -467,6 +483,7 @@ namespace ProPharmacyManagerW.View
                 cmd.Insert("medics")
                     .Insert("Name", ADName.Text)
                     .Insert("Barcode", ADBarCode.Text)
+                    .Insert("Supplier", ADSUP.Text)
                     .Insert("ScientificName", ADSS.Text)
                     .Insert("ExpirationDate", ADEXP.Text)
                     .Insert("Type", PType)
@@ -481,8 +498,8 @@ namespace ProPharmacyManagerW.View
             {
                 //#d8334a, #BF263C
                 LGBB(216, 51, 74, 191, 38, 60);
+                Core.SaveException(ex);
                 MessageBox.Show("غالبا تم استخدام نفس اسم الدواء من قبل");
-                Kernel.Core.SaveException(ex);
             }
         }
         #endregion

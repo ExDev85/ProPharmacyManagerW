@@ -36,7 +36,6 @@ namespace ProPharmacyManagerW.View.Pages
             MEX.Foreground = Brushes.Blue;
             MPrice.Clear();
             MExist.Clear();
-            MExist.Foreground = Brushes.Blue;
             MExist.Background = Brushes.White;
             MWSell.Text = "1";
             MType.SelectedIndex = -1;
@@ -143,7 +142,6 @@ namespace ProPharmacyManagerW.View.Pages
                 Kernel.Core.SaveException(ex);
             }
         }
-
         /// <summary>
         /// Makes logs for sold meds
         /// </summary>
@@ -173,6 +171,19 @@ namespace ProPharmacyManagerW.View.Pages
                 }
             }
         }
+        /// <summary>
+        /// Load suppliers
+        /// </summary>
+        private void LoadSup()
+        {
+            MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
+            cmd.Select("suppliers");
+            MySqlReader r = new MySqlReader(cmd);
+            while (r.Read())
+            {
+                MSUP.Items.Add(r.ReadString("Name"));
+            }
+        }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -183,8 +194,6 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 MName.IsReadOnly = true;
                 MSS.IsReadOnly = true;
-                MSUP.IsEditable = false;
-                MSUP.IsReadOnly = true;
                 MType.IsEditable = false;
                 MType.IsReadOnly = true;
                 MExist.IsReadOnly = true;
@@ -195,6 +204,7 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 Client.FontSize = 10;
             }
+            LoadSup();
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -212,6 +222,7 @@ namespace ProPharmacyManagerW.View.Pages
                         ItemId = r.ReadInt64("Id");
                         MName.Text = r.ReadString("Name");
                         MSS.Text = r.ReadString("ScientificName");
+                        MSUP.Text = r.ReadString("Supplier");
                         Ptype = r.ReadByte("Type");
                         MExist.Text = r.ReadDecimal("Total").ToString();
                         MPrice.Text = r.ReadDecimal("SPrice").ToString();
@@ -220,8 +231,7 @@ namespace ProPharmacyManagerW.View.Pages
                         SearchBox.Foreground = Brushes.Green;
                         if (Convert.ToDecimal(MExist.Text) < 1)
                         {
-                            MExist.Background = Brushes.Red;
-                            MExist.Foreground = Brushes.White;
+                            MExist.Foreground = Brushes.Red;
                             Console.WriteLine("You have no - " + MName.Text + " - " + ItemId + " - I believe that you should get new ones");
                         }
                         if (Convert.ToDateTime(MEX.Text) <= DateTime.Now.Date)
@@ -260,6 +270,7 @@ namespace ProPharmacyManagerW.View.Pages
                         ItemId = r.ReadInt64("Id");
                         MName.Text = r.ReadString("Name");
                         MSS.Text = r.ReadString("ScientificName");
+                        MSUP.Text = r.ReadString("Supplier");
                         Ptype = r.ReadByte("Type");
                         MExist.Text = r.ReadDecimal("Total").ToString();
                         MPrice.Text = r.ReadDecimal("SPrice").ToString();
@@ -268,8 +279,7 @@ namespace ProPharmacyManagerW.View.Pages
                         SearchBox.Foreground = Brushes.Green;
                         if (Convert.ToDecimal(MExist.Text) < 1)
                         {
-                            MExist.Background = Brushes.Red;
-                            MExist.Foreground = Brushes.White;
+                            MExist.Foreground = Brushes.Red;
                             Console.WriteLine("You have no - " + MName.Text + " - I believe that you should get new ones");
                         }
                         if (Convert.ToDateTime(MEX.Text) <= DateTime.Now.Date)
@@ -302,7 +312,7 @@ namespace ProPharmacyManagerW.View.Pages
             }
             catch (Exception ex)
             {
-                Kernel.Core.SaveException(ex);
+                Core.SaveException(ex);
             }
             SearchBox.Items.Refresh();
         }
@@ -346,97 +356,6 @@ namespace ProPharmacyManagerW.View.Pages
             if (!char.IsDigit(e.Text, e.Text.Length - 1) && e.Text != ".")
             {
                 e.Handled = true;
-            }
-        }
-
-        private void LogOut_Click(object sender, RoutedEventArgs e)
-        {
-            CP.IsLoggingOut = true;
-        }
-
-        private void UpdateM_Click(object sender, RoutedEventArgs e)
-        {
-            if (MName.Text == "" || MPrice.Text == "" || MExist.Text == "" || MEX.Text == "")
-            {
-                MessageBox.Show("لا يمكن اتمام عمليه التحديث بسبب وجود حقل مهم فارغ");
-                return;
-            }
-            try
-            {
-                switch (MType.Text)
-                {
-                    case "شرب":
-                        Ptype = 1;
-                        break;
-                    case "اقراص":
-                        Ptype = 2;
-                        break;
-                    case "حقن":
-                        Ptype = 3;
-                        break;
-                    case "كريم/مرهم":
-                        Ptype = 4;
-                        break;
-                    case "اخرى":
-                        Ptype = 0;
-                        break;
-                }
-                if (AccountsTable.IsAdmin() == true)
-                {
-                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
-                    cmd.Update("medics")
-                        .Set("Name", MName.Text)
-                        .Set("ScientificName", MSS.Text)
-                        .Set("ExpirationDate", MEX.Text)
-                        .Set("Type", Ptype)
-                        .Set("Total", MExist.Text)
-                        .Set("SPrice", MPrice.Text)
-                        .Set("Notes", MNotes.Text);
-                    cmd.Where("Id", ItemId).And("Name", MName.Text).Execute();
-                    Console.WriteLine("update the '" + MName.Text + " - " + ItemId.ToString() + "' drug I hope you are not high");
-                    MessageBox.Show("تم التحديث");
-                }
-                else
-                {
-                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
-                    cmd.Update("medics")
-                        .Set("Notes", MNotes.Text);
-                    cmd.Where("Name", MName.Text).Execute();
-                    Console.WriteLine("Update '" + MName.Text + " - " + ItemId.ToString() + "' Notes, I noticed what you did there");
-                    MessageBox.Show("تم التحديث ملاحظات الدواء");
-                }
-            }
-            catch (Exception ex)
-            {
-                Core.SaveException(ex);
-            }
-        }
-
-        private void DeleteM_Click(object sender, RoutedEventArgs e)
-        {
-            if (MName.Text == "" || MPrice.Text == "" || MExist.Text == "")
-            {
-                MessageBox.Show("لا يمكن اتمام عمليه الحذف");
-                return;
-            }
-            try
-            {
-                if (AccountsTable.IsAdmin() == true)
-                {
-                    new MySqlCommand(MySqlCommandType.DELETE).Delete("medics", "id", ItemId).Execute();
-                    Clear();
-                    Console.WriteLine("Delete '" + MName.Text + " - " + ItemId.ToString() + "' now we're talking");
-                    MessageBox.Show("تم حذف الدواء");
-                }
-                else
-                {
-                    Console.WriteLine(AccountsTable.UserName + "was trying to Delete '" + MName.Text + " - " + ItemId.ToString());
-                    MessageBox.Show("يجب ان تكون مدير لتستطيع الحذف");
-                }
-            }
-            catch (Exception ex)
-            {
-                Core.SaveException(ex);
             }
         }
 
@@ -496,6 +415,98 @@ namespace ProPharmacyManagerW.View.Pages
             }
         }
 
+        private void UpdateM_Click(object sender, RoutedEventArgs e)
+        {
+            if (MName.Text == "" || MPrice.Text == "" || MExist.Text == "" || MEX.Text == "")
+            {
+                MessageBox.Show("لا يمكن اتمام عمليه التحديث بسبب وجود حقل مهم فارغ");
+                return;
+            }
+            try
+            {
+                switch (MType.Text)
+                {
+                    case "شرب":
+                        Ptype = 1;
+                        break;
+                    case "اقراص":
+                        Ptype = 2;
+                        break;
+                    case "حقن":
+                        Ptype = 3;
+                        break;
+                    case "كريم/مرهم":
+                        Ptype = 4;
+                        break;
+                    case "اخرى":
+                        Ptype = 0;
+                        break;
+                }
+                if (AccountsTable.IsAdmin() == true)
+                {
+                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
+                    cmd.Update("medics")
+                        .Set("Name", MName.Text)
+                        .Set("ScientificName", MSS.Text)
+                        .Set("ExpirationDate", MEX.Text)
+                        .Set("Supplier", MSUP.Text)
+                        .Set("Type", Ptype)
+                        .Set("Total", MExist.Text)
+                        .Set("SPrice", MPrice.Text)
+                        .Set("Notes", MNotes.Text);
+                    cmd.Where("Id", ItemId).And("Name", MName.Text).Execute();
+                    Console.WriteLine("update the '" + MName.Text + " - " + ItemId.ToString() + "' drug I hope you are not high");
+                    MessageBox.Show("تم التحديث");
+                }
+                else
+                {
+                    MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);
+                    cmd.Update("medics")
+                        .Set("Notes", MNotes.Text);
+                    cmd.Where("Name", MName.Text).Execute();
+                    Console.WriteLine("Update '" + MName.Text + " - " + ItemId.ToString() + "' Notes, I noticed what you did there");
+                    MessageBox.Show("تم التحديث ملاحظات الدواء");
+                }
+            }
+            catch (Exception ex)
+            {
+                Core.SaveException(ex);
+            }
+        }
+
+        private void DeleteM_Click(object sender, RoutedEventArgs e)
+        {
+            if (MName.Text == "" || MPrice.Text == "" || MExist.Text == "")
+            {
+                MessageBox.Show("لا يمكن اتمام عمليه الحذف");
+                return;
+            }
+            try
+            {
+                if (AccountsTable.IsAdmin() == true)
+                {
+                    new MySqlCommand(MySqlCommandType.DELETE).Delete("medics", "id", ItemId).Execute();
+                    Clear();
+                    Console.WriteLine("Delete '" + MName.Text + " - " + ItemId.ToString() + "' now we're talking");
+                    MessageBox.Show("تم حذف الدواء");
+                }
+                else
+                {
+                    Console.WriteLine(AccountsTable.UserName + "was trying to Delete '" + MName.Text + " - " + ItemId.ToString());
+                    MessageBox.Show("يجب ان تكون مدير لتستطيع الحذف");
+                }
+            }
+            catch (Exception ex)
+            {
+                Core.SaveException(ex);
+            }
+        }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            CP.IsLoggingOut = true;
+        }
+
         private void ItemsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
@@ -507,6 +518,7 @@ namespace ProPharmacyManagerW.View.Pages
                 ItemId = r.ReadInt64("Id");
                 MName.Text = r.ReadString("Name");
                 MSS.Text = r.ReadString("ScientificName");
+                MSUP.Text = r.ReadString("Supplier");
                 Ptype = r.ReadByte("Type");
                 MExist.Text = r.ReadDecimal("Total").ToString();
                 MPrice.Text = r.ReadDecimal("SPrice").ToString();
@@ -515,8 +527,7 @@ namespace ProPharmacyManagerW.View.Pages
                 SearchBox.Foreground = Brushes.Green;
                 if (Convert.ToDecimal(MExist.Text) < 1)
                 {
-                    MExist.Background = Brushes.Red;
-                    MExist.Foreground = Brushes.White;
+                    MExist.Foreground = Brushes.Red;
                     Console.WriteLine("You have no - " + MName.Text + " - I believe that you should get new ones");
                 }
                 if (Convert.ToDateTime(MEX.Text) <= DateTime.Now.Date)
@@ -530,5 +541,19 @@ namespace ProPharmacyManagerW.View.Pages
             }
         }
 
+        private void MEX_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(MEX.Text))
+            {
+                if (Convert.ToDateTime(MEX.Text) <= DateTime.Now.Date)
+                {
+                    MEX.Background = Brushes.Red;
+                    MEX.Foreground = Brushes.OrangeRed;
+                }
+                return;
+            }
+            MEX.Background = Brushes.White;
+            MEX.Foreground = Brushes.Blue;
+        }
     }
 }
