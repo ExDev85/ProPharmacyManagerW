@@ -295,7 +295,6 @@ namespace ProPharmacyManagerW.View.Pages
                         SearchBox.Foreground = Brushes.Red;
                         Console.WriteLine("Searched for - " + SearchBox.Text + " - with no luck");
                     }
-                    r.Close();
                     ItemsList.Items.Clear();
                     while (r.Read())
                     {
