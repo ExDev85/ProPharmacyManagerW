@@ -408,7 +408,7 @@ namespace ProPharmacyManagerW.View.Pages
             }
             catch (Exception ex)
             {
-                Kernel.Core.SaveException(ex);
+                Core.SaveException(ex);
             }
         }
 
@@ -436,7 +436,7 @@ namespace ProPharmacyManagerW.View.Pages
             }
             catch (Exception ex)
             {
-                Kernel.Core.SaveException(ex);
+                Core.SaveException(ex);
             }
         }
 
@@ -470,7 +470,7 @@ namespace ProPharmacyManagerW.View.Pages
                     }
                     catch (Exception ex)
                     {
-                        Kernel.Core.SaveException(ex);
+                        Core.SaveException(ex);
                     }
                 }
                 else if (MName.Text != "" && Client.Text != "" && NewBill.IsChecked == false)

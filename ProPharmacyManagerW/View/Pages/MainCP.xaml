@@ -56,8 +56,8 @@
                     <ColumnDefinition Width="237*"/>
                 </Grid.ColumnDefinitions>
                 <Controls:WaterMarkTextBox x:Name="MName" Height="30" Margin="6,4,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="5" MaxLines="1" MaxLength="50" WaterMark="أسم الدواء" FontSize="14" ToolTip="أسم الدواء"/>
-                <Controls:WaterMarkTextBox x:Name="MSS" Height="30" Margin="6,39,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="6" MaxLines="1" MaxLength="50" WaterMark="الماده الفعاله" ToolTip="الماده الفعاله" FontSize="14"/>
-                <Controls:WaterMarkComboBox x:Name="MSUP" WaterMark="الموزع" Height="30" Margin="6,74,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="7" FontSize="14" ToolTip="الشركة/المخزن موزعه الدواء" IsReadOnly="True"/>
+                <Controls:WaterMarkTextBox x:Name="MSS" Height="30" Margin="6,39,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="6" MaxLines="1" MaxLength="50" WaterMark="الماده الفعاله" ToolTip="الماده الفعاله او الاسم العلمى" FontSize="14"/>
+                <Controls:WaterMarkComboBox x:Name="MSUP" WaterMark="المورد" Height="30" Margin="6,74,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="7" FontSize="14" ToolTip="الشركة/المخزن موزعه الدواء" IsReadOnly="True"/>
                 <DatePicker x:Name="MEX" Height="30" Margin="6,109,6,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="8" FirstDayOfWeek="Saturday" DisplayDateStart="2016-01-01" Text="تاريخ انتهاء الصلاحية" FontSize="14" ToolTip="تاريخ انتهاء الصلاحية"/>
                 <Controls:WaterMarkTextBox x:Name="MPrice" Height="30" Margin="6,144,9,0" VerticalAlignment="Top" Foreground="Blue" TabIndex="9" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" FontSize="14" WaterMark="السعر" ToolTip="سعر الدواء للمستهلك"/>
                 <Controls:WaterMarkTextBox x:Name="MExist" Height="30" Margin="6,182,0,0" VerticalAlignment="Top" Foreground="Blue" HorizontalAlignment="Left" Width="120" TabIndex="10" MaxLines="1" MaxLength="15" PreviewTextInput="NumbersOnly" WaterMark="الكمية الموجودة" ToolTip="الكمية المتوفرة فى الصيدليه" FontSize="14"/>
