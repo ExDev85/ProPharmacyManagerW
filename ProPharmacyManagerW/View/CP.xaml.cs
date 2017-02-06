@@ -303,10 +303,12 @@ namespace ProPharmacyManagerW.View
                 ADName.Text = "";
                 ADBarCode.Text = "";
                 ADSS.Text = "";
+                ADSUP.SelectedIndex = -1;
                 ADEXP.Text = "";
                 ADType.SelectedIndex = -1;
                 ADTotal.Text = "";
-                ADPrice.Text = "";
+                ADBPrice.Text = "";
+                ADSPrice.Text = "";
                 ADNote.Text = "";
                 AddNewDrugBoard.Visibility = Visibility.Collapsed;
             }
@@ -414,7 +416,7 @@ namespace ProPharmacyManagerW.View
         private void AddDrug_Click(object sender, RoutedEventArgs e)
         {
             #region textboxs States
-            if (ADName.Text == "")
+            if (string.IsNullOrEmpty(ADName.Text))
             {
                 ADName.Background = Brushes.Red;
                 return;
@@ -424,7 +426,7 @@ namespace ProPharmacyManagerW.View
                 ADEXP.Foreground = Brushes.Red;
                 return;
             }
-            else if (ADEXP.Text == "")
+            else if (string.IsNullOrEmpty(ADEXP.Text))
             {
                 MessageBox.Show("ادخل تاريخ انتهاء الصلاحية");
                 return;
@@ -434,17 +436,17 @@ namespace ProPharmacyManagerW.View
                 ADEXP.Background = Brushes.Red;
                 return;
             }
-            if (ADPrice.Text == "")
+            if (string.IsNullOrEmpty(ADSPrice.Text))
             {
-                ADPrice.Background = Brushes.Red;
+                ADSPrice.Background = Brushes.Red;
                 return;
             }
-            else if (Convert.ToDecimal(ADPrice.Text) <= 0)
+            else if (Convert.ToDecimal(ADSPrice.Text) <= 0)
             {
-                ADPrice.Foreground = Brushes.Red;
+                ADSPrice.Foreground = Brushes.Red;
                 return;
             }
-            if (ADTotal.Text == "")
+            if (string.IsNullOrEmpty(ADTotal.Text))
             {
                 ADTotal.Background = Brushes.Red;
                 return;
@@ -488,11 +490,12 @@ namespace ProPharmacyManagerW.View
                     .Insert("ExpirationDate", ADEXP.Text)
                     .Insert("Type", PType)
                     .Insert("Total", Convert.ToDecimal(ADTotal.Text))
-                    .Insert("SPrice", Convert.ToDecimal(ADPrice.Text))
+                    .Insert("BPrice", Convert.ToDecimal(ADBPrice.Text))
+                    .Insert("SPrice", Convert.ToDecimal(ADSPrice.Text))
                     .Insert("Notes", ADNote.Text).Execute();
                 //#2ECC71, #2aba66
                 LGBB(46, 204, 113, 42, 186, 102);
-                Console.WriteLine(AccountsTable.UserName + " add " + ADTotal.Text + " " + ADName.Text + " which each cost " + ADPrice.Text);
+                Console.WriteLine(AccountsTable.UserName + " add " + ADTotal.Text + " " + ADName.Text + " which each cost " + ADSPrice.Text);
             }
             catch (Exception ex)
             {

@@ -15,6 +15,7 @@
 	in the database password field.
 12. Register new account window will show up at startup if you setup
 	the program without creating a new account.
+13. Add Suppliers
 
 ##0.9.9.6:
 1.  You don't have to run the program as administrator anymore.
