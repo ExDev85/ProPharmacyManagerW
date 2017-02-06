@@ -19,8 +19,8 @@
             <RowDefinition Height="527*"/>
             <RowDefinition Height="72*"/>
         </Grid.RowDefinitions>
-        <Controls:CustomDataGrid x:Name="dataGrid" SelectionMode="Single" Foreground="Blue" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="3" EnableColumnVirtualization="True"/>
+        <Controls:CustomDataGrid x:Name="dataGrid" SelectionMode="Single" Foreground="Blue" FontSize="14" TabIndex="0" FontWeight="Bold" Grid.ColumnSpan="3" EnableColumnVirtualization="True"/>
         <ProgressBar x:Name="Pb" Height="5" VerticalAlignment="Top" IsTabStop="False" IsIndeterminate="True" Grid.ColumnSpan="3" Visibility="Hidden"/>
-        <Controls:IconButton x:Name="BackMainB" Content="  عــودة" Margin="66,10,0,0" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" IsCancel="True" Width="140" Grid.Column="0" Grid.Row="1" Click="BackMainB_Click" FontSize="20" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Home.png" IsTabStop="False" FlowDirection="LeftToRight" Foreground="White" Background="#FF309B25" ColorHover="#FF096300" ColorPressed="#FF053400" ColorDisabled="#FF053400"/>
+        <Controls:IconButton x:Name="BackMainB" Content="  عــودة" Margin="66,10,0,0" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" IsCancel="True" TabIndex="1" Width="140" Grid.Column="0" Grid.Row="1" Click="BackMainB_Click" FontSize="20" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/Home.png" IsTabStop="False" FlowDirection="LeftToRight" Foreground="White" Background="#FF309B25" ColorHover="#FF096300" ColorPressed="#FF053400" ColorDisabled="#FF053400"/>
     </Grid>
 </Page>

@@ -26,17 +26,15 @@
             <ColumnDefinition Width="229*"/>
         </Grid.ColumnDefinitions>
         <ListBox x:Name="UNList" Margin="10,10,10,8" TabIndex="0" Grid.RowSpan="6"/>
-        <Controls:IconButton x:Name="DelB" Content="حذف" FlowDirection="LeftToRight" HorizontalAlignment="Left" Height="40" Margin="10,5,0,0" Grid.Row="7" VerticalAlignment="Top" Width="141" FontSize="30" FontWeight="Bold" Foreground="White" Click="DelB_Click" TabIndex="5" Image="/ProPharmacyManagerW;component/Images/UserDelete.png" Background="Red" ColorHover="#FFB00000" ColorPressed="#FF740000" ColorDisabled="#FF740000"/>
-        <Controls:IconButton x:Name="EdtB" Content="  تـغيــيــر" FlowDirection="LeftToRight" Grid.Column="1" Height="40" Margin="78,5,10,0" Grid.Row="7" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold" Click="EdtB_Click" TabIndex="4" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/UserSettings.png" Background="#FF0D6318" ColorHover="#FF004D0A" ColorPressed="#FF003C08" ColorDisabled="#FF003C08"/>
-        <TextBox x:Name="OUP" Grid.Column="1" Height="35" Margin="10,5,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" TabIndex="1"/>
-        <PasswordBox x:Name="NUP1" Grid.Column="1" Height="35" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Row="3" TabIndex="2"/>
-        <PasswordBox x:Name="NUP2" Grid.Column="1" Height="35" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Row="5" TabIndex="3"/>
+        <CheckBox x:Name="AdminPCB" Content="إستخدم صلاحيات المدير" TabIndex="1" Margin="0,9,0,10" Grid.Row="6" FontWeight="Bold" Foreground="#FFD6C410" FontSize="14" />
+        <Controls:IconButton x:Name="DelB" Content="حذف" FlowDirection="LeftToRight" HorizontalAlignment="Left" Height="40" Margin="10,5,0,0" Grid.Row="7" VerticalAlignment="Top" Width="141" FontSize="30" FontWeight="Bold" Foreground="White" Click="DelB_Click" TabIndex="2" Image="/ProPharmacyManagerW;component/Images/UserDelete.png" Background="Red" ColorHover="#FFB00000" ColorPressed="#FF740000" ColorDisabled="#FF740000"/>
+        <TextBox x:Name="OUP" Grid.Column="1" Height="35" Margin="10,5,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" TabIndex="3"/>
+        <PasswordBox x:Name="NUP1" Grid.Column="1" Height="35" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Row="3" TabIndex="4"/>
+        <PasswordBox x:Name="NUP2" Grid.Column="1" Height="35" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Row="5" TabIndex="5"/>
         <Label x:Name="label" Content="كلمه المرور القديمه:" Grid.Column="1" Margin="0,0,10,1" FontSize="14" FontWeight="Bold" Foreground="White"/>
         <Label x:Name="label_Copy" Content="كلمه المرور الجديدة:" Grid.Column="1" Margin="10,0,0,6" FontSize="14" FontWeight="Bold" Foreground="White" Grid.Row="2"/>
         <Label x:Name="label_Copy1" Content="اعادة كلمه المرور الجديدة:" Grid.Column="1" Margin="10,0,0,3" FontSize="14" FontWeight="Bold" Foreground="White" Grid.Row="4"/>
         <Label x:Name="label1" Content="Label" Grid.Column="1" Margin="10,0,10,10" Grid.Row="6" FontSize="15" FontWeight="Bold" Visibility="Hidden"/>
-        <CheckBox x:Name="AdminPCB" Content="إستخدم صلاحيات المدير" Margin="0,9,0,10" Grid.Row="6" FontWeight="Bold" Foreground="#FFD6C410" FontSize="14" />
-
-        
+        <Controls:IconButton x:Name="EdtB" Content="  تـغيــيــر" FlowDirection="LeftToRight" Grid.Column="1" Height="40" Margin="78,5,10,0" Grid.Row="7" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold" Click="EdtB_Click" TabIndex="6" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/UserSettings.png" Background="#FF0D6318" ColorHover="#FF004D0A" ColorPressed="#FF003C08" ColorDisabled="#FF003C08"/>
     </Grid>
 </Page>

@@ -23,10 +23,10 @@
             <RowDefinition Height="290*"/>
             <RowDefinition Height="59*"/>
         </Grid.RowDefinitions>
-        <CheckBox x:Name="PPHMCB" Content="PPHM" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="10,10,10,0" VerticalAlignment="Top" IsChecked="{Binding IsByNameChecked, Source={StaticResource Checked}}"/>
-        <CheckBox x:Name="PPHMWCB" Content="PPHM W" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="11,10,10,0" VerticalAlignment="Top" Grid.Column="1" IsChecked="{Binding IsByBarCodeChecked, Source={StaticResource Checked}}"/>
-        <CheckBox x:Name="PPHMWXCB" Content="PPHM WL" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Column="2" IsChecked="{Binding IsByScientificNameChecked, Source={StaticResource Checked}}"/>
-        <ListView x:Name="PPHMLV" Margin="6,0,4,0" Grid.Row="1" SelectionMode="Single" FlowDirection="LeftToRight" SelectedIndex="15" IsEnabled="{Binding IsChecked, ElementName=PPHMCB}">
+        <CheckBox x:Name="PPHMCB" Content="PPHM" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="10,10,10,0" VerticalAlignment="Top" IsChecked="{Binding IsByNameChecked, Source={StaticResource Checked}}" TabIndex="0"/>
+        <CheckBox x:Name="PPHMWCB" Content="PPHM W" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="11,10,10,0" VerticalAlignment="Top" Grid.Column="1" IsChecked="{Binding IsByBarCodeChecked, Source={StaticResource Checked}}" TabIndex="1"/>
+        <CheckBox x:Name="PPHMWXCB" Content="PPHM WL" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Column="2" IsChecked="{Binding IsByScientificNameChecked, Source={StaticResource Checked}}" TabIndex="2"/>
+        <ListView x:Name="PPHMLV" Margin="6,0,4,0" Grid.Row="1" SelectionMode="Single" FlowDirection="LeftToRight" SelectedIndex="15" IsEnabled="{Binding IsChecked, ElementName=PPHMCB}" TabIndex="3">
             <ListView.Resources>
                 <Style TargetType="GridViewColumnHeader">
                     <Setter Property="Visibility" Value="Collapsed" />
@@ -48,7 +48,7 @@
             <ListBoxItem Content="5.1"/>
             <ListBoxItem Content="5.1.1"/>
         </ListView>
-        <ListView x:Name="PPHMWLV" Margin="6,0,5,0" Grid.Row="1" SelectionMode="Single" Grid.Column="1" FlowDirection="LeftToRight" SelectedIndex="2" IsEnabled="{Binding IsChecked, ElementName=PPHMWCB}">
+        <ListView x:Name="PPHMWLV" Margin="6,0,5,0" Grid.Row="1" SelectionMode="Single" Grid.Column="1" FlowDirection="LeftToRight" SelectedIndex="2" IsEnabled="{Binding IsChecked, ElementName=PPHMWCB}" TabIndex="4">
             <ListView.Resources>
                 <Style TargetType="{x:Type GridViewColumnHeader}">
                     <Setter Property="Visibility" Value="Collapsed" />
@@ -58,7 +58,7 @@
             <ListBoxItem Content="0.9.9.5"/>
             <ListBoxItem Content="0.9.9.6"/>
         </ListView>
-        <ListView x:Name="PPHMWXLV" Margin="0,0,10,0" Grid.Row="1" SelectionMode="Single" FlowDirection="LeftToRight" Grid.Column="2" SelectedIndex="0" IsEnabled="{Binding IsChecked, ElementName=PPHMWXCB}">
+        <ListView x:Name="PPHMWXLV" Margin="0,0,10,0" Grid.Row="1" SelectionMode="Single" FlowDirection="LeftToRight" Grid.Column="2" SelectedIndex="0" IsEnabled="{Binding IsChecked, ElementName=PPHMWXCB}" TabIndex="5">
             <ListView.Resources>
                 <Style TargetType="{x:Type GridViewColumnHeader}">
                     <Setter Property="Visibility" Value="Collapsed" />
@@ -67,8 +67,8 @@
             <ListBoxItem Content="قريبا"/>
         </ListView>
         <Controls:IconButton x:Name="UpgradeB" Content="ترقيه" Height="38" FlowDirection="LeftToRight"  Margin="10,0,18,10" Grid.Row="2" VerticalAlignment="Bottom" Grid.Column="2" TabIndex="6" Foreground="White" Background="#FF0081B5" FontSize="20" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/DbUpgrade.png" Click="UpgradeB_Click" ColorHover="#FF02597C" ColorPressed="#FF012F42" ColorDisabled="#FF012F42"/>
-        <Controls:IconButton x:Name="WConB" Content="تكوين" Grid.Column="1" HorizontalAlignment="Right" Height="38" Margin="0,11,12,0" Grid.Row="2" VerticalAlignment="Top" FlowDirection="LeftToRight" Width="112" Image="/ProPharmacyManagerW;component/Images/Write.png" TabIndex="8" Foreground="White" Background="#FF008B8E" ColorHover="#FF005759" Click="WConB_Click" FontSize="20" FontWeight="Bold" ColorPressed="#FF003B3C" ColorDisabled="#FF003B3C"/>
-        <Controls:IconButton x:Name="ExitB" Content="خروج" Height="38" Margin="6,0,12,10" Grid.Row="2" VerticalAlignment="Bottom" TabIndex="7" FlowDirection="LeftToRight" Foreground="White" Background="#FFEA002A" FontSize="20" FontWeight="Bold" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Exit.png" Click="ExitB_Click" ColorHover="#FFA8011F" ColorPressed="#FF6A0013" ColorDisabled="#FF6A0013"/>
+        <Controls:IconButton x:Name="WConB" Content="تكوين" Grid.Column="1" HorizontalAlignment="Right" Height="38" Margin="0,11,12,0" Grid.Row="2" TabIndex="7" VerticalAlignment="Top" FlowDirection="LeftToRight" Width="112" Image="/ProPharmacyManagerW;component/Images/Write.png" Foreground="White" Background="#FF008B8E" ColorHover="#FF005759" Click="WConB_Click" FontSize="20" FontWeight="Bold" ColorPressed="#FF003B3C" ColorDisabled="#FF003B3C"/>
+        <Controls:IconButton x:Name="ExitB" Content="خروج" Height="38" Margin="6,0,12,10" Grid.Row="2" VerticalAlignment="Bottom" TabIndex="8" FlowDirection="LeftToRight" Foreground="White" Background="#FFEA002A" FontSize="20" FontWeight="Bold" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Exit.png" Click="ExitB_Click" ColorHover="#FFA8011F" ColorPressed="#FF6A0013" ColorDisabled="#FF6A0013"/>
         <ProgressBar x:Name="pB" Grid.ColumnSpan="3" Height="5"  VerticalAlignment="top" Visibility="Visible" IsIndeterminate="True"/>
     </Grid>
 </Page>

@@ -1,16 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProPharmacyManagerW", "ProPharmacyManagerW\ProPharmacyManagerW.csproj", "{34FE08B5-5B34-480D-B713-871A7A66D2F7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C53AC7AE-BEBE-4DBF-9E82-4771EA1E3FD7}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGE.md = CHANGE.md
-		COPYING = COPYING
+		COPYING.md = COPYING.md
 		README.md = README.md
-		TODO.txt = TODO.txt
+		TODO.md = TODO.md
 		تعليمات.txt = تعليمات.txt
 		تغييرات.md = تغييرات.md
 	EndProjectSection
