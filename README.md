@@ -21,4 +21,4 @@ please see http://dev.mysql.com/downloads/
 		2- Netframework 4.0 full or client.
 		3- The database will be created automatically when the user run the program for
         		the first time and it will ask you to add a new user as admin.
-		4- You need Visual Studio 2015 or higher to edit/build the source code
+		4- You need Visual Studio 2015 or higher to build the source code
