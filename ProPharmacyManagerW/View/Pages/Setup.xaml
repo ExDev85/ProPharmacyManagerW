@@ -38,8 +38,8 @@
         <Label x:Name="label" Content="مرحبا بك فى اول خطوة لإعداد مدير الصيدليه الاحترافى" Margin="10,10,10,7" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold" Foreground="White"/>
         <Label x:Name="label1" Content="المضيف" Margin="10,0" Grid.Row="2" Grid.ColumnSpan="2" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
         <Label x:Name="label2" Content="اسم قاعده البيانات" Margin="10,0" Grid.Row="5" Grid.ColumnSpan="3" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="label3" Content="اسم المستخدم" Margin="10,0" Grid.Row="8" Grid.ColumnSpan="3" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="label4" Content="كلمه مرور المستخدم" Margin="10,0" Grid.Row="11" Grid.ColumnSpan="3" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="label3" Content="اسم مستخدم السيرفر" Margin="10,0" Grid.Row="8" Grid.ColumnSpan="3" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="label4" Content="كلمه مرور السيرفر" Margin="10,0" Grid.Row="11" Grid.ColumnSpan="3" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
         <Controls:WaterMarkTextBox x:Name="DBHost" Text="" Foreground="#FF0AE83D" WaterMark="localhost" WaterMarkColor="#FF3399FF" Margin="10,5,10,0" Grid.Row="3" Grid.ColumnSpan="3" FlowDirection="LeftToRight" MaxLines="1" TabIndex="1" FontSize="16" FontWeight="Bold"/>
         <Controls:WaterMarkTextBox x:Name="DBName" Text="" Foreground="#FF0AE83D" WaterMark="phdb" WaterMarkColor="#FF3399FF" Margin="10,5,10,0" Grid.Row="6" Grid.ColumnSpan="3" FlowDirection="LeftToRight" MaxLines="1" TabIndex="2" FontSize="16" FontWeight="Bold"/>
         <Controls:WaterMarkTextBox x:Name="DBUser" Text="" Foreground="#FF0AE83D" WaterMark="root" WaterMarkColor="#FF3399FF" Margin="10,5,10,0" Grid.Row="9" Grid.ColumnSpan="3" FlowDirection="LeftToRight" MaxLines="1" TabIndex="3" FontSize="16" FontWeight="Bold"/>
