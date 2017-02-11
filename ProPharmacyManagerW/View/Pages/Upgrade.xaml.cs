@@ -26,7 +26,7 @@ namespace ProPharmacyManagerW.View.Pages
         }
 
         /// <summary>
-        /// Make sure that upgrading process is finished
+        /// Makes sure that upgrading process is finished
         /// </summary>
         public static bool IsUpgradeComp = false;
 
@@ -39,16 +39,21 @@ namespace ProPharmacyManagerW.View.Pages
         {
             //TODO add upgrade codes for older versions
             pB.Visibility = Visibility.Visible;
+            IniFile file = new IniFile(Paths.SetupConfigPath);
+            Config co = new Config();
+            co.Read();
+            DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.DbName, co.Hostname);
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
+                #region PPHM Normal(windows form) Verison Upgrade Codes
                 if (PPHMCB.IsChecked == true)
                 {
-                    if (PPHMLV.SelectedIndex >= -1 && PPHMLV.SelectedIndex <= 13)
+                    if (PPHMV.SelectedIndex >= -1 && PPHMV.SelectedIndex <= 13)
                     {
                         MessageBox.Show("لا يمكن الترقية من هذا الاصدار بعد");
-                        Console.WriteLine("Codes needed");
+                        Console.WriteLine("Codes needed report to developer.");
                     }
-                    else if (PPHMLV.SelectedIndex == 14)
+                    else if (PPHMV.SelectedIndex == 14)
                     {
                         const string accountst =
                             "ALTER TABLE `accounts` CHANGE `Username` `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL FIRST, CHANGE `Password` `Password` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, CHANGE `State` `State` tinyint(5) UNSIGNED NOT NULL DEFAULT 0 AFTER `Password`, CHANGE `Phone` `Phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `State`, DROP `LastCheck`;";
@@ -87,14 +92,16 @@ namespace ProPharmacyManagerW.View.Pages
                         IsUpgradeComp = true;
                     }
                 }
+                #endregion
+                #region PPHM W(WPF) Verison Upgrade Codes
                 else if (PPHMWCB.IsChecked == true)
                 {
-                    if (PPHMWLV.SelectedIndex == -1)
+                    if (PPHMWV.SelectedIndex == -1)
                     {
                         MessageBox.Show("اختر اصدار للترقية منه اولا");
                         return;
                     }
-                    else if (PPHMWLV.SelectedIndex == 0)
+                    else if (PPHMWV.SelectedIndex == 0)
                     {
                         //0.9.9.1
                         const string logs =
@@ -128,7 +135,7 @@ namespace ProPharmacyManagerW.View.Pages
                             Environment.Exit(0);
                         }
                     }
-                    else if (PPHMWLV.SelectedIndex == 1)
+                    else if (PPHMWV.SelectedIndex == 1)
                     {
                         //0.9.9.5
                         const string logs =
@@ -160,7 +167,7 @@ namespace ProPharmacyManagerW.View.Pages
                             Environment.Exit(0);
                         }
                     }
-                    else if (PPHMWLV.SelectedIndex == 2)
+                    else if (PPHMWV.SelectedIndex == 2)
                     {
                         //0.9.9.6
                         const string logs =
@@ -194,23 +201,24 @@ namespace ProPharmacyManagerW.View.Pages
                     }
                     IsUpgradeComp = true;
                 }
-                else if (PPHMWXCB.IsChecked == true)
+                #endregion
+                #region PPHM WL(sqlite db) Verison Upgrade Codes
+                else if (PPHMWLCB.IsChecked == true)
                 {
-                    if (PPHMLV.SelectedIndex >= -1 || PPHMLV.SelectedIndex <= 1)
+                    if (PPHMWLV.SelectedIndex == 0)
                     {
                         MessageBox.Show("لا يمكن الترقية من هذا الاصدار بعد");
+                        return;
                     }
                 }
-                IniFile file = new IniFile(Paths.SetupConfigPath);
-                file.Write("Upgrade", "Version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", ""));
+                #endregion
+                co.Write(false, true, false, false);
                 pB.Visibility = Visibility.Collapsed;
             });
         }
 
         private void WConB_Click(object sender, RoutedEventArgs e)
         {
-            Config co = new Config();
-            co.Write();
             Console.WriteLine("Config file has been written");
             Console.WriteLine("I see a little uninstaller in you");
             MessageBox.Show("تمت كتابه ملف الاعدادت بنجاح");
@@ -227,7 +235,7 @@ namespace ProPharmacyManagerW.View.Pages
         }
 
         /// <summary>
-        /// convert C# datetime type and data to mysql for V0.9.9.7
+        /// Convert C# datetime type and data to mysql for V0.9.9.7
         /// </summary>
         void CDfcts()
         {

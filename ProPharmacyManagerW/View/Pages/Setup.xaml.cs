@@ -101,9 +101,10 @@ namespace ProPharmacyManagerW.View.Pages
                 Hostname = DBHost.Text,
                 DbName = DBName.Text,
                 DbUserName = DBUser.Text,
-                DbUserPassword = DBPass.Text
+                DbUserPassword = DBPass.Text,
             };
-            DataHolder.CreateConnection(Core.INIDecrypt(file.ReadString("MySql", "Username")), Core.INIDecrypt(file.ReadString("MySql", "Password")), Core.INIDecrypt(file.ReadString("MySql", "Database")), Core.INIDecrypt(file.ReadString("MySql", "Host")));
+            co.Write(true, true, true);
+            Console.WriteLine("Config file has been prepared");
             Core.IsUpgrading = true;
             IsUpgrading = true;
         }

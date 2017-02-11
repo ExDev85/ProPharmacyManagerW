@@ -4,6 +4,8 @@
 //      To view a copy of this license, visit
 //      http://creativecommons.org/licenses/by-nc-sa/4.0/.
 // </copyright>
+using System;
+
 namespace ProPharmacyManagerW.Kernel
 {
     public class Config
@@ -101,6 +103,25 @@ namespace ProPharmacyManagerW.Kernel
 
         IniFile file = new IniFile(Paths.SetupConfigPath);
 
+        public Config()
+        {
+            if (string.IsNullOrEmpty(Version))
+            {
+                Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", "");
+            }
+            if (string.IsNullOrEmpty(AccountsLog))
+            {
+                AccountsLog = "1";
+            }
+            if (string.IsNullOrEmpty(DrugsLog))
+            {
+                DrugsLog = "1";
+            }
+        }
+
+        /// <summary>
+        /// Read database info
+        /// </summary>
         public void Read()
         {
             Hostname = Core.INIDecrypt(file.ReadString("MySql", "Host"));
@@ -109,28 +130,27 @@ namespace ProPharmacyManagerW.Kernel
             DbUserPassword = Core.INIDecrypt(file.ReadString("MySql", "Password"));
         }
 
+        /// <summary>
+        /// Read database info
+        /// </summary>
+        /// <param name="version">Read version info</param>
         public void Read(bool version)
         {
-            Hostname = Core.INIDecrypt(file.ReadString("MySql", "Host"));
-            DbName = Core.INIDecrypt(file.ReadString("MySql", "Database"));
-            DbUserName = Core.INIDecrypt(file.ReadString("MySql", "Username"));
-            DbUserPassword = Core.INIDecrypt(file.ReadString("MySql", "Password"));
+            Read();
             if (version)
             {
                 Version = Core.INIDecrypt(file.ReadString("Upgrade", "Version"));
             }
         }
 
+        /// <summary>
+        /// Read database info
+        /// </summary>
+        /// <param name="version">Read version info</param>
+        /// <param name="settings">Read accounts drugs logs</param>
         public void Read(bool version, bool settings)
         {
-            Hostname = Core.INIDecrypt(file.ReadString("MySql", "Host"));
-            DbName = Core.INIDecrypt(file.ReadString("MySql", "Database"));
-            DbUserName = Core.INIDecrypt(file.ReadString("MySql", "Username"));
-            DbUserPassword = Core.INIDecrypt(file.ReadString("MySql", "Password"));
-            if (version)
-            {
-                Version = Core.INIDecrypt(file.ReadString("Upgrade", "Version"));
-            }
+            Read(version);
             if (settings)
             {
                 AccountsLog = Core.INIDecrypt(file.ReadString("Settings", "AccountsLog"));
@@ -138,16 +158,15 @@ namespace ProPharmacyManagerW.Kernel
             }
         }
 
+        /// <summary>
+        /// Read database info
+        /// </summary>
+        /// <param name="version">Read version info</param>
+        /// <param name="accountsLog">Read accounts log</param>
+        /// <param name="drugsLog">Read drugs log</param>
         public void Read(bool version, bool accountsLog, bool drugsLog)
         {
-            Hostname = Core.INIDecrypt(file.ReadString("MySql", "Host"));
-            DbName = Core.INIDecrypt(file.ReadString("MySql", "Database"));
-            DbUserName = Core.INIDecrypt(file.ReadString("MySql", "Username"));
-            DbUserPassword = Core.INIDecrypt(file.ReadString("MySql", "Password"));
-            if (version)
-            {
-                Version = Core.INIDecrypt(file.ReadString("Upgrade", "Version"));
-            }
+            Read(version);
             if (accountsLog)
             {
                 AccountsLog = Core.INIDecrypt(file.ReadString("Settings", "AccountsLog"));
@@ -158,14 +177,18 @@ namespace ProPharmacyManagerW.Kernel
             }
         }
 
+        /// <summary>
+        /// Choose to read database,version,accounts Log and drugs Log info
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="version">Read version info</param>
+        /// <param name="accountsLog">Read accounts log</param>
+        /// <param name="drugsLog">Read drugs log</param>
         public void Read(bool config, bool version, bool accountsLog, bool drugsLog)
         {
             if (config)
             {
-                Hostname = Core.INIDecrypt(file.ReadString("MySql", "Host"));
-                DbName = Core.INIDecrypt(file.ReadString("MySql", "Database"));
-                DbUserName = Core.INIDecrypt(file.ReadString("MySql", "Username"));
-                DbUserPassword = Core.INIDecrypt(file.ReadString("MySql", "Password"));
+                Read();
             }
             if (version)
             {
@@ -181,20 +204,32 @@ namespace ProPharmacyManagerW.Kernel
             }
         }
 
+        /// <summary>
+        /// Write database info
+        /// </summary>
+        /// </summary>
         public void Write()
         {
-            file.Write("MySql", "Host", Hostname);
-            file.Write("MySql", "Database", DbName);
-            file.Write("MySql", "Username", DbUserName);
-            file.Write("MySql", "Password", DbUserPassword);
+            try
+            {
+                file.Write("MySql", "Host", Hostname);
+                file.Write("MySql", "Database", DbName);
+                file.Write("MySql", "Username", DbUserName);
+                file.Write("MySql", "Password", DbUserPassword);
+            }
+            catch (Exception e)
+            {
+                Core.SaveException(e);
+            }
         }
 
+        /// <summary>
+        /// Write database info
+        /// </summary>
+        /// <param name="version">Write version info</param>
         public void Write(bool version)
         {
-            file.Write("MySql", "Host", Hostname);
-            file.Write("MySql", "Database", DbName);
-            file.Write("MySql", "Username", DbUserName);
-            file.Write("MySql", "Password", DbUserPassword);
+            Write();
             if (version)
             {
                 file.Write("Upgrade", "Version",
@@ -202,16 +237,14 @@ namespace ProPharmacyManagerW.Kernel
             }
         }
 
+        /// <summary>
+        /// Write database info
+        /// </summary>
+        /// <param name="version">Write version info</param>
+        /// <param name="settings">Write accounts drugs logs</param>
         public void Write(bool version, bool settings)
         {
-            file.Write("MySql", "Host", Hostname);
-            file.Write("MySql", "Database", DbName);
-            file.Write("MySql", "Username", DbUserName);
-            file.Write("MySql", "Password", DbUserPassword);
-            if (version)
-            {
-                file.Write("Upgrade", "Version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", ""));
-            }
+            Write(version);
             if (settings)
             {
                 file.Write("Settings", "AccountsLog", AccountsLog);
@@ -219,16 +252,15 @@ namespace ProPharmacyManagerW.Kernel
             }
         }
 
+        /// <summary>
+        /// Write database info
+        /// </summary>
+        /// <param name="version">Write version info</param>
+        /// <param name="accountsLog">Write accounts log</param>
+        /// <param name="drugsLog">Write drugs log</param>
         public void Write(bool version, bool accountsLog, bool drugsLog)
         {
-            file.Write("MySql", "Host", Hostname);
-            file.Write("MySql", "Database", DbName);
-            file.Write("MySql", "Username", DbUserName);
-            file.Write("MySql", "Password", DbUserPassword);
-            if (version)
-            {
-                file.Write("Upgrade", "Version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", ""));
-            }
+            Write(version);
             if (accountsLog)
             {
                 file.Write("Settings", "AccountsLog", AccountsLog);
@@ -239,14 +271,18 @@ namespace ProPharmacyManagerW.Kernel
             }
         }
 
+        /// <summary>
+        /// Choose to write database,version,accounts Log and drugs Log info
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="version">Write version info</param>
+        /// <param name="accountsLog">Write accounts log</param>
+        /// <param name="drugsLog">Write drugs log</param>
         public void Write(bool config, bool version, bool accountsLog, bool drugsLog)
         {
             if (config)
             {
-                file.Write("MySql", "Host", Hostname);
-                file.Write("MySql", "Database", DbName);
-                file.Write("MySql", "Username", DbUserName);
-                file.Write("MySql", "Password", DbUserPassword);
+                Write();
             }
             if (version)
             {
@@ -261,6 +297,5 @@ namespace ProPharmacyManagerW.Kernel
                 file.Write("Settings", "DrugsLog", DrugsLog);
             }
         }
-
     }
 }

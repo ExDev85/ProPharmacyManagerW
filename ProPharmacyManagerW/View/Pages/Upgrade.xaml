@@ -25,8 +25,8 @@
         </Grid.RowDefinitions>
         <CheckBox x:Name="PPHMCB" Content="PPHM" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="10,10,10,0" VerticalAlignment="Top" IsChecked="{Binding IsByNameChecked, Source={StaticResource Checked}}" TabIndex="0"/>
         <CheckBox x:Name="PPHMWCB" Content="PPHM W" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="11,10,10,0" VerticalAlignment="Top" Grid.Column="1" IsChecked="{Binding IsByBarCodeChecked, Source={StaticResource Checked}}" TabIndex="1"/>
-        <CheckBox x:Name="PPHMWXCB" Content="PPHM WL" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Column="2" IsChecked="{Binding IsByScientificNameChecked, Source={StaticResource Checked}}" TabIndex="2"/>
-        <ListView x:Name="PPHMLV" Margin="6,0,4,0" Grid.Row="1" SelectionMode="Single" FlowDirection="LeftToRight" SelectedIndex="15" IsEnabled="{Binding IsChecked, ElementName=PPHMCB}" TabIndex="3">
+        <CheckBox x:Name="PPHMWLCB" Content="PPHM WL" FontSize="14" FontWeight="Bold" Foreground="White" Height="31" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Column="2" IsChecked="{Binding IsByScientificNameChecked, Source={StaticResource Checked}}" TabIndex="2"/>
+        <ListView x:Name="PPHMV" Margin="6,0,4,0" Grid.Row="1" SelectionMode="Single" FlowDirection="LeftToRight" SelectedIndex="15" IsEnabled="{Binding IsChecked, ElementName=PPHMCB}" TabIndex="3">
             <ListView.Resources>
                 <Style TargetType="GridViewColumnHeader">
                     <Setter Property="Visibility" Value="Collapsed" />
@@ -48,7 +48,7 @@
             <ListBoxItem Content="5.1"/>
             <ListBoxItem Content="5.1.1"/>
         </ListView>
-        <ListView x:Name="PPHMWLV" Margin="6,0,5,0" Grid.Row="1" SelectionMode="Single" Grid.Column="1" FlowDirection="LeftToRight" SelectedIndex="2" IsEnabled="{Binding IsChecked, ElementName=PPHMWCB}" TabIndex="4">
+        <ListView x:Name="PPHMWV" Margin="6,0,5,0" Grid.Row="1" SelectionMode="Single" Grid.Column="1" FlowDirection="LeftToRight" SelectedIndex="2" IsEnabled="{Binding IsChecked, ElementName=PPHMWCB}" TabIndex="4">
             <ListView.Resources>
                 <Style TargetType="{x:Type GridViewColumnHeader}">
                     <Setter Property="Visibility" Value="Collapsed" />
@@ -58,7 +58,7 @@
             <ListBoxItem Content="0.9.9.5"/>
             <ListBoxItem Content="0.9.9.6"/>
         </ListView>
-        <ListView x:Name="PPHMWXLV" Margin="0,0,10,0" Grid.Row="1" SelectionMode="Single" FlowDirection="LeftToRight" Grid.Column="2" SelectedIndex="0" IsEnabled="{Binding IsChecked, ElementName=PPHMWXCB}" TabIndex="5">
+        <ListView x:Name="PPHMWLV" Margin="0,0,10,0" Grid.Row="1" SelectionMode="Single" FlowDirection="LeftToRight" Grid.Column="2" SelectedIndex="0" IsEnabled="{Binding IsChecked, ElementName=PPHMWXCB}" TabIndex="5">
             <ListView.Resources>
                 <Style TargetType="{x:Type GridViewColumnHeader}">
                     <Setter Property="Visibility" Value="Collapsed" />
