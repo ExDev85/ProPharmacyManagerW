@@ -20,7 +20,7 @@ namespace ProPharmacyManagerW.ViewModel
                 var d1 = DateTime.Now.Date;
                 var d2 = System.Convert.ToDateTime(value).Date;
                 var dt = (d1 - d2).TotalDays;
-                if (dt > -5)
+                if (dt > -60)
                 {
                     return Brushes.White;
                 }

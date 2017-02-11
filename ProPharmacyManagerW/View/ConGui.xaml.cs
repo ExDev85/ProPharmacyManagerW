@@ -80,6 +80,54 @@ namespace ProPharmacyManagerW.View
                     Console.NewEntry = false;
                 }
             }
+            if (Console.IsProgressing)
+            {
+                lock (Console.progress.ToString())
+                {
+                    var currentLine = new TextRange(richTextBox.CaretPosition.GetLineStartPosition(0), richTextBox.CaretPosition.GetLineStartPosition(1) ?? richTextBox.CaretPosition.DocumentEnd).Text;
+                    Regex reg1 = new Regex(@"\s\d+%");
+                    MatchCollection fou1 = reg1.Matches(currentLine);
+                    foreach (Match m in fou1)
+                    {
+                        if (m.Success)
+                        {
+                            currentLine = currentLine.Replace(m.Value, " " + Console.progress.ToString() + "%");
+                            if (currentLine != new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text)
+                            {
+                                new TextRange(richTextBox.CaretPosition.GetLineStartPosition(0), richTextBox.CaretPosition.GetLineStartPosition(1) ?? richTextBox.CaretPosition.DocumentEnd).Text = currentLine;
+                            }
+                        }
+                    }
+                    if (Console.progress % 10 == 0 && Console.progress != 0)
+                    {
+                        Regex reg2 = new Regex(@"[[^#]-");
+                        MatchCollection fou2 = reg2.Matches(currentLine);
+                        foreach (Match m in fou2)
+                        {
+                            if (m.Success)
+                            {
+                                if (m.Value == "[-")
+                                {
+
+                                    currentLine = currentLine.Replace(m.Value, "[#");
+                                    if (currentLine != new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text)
+                                    {
+                                        new TextRange(richTextBox.CaretPosition.GetLineStartPosition(0), richTextBox.CaretPosition.GetLineStartPosition(1) ?? richTextBox.CaretPosition.DocumentEnd).Text = currentLine;
+                                    }
+                                }
+                                else
+                                {
+                                    currentLine = currentLine.Replace(m.Value, "##");
+                                    if (currentLine != new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text)
+                                    {
+                                        new TextRange(richTextBox.CaretPosition.GetLineStartPosition(0), richTextBox.CaretPosition.GetLineStartPosition(1) ?? richTextBox.CaretPosition.DocumentEnd).Text = currentLine;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -97,7 +145,6 @@ namespace ProPharmacyManagerW.View
 
         private void richTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            TextRange tr = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
             var currentLine = new TextRange(richTextBox.CaretPosition.GetLineStartPosition(0), richTextBox.CaretPosition.GetLineStartPosition(1) ?? richTextBox.CaretPosition.DocumentEnd).Text;
             switch (e.Key)
             {

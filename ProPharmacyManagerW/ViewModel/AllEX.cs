@@ -24,23 +24,23 @@ namespace ProPharmacyManagerW.ViewModel
                 var dt = (d1 - d2).TotalDays;
                 if (dt > -5)
                 {
-                    return "#E91818";
+                    return "#BF263C";
                 }
                 else if (dt > -15 && dt < -6)
                 {
-                    return "#F24D16";
+                    return "#DA4453";
                 }
                 else if (dt > -30 && dt < -16)
                 {
-                    return "#EDD834";
+                    return "#F6BB42";
                 }
                 else if (dt > -50 && dt < -31)
                 {
-                    return "#4CD4B0";
+                    return "#E0C341";
                 }
                 else if (dt > -60 && dt < -51)
                 {
-                    return "#16A086";
+                    return "#8CC152";
                 }
                 else
                 {

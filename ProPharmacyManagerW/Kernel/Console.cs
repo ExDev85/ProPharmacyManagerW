@@ -29,6 +29,14 @@ namespace ProPharmacyManagerW
         /// </summary>
         public static bool NewEntry;
         /// <summary>
+        /// check if there is a running command that require progressbar
+        /// </summary>
+        public static bool IsProgressing;
+        /// <summary>
+        /// progressbar precent
+        /// </summary>
+        public static int progress = 0;
+        /// <summary>
         /// entry time
         /// </summary>
         /// <returns>now full time</returns>
@@ -198,10 +206,10 @@ namespace ProPharmacyManagerW
                                         {
                                             newPath = data[1];
                                         }
-                                        WriteLine("Importing ");
+                                        Write("Importing [----------] " + progress + "%");
+                                        IsProgressing = true;
                                         var lines = File.ReadAllLines(newPath).Count();
                                         var currentLine = 0;
-                                        var progress = 0;
                                         using (StreamReader sr = File.OpenText(newPath))
                                         {
                                             StringBuilder sb = new StringBuilder();
@@ -224,15 +232,10 @@ namespace ProPharmacyManagerW
                                                 finally
                                                 {
                                                     progress = (currentLine * 100) / lines;
-                                                    if (progress.ToString().Contains("0"))
-                                                    {
-                                                        WriteT(".." + progress.ToString() + "%");
-                                                    }
                                                     currentLine++;
                                                     sb.Clear();
                                                 }
                                             }
-                                            WriteT("..100%");
                                             sr.Dispose();
                                             sr.Close();
                                         }
@@ -244,6 +247,7 @@ namespace ProPharmacyManagerW
                                 {
                                     WriteLine("Are you 100% sure that is a MySQL file/n" + e);
                                 }
+                                IsProgressing = false;
                                 break;
                             }
                         #endregion

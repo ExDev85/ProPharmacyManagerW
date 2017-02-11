@@ -18,11 +18,11 @@ namespace ProPharmacyManagerW.ViewModel
             {
                 if (System.Convert.ToByte(value) == 0)
                 {
-                    return "#E91818";
+                    return "#DA4453";
                 }
                 else if (System.Convert.ToByte(value) > 0 && System.Convert.ToByte(value) <= 5)
                 {
-                    return "#F24D16";
+                    return "#E9573F";
                 }
                 else
                 {
