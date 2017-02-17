@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls" 
+      xmlns:controls="clr-namespace:ProPharmacyManagerW.Controls" 
       xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="599" d:DesignWidth="799"
@@ -19,8 +19,8 @@
             <RowDefinition Height="527*"/>
             <RowDefinition Height="72*"/>
         </Grid.RowDefinitions>
-        <Controls:CustomDataGrid x:Name="dataGrid" SelectionMode="Single" TabIndex="0" Foreground="Blue" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="3" EnableColumnVirtualization="True"/>
+        <controls:CustomDataGrid x:Name="DataGrid" SelectionMode="Single" TabIndex="0" Foreground="Blue" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="3" EnableColumnVirtualization="True"/>
         <ProgressBar x:Name="Pb" Height="5" VerticalAlignment="Top" IsTabStop="False" IsIndeterminate="True" Grid.ColumnSpan="3" Visibility="Hidden"/>
-        <Controls:IconButton x:Name="BackMainB" Content="  عـودة" Grid.Column="0" HorizontalAlignment="Left" Height="50" Width="139" Margin="66,10,0,0" Grid.Row="1" TabIndex="1" VerticalAlignment="Top" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Home.png" Background="#FF309B25" ColorHover="#FF096300" ColorPressed="#FF053400" ColorDisabled="#FF053400" Foreground="White" FontWeight="Bold" FlowDirection="LeftToRight" Click="BackMainB_Click" FontSize="30"/>
+        <controls:IconButton x:Name="BackMainB" Content="  عـودة" Grid.Column="0" HorizontalAlignment="Left" Height="50" Width="139" Margin="66,10,0,0" Grid.Row="1" TabIndex="1" VerticalAlignment="Top" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Home.png" Background="#FF309B25" ColorHover="#FF096300" ColorPressed="#FF053400" ColorDisabled="#FF053400" Foreground="White" FontWeight="Bold" FlowDirection="LeftToRight" Click="BackMainB_Click" FontSize="30"/>
     </Grid>
 </Page>

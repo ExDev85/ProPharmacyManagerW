@@ -36,10 +36,10 @@ namespace ProPharmacyManagerW.View.Pages
             if (File.Exists(Paths.SetupConfigPath))
             {
                 co.Read(true, true);
-                DBHost.Text = co.Hostname;
-                DBName.Text = co.DbName;
-                DBUser.Text = co.DbUserName;
-                DBPass.Password = co.DbUserPassword;
+                DbHost.Text = co.Hostname;
+                DbName.Text = co.DbName;
+                DbUser.Text = co.DbUserName;
+                DbPass.Password = co.DbUserPassword;
                 Vers.Content = co.Version;
                 if (co.AccountsLog == "0")
                 {
@@ -147,7 +147,7 @@ namespace ProPharmacyManagerW.View.Pages
                 BackUp.NewDbBackup();
                 MessageBox.Show("تم اخذ نسخه احتياطيه من القاعده القديمه");
                 DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.Hostname);
-                CreateDB.Createdb(co.DbName, DBName.Text);
+                CreateDB.Createdb(co.DbName, DbName.Text);
                 co.Write();
                 MessageBox.Show("تم الحفظ سيتم غلق البرنامج الان");
                 Environment.Exit(0);

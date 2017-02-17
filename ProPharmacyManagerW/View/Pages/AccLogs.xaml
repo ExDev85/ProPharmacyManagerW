@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
-      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls"
+      xmlns:controls="clr-namespace:ProPharmacyManagerW.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="600"
       Title="سجل الدخول" FlowDirection="RightToLeft" Loaded="Page_Loaded">
@@ -13,7 +13,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="259*"/>
         </Grid.ColumnDefinitions>
-        <Controls:CustomDataGrid x:Name="dataGrid" Grid.ColumnSpan="2"/>
+        <controls:CustomDataGrid x:Name="DataGrid" Grid.ColumnSpan="2"/>
         <ProgressBar x:Name="Pb" Height="5" VerticalAlignment="Top" IsTabStop="False" IsIndeterminate="True" Grid.ColumnSpan="3" Visibility="Hidden"/>
     </Grid>
 </Page>

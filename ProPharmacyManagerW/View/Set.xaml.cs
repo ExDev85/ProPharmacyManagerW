@@ -41,7 +41,7 @@ namespace ProPharmacyManagerW.View
                 {
                     Pages.Setup.IsInstallCompleted = false;
                     Pages.Register re = new Pages.Register();
-                    setreg.Navigate(re);
+                    Setreg.Navigate(re);
                 }
                 if (Pages.Register.IsRegisCom)
                 {
@@ -53,7 +53,7 @@ namespace ProPharmacyManagerW.View
                 if (Pages.Setup.IsUpgrading)
                 {
                     Pages.Upgrade ug = new Pages.Upgrade();
-                    setreg.Navigate(ug);
+                    Setreg.Navigate(ug);
                     Pages.Setup.IsUpgrading = false;
                 }
                 else if (Pages.Upgrade.IsUpgradeComp)

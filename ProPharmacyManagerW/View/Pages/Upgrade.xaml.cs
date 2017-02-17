@@ -38,7 +38,7 @@ namespace ProPharmacyManagerW.View.Pages
         private void UpgradeB_Click(object sender, RoutedEventArgs e)
         {
             //TODO add upgrade codes for older versions
-            pB.Visibility = Visibility.Visible;
+            PB.Visibility = Visibility.Visible;
             IniFile file = new IniFile(Paths.SetupConfigPath);
             Config co = new Config();
             co.Read();
@@ -213,7 +213,7 @@ namespace ProPharmacyManagerW.View.Pages
                 }
                 #endregion
                 co.Write(false, true, false, false);
-                pB.Visibility = Visibility.Collapsed;
+                PB.Visibility = Visibility.Collapsed;
             });
         }
 
@@ -227,10 +227,10 @@ namespace ProPharmacyManagerW.View.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            pB.Visibility = Visibility.Collapsed;
+            PB.Visibility = Visibility.Collapsed;
             if (Environment.OSVersion.Version.Build <= 2600)
             {
-                pB.Height = 10;
+                PB.Height = 10;
             }
         }
 

@@ -300,16 +300,16 @@ namespace ProPharmacyManagerW.View
         {
             if (AddNewDrugBoard.Visibility == Visibility.Visible)
             {
-                ADName.Text = "";
-                ADBarCode.Text = "";
-                ADSS.Text = "";
-                ADSUP.SelectedIndex = -1;
-                ADEXP.Text = "";
-                ADType.SelectedIndex = -1;
-                ADTotal.Text = "";
-                ADBPrice.Text = "";
-                ADSPrice.Text = "";
-                ADNote.Text = "";
+                AdName.Text = "";
+                AdBarCode.Text = "";
+                Adss.Text = "";
+                Adsup.SelectedIndex = -1;
+                Adexp.Text = "";
+                AdType.SelectedIndex = -1;
+                AdTotal.Text = "";
+                AdbPrice.Text = "";
+                AdsPrice.Text = "";
+                AdNote.Text = "";
                 AddNewDrugBoard.Visibility = Visibility.Collapsed;
             }
             else
@@ -352,7 +352,7 @@ namespace ProPharmacyManagerW.View
         {
             FFhost.IsEnabled = false;
             AddNewDrugBoard.Visibility = Visibility.Visible;
-            ADName.Focus();
+            AdName.Focus();
             //#3399FF, #0066CC
             LGBB(51, 153, 255, 0, 102, 204);
             LoadSup();
@@ -367,29 +367,29 @@ namespace ProPharmacyManagerW.View
             MySqlReader r = new MySqlReader(cmd);
             while (r.Read())
             {
-                ADSUP.Items.Add(r.ReadString("Name"));
+                Adsup.Items.Add(r.ReadString("Name"));
             }
         }
 
         private void ADName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (ADName.IsDropDownOpen == false && ADName.Text.Length > 0)
+            if (AdName.IsDropDownOpen == false && AdName.Text.Length > 0)
             {
-                ADName.IsDropDownOpen = true;
+                AdName.IsDropDownOpen = true;
             }
             try
             {
-                if (ADName.Text.Length == 0)
+                if (AdName.Text.Length == 0)
                 {
-                    ADName.Items.Clear();
+                    AdName.Items.Clear();
                     return;
                 }
                 MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
-                cmd.Select("medics").WhereLike("Name", ADName.Text);
+                cmd.Select("medics").WhereLike("Name", AdName.Text);
                 MySqlReader r = new MySqlReader(cmd);
-                while (r.Read() && ADName.Items.Count <= 10)
+                while (r.Read() && AdName.Items.Count <= 10)
                 {
-                    ADName.Items.Add(r.ReadString("Name"));
+                    AdName.Items.Add(r.ReadString("Name"));
                 }
             }
             catch (Exception ex)
@@ -400,9 +400,9 @@ namespace ProPharmacyManagerW.View
 
         private void ADName_GotFocus(object sender, RoutedEventArgs e)
         {
-            ADName.Foreground = Brushes.Blue;
-            ADName.Background = Brushes.White;
-            ADName.Items.Clear();
+            AdName.Foreground = Brushes.Blue;
+            AdName.Background = Brushes.White;
+            AdName.Items.Clear();
             //#3399FF, #0066CC
             LGBB(51, 153, 255, 0, 102, 204);
         }
@@ -416,49 +416,49 @@ namespace ProPharmacyManagerW.View
         private void AddDrug_Click(object sender, RoutedEventArgs e)
         {
             #region textboxs States
-            if (string.IsNullOrEmpty(ADName.Text))
+            if (string.IsNullOrEmpty(AdName.Text))
             {
-                ADName.Background = Brushes.Red;
+                AdName.Background = Brushes.Red;
                 return;
             }
-            if (ADEXP.Text == "تاريخ انتهاء الصلاحيه*")
+            if (Adexp.Text == "تاريخ انتهاء الصلاحيه*")
             {
-                ADEXP.Foreground = Brushes.Red;
+                Adexp.Foreground = Brushes.Red;
                 return;
             }
-            else if (string.IsNullOrEmpty(ADEXP.Text))
+            else if (string.IsNullOrEmpty(Adexp.Text))
             {
                 MessageBox.Show("ادخل تاريخ انتهاء الصلاحية");
                 return;
             }
-            else if (ADEXP.SelectedDate <= DateTime.Now.Date)
+            else if (Adexp.SelectedDate <= DateTime.Now.Date)
             {
-                ADEXP.Background = Brushes.Red;
+                Adexp.Background = Brushes.Red;
                 return;
             }
-            if (string.IsNullOrEmpty(ADSPrice.Text))
+            if (string.IsNullOrEmpty(AdsPrice.Text))
             {
-                ADSPrice.Background = Brushes.Red;
+                AdsPrice.Background = Brushes.Red;
                 return;
             }
-            else if (Convert.ToDecimal(ADSPrice.Text) <= 0)
+            else if (Convert.ToDecimal(AdsPrice.Text) <= 0)
             {
-                ADSPrice.Foreground = Brushes.Red;
+                AdsPrice.Foreground = Brushes.Red;
                 return;
             }
-            if (string.IsNullOrEmpty(ADTotal.Text))
+            if (string.IsNullOrEmpty(AdTotal.Text))
             {
-                ADTotal.Background = Brushes.Red;
+                AdTotal.Background = Brushes.Red;
                 return;
             }
-            else if (Convert.ToDecimal(ADTotal.Text) <= 0)
+            else if (Convert.ToDecimal(AdTotal.Text) <= 0)
             {
-                ADTotal.Foreground = Brushes.Red;
+                AdTotal.Foreground = Brushes.Red;
                 return;
             }
             #endregion
             byte PType;
-            switch (ADType.Text)
+            switch (AdType.Text)
             {
                 case "شرب":
                     PType = 1;
@@ -476,26 +476,26 @@ namespace ProPharmacyManagerW.View
                     PType = 0;
                     break;
                 default:
-                    ADType.Background = Brushes.Red;
+                    AdType.Background = Brushes.Red;
                     return;
             }
             try
             {
                 MySqlCommand cmd = new MySqlCommand(MySqlCommandType.INSERT);
                 cmd.Insert("medics")
-                    .Insert("Name", ADName.Text)
-                    .Insert("Barcode", ADBarCode.Text)
-                    .Insert("Supplier", ADSUP.Text)
-                    .Insert("ScientificName", ADSS.Text)
-                    .Insert("ExpirationDate", ADEXP.Text)
+                    .Insert("Name", AdName.Text)
+                    .Insert("Barcode", AdBarCode.Text)
+                    .Insert("Supplier", Adsup.Text)
+                    .Insert("ScientificName", Adss.Text)
+                    .Insert("ExpirationDate", Adexp.Text)
                     .Insert("Type", PType)
-                    .Insert("Total", Convert.ToDecimal(ADTotal.Text))
-                    .Insert("BPrice", Convert.ToDecimal(ADBPrice.Text))
-                    .Insert("SPrice", Convert.ToDecimal(ADSPrice.Text))
-                    .Insert("Notes", ADNote.Text).Execute();
+                    .Insert("Total", Convert.ToDecimal(AdTotal.Text))
+                    .Insert("BPrice", Convert.ToDecimal(AdbPrice.Text))
+                    .Insert("SPrice", Convert.ToDecimal(AdsPrice.Text))
+                    .Insert("Notes", AdNote.Text).Execute();
                 //#2ECC71, #2aba66
                 LGBB(46, 204, 113, 42, 186, 102);
-                Console.WriteLine(AccountsTable.UserName + " add " + ADTotal.Text + " " + ADName.Text + " which each cost " + ADSPrice.Text);
+                Console.WriteLine(AccountsTable.UserName + " add " + AdTotal.Text + " " + AdName.Text + " which each cost " + AdsPrice.Text);
             }
             catch (Exception ex)
             {

@@ -41,7 +41,7 @@ namespace ProPharmacyManagerW.View.Pages
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
-                if (cByName.IsChecked == true)
+                if (CByName.IsChecked == true)
                 {
                     Pb.Visibility = Visibility.Visible;
                     mT.Clear();
@@ -55,10 +55,10 @@ namespace ProPharmacyManagerW.View.Pages
                     {
                         mT.Rows.Add(new object[mT.Columns.Count]);
                     }
-                    dataGrid.ItemsSource = mT.DefaultView;
+                    DataGrid.ItemsSource = mT.DefaultView;
                     Pb.Visibility = Visibility.Hidden;
                 }
-                else if (cByBar.IsChecked == true)
+                else if (CByBar.IsChecked == true)
                 {
                     Pb.Visibility = Visibility.Visible;
                     mT.Clear();
@@ -72,10 +72,10 @@ namespace ProPharmacyManagerW.View.Pages
                     {
                         mT.Rows.Add(new object[mT.Columns.Count]);
                     }
-                    dataGrid.ItemsSource = mT.DefaultView;
+                    DataGrid.ItemsSource = mT.DefaultView;
                     Pb.Visibility = Visibility.Hidden;
                 }
-                else if (cBySub.IsChecked == true)
+                else if (CBySub.IsChecked == true)
                 {
                     Pb.Visibility = Visibility.Visible;
                     mT.Clear();
@@ -89,7 +89,7 @@ namespace ProPharmacyManagerW.View.Pages
                     {
                         mT.Rows.Add(new object[mT.Columns.Count]);
                     }
-                    dataGrid.ItemsSource = mT.DefaultView;
+                    DataGrid.ItemsSource = mT.DefaultView;
                     Pb.Visibility = Visibility.Hidden;
                 }
             });
@@ -120,7 +120,7 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 Dispatcher.BeginInvoke(DispatcherPriority.Background, (ThreadStart)delegate ()
                 {
-                    if (cByName.IsChecked == true)
+                    if (CByName.IsChecked == true)
                     {
                         MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
                         cmd.Select("medics").WhereLike("Name", SearchBox.Text);
@@ -130,11 +130,11 @@ namespace ProPharmacyManagerW.View.Pages
                             SearchBox.Items.Add(r.ReadString("Name"));
                         }
                     }
-                    else if (cByBar.IsChecked == true)
+                    else if (CByBar.IsChecked == true)
                     {
                         SearchBox.Items.Clear();
                     }
-                    else if (cBySub.IsChecked == true)
+                    else if (CBySub.IsChecked == true)
                     {
                         MySqlCommand cmd = new MySqlCommand(MySqlCommandType.SELECT);
                         cmd.Select("medics").WhereLike("ScientificName", SearchBox.Text);
@@ -175,18 +175,18 @@ namespace ProPharmacyManagerW.View.Pages
                     mA = new MySql.Data.MySqlClient.MySqlDataAdapter("SELECT * FROM medics", DataHolder.MySqlConnection);
                     mT = new System.Data.DataTable();
                     mA.Fill(mT);
-                    dataGrid.ItemsSource = mT.DefaultView;
-                    dataGrid.Columns[11].Visibility = Visibility.Collapsed;
-                    dataGrid.Columns[12].Visibility = Visibility.Collapsed;
-                    dataGrid.Columns[13].Visibility = Visibility.Collapsed;
-                    dataGrid.Columns[14].Visibility = Visibility.Collapsed;
-                    dataGrid.Columns[15].Visibility = Visibility.Collapsed;
-                    dataGrid.Columns[16].Visibility = Visibility.Collapsed;
-                    dataGrid.Columns[17].Visibility = Visibility.Collapsed;
-                    dataGrid.Columns[18].Visibility = Visibility.Collapsed;
-                    dataGrid.Columns[19].Visibility = Visibility.Collapsed;
-                    dataGrid.Columns[20].Visibility = Visibility.Collapsed;
-                    dataGrid.Columns[21].Visibility = Visibility.Collapsed;
+                    DataGrid.ItemsSource = mT.DefaultView;
+                    DataGrid.Columns[11].Visibility = Visibility.Collapsed;
+                    DataGrid.Columns[12].Visibility = Visibility.Collapsed;
+                    DataGrid.Columns[13].Visibility = Visibility.Collapsed;
+                    DataGrid.Columns[14].Visibility = Visibility.Collapsed;
+                    DataGrid.Columns[15].Visibility = Visibility.Collapsed;
+                    DataGrid.Columns[16].Visibility = Visibility.Collapsed;
+                    DataGrid.Columns[17].Visibility = Visibility.Collapsed;
+                    DataGrid.Columns[18].Visibility = Visibility.Collapsed;
+                    DataGrid.Columns[19].Visibility = Visibility.Collapsed;
+                    DataGrid.Columns[20].Visibility = Visibility.Collapsed;
+                    DataGrid.Columns[21].Visibility = Visibility.Collapsed;
                     Pb.Visibility = Visibility.Collapsed;
                 });
             }

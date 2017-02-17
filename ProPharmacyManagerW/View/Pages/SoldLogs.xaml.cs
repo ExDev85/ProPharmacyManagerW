@@ -72,7 +72,7 @@ namespace ProPharmacyManagerW.View.Pages
                     mT.Columns["Cashier"].ReadOnly = true;
                     mT.Columns["Cashier"].ColumnName = "البائع";
                 }
-                dataGrid.ItemsSource = mT.DefaultView;
+                DataGrid.ItemsSource = mT.DefaultView;
                 Pb.Visibility = Visibility.Hidden;
             });
         }

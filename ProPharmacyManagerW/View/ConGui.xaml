@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="Console" Height="400" Width="600" Background="Black" Foreground="White" Loaded="Window_Loaded" Icon="/ProPharmacyManagerW;component/Images/Command Prompt.ico" WindowStyle="ToolWindow" Closing="Window_Closing" MinHeight="300" MinWidth="500">
     <Grid>
-        <RichTextBox x:Name="richTextBox" Background="Black" BorderBrush="{x:Null}" Foreground="Green" CaretBrush="White" PreviewKeyDown="richTextBox_PreviewKeyDown"/>
+        <RichTextBox x:Name="ConsoleOutPut" Background="Black" BorderBrush="{x:Null}" Foreground="Green" CaretBrush="White" PreviewKeyDown="richTextBox_PreviewKeyDown"/>
     </Grid>
 </Window>

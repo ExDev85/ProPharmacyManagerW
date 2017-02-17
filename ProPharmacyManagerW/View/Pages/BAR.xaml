@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
-      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls" 
+      xmlns:controls="clr-namespace:ProPharmacyManagerW.Controls" 
       xmlns:vm="clr-namespace:ProPharmacyManagerW.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="599" d:DesignWidth="799"
@@ -30,11 +30,11 @@
         <StatusBar Height="41" VerticalAlignment="Top" Background="#FF1F32A8" FontSize="14" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="4">
             <ListBoxItem x:Name="Count" Width="285" Height="31" IsTabStop="False"/>
         </StatusBar>
-        <Label x:Name="label" Content="مكان النسخ:" Margin="10" Grid.Row="1" FontSize="14" Foreground="White" FontWeight="Bold"/>
+        <Label x:Name="Label" Content="مكان النسخ:" Margin="10" Grid.Row="1" FontSize="14" Foreground="White" FontWeight="Bold"/>
         <TextBox x:Name="PathT" Grid.ColumnSpan="2" Grid.Column="1" Height="52" Grid.Row="1" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#FF169909" MaxLines="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FlowDirection="LeftToRight" IsReadOnly="True" Margin="0,10,0,0" TabIndex="0"/>
-        <Controls:IconButton x:Name="BrowserB" Content=" استعرض" Grid.Column="3" Height="52" Margin="10,10,10,0" Grid.Row="1" VerticalAlignment="Top" FlowDirection="LeftToRight" FontSize="30" FontWeight="Bold" TabIndex="1" Click="BrowserB_Click" Image="/ProPharmacyManagerW;component/Images/FileExplorer.png" Foreground="White" Background="#FF1D8691" ColorHover="#FF003A40" ColorPressed="#FF00282C" ColorDisabled="#FF00282C"/>
-        <Label x:Name="label1" Content="مفتاح التشفير:" Margin="10,5,10,10" Grid.Row="2" FontSize="14" Foreground="White" FontWeight="Bold"/>
-        <Controls:WaterMarkTextBox x:Name="ENKT" WaterMark="استخدم الافتراضى بعدم كتابه شئ - يفضل بالانجليزيه" Grid.ColumnSpan="2" Grid.Column="1" Height="42" Margin="0,10,0,0" Grid.Row="2" Text="" VerticalAlignment="Top" FontSize="14" TabIndex="2" FontWeight="Bold" Foreground="#FFEC3519" MaxLines="1" FlowDirection="LeftToRight" VerticalContentAlignment="Center" ToolTip="اذا لم تدخل اى شئ سيستخدم المفتاح الافتراضى"/>
+        <controls:IconButton x:Name="BrowserB" Content=" استعرض" Grid.Column="3" Height="52" Margin="10,10,10,0" Grid.Row="1" VerticalAlignment="Top" FlowDirection="LeftToRight" FontSize="30" FontWeight="Bold" TabIndex="1" Click="BrowserB_Click" Image="/ProPharmacyManagerW;component/Images/FileExplorer.png" Foreground="White" Background="#FF1D8691" ColorHover="#FF003A40" ColorPressed="#FF00282C" ColorDisabled="#FF00282C"/>
+        <Label x:Name="Label1" Content="مفتاح التشفير:" Margin="10,5,10,10" Grid.Row="2" FontSize="14" Foreground="White" FontWeight="Bold"/>
+        <controls:WaterMarkTextBox x:Name="ENKT" WaterMark="استخدم الافتراضى بعدم كتابه شئ - يفضل بالانجليزيه" Grid.ColumnSpan="2" Grid.Column="1" Height="42" Margin="0,10,0,0" Grid.Row="2" Text="" VerticalAlignment="Top" FontSize="14" TabIndex="2" FontWeight="Bold" Foreground="#FFEC3519" MaxLines="1" FlowDirection="LeftToRight" VerticalContentAlignment="Center" ToolTip="اذا لم تدخل اى شئ سيستخدم المفتاح الافتراضى"/>
         <ListView x:Name="BackUpList" Grid.Row="3" Background="#FF1F32A8" Foreground="#FF14970D" TabIndex="3" SelectionMode="Single" FlowDirection="LeftToRight" FontSize="14" FontWeight="Bold" BorderBrush="{x:Null}" Grid.ColumnSpan="4" Margin="0,0,-1,0">
             <ListView.Resources>
                 <Style TargetType="GridViewColumnHeader">
@@ -47,9 +47,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Controls:IconButton x:Name="BackUpB" Content=" نـسخ" Grid.Column="3" HorizontalAlignment="Left" Height="60" Margin="49,18,0,0" Grid.Row="4" TabIndex="4" VerticalAlignment="Top" Width="140" Click="BackUpB_Click" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/DbBackup.png" Background="#FF0081B5" ColorHover="#FF064D6A" ColorPressed="#FF073142" ColorDisabled="#FF073142" FontSize="30" FontWeight="Bold" Foreground="White" FlowDirection="LeftToRight"/>
-        <Controls:IconButton x:Name="RestoreB" Content="استعادة" Grid.Column="2" HorizontalAlignment="Left" Height="60" Margin="36,18,0,0" Grid.Row="4" TabIndex="5" VerticalAlignment="Top" Width="140" Click="RestoreB_Click" Image="/ProPharmacyManagerW;component/Images/DbRestore.png" Background="#FF1C6FEF" ColorHover="#FF1C30B4" ColorPressed="#FF051899" ColorDisabled="#FF051899" FontSize="25" FontWeight="Bold" Foreground="White" FlowDirection="LeftToRight"/>
-        <Controls:IconButton x:Name="DelB" Content="حـذف" Grid.Column="1" HorizontalAlignment="Left" Height="60" Margin="33,18,0,0" Grid.Row="4" TabIndex="6" VerticalAlignment="Top" Width="140" Click="DelB_Click" Image="/ProPharmacyManagerW;component/Images/FileDelete.png" Background="Red" ColorHover="#FFAE0505" ColorPressed="#FF890000" ColorDisabled="#FF890000" Foreground="White" FontSize="36" FontWeight="Bold" FlowDirection="LeftToRight"/>
-        <Controls:IconButton x:Name="BackB" Content="  عـودة" HorizontalAlignment="Left" Height="60" Margin="24,18,0,0" Grid.Row="4" TabIndex="7" VerticalAlignment="Top" Width="160" Click="BackB_Click" Image="/ProPharmacyManagerW;component/Images/Home.png" Background="#FF309B25" ColorHover="#FF096300" ColorPressed="#FF053400" ColorDisabled="#FF053400" Foreground="White" FontWeight="Bold" FlowDirection="LeftToRight" IsCancel="True" FontSize="30"/>
+        <controls:IconButton x:Name="BackUpB" Content=" نـسخ" Grid.Column="3" HorizontalAlignment="Left" Height="60" Margin="49,18,0,0" Grid.Row="4" TabIndex="4" VerticalAlignment="Top" Width="140" Click="BackUpB_Click" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/DbBackup.png" Background="#FF0081B5" ColorHover="#FF064D6A" ColorPressed="#FF073142" ColorDisabled="#FF073142" FontSize="30" FontWeight="Bold" Foreground="White" FlowDirection="LeftToRight"/>
+        <controls:IconButton x:Name="RestoreB" Content="استعادة" Grid.Column="2" HorizontalAlignment="Left" Height="60" Margin="36,18,0,0" Grid.Row="4" TabIndex="5" VerticalAlignment="Top" Width="140" Click="RestoreB_Click" Image="/ProPharmacyManagerW;component/Images/DbRestore.png" Background="#FF1C6FEF" ColorHover="#FF1C30B4" ColorPressed="#FF051899" ColorDisabled="#FF051899" FontSize="25" FontWeight="Bold" Foreground="White" FlowDirection="LeftToRight"/>
+        <controls:IconButton x:Name="DelB" Content="حـذف" Grid.Column="1" HorizontalAlignment="Left" Height="60" Margin="33,18,0,0" Grid.Row="4" TabIndex="6" VerticalAlignment="Top" Width="140" Click="DelB_Click" Image="/ProPharmacyManagerW;component/Images/FileDelete.png" Background="Red" ColorHover="#FFAE0505" ColorPressed="#FF890000" ColorDisabled="#FF890000" Foreground="White" FontSize="36" FontWeight="Bold" FlowDirection="LeftToRight"/>
+        <controls:IconButton x:Name="BackB" Content="  عـودة" HorizontalAlignment="Left" Height="60" Margin="24,18,0,0" Grid.Row="4" TabIndex="7" VerticalAlignment="Top" Width="160" Click="BackB_Click" Image="/ProPharmacyManagerW;component/Images/Home.png" Background="#FF309B25" ColorHover="#FF096300" ColorPressed="#FF053400" ColorDisabled="#FF053400" Foreground="White" FontWeight="Bold" FlowDirection="LeftToRight" IsCancel="True" FontSize="30"/>
     </Grid>
 </Page>

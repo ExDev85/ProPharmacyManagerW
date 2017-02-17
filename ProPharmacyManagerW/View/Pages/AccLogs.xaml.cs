@@ -66,7 +66,7 @@ namespace ProPharmacyManagerW.View.Pages
                 }
                 if (mAdapter == null)
                     return;
-                dataGrid.ItemsSource = mTable.DefaultView;
+                DataGrid.ItemsSource = mTable.DefaultView;
             });
             Pb.Visibility = Visibility.Hidden;
         }

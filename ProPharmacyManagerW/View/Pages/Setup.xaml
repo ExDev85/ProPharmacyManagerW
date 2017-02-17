@@ -4,14 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
-      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls" 
+      xmlns:controls="clr-namespace:ProPharmacyManagerW.Controls" 
       xmlns:cm="clr-namespace:System.ComponentModel;assembly=System"
       mc:Ignorable="d" 
       d:DesignHeight="400"
       d:DesignWidth="400"
       Title="اعداد" ShowsNavigationUI="False" FlowDirection="RightToLeft" Margin="2" RenderTransformOrigin="0,0" ClipToBounds="True" Background="#FF2B41A4" Loaded="Page_Loaded">
     <Page.Resources>
-        <cm:BackgroundWorker x:Name="bgw" x:Key="bgw" WorkerReportsProgress="True" WorkerSupportsCancellation="False" DoWork="BackgroundWorker_DoWork" RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted" ProgressChanged="BackgroundWorker_ProgressChanged"/>
+        <cm:BackgroundWorker x:Name="bgw" x:Key="Bgw" WorkerReportsProgress="True" WorkerSupportsCancellation="False" DoWork="BackgroundWorker_DoWork" RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted" ProgressChanged="BackgroundWorker_ProgressChanged"/>
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -35,18 +35,18 @@
             <RowDefinition Height="35"/>
             <RowDefinition Height="3"/>
         </Grid.RowDefinitions>
-        <Label x:Name="label" Content="مرحبا بك فى اول خطوة لإعداد مدير الصيدليه الاحترافى" Margin="10,10,10,7" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold" Foreground="White"/>
-        <Label x:Name="label1" Content="المضيف" Margin="10,0" Grid.Row="2" Grid.ColumnSpan="2" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="label2" Content="اسم قاعده البيانات" Margin="10,0" Grid.Row="5" Grid.ColumnSpan="3" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="label3" Content="اسم مستخدم السيرفر" Margin="10,0" Grid.Row="8" Grid.ColumnSpan="3" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="label4" Content="كلمه مرور السيرفر" Margin="10,0" Grid.Row="11" Grid.ColumnSpan="3" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
-        <Controls:WaterMarkTextBox x:Name="DBHost" Text="" Foreground="#FF0AE83D" WaterMark="localhost" WaterMarkColor="#FF3399FF" Margin="10,5,10,0" Grid.Row="3" Grid.ColumnSpan="3" FlowDirection="LeftToRight" MaxLines="1" TabIndex="1" FontSize="16" FontWeight="Bold"/>
-        <Controls:WaterMarkTextBox x:Name="DBName" Text="" Foreground="#FF0AE83D" WaterMark="phdb" WaterMarkColor="#FF3399FF" Margin="10,5,10,0" Grid.Row="6" Grid.ColumnSpan="3" FlowDirection="LeftToRight" MaxLines="1" TabIndex="2" FontSize="16" FontWeight="Bold"/>
-        <Controls:WaterMarkTextBox x:Name="DBUser" Text="" Foreground="#FF0AE83D" WaterMark="root" WaterMarkColor="#FF3399FF" Margin="10,5,10,0" Grid.Row="9" Grid.ColumnSpan="3" FlowDirection="LeftToRight" MaxLines="1" TabIndex="3" FontSize="16" FontWeight="Bold"/>
-        <Controls:WaterMarkTextBox x:Name="DBPass" Text="" Foreground="#FF0AE83D" WaterMark="1234" WaterMarkColor="#FF3399FF" Margin="10,5,10,0" Grid.Row="12" Grid.ColumnSpan="3" FlowDirection="LeftToRight" MaxLines="1" TabIndex="4" FontSize="16" FontWeight="Bold"/>
-        <Controls:IconButton x:Name="SetB" Content="إعداد" Height="38" Margin="7,0,10,-45" Grid.Row="13" VerticalAlignment="Bottom" Grid.Column="2" TabIndex="5" Background="#FF6E6E6E" Foreground="White" FontSize="20" FontWeight="Bold" Click="SetB_Click" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/install.png" FlowDirection="LeftToRight" ColorHover="#FF494949" ColorPressed="#FF322D2D" ColorDisabled="#FF322D2D"/>
-        <Controls:IconButton x:Name="UpgradeB" Content="ترقية  " FlowDirection="LeftToRight" Height="38" Margin="14,0,15,-45" Grid.Row="13" VerticalAlignment="Bottom" Grid.Column="1" TabIndex="6" Foreground="White" Background="#FF0081B5" FontSize="20" FontWeight="Bold" Click="UpgradeB_Click" Image="/ProPharmacyManagerW;component/Images/DbUpgrade.png" ColorHover="#FF005F85" ColorPressed="#FF00425D" ColorDisabled="#FF00425D"/>
-        <Controls:IconButton x:Name="ExitB" Height="38" Margin="10,0,8,-45" Grid.Row="13" VerticalAlignment="Bottom" TabIndex="7" FlowDirection="LeftToRight"  FontSize="20" FontWeight="Bold" Click="ExitB_Click" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Exit.png" Content="إغلاق" Background="Red" ColorHover="#FFAE0505" ColorPressed="#FF890000" ColorDisabled="#FF890000" Foreground="White"/>
-        <ProgressBar x:Name="pB" Grid.ColumnSpan="3" Height="5" VerticalAlignment="Top" Visibility="Visible"/>
+        <Label x:Name="Label" Content="مرحبا بك فى اول خطوة لإعداد مدير الصيدليه الاحترافى" Margin="10,10,10,7" Grid.ColumnSpan="3" FontSize="16" FontWeight="Bold" Foreground="White"/>
+        <Label x:Name="Label1" Content="المضيف" Margin="10,0" Grid.Row="2" Grid.ColumnSpan="2" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="Label2" Content="اسم قاعده البيانات" Margin="10,0" Grid.Row="5" Grid.ColumnSpan="3" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="Label3" Content="اسم مستخدم السيرفر" Margin="10,0" Grid.Row="8" Grid.ColumnSpan="3" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="Label4" Content="كلمه مرور السيرفر" Margin="10,0" Grid.Row="11" Grid.ColumnSpan="3" Foreground="#FFE0D8D8" FontSize="16" FontWeight="Bold"/>
+        <controls:WaterMarkTextBox x:Name="DbHost" Text="" Foreground="#FF0AE83D" WaterMark="localhost" WaterMarkColor="#FF3399FF" Margin="10,5,10,0" Grid.Row="3" Grid.ColumnSpan="3" FlowDirection="LeftToRight" MaxLines="1" TabIndex="1" FontSize="16" FontWeight="Bold"/>
+        <controls:WaterMarkTextBox x:Name="DbName" Text="" Foreground="#FF0AE83D" WaterMark="phdb" WaterMarkColor="#FF3399FF" Margin="10,5,10,0" Grid.Row="6" Grid.ColumnSpan="3" FlowDirection="LeftToRight" MaxLines="1" TabIndex="2" FontSize="16" FontWeight="Bold"/>
+        <controls:WaterMarkTextBox x:Name="DbUser" Text="" Foreground="#FF0AE83D" WaterMark="root" WaterMarkColor="#FF3399FF" Margin="10,5,10,0" Grid.Row="9" Grid.ColumnSpan="3" FlowDirection="LeftToRight" MaxLines="1" TabIndex="3" FontSize="16" FontWeight="Bold"/>
+        <controls:WaterMarkTextBox x:Name="DbPass" Text="" Foreground="#FF0AE83D" WaterMark="1234" WaterMarkColor="#FF3399FF" Margin="10,5,10,0" Grid.Row="12" Grid.ColumnSpan="3" FlowDirection="LeftToRight" MaxLines="1" TabIndex="4" FontSize="16" FontWeight="Bold"/>
+        <controls:IconButton x:Name="SetB" Content="إعداد" Height="38" Margin="7,0,10,-45" Grid.Row="13" VerticalAlignment="Bottom" Grid.Column="2" TabIndex="5" Background="#FF6E6E6E" Foreground="White" FontSize="20" FontWeight="Bold" Click="SetB_Click" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/install.png" FlowDirection="LeftToRight" ColorHover="#FF494949" ColorPressed="#FF322D2D" ColorDisabled="#FF322D2D"/>
+        <controls:IconButton x:Name="UpgradeB" Content="ترقية  " FlowDirection="LeftToRight" Height="38" Margin="14,0,15,-45" Grid.Row="13" VerticalAlignment="Bottom" Grid.Column="1" TabIndex="6" Foreground="White" Background="#FF0081B5" FontSize="20" FontWeight="Bold" Click="UpgradeB_Click" Image="/ProPharmacyManagerW;component/Images/DbUpgrade.png" ColorHover="#FF005F85" ColorPressed="#FF00425D" ColorDisabled="#FF00425D"/>
+        <controls:IconButton x:Name="ExitB" Height="38" Margin="10,0,8,-45" Grid.Row="13" VerticalAlignment="Bottom" TabIndex="7" FlowDirection="LeftToRight"  FontSize="20" FontWeight="Bold" Click="ExitB_Click" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Exit.png" Content="إغلاق" Background="Red" ColorHover="#FFAE0505" ColorPressed="#FF890000" ColorDisabled="#FF890000" Foreground="White"/>
+        <ProgressBar x:Name="PB" Grid.ColumnSpan="3" Height="5" VerticalAlignment="Top" Visibility="Visible"/>
     </Grid>
 </Page>

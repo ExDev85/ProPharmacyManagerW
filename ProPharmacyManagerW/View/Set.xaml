@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="إعدادت" Height="450" Width="450" FlowDirection="RightToLeft" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Icon="/ProPharmacyManagerW;component/Images/Configure.ico" KeyDown="Window_KeyDown" >
     <Grid>
-        <Frame x:Name="setreg" Grid.Column="1" Source="Pages\Setup.xaml" BorderThickness="0" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="Setreg" Grid.Column="1" Source="Pages\Setup.xaml" BorderThickness="0" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

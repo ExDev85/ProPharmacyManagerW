@@ -31,7 +31,7 @@ namespace ProPharmacyManagerW.View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            verl.Content = "الاصدار: W " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            Verl.Content = "الاصدار: W " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
     }
 }

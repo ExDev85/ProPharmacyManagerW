@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:vm ="clr-namespace:ProPharmacyManagerW.ViewModel"
-      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls"
+      xmlns:controls="clr-namespace:ProPharmacyManagerW.Controls"
       xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="400"
@@ -66,9 +66,9 @@
             </ListView.Resources>
             <ListBoxItem Content="قريبا"/>
         </ListView>
-        <Controls:IconButton x:Name="UpgradeB" Content="ترقيه" Height="38" FlowDirection="LeftToRight"  Margin="10,0,18,10" Grid.Row="2" VerticalAlignment="Bottom" Grid.Column="2" TabIndex="6" Foreground="White" Background="#FF0081B5" FontSize="20" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/DbUpgrade.png" Click="UpgradeB_Click" ColorHover="#FF02597C" ColorPressed="#FF012F42" ColorDisabled="#FF012F42"/>
-        <Controls:IconButton x:Name="WConB" Content="تكوين" Grid.Column="1" HorizontalAlignment="Right" Height="38" Margin="0,11,12,0" Grid.Row="2" TabIndex="7" VerticalAlignment="Top" FlowDirection="LeftToRight" Width="112" Image="/ProPharmacyManagerW;component/Images/Write.png" Foreground="White" Background="#FF008B8E" ColorHover="#FF005759" Click="WConB_Click" FontSize="20" FontWeight="Bold" ColorPressed="#FF003B3C" ColorDisabled="#FF003B3C"/>
-        <Controls:IconButton x:Name="ExitB" Content="خروج" Height="38" Margin="6,0,12,10" Grid.Row="2" VerticalAlignment="Bottom" TabIndex="8" FlowDirection="LeftToRight" Foreground="White" Background="#FFEA002A" FontSize="20" FontWeight="Bold" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Exit.png" Click="ExitB_Click" ColorHover="#FFA8011F" ColorPressed="#FF6A0013" ColorDisabled="#FF6A0013"/>
-        <ProgressBar x:Name="pB" Grid.ColumnSpan="3" Height="5"  VerticalAlignment="top" Visibility="Visible" IsIndeterminate="True"/>
+        <controls:IconButton x:Name="UpgradeB" Content="ترقيه" Height="38" FlowDirection="LeftToRight"  Margin="10,0,18,10" Grid.Row="2" VerticalAlignment="Bottom" Grid.Column="2" TabIndex="6" Foreground="White" Background="#FF0081B5" FontSize="20" FontWeight="Bold" Image="/ProPharmacyManagerW;component/Images/DbUpgrade.png" Click="UpgradeB_Click" ColorHover="#FF02597C" ColorPressed="#FF012F42" ColorDisabled="#FF012F42"/>
+        <controls:IconButton x:Name="WConB" Content="تكوين" Grid.Column="1" HorizontalAlignment="Right" Height="38" Margin="0,11,12,0" Grid.Row="2" TabIndex="7" VerticalAlignment="Top" FlowDirection="LeftToRight" Width="112" Image="/ProPharmacyManagerW;component/Images/Write.png" Foreground="White" Background="#FF008B8E" ColorHover="#FF005759" Click="WConB_Click" FontSize="20" FontWeight="Bold" ColorPressed="#FF003B3C" ColorDisabled="#FF003B3C"/>
+        <controls:IconButton x:Name="ExitB" Content="خروج" Height="38" Margin="6,0,12,10" Grid.Row="2" VerticalAlignment="Bottom" TabIndex="8" FlowDirection="LeftToRight" Foreground="White" Background="#FFEA002A" FontSize="20" FontWeight="Bold" IsCancel="True" Image="/ProPharmacyManagerW;component/Images/Exit.png" Click="ExitB_Click" ColorHover="#FFA8011F" ColorPressed="#FF6A0013" ColorDisabled="#FF6A0013"/>
+        <ProgressBar x:Name="PB" Grid.ColumnSpan="3" Height="5"  VerticalAlignment="top" Visibility="Visible" IsIndeterminate="True"/>
     </Grid>
 </Page>

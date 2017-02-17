@@ -45,7 +45,7 @@ namespace ProPharmacyManagerW.View.Pages
             }
             if (Environment.OSVersion.Version.Build <= 2600)
             {
-                pB.Height = 10;
+                PB.Height = 10;
             }
             bgw = ((BackgroundWorker)this.FindResource("bgw"));
             try
@@ -54,13 +54,13 @@ namespace ProPharmacyManagerW.View.Pages
                 {
                     Core.IsSetup = true;
                     Title = "تنصيب البرنامج";
-                    pB.Visibility = Visibility.Visible;
+                    PB.Visibility = Visibility.Visible;
                 }
                 else if (Core.IsUpgrading == true)
                 {
                     Core.IsSetup = true;
                     Title = "ترقية البرنامج";
-                    pB.Visibility = Visibility.Visible;
+                    PB.Visibility = Visibility.Visible;
                 }
                 else if (File.Exists(Paths.SetupConfigPath))
                 {
@@ -98,10 +98,10 @@ namespace ProPharmacyManagerW.View.Pages
             Console.WriteLine("Starting to upgrade");
             Config co = new Config
             {
-                Hostname = DBHost.Text,
-                DbName = DBName.Text,
-                DbUserName = DBUser.Text,
-                DbUserPassword = DBPass.Text,
+                Hostname = DbHost.Text,
+                DbName = DbName.Text,
+                DbUserName = DbUser.Text,
+                DbUserPassword = DbPass.Text,
             };
             co.Write(true, true, true);
             Console.WriteLine("Config file has been prepared");
@@ -120,10 +120,10 @@ namespace ProPharmacyManagerW.View.Pages
             bgw.ReportProgress(5);
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
-                co.Hostname = DBHost.Text;
-                co.DbName = DBName.Text;
-                co.DbUserName = DBUser.Text;
-                co.DbUserPassword = DBPass.Text;
+                co.Hostname = DbHost.Text;
+                co.DbName = DbName.Text;
+                co.DbUserName = DbUser.Text;
+                co.DbUserPassword = DbPass.Text;
                 co.AccountsLog = "1";
                 co.DrugsLog = "1";
                 co.Write(true, true);
@@ -152,13 +152,13 @@ namespace ProPharmacyManagerW.View.Pages
         {
             Console.WriteLine("It's only logical for database to be set");
             MessageBox.Show("تم تنصيب الاعدادات\nمن فضلك انشاء حساب جديد لتتمكن من الدخول");
-            pB.Visibility = Visibility.Hidden;
+            PB.Visibility = Visibility.Hidden;
             IsInstallCompleted = true;
         }
 
         private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            pB.Value = e.ProgressPercentage;
+            PB.Value = e.ProgressPercentage;
         }
         #endregion
 

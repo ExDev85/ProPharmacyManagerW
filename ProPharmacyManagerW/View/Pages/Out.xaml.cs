@@ -46,7 +46,7 @@ namespace ProPharmacyManagerW.View.Pages
                 {
                     mT.Rows.Add(r.ReadString("Name"));
                 }
-                dataGrid.ItemsSource = mT.DefaultView;
+                DataGrid.ItemsSource = mT.DefaultView;
                 r.Close();
                 Pb.Visibility = Visibility.Hidden;
             });

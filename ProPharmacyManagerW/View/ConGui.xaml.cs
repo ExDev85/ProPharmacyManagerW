@@ -24,20 +24,20 @@ namespace ProPharmacyManagerW.View
             Kernel.Core.IsCMode = true;
         }
 
-        private DispatcherTimer checkInput = new DispatcherTimer();
+        private readonly DispatcherTimer _checkInput = new DispatcherTimer();
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            richTextBox.AppendText("Welcome to PPHM Console window\rI really hope that you know what you are doing here!!\rYou can write commands in here see every step or even better erase the whole database have fun ;)\n|>");
-            richTextBox.ScrollToEnd();
-            richTextBox.CaretPosition = richTextBox.CaretPosition.DocumentEnd;
+            ConsoleOutPut.AppendText("Welcome to PPHM Console window\rI really hope that you know what you are doing here!!\rYou can write commands in here see every step or even better erase the whole database have fun ;)\n|>");
+            ConsoleOutPut.ScrollToEnd();
+            ConsoleOutPut.CaretPosition = ConsoleOutPut.CaretPosition.DocumentEnd;
             try
             {
-                if (Console.NewEntry == true)
+                if (Console.NewEntry)
                 {
                     lock (Console.GSLog)
                     {
-                        richTextBox.AppendText(Console.GSLog);
+                        ConsoleOutPut.AppendText(Console.GSLog);
                         Console.GSLog = "";
                     }
                 }
@@ -46,24 +46,24 @@ namespace ProPharmacyManagerW.View
             {
                 Kernel.Core.SaveException(ex);
             }
-            checkInput.Interval = TimeSpan.FromMilliseconds(1000);
-            checkInput.Tick += checkInputState;
-            checkInput.Start();
-            richTextBox.Focus();
+            _checkInput.Interval = TimeSpan.FromMilliseconds(1000);
+            _checkInput.Tick += CheckInputState;
+            _checkInput.Start();
+            ConsoleOutPut.Focus();
         }
 
-        private void checkInputState(object sender, EventArgs e)
+        private void CheckInputState(object sender, EventArgs e)
         {
-            if (Console.NewEntry == true)
+            if (Console.NewEntry)
             {
                 lock (Console.GSLog)
                 {
-                    richTextBox.AppendText(Console.GSLog);
+                    ConsoleOutPut.AppendText(Console.GSLog);
                     Console.GSLog = "";
                     Console.GS = "";
                 }
-                richTextBox.ScrollToEnd();
-                richTextBox.CaretPosition = richTextBox.CaretPosition.DocumentEnd;
+                ConsoleOutPut.ScrollToEnd();
+                ConsoleOutPut.CaretPosition = ConsoleOutPut.CaretPosition.DocumentEnd;
                 Console.NewEntry = false;
             }
             else
@@ -72,11 +72,11 @@ namespace ProPharmacyManagerW.View
                 {
                     lock (Console.GS)
                     {
-                        richTextBox.AppendText(Console.GS);
+                        ConsoleOutPut.AppendText(Console.GS);
                         Console.GS = "";
                     }
-                    richTextBox.ScrollToEnd();
-                    richTextBox.CaretPosition = richTextBox.CaretPosition.DocumentEnd;
+                    ConsoleOutPut.ScrollToEnd();
+                    ConsoleOutPut.CaretPosition = ConsoleOutPut.CaretPosition.DocumentEnd;
                     Console.NewEntry = false;
                 }
             }
@@ -84,7 +84,7 @@ namespace ProPharmacyManagerW.View
             {
                 lock (Console.progress.ToString())
                 {
-                    var currentLine = new TextRange(richTextBox.CaretPosition.GetLineStartPosition(0), richTextBox.CaretPosition.GetLineStartPosition(1) ?? richTextBox.CaretPosition.DocumentEnd).Text;
+                    var currentLine = new TextRange(ConsoleOutPut.CaretPosition.GetLineStartPosition(0), ConsoleOutPut.CaretPosition.GetLineStartPosition(1) ?? ConsoleOutPut.CaretPosition.DocumentEnd).Text;
                     Regex reg1 = new Regex(@"\s\d+%");
                     MatchCollection fou1 = reg1.Matches(currentLine);
                     foreach (Match m in fou1)
@@ -92,9 +92,9 @@ namespace ProPharmacyManagerW.View
                         if (m.Success)
                         {
                             currentLine = currentLine.Replace(m.Value, " " + Console.progress.ToString() + "%");
-                            if (currentLine != new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text)
+                            if (currentLine != new TextRange(ConsoleOutPut.Document.ContentStart, ConsoleOutPut.Document.ContentEnd).Text)
                             {
-                                new TextRange(richTextBox.CaretPosition.GetLineStartPosition(0), richTextBox.CaretPosition.GetLineStartPosition(1) ?? richTextBox.CaretPosition.DocumentEnd).Text = currentLine;
+                                new TextRange(ConsoleOutPut.CaretPosition.GetLineStartPosition(0), ConsoleOutPut.CaretPosition.GetLineStartPosition(1) ?? ConsoleOutPut.CaretPosition.DocumentEnd).Text = currentLine;
                             }
                         }
                     }
@@ -110,17 +110,17 @@ namespace ProPharmacyManagerW.View
                                 {
 
                                     currentLine = currentLine.Replace(m.Value, "[#");
-                                    if (currentLine != new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text)
+                                    if (currentLine != new TextRange(ConsoleOutPut.Document.ContentStart, ConsoleOutPut.Document.ContentEnd).Text)
                                     {
-                                        new TextRange(richTextBox.CaretPosition.GetLineStartPosition(0), richTextBox.CaretPosition.GetLineStartPosition(1) ?? richTextBox.CaretPosition.DocumentEnd).Text = currentLine;
+                                        new TextRange(ConsoleOutPut.CaretPosition.GetLineStartPosition(0), ConsoleOutPut.CaretPosition.GetLineStartPosition(1) ?? ConsoleOutPut.CaretPosition.DocumentEnd).Text = currentLine;
                                     }
                                 }
                                 else
                                 {
                                     currentLine = currentLine.Replace(m.Value, "##");
-                                    if (currentLine != new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text)
+                                    if (currentLine != new TextRange(ConsoleOutPut.Document.ContentStart, ConsoleOutPut.Document.ContentEnd).Text)
                                     {
-                                        new TextRange(richTextBox.CaretPosition.GetLineStartPosition(0), richTextBox.CaretPosition.GetLineStartPosition(1) ?? richTextBox.CaretPosition.DocumentEnd).Text = currentLine;
+                                        new TextRange(ConsoleOutPut.CaretPosition.GetLineStartPosition(0), ConsoleOutPut.CaretPosition.GetLineStartPosition(1) ?? ConsoleOutPut.CaretPosition.DocumentEnd).Text = currentLine;
                                     }
                                 }
                             }
@@ -137,15 +137,15 @@ namespace ProPharmacyManagerW.View
 
         public void NewPrompt()
         {
-            TextRange tr = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
-            richTextBox.ScrollToEnd();
-            richTextBox.CaretPosition = richTextBox.CaretPosition.DocumentEnd;
-            richTextBox.AppendText("\r|>");
+            TextRange tr = new TextRange(ConsoleOutPut.Document.ContentStart, ConsoleOutPut.Document.ContentEnd);
+            ConsoleOutPut.ScrollToEnd();
+            ConsoleOutPut.CaretPosition = ConsoleOutPut.CaretPosition.DocumentEnd;
+            ConsoleOutPut.AppendText("\r|>");
         }
 
         private void richTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            var currentLine = new TextRange(richTextBox.CaretPosition.GetLineStartPosition(0), richTextBox.CaretPosition.GetLineStartPosition(1) ?? richTextBox.CaretPosition.DocumentEnd).Text;
+            var currentLine = new TextRange(ConsoleOutPut.CaretPosition.GetLineStartPosition(0), ConsoleOutPut.CaretPosition.GetLineStartPosition(1) ?? ConsoleOutPut.CaretPosition.DocumentEnd).Text;
             switch (e.Key)
             {
                 case Key.Enter:

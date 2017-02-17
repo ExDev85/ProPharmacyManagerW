@@ -74,16 +74,16 @@ namespace ProPharmacyManagerW.View.Pages
                 {
                     MySqlCommand cmd2 = new MySqlCommand(MySqlCommandType.UPDATE);
                     cmd2.Update("accounts").Set("State", state).Set("Phone", PHN.Text).Where("Username", UNList.SelectedItem.ToString()).Execute();
-                    label1.Content = "تم تغيير الحالة.";
-                    label1.Foreground = Brushes.Green;
-                    label1.Visibility = Visibility.Visible;
+                    Label1.Content = "تم تغيير الحالة.";
+                    Label1.Foreground = Brushes.Green;
+                    Label1.Visibility = Visibility.Visible;
                     Console.WriteLine("You just changed " + UNList.SelectedItem + " States");
                 }
                 catch (Exception ex1)
                 {
-                    label1.Content = "ليس هناك حساب بهذا الاسم.";
-                    label1.Foreground = Brushes.Red;
-                    label1.Visibility = Visibility.Visible;
+                    Label1.Content = "ليس هناك حساب بهذا الاسم.";
+                    Label1.Foreground = Brushes.Red;
+                    Label1.Visibility = Visibility.Visible;
                     Kernel.Core.SaveException(ex1);
                 }
             }
@@ -101,24 +101,24 @@ namespace ProPharmacyManagerW.View.Pages
                         {
                             MySqlCommand cmd2 = new MySqlCommand(MySqlCommandType.UPDATE);
                             cmd2.Update("accounts").Set("State", state).Set("Phone", PHN.Text).Where("Username", UNList.SelectedItem.ToString()).Execute();
-                            label1.Content = "تم تغيير الحالة بنجاح.";
-                            label1.Foreground = Brushes.Green;
-                            label1.Visibility = Visibility.Visible;
+                            Label1.Content = "تم تغيير الحالة بنجاح.";
+                            Label1.Foreground = Brushes.Green;
+                            Label1.Visibility = Visibility.Visible;
                             Console.WriteLine(UNList.SelectedItem.ToString() + " changed his states");
                         }
                         catch (Exception ex2)
                         {
-                            label1.Content = "ليس هناك حساب بهذا الاسم.";
-                            label1.Foreground = Brushes.Red;
-                            label1.Visibility = Visibility.Visible;
+                            Label1.Content = "ليس هناك حساب بهذا الاسم.";
+                            Label1.Foreground = Brushes.Red;
+                            Label1.Visibility = Visibility.Visible;
                             Kernel.Core.SaveException(ex2);
                         }
                     }
                     else
                     {
-                        label1.Content = "خطأ فى كلمة المرور";
-                        label1.Foreground = Brushes.Red;
-                        label1.Visibility = Visibility.Visible;
+                        Label1.Content = "خطأ فى كلمة المرور";
+                        Label1.Foreground = Brushes.Red;
+                        Label1.Visibility = Visibility.Visible;
                     }
                 }
                 catch (Exception ex3)
@@ -130,7 +130,7 @@ namespace ProPharmacyManagerW.View.Pages
 
         private void UNList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            label1.Visibility = Visibility.Hidden;
+            Label1.Visibility = Visibility.Hidden;
             MySqlCommand cmd1 = new MySqlCommand(MySqlCommandType.SELECT);
             cmd1.Select("accounts").Where("Username", UNList.SelectedItem.ToString()).Execute();
             MySqlReader r = new MySqlReader(cmd1);

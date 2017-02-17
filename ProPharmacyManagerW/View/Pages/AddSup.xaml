@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
-      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls" 
+      xmlns:controls="clr-namespace:ProPharmacyManagerW.Controls" 
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="600"
       Title="لوحه تغيير كلمه مرور الموظفين" FlowDirection="RightToLeft" Loaded="Page_Loaded">
@@ -23,12 +23,12 @@
             <ColumnDefinition Width="229*"/>
         </Grid.ColumnDefinitions>
         <ListBox x:Name="SupList" Margin="10,4,10,10" TabIndex="0" Grid.RowSpan="5" SelectionChanged="SupList_SelectionChanged"/>
-        <Controls:IconButton x:Name="DelB" Content="حذف" FlowDirection="LeftToRight" HorizontalAlignment="Left" Height="40" Margin="10,5,0,0" Grid.Row="5" VerticalAlignment="Top" Width="141" FontSize="30" FontWeight="Bold" Foreground="White" TabIndex="1" Image="/ProPharmacyManagerW;component/Images/UserDelete.png" Background="Red" ColorHover="#FFB00000" ColorPressed="#FF740000" ColorDisabled="#FF740000" Click="DelB_Click"/>
-        <Controls:WaterMarkTextBox x:Name="SupName" Grid.Column="1" Margin="10,4,10,6" TextWrapping="Wrap" WaterMark="المورد" FontSize="16" FontWeight="Bold" TabIndex="2"/>
-        <Controls:WaterMarkTextBox x:Name="SupMan" Grid.Column="1" Margin="10,0,10,9" TextWrapping="Wrap" WaterMark="مندوب المبيعات" FontSize="16" FontWeight="Bold" Grid.Row="1" TabIndex="3"/>
-        <Controls:WaterMarkTextBox x:Name="SupPhones" Grid.Column="1" Margin="10,0,10,10" Grid.Row="2" TextWrapping="Wrap" WaterMark="هواتف" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Top" TabIndex="4"/>
-        <Controls:WaterMarkTextBox x:Name="SupNotes" Grid.Column="1" Margin="10,0,10,8" Grid.Row="3" TextWrapping="Wrap" WaterMark="ملاحظات" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Top" TabIndex="5"/>
-        <Controls:IconButton x:Name="AddB" Content="  اضافة" FlowDirection="LeftToRight" Grid.Column="1" Height="40" Margin="78,9,10,0" Grid.Row="4" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold" TabIndex="6" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/UserAdd.png" Background="#FF18A6A6" ColorHover="#FF026868" ColorPressed="#FF023C3C" ColorDisabled="#FF023C3C" Click="AddB_Click"/>
-        <Controls:IconButton x:Name="EdtB" Content="  تـغيــيــر" FlowDirection="LeftToRight" Grid.Column="1" Height="40" Margin="78,5,10,0" Grid.Row="5" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold" TabIndex="7" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/UserSettings.png" Background="#FF0D6318" ColorHover="#FF004D0A" ColorPressed="#FF003C08" ColorDisabled="#FF003C08" Click="EdtB_Click"/>
+        <controls:IconButton x:Name="DelB" Content="حذف" FlowDirection="LeftToRight" HorizontalAlignment="Left" Height="40" Margin="10,5,0,0" Grid.Row="5" VerticalAlignment="Top" Width="141" FontSize="30" FontWeight="Bold" Foreground="White" TabIndex="1" Image="/ProPharmacyManagerW;component/Images/UserDelete.png" Background="Red" ColorHover="#FFB00000" ColorPressed="#FF740000" ColorDisabled="#FF740000" Click="DelB_Click"/>
+        <controls:WaterMarkTextBox x:Name="SupName" Grid.Column="1" Margin="10,4,10,6" TextWrapping="Wrap" WaterMark="المورد" FontSize="16" FontWeight="Bold" TabIndex="2"/>
+        <controls:WaterMarkTextBox x:Name="SupMan" Grid.Column="1" Margin="10,0,10,9" TextWrapping="Wrap" WaterMark="مندوب المبيعات" FontSize="16" FontWeight="Bold" Grid.Row="1" TabIndex="3"/>
+        <controls:WaterMarkTextBox x:Name="SupPhones" Grid.Column="1" Margin="10,0,10,10" Grid.Row="2" TextWrapping="Wrap" WaterMark="هواتف" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Top" TabIndex="4"/>
+        <controls:WaterMarkTextBox x:Name="SupNotes" Grid.Column="1" Margin="10,0,10,8" Grid.Row="3" TextWrapping="Wrap" WaterMark="ملاحظات" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Top" TabIndex="5"/>
+        <controls:IconButton x:Name="AddB" Content="  اضافة" FlowDirection="LeftToRight" Grid.Column="1" Height="40" Margin="78,9,10,0" Grid.Row="4" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold" TabIndex="6" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/UserAdd.png" Background="#FF18A6A6" ColorHover="#FF026868" ColorPressed="#FF023C3C" ColorDisabled="#FF023C3C" Click="AddB_Click"/>
+        <controls:IconButton x:Name="EdtB" Content="  تـغيــيــر" FlowDirection="LeftToRight" Grid.Column="1" Height="40" Margin="78,5,10,0" Grid.Row="5" VerticalAlignment="Top" Foreground="White" FontSize="30" FontWeight="Bold" TabIndex="7" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/UserSettings.png" Background="#FF0D6318" ColorHover="#FF004D0A" ColorPressed="#FF003C08" ColorDisabled="#FF003C08" Click="EdtB_Click"/>
     </Grid>
 </Page>

@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:Controls="clr-namespace:ProPharmacyManagerW.Controls"
+      xmlns:controls="clr-namespace:ProPharmacyManagerW.Controls"
       xmlns:local="clr-namespace:ProPharmacyManagerW.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="600"
@@ -20,21 +20,21 @@
             <RowDefinition Height="50*"/>
             <RowDefinition Height="25*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="label" Content="تستطيع اضافه موظفين او مدراء جدد من هنا" FontWeight="Bold" Foreground="White" Margin="10,0,10,10" FontSize="14"/>
-        <Controls:WaterMarkTextBox x:Name="RUName" WaterMark="أسم المستخدم*" Height="32" Margin="10,4,10,0" Grid.Row="1" VerticalAlignment="Top" MaxLines="1" TabIndex="0" HorizontalScrollBarVisibility="Auto" Foreground="#FF282EB6" FontWeight="Bold" FontSize="15" MaxLength="30" TextChanged="RUName_TextChanged"/>
+        <Label x:Name="Label" Content="تستطيع اضافه موظفين او مدراء جدد من هنا" FontWeight="Bold" Foreground="White" Margin="10,0,10,10" FontSize="14"/>
+        <controls:WaterMarkTextBox x:Name="RUName" WaterMark="أسم المستخدم*" Height="32" Margin="10,4,10,0" Grid.Row="1" VerticalAlignment="Top" MaxLines="1" TabIndex="0" HorizontalScrollBarVisibility="Auto" Foreground="#FF282EB6" FontWeight="Bold" FontSize="15" MaxLength="30" TextChanged="RUName_TextChanged"/>
         <PasswordBox x:Name="RUPass1" Height="31" Margin="10,5,10,0" Grid.Row="2" VerticalAlignment="Top" TabIndex="1" Password="حشسسصخقي" Foreground="#FF282EB6" FontSize="15" GotFocus="RUPass1_GotFocus" LostFocus="RUPass1_LostFocus"/>
         <PasswordBox x:Name="RUPass2" Height="31" Margin="10,5,10,0" Grid.Row="3" VerticalAlignment="Top" TabIndex="2" Password="حشسسصخقي" Foreground="#FF282EB6" FontSize="15" LostFocus="RUPass2_LostFocus" GotFocus="RUPass2_GotFocus"/>
-        <Controls:WaterMarkComboBox x:Name="RUState" WaterMark="صلاحيات المستخدم*" Height="30" Margin="10,5,10,0" Grid.Row="4" VerticalAlignment="Top" TabIndex="3" Foreground="#FF282EB6" FontSize="15" FontWeight="Bold">
+        <controls:WaterMarkComboBox x:Name="RUState" WaterMark="صلاحيات المستخدم*" Height="30" Margin="10,5,10,0" Grid.Row="4" VerticalAlignment="Top" TabIndex="3" Foreground="#FF282EB6" FontSize="15" FontWeight="Bold">
             <ListBoxItem Content="مدير"/>
             <ListBoxItem Content="موظف"/>
-        </Controls:WaterMarkComboBox>
-        <Controls:WaterMarkTextBox x:Name="RUPhone" WaterMark="رقم الهاتف" Height="32" Margin="10,4,10,0" Grid.Row="5" VerticalAlignment="Top" MaxLines="1" TabIndex="4" HorizontalScrollBarVisibility="Auto" Foreground="#FF282EB6" FontWeight="Bold" FontSize="15" MaxLength="20" PreviewTextInput="NumbersOnly"/>
-        <Label x:Name="label1" Margin="10,5,123,10" Grid.Row="6" FontWeight="Bold" Foreground="Red" FontSize="14" UseLayoutRounding="True" IsHitTestVisible="False">
+        </controls:WaterMarkComboBox>
+        <controls:WaterMarkTextBox x:Name="RUPhone" WaterMark="رقم الهاتف" Height="32" Margin="10,4,10,0" Grid.Row="5" VerticalAlignment="Top" MaxLines="1" TabIndex="4" HorizontalScrollBarVisibility="Auto" Foreground="#FF282EB6" FontWeight="Bold" FontSize="15" MaxLength="20" PreviewTextInput="NumbersOnly"/>
+        <Label x:Name="Label1" Margin="10,5,123,10" Grid.Row="6" FontWeight="Bold" Foreground="Red" FontSize="14" UseLayoutRounding="True" IsHitTestVisible="False">
             <Label.Content>
                 <AccessText TextWrapping="Wrap" Text="* كل المُعلم بـ* يجب ان يتم ادخاله&#xD;&#xA;* اذا كنت تقوم بإعداد البرنامج لاول مرة يجب ان تختار المستخدم بصلاحيات المدير"/>
             </Label.Content>
         </Label>
-        <Controls:IconButton x:Name="InsReg" Content="تسجيل" FlowDirection="LeftToRight" HorizontalAlignment="Right" Height="32" Margin="0,1,20,0" Grid.Row="7" VerticalAlignment="Top" Width="92" FontSize="20" Foreground="White" ForceCursor="True" FontWeight="Bold" Click="InsReg_Click" TabIndex="5" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/UserAdd.png" Background="#FF18A6A6" ColorHover="#FF026868" ColorPressed="#FF023C3C" ColorDisabled="#FF023C3C"/>
+        <controls:IconButton x:Name="InsReg" Content="تسجيل" FlowDirection="LeftToRight" HorizontalAlignment="Right" Height="32" Margin="0,1,20,0" Grid.Row="7" VerticalAlignment="Top" Width="92" FontSize="20" Foreground="White" ForceCursor="True" FontWeight="Bold" Click="InsReg_Click" TabIndex="5" IsDefault="True" Image="/ProPharmacyManagerW;component/Images/UserAdd.png" Background="#FF18A6A6" ColorHover="#FF026868" ColorPressed="#FF023C3C" ColorDisabled="#FF023C3C"/>
 
     </Grid>
 </Page>

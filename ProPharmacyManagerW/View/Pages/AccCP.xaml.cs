@@ -70,24 +70,24 @@ namespace ProPharmacyManagerW.View.Pages
                     {
                         MySqlCommand cmd2 = new MySqlCommand(MySqlCommandType.UPDATE);
                         cmd2.Update("accounts").Set("Password", Kernel.Core.GetSHAHashData(NUP1.Password)).Where("Username", UNList.SelectedItem.ToString()).Execute();
-                        label1.Content = "تم تغيير كلمه المرور بنجاح.";
-                        label1.Foreground = Brushes.Green;
-                        label1.Visibility = Visibility.Visible;
+                        Label1.Content = "تم تغيير كلمه المرور بنجاح.";
+                        Label1.Foreground = Brushes.Green;
+                        Label1.Visibility = Visibility.Visible;
                         Console.WriteLine("You just changed " + UNList.SelectedItem + " password");
                     }
                     catch (Exception ex1)
                     {
-                        label1.Content = "ليس هناك حساب بهذا الاسم.";
-                        label1.Foreground = Brushes.Red;
-                        label1.Visibility = Visibility.Visible;
+                        Label1.Content = "ليس هناك حساب بهذا الاسم.";
+                        Label1.Foreground = Brushes.Red;
+                        Label1.Visibility = Visibility.Visible;
                         Kernel.Core.SaveException(ex1);
                     }
                 }
                 else
                 {
-                    label1.Content = "كلمة المرور الجديدة و اعادتها غير متطابقين";
-                    label1.Foreground = Brushes.Red;
-                    label1.Visibility = Visibility.Visible;
+                    Label1.Content = "كلمة المرور الجديدة و اعادتها غير متطابقين";
+                    Label1.Foreground = Brushes.Red;
+                    Label1.Visibility = Visibility.Visible;
                 }
             }
             //Change the user password after typing the right old one without Admin privileges
@@ -106,31 +106,31 @@ namespace ProPharmacyManagerW.View.Pages
                             {
                                 MySqlCommand cmd2 = new MySqlCommand(MySqlCommandType.UPDATE);
                                 cmd2.Update("accounts").Set("Password", Kernel.Core.GetSHAHashData(NUP1.Password)).Where("Username", UNList.SelectedItem.ToString()).Execute();
-                                label1.Content = "تم تغيير كلمه المرور بنجاح.";
-                                label1.Foreground = Brushes.Green;
-                                label1.Visibility = Visibility.Visible;
+                                Label1.Content = "تم تغيير كلمه المرور بنجاح.";
+                                Label1.Foreground = Brushes.Green;
+                                Label1.Visibility = Visibility.Visible;
                                 Console.WriteLine(UNList.SelectedItem.ToString() + " password has changed");
                             }
                             catch (Exception ex2)
                             {
-                                label1.Content = "ليس هناك حساب بهذا الاسم.";
-                                label1.Foreground = Brushes.Red;
-                                label1.Visibility = Visibility.Visible;
+                                Label1.Content = "ليس هناك حساب بهذا الاسم.";
+                                Label1.Foreground = Brushes.Red;
+                                Label1.Visibility = Visibility.Visible;
                                 Kernel.Core.SaveException(ex2);
                             }
                         }
                         else
                         {
-                            label1.Content = "كلمة المرور الجديدة و اعادتها غير متطابقين";
-                            label1.Foreground = Brushes.Red;
-                            label1.Visibility = Visibility.Visible;
+                            Label1.Content = "كلمة المرور الجديدة و اعادتها غير متطابقين";
+                            Label1.Foreground = Brushes.Red;
+                            Label1.Visibility = Visibility.Visible;
                         }
                     }
                     else
                     {
-                        label1.Content = "خطأ فى كلمة المرور القديمه";
-                        label1.Foreground = Brushes.Red;
-                        label1.Visibility = Visibility.Visible;
+                        Label1.Content = "خطأ فى كلمة المرور القديمه";
+                        Label1.Foreground = Brushes.Red;
+                        Label1.Visibility = Visibility.Visible;
                     }
                 }
                 catch (Exception ex3)
@@ -150,17 +150,17 @@ namespace ProPharmacyManagerW.View.Pages
                     try
                     {
                         new MySqlCommand(MySqlCommandType.DELETE).Delete("accounts", "Username", UNList.SelectedItem.ToString()).Execute();
-                        label1.Content = "تم حذف الحساب بنجاح.";
-                        label1.Foreground = Brushes.Red;
-                        label1.Visibility = Visibility.Visible;
+                        Label1.Content = "تم حذف الحساب بنجاح.";
+                        Label1.Foreground = Brushes.Red;
+                        Label1.Visibility = Visibility.Visible;
                         Console.WriteLine("Good job you have just deleted " + UNList.SelectedItem.ToString());
                         ReloadList();
                     }
                     catch (Exception ex)
                     {
-                        label1.Content = "ليس هناك حساب بهذا الاسم.";
-                        label1.Foreground = Brushes.Red;
-                        label1.Visibility = Visibility.Visible;
+                        Label1.Content = "ليس هناك حساب بهذا الاسم.";
+                        Label1.Foreground = Brushes.Red;
+                        Label1.Visibility = Visibility.Visible;
                         Kernel.Core.SaveException(ex);
                     }
                 }
