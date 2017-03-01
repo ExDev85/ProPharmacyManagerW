@@ -29,7 +29,6 @@ namespace ProPharmacyManagerW.View.Pages
         IniFile file = new IniFile(Paths.SetupConfigPath);
         Config co = new Config();
 
-        private BackgroundWorker bgw;
         /// <summary>
         /// Check if installing process is compeleteing or not to load register page
         /// </summary>
@@ -47,7 +46,6 @@ namespace ProPharmacyManagerW.View.Pages
             {
                 PB.Height = 10;
             }
-            bgw = ((BackgroundWorker)this.FindResource("bgw"));
             try
             {
                 if (!File.Exists(Paths.SetupConfigPath))
@@ -72,24 +70,31 @@ namespace ProPharmacyManagerW.View.Pages
                     Config co = new Config();
                     co.Read();
                 }
-
             }
             catch (Exception ex)
             {
                 Core.SaveException(ex);
             }
-        }   
+        }
 
         /// <summary>
         /// setup button
         /// </summary>
-        ///
         private void SetB_Click(object sender, RoutedEventArgs e)
         {
             if (Core.IsSetup == true)
             {
                 Console.WriteLine("Starting to install");
+                BackgroundWorker bgw = new BackgroundWorker()
+                {
+                    WorkerReportsProgress = true
+                };
+                bgw.DoWork += BackgroundWorker_DoWork;
+                bgw.ProgressChanged += BackgroundWorker_ProgressChanged;
+                bgw.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
                 bgw.RunWorkerAsync();
+                SetB.IsEnabled = false;
+                UpgradeB.IsEnabled = false;
             }
         }
 
@@ -117,7 +122,7 @@ namespace ProPharmacyManagerW.View.Pages
         #region Intalling process
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            bgw.ReportProgress(5);
+            (sender as BackgroundWorker)?.ReportProgress(5);
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
                 co.Hostname = DbHost.Text;
@@ -128,24 +133,21 @@ namespace ProPharmacyManagerW.View.Pages
                 co.DrugsLog = "1";
                 co.Write(true, true);
             });
-            bgw.ReportProgress(30);
+            (sender as BackgroundWorker)?.ReportProgress(30);
             if (!Directory.Exists(Paths.BackupsPath))
             {
                 Directory.CreateDirectory(Paths.BackupsPath);
             }
-            bgw.ReportProgress(40);
-            Thread.Sleep(500);
+            (sender as BackgroundWorker)?.ReportProgress(40);
             DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.Hostname);
             Dispatcher.Invoke((Action)(() =>
             {
                 CreateDB.Createdb(co.DbName);
             }));
-            Thread.Sleep(500);
-            bgw.ReportProgress(60);
+            (sender as BackgroundWorker)?.ReportProgress(60);
             DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.DbName, co.Hostname);
             Dispatcher.Invoke((Action)(CreateDB.CreateTables));
-            bgw.ReportProgress(95);
-            Thread.Sleep(900);
+            (sender as BackgroundWorker)?.ReportProgress(95);
         }
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
