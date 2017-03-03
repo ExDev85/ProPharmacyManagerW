@@ -117,6 +117,7 @@ namespace ProPharmacyManagerW.Kernel
             {
                 DrugsLog = "1";
             }
+            Read();
         }
 
         /// <summary>

@@ -25,12 +25,11 @@ namespace ProPharmacyManagerW.View.Pages
         {
             InitializeComponent();
         }
-        
+
         IniFile file = new IniFile(Paths.SetupConfigPath);
-        Config co = new Config();
 
         /// <summary>
-        /// Check if installing process is compeleteing or not to load register page
+        /// Check if installing process is compeleted or not to load register page
         /// </summary>
         public static bool IsInstallCompleted = false;
         public static bool IsClosing = false;
@@ -82,7 +81,7 @@ namespace ProPharmacyManagerW.View.Pages
         /// </summary>
         private void SetB_Click(object sender, RoutedEventArgs e)
         {
-            if (Core.IsSetup == true)
+            if (Core.IsSetup)
             {
                 Console.WriteLine("Starting to install");
                 BackgroundWorker bgw = new BackgroundWorker()
@@ -95,6 +94,10 @@ namespace ProPharmacyManagerW.View.Pages
                 bgw.RunWorkerAsync();
                 SetB.IsEnabled = false;
                 UpgradeB.IsEnabled = false;
+                DbHost.IsEnabled = false;
+                DbName.IsEnabled = false;
+                DbUser.IsEnabled = false;
+                DbPass.IsEnabled = false;
             }
         }
 
@@ -120,10 +123,12 @@ namespace ProPharmacyManagerW.View.Pages
         }
 
         #region Intalling process
+
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             (sender as BackgroundWorker)?.ReportProgress(5);
-            Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+            Config co = new Config();           
+            Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart) delegate()
             {
                 co.Hostname = DbHost.Text;
                 co.DbName = DbName.Text;
@@ -139,13 +144,13 @@ namespace ProPharmacyManagerW.View.Pages
                 Directory.CreateDirectory(Paths.BackupsPath);
             }
             (sender as BackgroundWorker)?.ReportProgress(40);
-            DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.Hostname);
-            Dispatcher.Invoke((Action)(() =>
+            Dispatcher.Invoke((Action) (() =>
             {
+                DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.Hostname);
                 CreateDB.Createdb(co.DbName);
+                DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.DbName, co.Hostname);
             }));
             (sender as BackgroundWorker)?.ReportProgress(60);
-            DataHolder.CreateConnection(co.DbUserName, co.DbUserPassword, co.DbName, co.Hostname);
             Dispatcher.Invoke((Action)(CreateDB.CreateTables));
             (sender as BackgroundWorker)?.ReportProgress(95);
         }

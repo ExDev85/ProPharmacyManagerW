@@ -20,6 +20,7 @@ namespace ProPharmacyManagerW.Database
         /// <param name="dbname">Database name</param> 
         public static void Createdb(string dbname)
         {
+            Console.WriteLine("Creating the database");
             string db1 = "DROP DATABASE IF EXISTS `" + dbname + "`;CREATE DATABASE `" + dbname + "`;";
             using (var conn = DataHolder.MySqlConnection)
             {
@@ -32,7 +33,7 @@ namespace ProPharmacyManagerW.Database
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("Something went wrong \"Microsoft style\"");
+                        Console.WriteLine("Something went wrong \"Microsoft style\"\n" + e);
                         MessageBox.Show("هناك مشكله فى السيرفر او بيانات الاتصال به");
                         Core.SaveException(e);
                         if (File.Exists(Paths.SetupConfigPath))
@@ -99,6 +100,7 @@ namespace ProPharmacyManagerW.Database
                 "CREATE TABLE `medlog` (`MedName` varchar(50) NOT NULL, `SellDate` varchar(20) NOT NULL default '0', `TotalAmount` decimal(15,2) unsigned NOT NULL default '0', `TotalPrice` decimal(15,2) unsigned NOT NULL default '0', `Cashier` varchar(30) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
             const string suppliers =
                 "CREATE TABLE `suppliers` (`Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, `Name` varchar(50) NOT NULL, `Salesman` varchar(50) NOT NULL, `Phones` text, `Notes` text, PRIMARY KEY(`Id`), UNIQUE KEY `Name` (`Name`)) ENGINE = InnoDB DEFAULT CHARSET = utf8;";
+            Console.WriteLine("Creating Tables");
             using (var conn = DataHolder.MySqlConnection)
             {
                 using (MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand())
