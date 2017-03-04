@@ -511,6 +511,8 @@ namespace ProPharmacyManagerW.View
         {
             Config co = new Config();
             co.Read(false, false, true, false);
+            AccountsTable.LoginOut = true;
+            AccountsTable.IsAdmin();
             if (co.AccountsLog == "1")
             {
                 MySqlCommand cmd = new MySqlCommand(MySqlCommandType.UPDATE);

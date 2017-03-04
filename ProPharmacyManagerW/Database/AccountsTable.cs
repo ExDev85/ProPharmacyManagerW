@@ -14,6 +14,7 @@ namespace ProPharmacyManagerW.Database
     {
         public static string UserName;
         public static string UserPassword;
+        public static bool LoginOut;
 
         private static States.AccountState State;
 
@@ -45,18 +46,17 @@ namespace ProPharmacyManagerW.Database
         /// <returns>true if admin</returns>
         public static bool IsAdmin()
         {
-            if (State == States.AccountState.Manager)
+            if (!LoginOut)
             {
-                return true;
+                switch (State)
+                {
+                    case States.AccountState.Manager:
+                        return true;
+                    case States.AccountState.Employee:
+                        return false;
+                }
             }
-            else if (State == States.AccountState.Employee)
-            {
-                return false;
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         /// <summary> 
