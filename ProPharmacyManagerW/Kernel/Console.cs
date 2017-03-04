@@ -139,13 +139,14 @@ namespace ProPharmacyManagerW
                                     .Insert("Name", data[1])
                                     .Insert("Barcode", data[2])
                                     .Insert("ScientificName", data[3])
-                                    .Insert("ExpirationDate", data[4])
-                                    .Insert("Type", data[5])
-                                    .Insert("Total", Convert.ToDecimal(data[6]))
-                                    .Insert("SPrice", Convert.ToDecimal(data[7]))
-                                    .Insert("Notes", data[8]).Execute();
-                                WriteLine(AccountsTable.UserName + " add " + data[6] + " " + data[1] +
-                                          " which each cost " + data[7]);
+                                    .Insert("Supplier", data[4])
+                                    .Insert("ExpirationDate", data[5])
+                                    .Insert("Type", data[6])
+                                    .Insert("Total", Convert.ToDecimal(data[7]))
+                                    .Insert("BPrice", Convert.ToDecimal(data[8]))
+                                    .Insert("SPrice", Convert.ToDecimal(data[9]))
+                                    .Insert("Notes", data[10]).Execute();
+                                WriteLine(AccountsTable.UserName + " add " + data[6] + " " + data[1] + " which each cost " + data[7]);
                             }
                             catch (Exception e)
                             {
@@ -310,13 +311,7 @@ namespace ProPharmacyManagerW
                             #endregion
                         case "#help":
                         {
-                            WriteLine(@"Here is some Commands
-#addacc Username Password State(type 2 for admin - 1 for employee) PhoneNumber(could be empty -type null-)
-#adddrug Name Barcode(Could be empty -type null-) ScientificName(Could be empty -type null-) ExpirationDate(should be yyyy/mm/dd) Type(type 1 for syrup - 2 for tab - 3 Injection - 4 for Cream/Ointments - 0 for other) Total(must be numbers) SPrice(must be numbers) Notes(Could be empty -type null-)
-#Drop db (to delete your database good luck with that)
-#Drop table tablename (delete a spacific table to ruin the database)
-#import path (type the full path for the sql file to import it like c:\meds.sql)
-#deltemp (type '-all' to delete the config folder with backups files like #deltemp -all)");
+                            WriteLine("Here is some Commands\r#addacc Username Password State(type 2 for admin - 1 for employee) PhoneNumber(could be empty -type null-)\r#adddrug Name Barcode(Could be empty -type null-) ScientificName(Could be empty -type null-) Supplier(Could be empty -type null-) ExpirationDate(should be yyyy/mm/dd) Type(type 1 for syrup - 2 for tab - 3 Injection - 4 for Cream/Ointments - 0 for other) Total(must be numbers) BPrice(must be numbers) SPrice(must be numbers) Notes(Could be empty -type null-)\r#Drop db (to delete your database good luck with that)\r#Drop table tablename (delete a spacific table to ruin the database)\r#import path (type the full path for the sql file to import it like c:\\meds.sql)\r#deltemp (type '-all' to delete the config folder with backups files like #deltemp -all)");
                             break;
                         }
                         default:
