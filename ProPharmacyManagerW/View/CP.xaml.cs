@@ -394,7 +394,7 @@ namespace ProPharmacyManagerW.View
             }
             catch (Exception ex)
             {
-                Kernel.Core.SaveException(ex);
+                Core.SaveException(ex);
             }
         }
 

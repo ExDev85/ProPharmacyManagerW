@@ -6,7 +6,6 @@
     <Window.Background>
         <ImageBrush ImageSource="/ProPharmacyManagerW;component/Images/BG.png"/>
     </Window.Background>
-
     <Grid x:Name="GridPanel1" Background="{x:Null}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="261*"/>
@@ -212,6 +211,21 @@
             </MenuItem>
         </Menu>
         <Border x:Name="AddNewDrugBoard" BorderThickness="1" FlowDirection="RightToLeft" Grid.RowSpan="2" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" Grid.ColumnSpan="1" Grid.Column="2" Margin="6,0,1,0" >
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <Trigger Property="Visibility" Value="Visible">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,-20,0" To="6,0,1,0" DecelerationRatio=".5" Duration="0:0:.5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF0066CC" Offset="1"/>
@@ -256,6 +270,21 @@
             </Grid>
         </Border>
         <Border x:Name="UserBoard" BorderThickness="1" FlowDirection="RightToLeft" Grid.RowSpan="2" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.Column="1" Margin="6,0,0,0" >
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <Trigger Property="Visibility" Value="Visible">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,-20,0" To="6,0,0,0" DecelerationRatio=".5" Duration="0:0:.5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FF0066CC" Offset="1"/>
