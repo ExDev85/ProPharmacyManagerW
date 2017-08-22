@@ -103,8 +103,12 @@ namespace ProPharmacyManagerW.Database
             catch (Exception ll)
             {
                 Console.WriteLine("Error while logging in");
-                Kernel.Core.SaveException(ll);
+                Core.SaveException(ll);
                 return false;
+            }
+            finally
+            {
+                UserPassword = null;
             }
         }
 
