@@ -12,6 +12,7 @@ using System.IO;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 
 namespace ProPharmacyManagerW.Kernel
 {
@@ -40,9 +41,9 @@ namespace ProPharmacyManagerW.Kernel
         /// <summary>
         /// The used passwords to encrypt the config file content and read it
         /// </summary>
-        static readonly string PasswordHash = "SHC@HAM&ABRZ";
-        static readonly string SaltKey = "P@FAMK!TRP";
-        static readonly string VIKey = "@Gjg9!b8tf&T6jl4k1b";
+        protected static readonly string PasswordHash = "SHC@HAM&ABRZ";
+        protected static readonly string SaltKey = "P@FAMK!TRP";
+        protected static readonly string VIKey = "@Gjg9!b8tf&T6jl4k1b";
 
         /// <summary>
         /// Automatic backing up is active
@@ -248,31 +249,29 @@ namespace ProPharmacyManagerW.Kernel
         /// <param name="e">exception string</param>
         public static void SaveException(Exception e)
         {
-            Console.WriteLine(e.ToString());
-            if (e.TargetSite.Name == "ThrowInvalidOperationException") return;
-            DateTime now = DateTime.Now;
-            string str = string.Concat(new object[] { now.Month, "-", now.Day, "//" });
-            if (!Directory.Exists(Paths.UnhandledExceptionsPath))
+            lock (e)
             {
-                Directory.CreateDirectory(Paths.UnhandledExceptionsPath);
-            }
-            if (!Directory.Exists(Paths.UnhandledExceptionsPath + str))
-            {
-                Directory.CreateDirectory(Paths.UnhandledExceptionsPath + str);
-            }
-            if (!Directory.Exists(Paths.UnhandledExceptionsPath + str + e.TargetSite.Name))
-            {
-                Directory.CreateDirectory(Paths.UnhandledExceptionsPath + str + e.TargetSite.Name);
-            }
-            File.WriteAllLines((Paths.UnhandledExceptionsPath + str + e.TargetSite.Name + "\\") + string.Concat(new object[] { now.Hour, "-", now.Minute, "-", now.Ticks & 10L }) + ".txt", new List<string>
+                Thread th = new Thread(() =>
                 {
-                    "----Exception message----",
-                    e.Message,
-                    "----End of exception message----\r\n",
-                    "----Stack trace----",
-                    e.StackTrace,
-                    "----End of stack trace----\r\n"
-                }.ToArray());
+                    Console.WriteLine(e.ToString());
+                    string str = DateTime.Now.Month + "-" + DateTime.Now.Day + "\\";
+                    if (!Directory.Exists(Paths.UnhandledExceptionsPath))
+                    {
+                        Directory.CreateDirectory(Paths.UnhandledExceptionsPath);
+                    }
+                    if (!Directory.Exists(Paths.UnhandledExceptionsPath + DateTime.Now.Year))
+                    {
+                        Directory.CreateDirectory(Paths.UnhandledExceptionsPath + DateTime.Now.Year);
+                    }
+                    if (!Directory.Exists(Paths.UnhandledExceptionsPath + DateTime.Now.Year + "\\" + str))
+                    {
+                        Directory.CreateDirectory(Paths.UnhandledExceptionsPath + DateTime.Now.Year + "\\" + str);
+                    }
+                    File.AppendAllText((Paths.UnhandledExceptionsPath + DateTime.Now.Year + "\\" + str) + string.Concat(new object[] { DateTime.Now.Hour, "-", DateTime.Now.Minute }) + ".log", e.Message + Environment.NewLine + e.StackTrace + Environment.NewLine);
+                    Thread.CurrentThread.Abort();
+                });
+                th.Start();
+            }
         }
 
         /// <summary> 

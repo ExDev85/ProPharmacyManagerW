@@ -34,7 +34,7 @@ namespace ProPharmacyManagerW.Database
                     catch (Exception e)
                     {
                         Console.WriteLine("Something went wrong \"Microsoft style\"\n" + e);
-                        MessageBox.Show("هناك مشكله فى السيرفر او بيانات الاتصال به");
+                        MessageBox.Show("هناك مشكله فى السيرفر او بيانات الاتصال به سيتم اعلاق البرنامج");
                         Core.SaveException(e);
                         if (File.Exists(Paths.SetupConfigPath))
                         {
