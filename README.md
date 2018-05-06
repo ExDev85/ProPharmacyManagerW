@@ -40,5 +40,3 @@ please see http://dev.mysql.com/downloads/
 ![Alt text](https://4.bp.blogspot.com/-iLvzMGRQh8Q/WJ9ba0MLh5I/AAAAAAAABDQ/yb-oS-mSy5E491HWgrUtDzMLfq5YDBI4QCLcB/s320/Screenshot%2B%252833%2529.png "Add new Item panel")
 
 ![Alt text](https://3.bp.blogspot.com/-aSaEz9hTJj0/WJ9bfDinU6I/AAAAAAAABDU/WJXNjLeCql0kk-QWjcKKBUwz8TJ1sgI-ACLcB/s320/Capture05.PNG "About Window")
-
-![Alt text](web/images/screen-buttons.png "Buttons")
