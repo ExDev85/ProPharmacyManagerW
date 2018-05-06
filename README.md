@@ -25,18 +25,18 @@ please see http://dev.mysql.com/downloads/
 
 ## Screenshots
 
-![Alt text](https://3.bp.blogspot.com/-knHED8v6F3g/WJ9bJ04sn5I/AAAAAAAABC4/E_0s_dMNU4g9Dq8BiNY0P4b1WxRX1wk6gCLcB/s320/Capture01.PNG "Database config window for the first time")
+![Alt text](https://1.bp.blogspot.com/-GaPqeHRqRTQ/U1V831E8Z3I/AAAAAAAAAQQ/V_Qn6v2EZV8/s1600/Capture01.PNG "Database config window for the first time")
 
-![Alt text](https://3.bp.blogspot.com/-RCoQ_TtckRc/WJ9bJ0QGAGI/AAAAAAAABCw/NXeoeJmVHeIaEz9gWf1KuMJoexYjvz1xgCLcB/s320/Capture02.PNG "Upgrade from an old version window")
+![Alt text](https://1.bp.blogspot.com/-r2HEncd0oKU/U1V84K2j5-I/AAAAAAAAAQk/rE6cgVwRwm0/s1600/Capture02.PNG "Add new user")
 
-![Alt text](https://2.bp.blogspot.com/-W7L6Y7AIzrs/WJ9bKqU1_-I/AAAAAAAABC8/GRVNS1zMfaQy_EXKLcHZnKMGMZKfz2HaACLcB/s320/Capture04.PNG "Admin main window")
+![Alt text](https://2.bp.blogspot.com/-TyO6_C81lFI/U1wGFQXH37I/AAAAAAAAARs/MlaZcn9J0eg/s1600/Capture45.PNG "Login Window")
 
-![Alt text](https://4.bp.blogspot.com/-u2ZLLLp3J6c/WJ9bZeUI53I/AAAAAAAABDA/FLFKLsVNRI4jJO5Dhq9793BgaXCuH49xACLcB/s320/Screenshot%2B%252827%2529.png "The console window")
+![Alt text](https://2.bp.blogspot.com/--zgjKjPd0j8/U1wGFG0_jeI/AAAAAAAAARo/fR1P3_94RFs/s1600/Untitled01.PNG "Main Window")
 
-![Alt text](https://3.bp.blogspot.com/-3dYC-PeN3gM/WJ9bZ3Lp4iI/AAAAAAAABDI/4YzaGAYbGEERWkzyE3sGeOPlsr8ORg7PQCLcB/s320/Screenshot%2B%252828%2529.png "Show all Items Window")
+![Alt text](https://2.bp.blogspot.com/-kMq1TEibXJo/U1V8-2jxSyI/AAAAAAAAARI/YODsFryYzrg/s1600/Capture09.PNG "Main Window User")
 
-![Alt text](https://1.bp.blogspot.com/-RvONuBu-nVk/WJ9baSBx83I/AAAAAAAABDM/4rRBujEl2_Atcm3kmM1fAa1p7mFc9p_sQCLcB/s320/Screenshot%2B%252832%2529.png "Take Restore a backup window")
+![Alt text](https://2.bp.blogspot.com/-DlZZsrNDo8c/U1V88OGf2bI/AAAAAAAAAQ4/SAc3OZi5kdc/s1600/Capture06.PNG "Take Restore a backup window")
 
-![Alt text](https://4.bp.blogspot.com/-iLvzMGRQh8Q/WJ9ba0MLh5I/AAAAAAAABDQ/yb-oS-mSy5E491HWgrUtDzMLfq5YDBI4QCLcB/s320/Screenshot%2B%252833%2529.png "Add new Item panel")
+![Alt text](https://2.bp.blogspot.com/-FOw_oPKV5OI/U1V877afA0I/AAAAAAAAAQ0/TUdGVUuXedw/s1600/Capture05.PNG "Add new Item Window")
 
-![Alt text](https://3.bp.blogspot.com/-aSaEz9hTJj0/WJ9bfDinU6I/AAAAAAAABDU/WJXNjLeCql0kk-QWjcKKBUwz8TJ1sgI-ACLcB/s320/Capture05.PNG "About Window")
+![Alt text](https://2.bp.blogspot.com/-BdKq1UP97Q0/U1V88458FaI/AAAAAAAAAQ8/ts57iH8D3LY/s1600/Capture07.PNG "About Window")
